@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RiderMex – Financiamos tu libertad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rojo:    #CC0000;
+      --rojo2:   #ff5a3c;
+      --negro:   #0A0A0A;
+      --gris1:   #141414;
+      --gris2:   #1E1E1E;
+      --gris3:   #2C2C2C;
+      --blanco:  #F5F5F5;
+      --verde:   #00C896;
+      --texto:   #AAAAAA;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* grano sutil estilo film/premium */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: .025;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* barra de progreso de scroll */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--rojo), var(--rojo2), var(--verde));
+      z-index: 9999;
+      box-shadow: 0 0 12px rgba(204,0,0,.6);
+      transition: width .1s linear;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(6px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris3);
+      transition: border-color .3s, box-shadow .3s;
+    }
+
+    nav.is-scrolled { border-bottom-color: rgba(204,0,0,.3); box-shadow: 0 4px 24px rgba(204,0,0,.1); }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img { height: 38px; display: block; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--texto);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 1.5px;
+      background: var(--rojo);
+      transition: width .25s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--blanco); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: transform .25s var(--ease), opacity .25s;
+    }
+
+    .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(204,0,0,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 460px; height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,0,0,.18), transparent 70%);
+      filter: blur(6px);
+      top: -140px; right: -100px;
+      z-index: -1;
+      animation: floatOrb 16s ease-in-out infinite;
+    }
+
+    .hero-orb--2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(0,200,150,.12), transparent 70%);
+      top: auto; right: auto;
+      bottom: -120px; left: -80px;
+      animation-duration: 20s;
+      animation-direction: reverse;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-40px, 50px) scale(1.15); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--rojo);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--rojo) 0%, var(--rojo2) 50%, var(--rojo) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--texto);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+
+    .hero-scroll {
+      margin-top: 1.5rem;
+      color: var(--texto);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 16px;
+      background: linear-gradient(to bottom, var(--texto), transparent);
+    }
+
+    .hero-camino-desc {
+      margin-top: 1.25rem;
+      color: var(--texto);
+      font-size: 0.95rem;
+      max-width: 560px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── STATS ─── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      border-top: 1px solid var(--gris3);
+      border-bottom: 1px solid var(--gris3);
+    }
+
+    .stat {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--gris3);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: var(--blanco);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(204,0,0,.25);
+    }
+
+    .stat-num span { color: var(--rojo); }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--texto);
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── HUB ─── */
+    .hub {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+
+    .hub-panel {
+      padding: 5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hub-panel::before {
+      content: '';
+      position: absolute;
+      top: var(--my, 50%);
+      left: var(--mx, 50%);
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      transform: translate(-50%,-50%);
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+
+    .hub-panel:hover::before { opacity: 1; }
+
+    .hub-panel--motos {
+      background: var(--gris1);
+      border-right: 1px solid var(--gris3);
+    }
+
+    .hub-panel--motos::before { background: radial-gradient(circle, rgba(204,0,0,.14), transparent 70%); }
+    .hub-panel--motos:hover { background: var(--gris2); }
+
+    .hub-panel--inversiones {
+      background: var(--gris1);
+    }
+
+    .hub-panel--inversiones::before { background: radial-gradient(circle, rgba(0,200,150,.12), transparent 70%); }
+    .hub-panel--inversiones:hover { background: var(--gris2); }
+
+    .hub-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hub-tag--motos { color: var(--rojo); }
+    .hub-tag--inv   { color: var(--verde); }
+
+    .hub-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hub-desc {
+      font-size: 0.95rem;
+      color: var(--texto);
+      max-width: 340px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      align-self: flex-start;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hub-cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s var(--ease);
+    }
+
+    .hub-cta:hover::before { left: 130%; }
+    .hub-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .hub-cta--motos {
+      background: var(--rojo);
+      color: var(--blanco);
+      box-shadow: 0 10px 26px rgba(204,0,0,.3);
+    }
+
+    .hub-cta--inv {
+      background: var(--verde);
+      color: var(--negro);
+      box-shadow: 0 10px 26px rgba(0,200,150,.25);
+    }
+
+    .hub-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      background: var(--negro);
+      border-left: 1px solid var(--gris3);
+      border-right: 1px solid var(--gris3);
+      writing-mode: vertical-rl;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gris3);
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      position: relative;
+    }
+
+    /* ─── MARCAS ─── */
+    .marcas {
+      padding: 4rem 2.5rem;
+      border-top: 1px solid var(--gris3);
+    }
+
+    .marcas-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--texto);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .marcas-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem 2rem;
+    }
+
+    .marca {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--texto);
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .marca::after {
+      content: '';
+      position: absolute;
+      left: 50%; bottom: -6px;
+      width: 0; height: 1.5px;
+      background: var(--rojo);
+      transform: translateX(-50%);
+      transition: width .25s var(--ease);
+    }
+
+    .marca:hover { color: var(--blanco); }
+    .marca:hover::after { width: 70%; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--gris3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--gris3);
+    }
+
+    footer a {
+      color: var(--gris3);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--texto); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: rgba(10,10,10,.97);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--gris3);
+        padding: 10px 1.25rem 18px;
+      }
+
+      .nav-links.is-open { display: flex; }
+      .nav-links a { display: block; padding: 12px 0; width: 100%; }
+
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--gris3); }
+      .stat:last-child { border-bottom: none; }
+
+      .hub { grid-template-columns: 1fr 1fr; min-height: 0; }
+
+      .hub-panel {
+        padding: 1.75rem 1.1rem;
+        min-height: 0;
+      }
+
+      .hub-tag { font-size: 0.6rem; margin-bottom: 0.6rem; }
+      .hub-title { font-size: 1.5rem; margin-bottom: 0.6rem; }
+      .hub-desc { display: none; }
+      .hub-cta { padding: 0.6rem 1rem; font-size: 0.75rem; gap: 0.4rem; }
+      .hub-divider { display: none; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (max-width: 420px) {
+      .hub-title { font-size: 1.25rem; }
+      .hub-cta { padding: 0.55rem 0.8rem; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
+    <ul class="nav-links">
+      <li><a href="motos.html">Catálogo</a></li>
+      <li><a href="motos.html#agencias">Agencias</a></li>
+      <li><a href="inversiones.html">Inversiones</a></li>
+      <li><a href="quienes-somos.html">Quiénes somos</a></li>
+      <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+    <p class="hero-eyebrow">México · Movilidad · Capital</p>
+    <h1 class="hero-title">
+      Motos, movilidad<br/>
+      e <em>inversión</em> en un solo lugar
+    </h1>
+    <p class="hero-sub">
+      Estrena tu moto con opciones accesibles de compra y financiamiento, o participa en el crecimiento de RiderMex a través de un modelo de inversión respaldado por operación real y agencias activas.
+    </p>
+    <div class="hero-scroll">Elige tu camino</div>
+    <p class="hero-camino-desc">En RiderMex puedes elegir cómo avanzar: estrenar una moto con opciones accesibles de compra y financiamiento, o invertir en el crecimiento de una empresa con operación real y agencias activas.</p>
+  </section>
+
+  <!-- BARRA DE CIFRAS -->
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Agencias activas · 1 próximamente</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">9</div>
+      <div class="stat-label">Marcas distribuidas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+<span>100</span></div>
+      <div class="stat-label">Modelos disponibles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2<span>min</span></div>
+      <div class="stat-label">Aprobación de crédito</div>
+    </div>
+  </div>
+
+  <!-- HUB DE DECISIÓN -->
+  <section class="hub">
+
+    <a href="motos.html" class="hub-panel hub-panel--motos reveal">
+      <div>
+        <p class="hub-tag hub-tag--motos">Para compradores</p>
+        <h2 class="hub-title">Quiero<br/>una moto</h2>
+        <p class="hub-desc">
+          Más de 10 marcas disponibles. Crédito en 2 minutos con financieras externas: Maxikash, Galgo y Atrato. Sin enganche con Atrato.
+        </p>
+      </div>
+      <span class="hub-cta hub-cta--motos">Ver catálogo →</span>
+    </a>
+
+    <a href="inversiones.html" class="hub-panel hub-panel--inversiones reveal">
+      <div>
+        <p class="hub-tag hub-tag--inv">Para inversores</p>
+        <h2 class="hub-title">Quiero<br/>invertir</h2>
+        <p class="hub-desc">
+          Capital en movimiento. Modelos A, B y C con retornos estructurados. Operado por RiderMex — Capital en movimiento.
+        </p>
+      </div>
+      <span class="hub-cta hub-cta--inv">Ver modelos →</span>
+    </a>
+
+  </section>
+
+  <!-- STATS -->
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat-num">$199<span>+</span></div>
+      <div class="stat-label">desde por semana con enganche</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2<span>min</span></div>
+      <div class="stat-label">para tramitar tu crédito</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4<span>+</span></div>
+      <div class="stat-label">agencias en CDMX y Estado de México</div>
+    </div>
+  </div>
+
+  <!-- MARCAS -->
+  <div class="marcas reveal">
+    <p class="marcas-label">Marcas disponibles</p>
+    <div class="marcas-list">
+      <span class="marca">Vento</span>
+      <span class="marca">Bajaj</span>
+      <span class="marca">Islo</span>
+      <span class="marca">Carabela</span>
+      <span class="marca">Zmoto</span>
+      <span class="marca">Ryder</span>
+      <span class="marca">TVS</span>
+      <span class="marca">CF Moto</span>
+      <span class="marca">CF Lite</span>
+      <span class="marca">UM Motorcycles</span>
+      <span class="marca">Honda</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 RiderMex · Financiamos tu libertad</span>
+    <span>
+      <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
+      <a href="#">Aviso de privacidad</a>
+    </span>
+  </footer>
+
+  <script>
+    // Barra de progreso de scroll
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    }, { passive: true });
+
+    // Nav con glow al hacer scroll
+    const siteNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Menú hamburguesa (mobile)
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('is-active');
+        navLinks.classList.toggle('is-open');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('is-active');
+          navLinks.classList.remove('is-open');
+        });
+      });
+    }
+
+    // Aparición de secciones al hacer scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Glow que sigue al cursor en los paneles del hub
+    document.querySelectorAll('.hub-panel').forEach(panel => {
+      panel.addEventListener('mousemove', (e) => {
+        const rect = panel.getBoundingClientRect();
+        panel.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        panel.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+
+    // Redirección automática según ?ref= en la URL (campañas/anuncios)
+    const params = new URLSearchParams(window.location.search);
+    const ref = (params.get('ref') || '').toLowerCase();
+    const rutasInversion = ['inversion', 'inversiones', 'invertir', 'invest'];
+    const rutasMoto = ['moto', 'motos', 'credito', 'comprar'];
+    if (rutasInversion.includes(ref)) {
+      window.location.replace('inversiones.html' + window.location.search);
+    } else if (rutasMoto.includes(ref)) {
+      window.location.replace('motos.html' + window.location.search);
+    }
+  </script>
+
+</body>
+</html>

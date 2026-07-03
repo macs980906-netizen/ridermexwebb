@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RiderMex Inversiones</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="RiderMex"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="motos.html">Catálogo de motos</a></li>
+        <li><a href="#inversiones">Modelos</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="#contacto-inversion" class="btn-credito-nav">Quiero invertir</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-kicker">Respaldado por operación real y estructura legal</span>
+  <h1>RiderMex <span>Inversiones</span></h1>
+  <p>Haz crecer tu capital junto con el crecimiento de una empresa con 4 agencias activas, una quinta próximamente y un modelo respaldado por contratos formales, fideicomiso y notario público.</p>
+  <a href="#contacto-inversion" class="hero-cta">Quiero invertir</a>
+</section>
+
+<!-- ===================== BARRA DE CONFIANZA ===================== -->
+<div class="trust-bar reveal">
+  <div class="trust-inner">
+    <div class="trust-stat">
+      <div class="num">4</div>
+      <div class="label">Agencias activas · 1 próximamente</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">9</div>
+      <div class="label">Marcas distribuidas</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">+<span>1,000</span></div>
+      <div class="label">Motos vendidas</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">100%</div>
+      <div class="label">Respaldo en activos</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODELOS ===================== -->
+<section id="inversiones" class="inversiones-bg reveal">
+  <span class="eyebrow">Planes de inversión</span>
+  <h2 class="section-title">Nuestros <span>Modelos</span></h2>
+  <p class="section-subtitle" style="color:#aaa;">Elige el plan que se ajuste a tu objetivo y horizonte de inversión</p>
+
+  <div class="trust-badges">
+    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg>Contrato formal por escrito</span>
+    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/></svg>Reportes mensuales de rendimiento</span>
+    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Respaldo en inventario y activos</span>
+  </div>
+
+  <div class="grid-inversion">
+
+    <div class="modelo-card">
+      <div class="modelo-letra">A</div>
+      <h3>Modelo A</h3>
+      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
+      <p>Plan de entrada, ideal para inversionistas que inician.</p>
+      <ul>
+        <li>Monto mínimo de ejemplo</li>
+        <li>Plazo corto</li>
+        <li>Pagos periódicos</li>
+      </ul>
+    </div>
+
+    <div class="modelo-card destacado">
+      <span class="modelo-badge">Más elegido</span>
+      <div class="modelo-letra">B</div>
+      <h3>Modelo B</h3>
+      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
+      <p>Plan intermedio con mayor rendimiento potencial.</p>
+      <ul>
+        <li>Monto mínimo de ejemplo</li>
+        <li>Plazo medio</li>
+        <li>Pagos periódicos</li>
+      </ul>
+    </div>
+
+    <div class="modelo-card">
+      <div class="modelo-letra">C</div>
+      <h3>Modelo C</h3>
+      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
+      <p>Plan premium para mayores montos de inversión.</p>
+      <ul>
+        <li>Monto mínimo de ejemplo</li>
+        <li>Plazo largo</li>
+        <li>Pagos periódicos</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="inversion-disclaimer">*Datos de ejemplo. Sustituye montos, plazos y rendimientos reales de cada modelo según la propuesta vigente de RiderMex Inversiones.</p>
+</section>
+
+<!-- ===================== FORMULARIO INVERSIÓN ===================== -->
+<section id="contacto-inversion" class="credito-bg reveal">
+  <span class="eyebrow">Contacto</span>
+  <h2 class="section-title">Quiero <span>invertir</span></h2>
+  <p class="section-subtitle">Un asesor de RiderMex Inversiones te contactará</p>
+
+  <form class="form-credito" id="form-inversion">
+    <label for="nombre-inv">Nombre completo</label>
+    <input type="text" id="nombre-inv" required>
+
+    <label for="telefono-inv">Teléfono</label>
+    <input type="tel" id="telefono-inv" required>
+
+    <label for="email-inv">Correo electrónico</label>
+    <input type="email" id="email-inv" required>
+
+    <label for="modelo-inv">Modelo de tu interés</label>
+    <select id="modelo-inv" required>
+      <option value="">Selecciona un modelo</option>
+      <option>Modelo A</option>
+      <option>Modelo B</option>
+      <option>Modelo C</option>
+      <option>Aún no sé, quiero asesoría</option>
+    </select>
+
+    <label for="monto-inv">Monto aproximado a invertir</label>
+    <input type="text" id="monto-inv" placeholder="Ej. $50,000 MXN">
+
+    <button type="submit">Enviar solicitud</button>
+  </form>
+
+  <div class="form-confirm" id="form-confirm-inv">
+    <h3>¡Solicitud enviada!</h3>
+    <p>Un asesor de RiderMex Inversiones se pondrá en contacto contigo muy pronto.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
+  <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+  <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
+  <p style="margin-top:14px;">© 2026 RiderMex Inversiones · <a href="index.html">Volver al inicio</a></p>
+</footer>
+
+<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

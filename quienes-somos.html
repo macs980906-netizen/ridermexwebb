@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiénes somos – RiderMex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rojo:    #CC0000;
+      --rojo2:   #ff5a3c;
+      --negro:   #0A0A0A;
+      --gris1:   #141414;
+      --gris2:   #1E1E1E;
+      --gris3:   #2C2C2C;
+      --blanco:  #F5F5F5;
+      --verde:   #00C896;
+      --texto:   #AAAAAA;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: .025;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--rojo), var(--rojo2), var(--verde));
+      z-index: 9999;
+      box-shadow: 0 0 12px rgba(204,0,0,.6);
+      transition: width .1s linear;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(6px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease), filter .8s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris3);
+      transition: border-color .3s, box-shadow .3s;
+    }
+
+    nav.is-scrolled { border-bottom-color: rgba(204,0,0,.3); box-shadow: 0 4px 24px rgba(204,0,0,.1); }
+
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 38px; display: block; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--texto);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a.is-active { color: var(--blanco); }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 1.5px;
+      background: var(--rojo);
+      transition: width .25s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--blanco); }
+    .nav-links a:hover::after, .nav-links a.is-active::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: transform .25s var(--ease), opacity .25s;
+    }
+
+    .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(204,0,0,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 460px; height: 460px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,0,0,.16), transparent 70%);
+      filter: blur(6px);
+      top: -160px; right: -100px;
+      z-index: -1;
+      animation: floatOrb 16s ease-in-out infinite;
+    }
+
+    .hero-orb--2 {
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(0,200,150,.1), transparent 70%);
+      top: auto; right: auto;
+      bottom: -120px; left: -80px;
+      animation-duration: 20s;
+      animation-direction: reverse;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(-40px, 50px) scale(1.15); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--rojo);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--rojo) 0%, var(--rojo2) 50%, var(--rojo) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s linear infinite;
+    }
+
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--texto);
+      max-width: 600px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 5.5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      display: block;
+      text-align: center;
+      color: var(--rojo);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title span { color: var(--rojo); }
+
+    /* ─── QUIÉNES SOMOS (texto) ─── */
+    .story p {
+      color: var(--texto);
+      font-size: 1.05rem;
+      max-width: 760px;
+      margin: 0 auto 1.4rem;
+      line-height: 1.8;
+    }
+
+    .story p strong { color: var(--blanco); }
+
+    .closing-line {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      color: var(--blanco);
+    }
+
+    .closing-line span { color: var(--rojo); }
+
+    /* ─── MISIÓN / VISIÓN ─── */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    .mv-card {
+      background: var(--gris1);
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      top: var(--my, 50%);
+      left: var(--mx, 50%);
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,0,0,.10), transparent 70%);
+      transform: translate(-50%,-50%);
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+
+    .mv-card:hover::before { opacity: 1; }
+
+    .mv-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mv-card p {
+      color: var(--texto);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── VALORES ─── */
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .valor-card {
+      background: var(--gris1);
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .25s var(--ease);
+    }
+
+    .valor-card::before {
+      content: '';
+      position: absolute;
+      top: var(--my, 50%);
+      left: var(--mx, 50%);
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,0,0,.12), transparent 70%);
+      transform: translate(-50%,-50%);
+      opacity: 0;
+      transition: opacity .35s;
+      pointer-events: none;
+    }
+
+    .valor-card:hover { border-color: rgba(204,0,0,.35); transform: translateY(-4px); }
+    .valor-card:hover::before { opacity: 1; }
+
+    .valor-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.8rem;
+      color: var(--gris3);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .valor-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .valor-card p {
+      color: var(--texto);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      text-align: center;
+      border-top: 1px solid var(--gris3);
+      border-bottom: 1px solid var(--gris3);
+      max-width: none;
+      padding: 4.5rem 2.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s var(--ease);
+    }
+
+    .cta-btn:hover::before { left: 130%; }
+    .cta-btn:hover { transform: translateY(-2px); opacity: .9; }
+
+    .cta-btn--motos { background: var(--rojo); color: var(--blanco); box-shadow: 0 10px 26px rgba(204,0,0,.3); }
+    .cta-btn--inv { background: var(--verde); color: var(--negro); box-shadow: 0 10px 26px rgba(0,200,150,.25); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--gris3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--gris3);
+      max-width: none;
+    }
+
+    footer a { color: var(--gris3); text-decoration: none; }
+    footer a:hover { color: var(--texto); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: rgba(10,10,10,.97);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--gris3);
+        padding: 10px 1.25rem 18px;
+      }
+
+      .nav-links.is-open { display: flex; }
+      .nav-links a { display: block; padding: 12px 0; width: 100%; }
+
+      .mv-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      section { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
+    <ul class="nav-links">
+      <li><a href="motos.html">Catálogo</a></li>
+      <li><a href="motos.html#agencias">Agencias</a></li>
+      <li><a href="inversiones.html">Inversiones</a></li>
+      <li><a href="quienes-somos.html" class="is-active">Quiénes somos</a></li>
+      <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+    <p class="hero-eyebrow">Nuestra historia</p>
+    <h1 class="hero-title">Quiénes <em>somos</em></h1>
+    <p class="hero-sub">Entras caminando y sales rodando.</p>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="story reveal">
+    <p>En RiderMex somos una empresa mexicana especializada en la venta de motocicletas, enfocada en ofrecer opciones accesibles, rápidas y confiables para que más personas puedan estrenar moto sin complicaciones.</p>
+    <p>Nacimos con una idea clara: hacer que comprar una moto sea fácil, seguro y al alcance de todos. Por eso trabajamos con diferentes opciones de financiamiento, atención personalizada y un proceso ágil para que nuestros clientes puedan elegir la moto que necesitan y salir rodando lo antes posible.</p>
+    <p>Actualmente contamos con sucursales en <strong>Naucalpan, Central de Abasto, Coapa y Chalco</strong>, y próximamente abriremos nuestra quinta agencia, como parte de nuestro crecimiento y compromiso de estar cada vez más cerca de nuestros clientes.</p>
+    <p>Además de nuestra operación comercial, en RiderMex también impulsamos un modelo de crecimiento a través de <strong>RiderMex Inversiones</strong>, una alternativa para personas que buscan participar en un negocio real, respaldado por la demanda constante de motocicletas, el crecimiento del mercado y una operación activa en sucursales.</p>
+    <p>En RiderMex creemos que una motocicleta no solo es un medio de transporte: es una herramienta de trabajo, independencia, movilidad y crecimiento. De la misma manera, creemos que nuestro modelo de negocio puede representar una oportunidad para quienes buscan invertir en un sector con alta demanda y expansión.</p>
+    <p>Por eso acompañamos tanto a nuestros clientes como a nuestros inversionistas con transparencia, atención personalizada y procesos claros. Nuestro objetivo es generar confianza, facilitar el acceso a motocicletas y seguir construyendo una red de agencias sólida, rentable y cercana a las personas.</p>
+    <p class="closing-line">RiderMex: entras caminando <span>y sales rodando.</span></p>
+  </section>
+
+  <!-- MISIÓN / VISIÓN -->
+  <section class="reveal">
+    <span class="eyebrow">Hacia dónde vamos</span>
+    <h2 class="section-title">Misión <span>&amp;</span> Visión</h2>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <p class="mv-tag">Misión</p>
+        <p>Brindar a nuestros clientes una experiencia de compra de motocicletas rápida, accesible y confiable, ofreciendo opciones de financiamiento, atención personalizada y soluciones de movilidad que les permitan mejorar su transporte, trabajo e independencia.</p>
+        <p>Al mismo tiempo, en RiderMex Inversiones buscamos ofrecer oportunidades de participación en un negocio real y en crecimiento, respaldado por la operación de nuestras sucursales, la demanda constante de motocicletas y un modelo comercial enfocado en expansión.</p>
+        <p>Nuestra misión es generar valor para clientes, colaboradores e inversionistas, trabajando con transparencia, servicio y compromiso en cada etapa del proceso.</p>
+      </div>
+      <div class="mv-card">
+        <p class="mv-tag">Visión</p>
+        <p>Ser una de las agencias de motocicletas con mayor crecimiento y reconocimiento en México, destacándonos por nuestra confianza, rapidez, servicio al cliente, facilidad de compra y capacidad de expansión.</p>
+        <p>Queremos llevar RiderMex a más zonas del país, acercando motocicletas, financiamiento y soluciones de movilidad a miles de personas.</p>
+        <p>A través de RiderMex Inversiones, buscamos consolidarnos como una alternativa confiable para personas interesadas en participar en el crecimiento de un negocio operativo, rentable y con presencia física, impulsando la apertura de nuevas agencias y fortaleciendo nuestra red comercial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="reveal">
+    <span class="eyebrow">Lo que nos define</span>
+    <h2 class="section-title">Nuestros <span>Valores</span></h2>
+    <div class="valores-grid">
+
+      <div class="valor-card">
+        <p class="valor-num">01</p>
+        <p class="valor-title">Confianza</p>
+        <p>Construimos relaciones claras y transparentes con nuestros clientes e inversionistas, cuidando que cada proceso sea explicado de forma sencilla y honesta.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">02</p>
+        <p class="valor-title">Transparencia</p>
+        <p>Comunicamos precios, condiciones, requisitos, procesos de compra e información de inversión de manera clara, evitando falsas promesas o información confusa.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">03</p>
+        <p class="valor-title">Rapidez</p>
+        <p>Sabemos que nuestros clientes buscan soluciones ágiles. Por eso trabajamos para que la compra, el financiamiento y la entrega de motocicletas sean procesos rápidos y eficientes.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">04</p>
+        <p class="valor-title">Servicio al cliente</p>
+        <p>Acompañamos a cada persona con atención cercana, respeto y asesoría personalizada, desde el primer contacto hasta la entrega de su moto.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">05</p>
+        <p class="valor-title">Accesibilidad</p>
+        <p>Creemos que estrenar una moto debe estar al alcance de más personas, por eso ofrecemos opciones de pago y financiamiento adaptadas a distintas necesidades.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">06</p>
+        <p class="valor-title">Compromiso</p>
+        <p>Nos involucramos con cada cliente, inversionista y colaborador, buscando cumplir lo que prometemos y mantener una operación seria y responsable.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">07</p>
+        <p class="valor-title">Crecimiento</p>
+        <p>Impulsamos el crecimiento de nuestros clientes, de nuestras sucursales y de nuestros inversionistas, fortaleciendo un modelo de negocio con visión de expansión.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">08</p>
+        <p class="valor-title">Responsabilidad</p>
+        <p>Cuidamos la operación de la empresa, el uso de los recursos y la confianza que las personas depositan en RiderMex, trabajando con orden y seriedad.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">09</p>
+        <p class="valor-title">Innovación</p>
+        <p>Buscamos nuevas formas de vender, financiar, invertir y crecer, adaptándonos a las necesidades del mercado y aprovechando oportunidades dentro del sector de motocicletas.</p>
+      </div>
+
+      <div class="valor-card">
+        <p class="valor-num">10</p>
+        <p class="valor-title">Trabajo en equipo</p>
+        <p>Creemos que el crecimiento de RiderMex depende del esfuerzo conjunto entre colaboradores, clientes, inversionistas y aliados estratégicos.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final reveal">
+    <h2 class="section-title" style="margin-bottom:0;">¿Listo para <span>rodar</span> con nosotros?</h2>
+    <div class="cta-buttons">
+      <a href="motos.html" class="cta-btn cta-btn--motos">Ver catálogo de motos →</a>
+      <a href="inversiones.html" class="cta-btn cta-btn--inv">Ver modelos de inversión →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 RiderMex · Financiamos tu libertad</span>
+    <span>
+      <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
+      <a href="#">Aviso de privacidad</a>
+    </span>
+  </footer>
+
+  <script>
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    }, { passive: true });
+
+    const siteNav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('is-active');
+        navLinks.classList.toggle('is-open');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('is-active');
+          navLinks.classList.remove('is-open');
+        });
+      });
+    }
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.mv-card, .valor-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
+    });
+  </script>
+
+</body>
+</html>
