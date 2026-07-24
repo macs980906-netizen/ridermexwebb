@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ridermex — Simulador de Inversión</title>
+<style>
+:root{
+  --bg:#111113;
+  --panel:#18181b;
+  --panel2:#1f1f23;
+  --red:#d92130;
+  --red2:#a61723;
+  --silver:#c8cacf;
+  --silver2:#6b6e75;
+  --white:#f4f3f0;
+  --line:#2a2a2e;
+  --muted:#7a7c83;
+  --green:#7cb97a;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--white);font-family:'Avenir Next','Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+
+/* ── HEADER ──────────────────────────────── */
+.hdr{
+  border-bottom:3px solid var(--red);
+  padding:22px 32px 16px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  background:linear-gradient(180deg,#1a0406 0%,var(--bg) 100%);
+}
+.hdr-logo{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 6px #d9213044);}
+.hdr-text h1{font-family:Georgia,serif;font-size:26px;letter-spacing:.5px;color:var(--silver);line-height:1.1;}
+.hdr-text h1 span{color:var(--red);}
+.hdr-text p{font-size:12px;color:var(--muted);letter-spacing:1.8px;text-transform:uppercase;margin-top:4px;}
+
+.main{display:grid;grid-template-columns:380px 1fr;gap:0;min-height:calc(100vh - 108px);}
+@media(max-width:900px){.main{grid-template-columns:1fr;}}
+
+/* ── LEFT SIDEBAR ───────────────────────── */
+.sidebar{
+  background:var(--panel);
+  border-right:1px solid var(--line);
+  padding:24px 22px 40px;
+  overflow-y:auto;
+}
+.sidebar-section{margin-bottom:28px;}
+.section-title{
+  font-size:11px;text-transform:uppercase;letter-spacing:2px;
+  color:var(--red);border-bottom:1px solid var(--line);
+  padding-bottom:8px;margin-bottom:16px;
+}
+
+/* Tickets */
+.ticket-card{
+  border:1px solid var(--line);border-radius:4px;
+  background:var(--panel2);margin-bottom:12px;overflow:hidden;
+}
+.ticket-header{
+  background:var(--line);padding:10px 14px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ticket-header b{font-size:14px;color:var(--silver);}
+.ticket-price-tag{
+  font-size:11px;background:var(--red);color:#fff;
+  padding:2px 8px;border-radius:10px;font-weight:700;
+}
+.ticket-body{padding:12px 14px 14px;}
+.stepper{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.stepper button{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--red);background:transparent;
+  color:var(--red);font-size:18px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-weight:300;
+}
+.stepper button:hover{background:var(--red);color:#fff;}
+.stepper .cnt{font-size:22px;font-weight:700;min-width:32px;text-align:center;color:var(--white);font-family:Georgia,serif;}
+.stepper .label{font-size:12px;color:var(--muted);}
+.ticket-sub{
+  font-size:12px;color:var(--green);min-height:18px;margin-top:4px;
+}
+.mini-input-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+
+/* Sliders */
+.ctrl-row{margin-bottom:14px;}
+.ctrl-label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:5px;}
+.ctrl-label span{color:var(--white);font-weight:600;}
+input[type=range]{
+  width:100%;-webkit-appearance:none;height:3px;border-radius:2px;
+  background:var(--line);outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;
+  background:var(--red);border:2px solid var(--panel);
+}
+input[type=text]{
+  width:100%;background:var(--bg);border:1px solid var(--line);
+  color:var(--white);padding:7px 10px;border-radius:3px;font-size:13px;
+}
+input[type=text]::placeholder{color:var(--muted);}
+
+.note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:6px;}
+
+/* ── MAIN CONTENT ───────────────────────── */
+.content{padding:26px 28px 60px;overflow-y:auto;}
+
+/* Scenario tabs */
+.stabs{display:flex;gap:6px;margin-bottom:20px;}
+.stab{
+  flex:1;padding:10px 6px;text-align:center;border-radius:3px;
+  font-size:12px;border:1px solid var(--line);
+  background:transparent;color:var(--muted);cursor:pointer;
+  transition:all .15s;
+}
+.stab.active{background:var(--red);border-color:var(--red);color:#fff;font-weight:700;}
+.stab:hover:not(.active){border-color:var(--red);color:var(--red);}
+
+/* Summary cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+@media(max-width:1100px){.cards{grid-template-columns:repeat(2,1fr);}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;}
+.card .k{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);}
+.card .v{font-size:20px;font-weight:700;font-family:Georgia,serif;margin-top:6px;color:var(--white);}
+.card .v.red{color:var(--red);}
+.card .v.grn{color:var(--green);}
+.card .v.sil{color:var(--silver);}
+
+/* Table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{
+  padding:11px 12px;text-align:right;
+  border-bottom:2px solid var(--red);
+  font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--red);background:var(--panel);white-space:nowrap;
+}
+th:first-child,td:first-child{text-align:left;padding-left:16px;}
+td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:rgba(217,33,48,.06);}
+td.year{font-weight:700;color:var(--silver);}
+
+/* Actions */
+.actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
+.btn{
+  padding:11px 22px;border-radius:3px;font-size:13px;
+  font-weight:700;cursor:pointer;letter-spacing:.3px;border:none;
+}
+.btn-red{background:var(--red);color:#fff;}
+.btn-ghost{background:transparent;border:1px solid var(--red);color:var(--red);}
+.btn:hover{filter:brightness(1.1);}
+
+/* ── REPORT ─────────────────────────────── */
+#reportWrap{display:none;margin-top:28px;}
+.report{
+  background:#f5f3ee;color:#17171a;
+  border-radius:4px;padding:38px 40px;
+  font-family:Georgia,serif;font-size:14px;line-height:1.6;
+}
+.report-logo{
+  display:flex;align-items:center;gap:14px;
+  border-bottom:2px solid var(--red);padding-bottom:16px;margin-bottom:22px;
+}
+.report-logo img{width:64px;height:64px;object-fit:contain;}
+.report-logo .rl-text h2{font-size:22px;color:#17171a;margin:0;}
+.report-logo .rl-text h2 span{color:var(--red);}
+.report-logo .rl-text p{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-top:3px;}
+.report h3{color:var(--red2);font-size:13px;text-transform:uppercase;letter-spacing:1px;margin:22px 0 10px;border-bottom:1px solid #d9cfc0;padding-bottom:6px;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-bottom:4px;}
+.info-item b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#888;font-family:Avenir Next,sans-serif;margin-bottom:2px;}
+.portf-list{list-style:none;padding:0;}
+.portf-list li{padding:6px 0;border-bottom:1px solid #e6dfd4;font-size:13px;}
+.portf-list li:last-child{border-bottom:none;}
+.summary-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;}
+.sbox{background:#fff;border:1px solid #e0d9cf;border-radius:3px;padding:12px 14px;}
+.sbox .sk{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#888;font-family:Avenir Next,sans-serif;}
+.sbox .sv{font-size:17px;font-weight:700;color:#17171a;margin-top:4px;}
+.report table{width:100%;border-collapse:collapse;font-size:12px;}
+.report table th{border-bottom:1px solid var(--red2);color:var(--red2);text-align:right;padding:8px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;background:transparent;}
+.report table th:first-child,.report table td:first-child{text-align:left;}
+.report table td{text-align:right;padding:8px 8px;border-bottom:1px solid #e6dfd4;color:#17171a;}
+.report table tr:last-child td{border-bottom:none;}
+.report .disclaimer{margin-top:22px;font-size:10px;color:#aaa;border-top:1px solid #d9cfc0;padding-top:12px;font-family:Avenir Next,sans-serif;line-height:1.5;}
+
+@media print{
+  body>*:not(#printTarget){display:none!important;}
+  #printTarget{display:block!important;position:static!important;}
+  .report{padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <img class="hdr-logo" id="logoImg" src="/assets/img/logo.png" alt="Ridermex">
+  <div class="hdr-text">
+    <h1>RIDER<span>MEX</span> — Simulador de Inversión</h1>
+    <p>Portafolio de tickets · Escenarios de venta · Corridas para cliente</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="section-title">1 · Portafolio del cliente</div>
+
+      <!-- SILVERSTONE -->
+      <div class="ticket-card">
+        <div class="ticket-header">
+          <b>Silverstone</b>
+          <span class="ticket-price-tag">$120,000 c/u</span>
+        </div>
+        <div class="ticket-body">
+          <div class="stepper">
+            <button onclick="chg('sil',-1)">−</button>
+            <div class="cnt" id="cSil">0</div>
+            <button onclick="chg('sil',1)">+</button>
+            <span class="label">tickets</span>
+          </div>
+          <div class="ticket-sub" id="sSil">—</div>
+        </div>
+      </div>
+
+      <!-- CONTADO -->
+      <div class="ticket-card">
+        <div class="ticket-header">
+          <b>Ticket Contado</b>
+          <span class="ticket-price-tag" id="pTagCon">$100,000 c/u</span>
+        </div>
+        <div class="ticket-body">
+          <div class="stepper">
+            <button onclick="chg('con',-1)">−</button>
+            <div class="cnt" id="cCon">0</div>
+            <button onclick="chg('con',1)">+</button>
+            <span class="label">tickets</span>
+          </div>
+          <div class="ctrl-row" style="margin-top:10px;">
+            <div class="ctrl-label">Descuento contado <span id="vDescCon">30%</span></div>
+            <input type="range" id="descCon" min="0" max="60" step="1" value="30" oninput="render()">
+          </div>
+          <div class="ticket-sub" id="sCon">—</div>
+        </div>
+      </div>
+
+      <!-- 12 MSI -->
+      <div class="ticket-card">
+        <div class="ticket-header">
+          <b>Ticket 12 MSI</b>
+          <span class="ticket-price-tag">$100,000 c/u</span>
+        </div>
+        <div class="ticket-body">
+          <div class="stepper">
+            <button onclick="chg('msi',-1)">−</button>
+            <div class="cnt" id="cMsi">0</div>
+            <button onclick="chg('msi',1)">+</button>
+            <span class="label">tickets</span>
+          </div>
+          <div class="mini-input-row">
+            <div class="ctrl-row">
+              <div class="ctrl-label">Enganche <span id="vEngMsi">30%</span></div>
+              <input type="range" id="engMsi" min="0" max="70" step="1" value="30" oninput="render()">
+            </div>
+            <div class="ctrl-row">
+              <div class="ctrl-label">Meses <span id="vMesesMsi">12</span></div>
+              <input type="range" id="mesesMsi" min="3" max="24" step="1" value="12" oninput="render()">
+            </div>
+          </div>
+          <div class="ticket-sub" id="sMsi">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-title">2 · Plusvalía</div>
+      <div class="ctrl-row">
+        <div class="ctrl-label">Plusvalía inicial sobre inversión <span id="vPlus">12%</span></div>
+        <input type="range" id="plusvalia" min="0" max="30" step="0.5" value="12" oninput="render()">
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="section-title">3 · Datos del cliente</div>
+      <div style="margin-bottom:10px;">
+        <div class="ctrl-label" style="margin-bottom:5px;">Nombre del cliente</div>
+        <input type="text" id="iCliente" placeholder="Nombre del inversionista">
+      </div>
+      <div>
+        <div class="ctrl-label" style="margin-bottom:5px;">Asesor</div>
+        <input type="text" id="iAsesor" placeholder="Tu nombre">
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- ── CONTENT ── -->
+  <div class="content">
+
+    <!-- Escenarios + Años -->
+    <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:0;">
+      <div style="flex:1;min-width:280px;">
+        <div class="section-title" style="margin-bottom:12px;">Escenario de ventas de la tienda</div>
+        <div class="stabs">
+          <button class="stab" data-s="bajo"      onclick="setScenario('bajo')">🔻 Conservador<br><small>30 motos / mes</small></button>
+          <button class="stab active" data-s="mod" onclick="setScenario('mod')">⚡ Moderado<br><small>45 motos / mes</small></button>
+          <button class="stab" data-s="opt"       onclick="setScenario('opt')">🚀 Optimista<br><small>55 motos / mes</small></button>
+        </div>
+      </div>
+      <div style="min-width:200px;">
+        <div class="section-title" style="margin-bottom:12px;">Años a proyectar</div>
+        <div style="display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:10px 18px;height:56px;">
+          <button onclick="chgAnios(-1)" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--red);background:transparent;color:var(--red);font-size:20px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;">−</button>
+          <div style="text-align:center;min-width:60px;">
+            <div style="font-size:28px;font-weight:700;font-family:Georgia,serif;color:var(--white);line-height:1;" id="vAniosBig">10</div>
+            <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">años</div>
+          </div>
+          <button onclick="chgAnios(1)" style="width:32px;height:32px;border-radius:50%;border:1px solid var(--red);background:transparent;color:var(--red);font-size:20px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;">+</button>
+          <input type="hidden" id="anios" value="10">
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;">
+      <div class="ctrl-row">
+        <div class="ctrl-label">Motos vendidas / mes <span id="vMotos">45</span></div>
+        <input type="range" id="motosMes" min="10" max="100" step="1" value="45" oninput="onMotos()">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-label">Utilidad por moto <span id="vUtil">$900</span></div>
+        <input type="range" id="utilMoto" min="400" max="2000" step="50" value="900" oninput="render()">
+      </div>
+      <div class="ctrl-row">
+        <div class="ctrl-label">Inversionistas en tienda <span id="vInvT">30</span></div>
+        <input type="range" id="invTienda" min="10" max="60" step="1" value="30" oninput="render()">
+      </div>
+    </div>
+    <div class="ctrl-row" style="max-width:340px;">
+      <div class="ctrl-label">Crecimiento anual de ventas <span id="vCrec">5%</span></div>
+      <input type="range" id="crecimiento" min="0" max="20" step="0.5" value="5" oninput="render()">
+    </div>
+    <div class="note" style="margin-bottom:24px;">
+      Rendimiento mensual por ticket = (motos vendidas × utilidad por moto) ÷ inversionistas de la tienda.<br>
+      Cada ticket recibe esa cuota mensual. El cliente recibe: cuota × número de tickets del portafolio.
+    </div>
+
+    <!-- Cards resumen -->
+    <div class="cards">
+      <div class="card"><div class="k">Total tickets</div><div class="v sil" id="oTickets">0</div></div>
+      <div class="card"><div class="k">Inversión total</div><div class="v red" id="oInversion">$0</div></div>
+      <div class="card"><div class="k">Rendimiento mensual estimado</div><div class="v grn" id="oRendMes">$0</div></div>
+      <div class="card"><div class="k">Rendimiento mensual por ticket</div><div class="v" id="oRendTkt">$0</div></div>
+      <div class="card"><div class="k">Enganche MSI (total)</div><div class="v" id="oEng">$0</div></div>
+      <div class="card"><div class="k">Mensualidad MSI (total)</div><div class="v" id="oMens">$0</div></div>
+      <div class="card"><div class="k">Utilidad acumulada al cierre</div><div class="v red" id="oUtilFin">$0</div></div>
+      <div class="card"><div class="k">Valor de recompra al cierre</div><div class="v grn" id="oRecomp">$0</div></div>
+    </div>
+
+    <!-- Tabla corrida -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Año</th>
+            <th>Motos/mes</th>
+            <th>Rend. mensual/ticket</th>
+            <th>Rend. mensual total</th>
+            <th>Rend. acumulado</th>
+            <th>Plusvalía acumulada</th>
+            <th>Utilidad acumulada</th>
+            <th>Valor de recompra</th>
+          </tr>
+        </thead>
+        <tbody id="tBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Acciones -->
+    <div class="actions">
+      <button class="btn btn-red" onclick="generarReporte()">📄 Generar reporte para cliente</button>
+      <button class="btn btn-ghost" onclick="imprimirReporte()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+
+    <div id="reportWrap">
+      <div class="report" id="reportDoc"><!-- filled by JS --></div>
+    </div>
+
+  </div><!-- /content -->
+</div>
+
+<script>
+// ── Constantes ──────────────────────────────────────────────────
+const PRECIO_SIL = 120000;
+const PRECIO_BASE = 100000;
+const SCENARIOS = {bajo:30, mod:45, opt:55};
+
+let counts = {sil:0, con:0, msi:0};
+let scenarioKey = 'mod';
+let manualMotos = false;
+
+const fmt = n => '$' + Math.round(n).toLocaleString('es-MX');
+const pct = n => (Math.round(n*10)/10) + '%';
+const num = id => +document.getElementById(id).value;
+
+// Logo en base64 inline (blanco/rojo compatible con fondo oscuro y claro)
+// Usamos una SVG inline como placeholder representativo del logo
+const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <circle cx="40" cy="32" r="22" fill="#d92130"/>
+  <text x="40" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="white" font-family="Georgia,serif">RMX</text>
+  <text x="40" y="62" text-anchor="middle" font-size="7" font-weight="bold" fill="#c8cacf" font-family="Georgia,serif">RIDERMEX</text>
+</svg>`;
+
+// ── Helpers ──────────────────────────────────────────────────────
+function chg(k, d){
+  counts[k] = Math.max(0, counts[k] + d);
+  render();
+}
+
+function setScenario(s){
+  scenarioKey = s;
+  manualMotos = false;
+  document.querySelectorAll('.stab').forEach(t=>t.classList.toggle('active', t.dataset.s===s));
+  document.getElementById('motosMes').value = SCENARIOS[s];
+  render();
+}
+
+function onMotos(){
+  // Si el usuario mueve el slider manual, deseleccionar escenario
+  const v = num('motosMes');
+  manualMotos = true;
+  document.querySelectorAll('.stab').forEach(t=>{
+    const sv = SCENARIOS[t.dataset.s];
+    t.classList.toggle('active', sv===v);
+  });
+  render();
+}
+
+function getP(){
+  return {
+    descCon: num('descCon'),
+    engMsi: num('engMsi'),
+    mesesMsi: num('mesesMsi'),
+    motosMes: num('motosMes'),
+    utilMoto: num('utilMoto'),
+    invTienda: num('invTienda'),
+    crecimiento: num('crecimiento'),
+    plusvalia: num('plusvalia'),
+    anios: num('anios'),
+  };
+}
+
+function calcAll(){
+  const p = getP();
+  const pCon = PRECIO_BASE * (1 - p.descCon/100);
+  const subSil = PRECIO_SIL * counts.sil;
+  const subCon = pCon * counts.con;
+  const subMsi = PRECIO_BASE * counts.msi;
+  const inversion = subSil + subCon + subMsi;
+  const totalTkt = counts.sil + counts.con + counts.msi;
+
+  const enganche = PRECIO_BASE * (p.engMsi/100) * counts.msi;
+  const saldoMsi = (PRECIO_BASE - PRECIO_BASE*(p.engMsi/100)) * counts.msi;
+  const mensualidad = p.mesesMsi > 0 ? saldoMsi / p.mesesMsi : 0;
+
+  const rendTkt0 = p.invTienda > 0 ? (p.motosMes * p.utilMoto) / p.invTienda : 0;
+  const rendMes0 = rendTkt0 * totalTkt;
+
+  const plus1 = inversion * (p.plusvalia/100);
+
+  const rows = [];
+  let rendAcum=0, plusAcum=0;
+  for(let a=1;a<=p.anios;a++){
+    const motosA = p.motosMes * Math.pow(1+p.crecimiento/100, a-1);
+    const rendTktA = p.invTienda>0 ? (motosA * p.utilMoto)/p.invTienda : 0;
+    const rendMesA = rendTktA * totalTkt;
+    const rendAnual = rendMesA * 12;
+    const plusA = plus1 * Math.pow(1+p.crecimiento/100, a-1);
+    rendAcum += rendAnual;
+    plusAcum += plusA;
+    rows.push({a, motosA, rendTktA, rendMesA, rendAnual, rendAcum, plusAcum,
+               utilAcum: rendAcum+plusAcum, recompra: inversion+plusAcum});
+  }
+
+  return {p, pCon, subSil, subCon, subMsi, inversion, totalTkt,
+          enganche, mensualidad, rendTkt0, rendMes0, plus1, rows};
+}
+
+// ── Render ───────────────────────────────────────────────────────
+function render(){
+  const p = getP();
+  // Sidebar labels
+  document.getElementById('vDescCon').textContent = p.descCon+'%';
+  document.getElementById('vEngMsi').textContent  = p.engMsi+'%';
+  document.getElementById('vMesesMsi').textContent= p.mesesMsi;
+  document.getElementById('vPlus').textContent    = pct(p.plusvalia);
+  document.getElementById('vAniosBig').textContent = p.anios;
+  document.getElementById('vMotos').textContent   = p.motosMes;
+  document.getElementById('vUtil').textContent    = fmt(p.utilMoto);
+  document.getElementById('vInvT').textContent    = p.invTienda;
+  document.getElementById('vCrec').textContent    = pct(p.crecimiento);
+
+  const r = calcAll();
+
+  // Ticket count + sub labels
+  document.getElementById('cSil').textContent = counts.sil;
+  document.getElementById('cCon').textContent = counts.con;
+  document.getElementById('cMsi').textContent = counts.msi;
+  document.getElementById('pTagCon').textContent = fmt(r.pCon)+' c/u';
+
+  document.getElementById('sSil').textContent = counts.sil
+    ? `${counts.sil} × ${fmt(PRECIO_SIL)} = ${fmt(r.subSil)}` : '—';
+  document.getElementById('sCon').textContent = counts.con
+    ? `${counts.con} × ${fmt(r.pCon)} = ${fmt(r.subCon)}` : '—';
+  document.getElementById('sMsi').textContent = counts.msi
+    ? `${counts.msi} × ${fmt(PRECIO_BASE)} = ${fmt(r.subMsi)} · Enganche ${fmt(r.enganche)} · ${p.mesesMsi} mensualidades de ${fmt(r.mensualidad)}` : '—';
+
+  // Summary cards
+  document.getElementById('oTickets').textContent  = r.totalTkt;
+  document.getElementById('oInversion').textContent= fmt(r.inversion);
+  document.getElementById('oRendMes').textContent  = fmt(r.rendMes0);
+  document.getElementById('oRendTkt').textContent  = fmt(r.rendTkt0);
+  document.getElementById('oEng').textContent      = fmt(r.enganche);
+  document.getElementById('oMens').textContent     = fmt(r.mensualidad);
+  const last = r.rows[r.rows.length-1];
+  document.getElementById('oUtilFin').textContent  = fmt(last?.utilAcum||0);
+  document.getElementById('oRecomp').textContent   = fmt(last?.recompra||0);
+
+  // Table
+  document.getElementById('tBody').innerHTML = r.rows.map(row=>`
+    <tr>
+      <td class="year">${row.a}</td>
+      <td>${Math.round(row.motosA)}</td>
+      <td>${fmt(row.rendTktA)}</td>
+      <td>${fmt(row.rendMesA)}</td>
+      <td>${fmt(row.rendAcum)}</td>
+      <td>${fmt(row.plusAcum)}</td>
+      <td>${fmt(row.utilAcum)}</td>
+      <td>${fmt(row.recompra)}</td>
+    </tr>`).join('');
+
+  if(document.getElementById('reportWrap').style.display==='block') generarReporte();
+}
+
+// ── Reporte ──────────────────────────────────────────────────────
+function generarReporte(){
+  const r = calcAll();
+  const p = r.p;
+  const cliente = document.getElementById('iCliente').value || '______________________';
+  const asesor  = document.getElementById('iAsesor').value  || '______________________';
+  const fecha   = new Date().toLocaleDateString('es-MX',{year:'numeric',month:'long',day:'numeric'});
+  const last    = r.rows[r.rows.length-1];
+  const escenario = scenarioKey==='bajo'?'Conservador (30 motos/mes)':scenarioKey==='mod'?'Moderado (45 motos/mes)':'Optimista (55 motos/mes)';
+
+  const portfRows = [];
+  if(counts.sil) portfRows.push(`<li>🏁 <b>${counts.sil} ticket(s) Silverstone</b> — ${fmt(PRECIO_SIL)} c/u — Subtotal ${fmt(r.subSil)}</li>`);
+  if(counts.con) portfRows.push(`<li>💳 <b>${counts.con} ticket(s) Contado</b> (${p.descCon}% descuento) — ${fmt(r.pCon)} c/u — Subtotal ${fmt(r.subCon)}</li>`);
+  if(counts.msi) portfRows.push(`<li>📆 <b>${counts.msi} ticket(s) 12 MSI</b> — Enganche ${fmt(r.enganche)} + ${p.mesesMsi} mensualidades de ${fmt(r.mensualidad)} — Subtotal ${fmt(r.subMsi)}</li>`);
+  if(!portfRows.length) portfRows.push('<li><i>Sin tickets seleccionados</i></li>');
+
+  const filas = r.rows.map(row=>`
+    <tr>
+      <td>${row.a}</td>
+      <td>${Math.round(row.motosA)}</td>
+      <td>${fmt(row.rendTktA)}</td>
+      <td>${fmt(row.rendMesA)}</td>
+      <td>${fmt(row.rendAcum)}</td>
+      <td>${fmt(row.plusAcum)}</td>
+      <td>${fmt(row.utilAcum)}</td>
+      <td>${fmt(row.recompra)}</td>
+    </tr>`).join('');
+
+  document.getElementById('reportDoc').innerHTML = `
+    <div class="report-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 80 80">
+        <circle cx="40" cy="34" r="24" fill="#d92130"/>
+        <text x="40" y="40" text-anchor="middle" font-size="11" font-weight="bold" fill="white" font-family="Georgia,serif">RMX</text>
+        <text x="40" y="64" text-anchor="middle" font-size="7" font-weight="bold" fill="#444" font-family="Georgia,serif">RIDERMEX</text>
+      </svg>
+      <div class="rl-text">
+        <h2>RIDER<span>MEX</span></h2>
+        <p>Resumen de inversión para el cliente</p>
+      </div>
+    </div>
+
+    <h3>Datos generales</h3>
+    <div class="info-grid">
+      <div class="info-item"><b>Cliente</b>${cliente}</div>
+      <div class="info-item"><b>Asesor</b>${asesor}</div>
+      <div class="info-item"><b>Fecha</b>${fecha}</div>
+      <div class="info-item"><b>Escenario de ventas</b>${escenario}</div>
+      <div class="info-item"><b>Tickets totales</b>${r.totalTkt}</div>
+      <div class="info-item"><b>Inversión total</b>${fmt(r.inversion)}</div>
+    </div>
+
+    <h3>Portafolio</h3>
+    <ul class="portf-list">${portfRows.join('')}</ul>
+
+    <h3>Rendimiento estimado inicial</h3>
+    <div class="summary-boxes">
+      <div class="sbox"><div class="sk">Rendimiento mensual / ticket</div><div class="sv">${fmt(r.rendTkt0)}</div></div>
+      <div class="sbox"><div class="sk">Rendimiento mensual total</div><div class="sv">${fmt(r.rendMes0)}</div></div>
+      <div class="sbox"><div class="sk">Rendimiento anual total</div><div class="sv">${fmt(r.rendMes0*12)}</div></div>
+      <div class="sbox"><div class="sk">Utilidad acumulada (año ${p.anios})</div><div class="sv">${fmt(last.utilAcum)}</div></div>
+      <div class="sbox"><div class="sk">Plusvalía acumulada (año ${p.anios})</div><div class="sv">${fmt(last.plusAcum)}</div></div>
+      <div class="sbox"><div class="sk">Valor de recompra (año ${p.anios})</div><div class="sv">${fmt(last.recompra)}</div></div>
+    </div>
+
+    <h3>Corrida proyectada — ${p.anios} años</h3>
+    <table>
+      <thead><tr>
+        <th>Año</th><th>Motos/mes</th><th>Rend. mensual/tkt</th><th>Rend. mensual total</th>
+        <th>Rend. acumulado</th><th>Plusvalía acum.</th><th>Utilidad acum.</th><th>Valor recompra</th>
+      </tr></thead>
+      <tbody>${filas}</tbody>
+    </table>
+
+    <div class="disclaimer">
+      Esta corrida es una proyección estimada con fines ilustrativos. El rendimiento mensual se calcula como:
+      (motos vendidas × $${Math.round(p.utilMoto).toLocaleString('es-MX')} de utilidad por moto) ÷ ${p.invTienda} inversionistas en tienda, multiplicado por los tickets del cliente,
+      con un crecimiento anual de ventas de ${pct(p.crecimiento)} y plusvalía inicial de ${pct(p.plusvalia)} sobre la inversión.
+      Los valores reales pueden variar según el desempeño de la agencia. — Ridermex © ${new Date().getFullYear()}
+    </div>
+  `;
+
+  document.getElementById('reportWrap').style.display = 'block';
+  setTimeout(()=>document.getElementById('reportWrap').scrollIntoView({behavior:'smooth'}), 100);
+}
+
+function imprimirReporte(){
+  if(document.getElementById('reportWrap').style.display!=='block') generarReporte();
+  setTimeout(()=>window.print(), 300);
+}
+
+function chgAnios(d){
+  const el = document.getElementById('anios');
+  el.value = Math.min(30, Math.max(1, +el.value + d));
+  render();
+}
+
+// ── Init ─────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

@@ -65,48 +65,25 @@
     <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Respaldo en inventario y activos</span>
   </div>
 
-  <div class="grid-inversion">
+  <!-- Modelos reales — se generan desde el array INVESTMENT_MODELS (ver <script> al final
+       de esta página). Para editar montos, rendimientos o meses, cambia ese array. -->
+  <div class="grid-inversion" id="grid-inversion"></div>
 
-    <div class="modelo-card">
-      <div class="modelo-letra">A</div>
-      <h3>Modelo A</h3>
-      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
-      <p>Plan de entrada, ideal para inversionistas que inician.</p>
-      <ul>
-        <li>Monto mínimo de ejemplo</li>
-        <li>Plazo corto</li>
-        <li>Pagos periódicos</li>
-      </ul>
+  <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo. La información presentada es de carácter informativo.</p>
+
+  <!-- ═══ CTA · CALCULADORA DE INVERSIÓN ═══
+       El HTML de la calculadora vive en /calculadora-inversion/index.html (dentro del repo).
+       ▸ Para cambiar el destino del botón, edita el href de .calc-cta-btn. -->
+  <div class="calc-cta reveal">
+    <div class="calc-cta-inner">
+      <div class="calc-cta-text">
+        <span class="calc-cta-eyebrow">Herramienta</span>
+        <h3>Calcula el retorno de tu inversión aquí</h3>
+        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo podría hacer sentido para ti.</p>
+      </div>
+      <a class="calc-cta-btn" href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Calcular mi retorno →</a>
     </div>
-
-    <div class="modelo-card destacado">
-      <span class="modelo-badge">Más elegido</span>
-      <div class="modelo-letra">B</div>
-      <h3>Modelo B</h3>
-      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
-      <p>Plan intermedio con mayor rendimiento potencial.</p>
-      <ul>
-        <li>Monto mínimo de ejemplo</li>
-        <li>Plazo medio</li>
-        <li>Pagos periódicos</li>
-      </ul>
-    </div>
-
-    <div class="modelo-card">
-      <div class="modelo-letra">C</div>
-      <h3>Modelo C</h3>
-      <div class="modelo-rendimiento">Rendimiento ejemplo</div>
-      <p>Plan premium para mayores montos de inversión.</p>
-      <ul>
-        <li>Monto mínimo de ejemplo</li>
-        <li>Plazo largo</li>
-        <li>Pagos periódicos</li>
-      </ul>
-    </div>
-
   </div>
-
-  <p class="inversion-disclaimer">*Datos de ejemplo. Sustituye montos, plazos y rendimientos reales de cada modelo según la propuesta vigente de RiderMex Inversiones.</p>
 </section>
 
 <!-- ===================== FORMULARIO INVERSIÓN ===================== -->
@@ -115,34 +92,31 @@
   <h2 class="section-title">Quiero <span>invertir</span></h2>
   <p class="section-subtitle">Un asesor de RiderMex Inversiones te contactará</p>
 
-  <form class="form-credito" id="form-inversion">
-    <label for="nombre-inv">Nombre completo</label>
-    <input type="text" id="nombre-inv" required>
-
-    <label for="telefono-inv">Teléfono</label>
-    <input type="tel" id="telefono-inv" required>
-
-    <label for="email-inv">Correo electrónico</label>
-    <input type="email" id="email-inv" required>
-
-    <label for="modelo-inv">Modelo de tu interés</label>
-    <select id="modelo-inv" required>
-      <option value="">Selecciona un modelo</option>
-      <option>Modelo A</option>
-      <option>Modelo B</option>
-      <option>Modelo C</option>
-      <option>Aún no sé, quiero asesoría</option>
-    </select>
-
-    <label for="monto-inv">Monto aproximado a invertir</label>
-    <input type="text" id="monto-inv" placeholder="Ej. $50,000 MXN">
-
-    <button type="submit">Enviar solicitud</button>
-  </form>
-
-  <div class="form-confirm" id="form-confirm-inv">
-    <h3>¡Solicitud enviada!</h3>
-    <p>Un asesor de RiderMex Inversiones se pondrá en contacto contigo muy pronto.</p>
+  <!-- ═══ FORMULARIO DE INVERSIONISTAS (GoHighLevel · link.ridermex.com) ═══
+       Flujo EXCLUSIVO de inversionistas — NO mezclar con los leads de motos.
+       ▸ Para cambiar el formulario: reemplaza el src del iframe, el id y el
+         data-form-id por los de tu nuevo formulario en link.ridermex.com.
+       El script link.ridermex.com/js/form_embed.js (al final del <body>) se
+       encarga de ajustar la altura del iframe. -->
+  <div class="ghl-form-wrap">
+    <iframe
+      src="https://link.ridermex.com/widget/form/lnNhaDJjELG2qlHVrXkC"
+      class="ghl-form"
+      style="width:100%;height:624px;min-height:624px;border:none;border-radius:8px;"
+      id="inline-lnNhaDJjELG2qlHVrXkC"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="NuevoLeadWebForms"
+      data-height="624"
+      data-layout-iframe-id="inline-lnNhaDJjELG2qlHVrXkC"
+      data-form-id="lnNhaDJjELG2qlHVrXkC"
+      title="Formulario de inversionistas RiderMex">
+    </iframe>
   </div>
 </section>
 
@@ -157,6 +131,71 @@
   <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
 </a>
 
+<!-- ═══ MODELOS DE INVERSIÓN (fuente única de datos, editable) ═══
+     Cambia aquí montos, rendimientos estimados y condiciones. Los rendimientos
+     son ESTIMADOS (no garantizados). No agregues promesas de rendimiento fijo. -->
+<script>
+  const INVESTMENT_MODELS = [
+    {
+      n: '1', nombre: 'Modelo 1',
+      rendimiento: '20% – 22%', nota: 'rendimiento estimado',
+      resumen: 'Inversión única, sin aportaciones mensuales.',
+      detalles: [
+        'Inversión única de $75,000 MXN',
+        'Rendimientos estimados entre 20% y 22%',
+        'Comienzas a recibir a partir del sexto mes'
+      ],
+      destacado: false, badge: ''
+    },
+    {
+      n: '2', nombre: 'Modelo 2',
+      rendimiento: '20% – 22%', nota: 'rendimiento estimado',
+      resumen: 'Entrada accesible con aportaciones mensuales.',
+      detalles: [
+        'Inversión inicial de $10,000 MXN',
+        'Aportaciones mensuales de $5,400 MXN',
+        'Rendimientos estimados entre 20% y 22%',
+        'Comienzas a recibir a partir del mes 18'
+      ],
+      destacado: false, badge: ''
+    },
+    {
+      n: '3', nombre: 'Modelo 3',
+      rendimiento: '12% – 15%', nota: 'rendimiento estimado',
+      resumen: 'Inversión única con rendimientos desde el primer mes.',
+      detalles: [
+        'Inversión única de $120,000 MXN',
+        'Rendimientos desde el primer mes',
+        'Rendimiento estimado entre 12% y 15%',
+        'Sujeto a las condiciones operativas del modelo'
+      ],
+      destacado: true, badge: 'Desde el primer mes'
+    }
+  ];
+
+  (function renderInvestmentModels() {
+    const grid = document.getElementById('grid-inversion');
+    if (!grid) return;
+    grid.innerHTML = INVESTMENT_MODELS.map(m => `
+      <div class="modelo-card${m.destacado ? ' destacado' : ''}">
+        ${m.badge ? `<span class="modelo-badge">${m.badge}</span>` : ''}
+        <div class="modelo-letra">${m.n}</div>
+        <h3>${m.nombre}</h3>
+        <div class="modelo-rendimiento">${m.rendimiento}</div>
+        <div class="modelo-rend-nota">${m.nota}</div>
+        <p>${m.resumen}</p>
+        <ul>${m.detalles.map(d => `<li>${d}</li>`).join('')}</ul>
+      </div>
+    `).join('');
+    // re-activar animación de aparición si el observer ya corrió
+    grid.querySelectorAll('.modelo-card').forEach(c => c.classList.add('is-visible'));
+  })();
+</script>
+
 <script src="script.js"></script>
+
+<!-- Script del formulario GoHighLevel de inversionistas (link.ridermex.com).
+     Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->
+<script src="https://link.ridermex.com/js/form_embed.js"></script>
 </body>
 </html>

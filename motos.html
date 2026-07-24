@@ -373,6 +373,17 @@
   <h2 class="section-title">Nuestras <span>Agencias</span></h2>
   <p class="section-subtitle">Visítanos en cualquiera de nuestras sucursales</p>
 
+  <!-- ═══ AGENCIAS ═══ Ubicaciones reales de Google Maps (abren en nueva pestaña).
+       Estructura preparada para el tour 360: cuando exista la URL, sustituye el
+       <span> "Tour 360 · Próximamente" por un <a> con target="_blank". Prioridad
+       futura: 1) Ver tienda en 360  ·  2) Abrir Google Maps.
+       Datos de referencia:
+         const agencies = [
+           { name: "Naucalpan",              googleMapsUrl: "https://maps.app.goo.gl/8JzPoomq7miDJgpb6", tour360Url: "" },
+           { name: "CEDA / Central de Abastos", googleMapsUrl: "https://maps.app.goo.gl/184gp5qYb4c3xvca6", tour360Url: "" },
+           { name: "Coapa",                  googleMapsUrl: "https://maps.app.goo.gl/jmXYJPeA9UENghr6A", tour360Url: "" },
+           { name: "Chalco",                 googleMapsUrl: "https://maps.app.goo.gl/oTFbM1T9N3GxbDin8", tour360Url: "" },
+         ] -->
   <div class="grid-agencias">
 
     <div class="agencia-card">
@@ -380,24 +391,40 @@
       <p><strong>Dirección:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
       <p><strong>Horario:</strong> Lun–Vie 9:30–18:30, Sáb 9:30–15:30</p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
+      <div class="agencia-actions">
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+      </div>
     </div>
 
     <div class="agencia-card">
       <h3>RiderMex CEDA / Central de Abasto</h3>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-actions">
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+      </div>
     </div>
 
     <div class="agencia-card">
       <h3>RiderMex Coapa</h3>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-actions">
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+      </div>
     </div>
 
     <div class="agencia-card">
       <h3>RiderMex Chalco</h3>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-actions">
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+      </div>
     </div>
 
     <div class="agencia-card proxima">
@@ -444,34 +471,32 @@
   <h2 class="section-title">Solicita tu <span>crédito ahora</span></h2>
   <p class="section-subtitle">Completa tus datos y un asesor te contacta en minutos para confirmar tu preaprobación</p>
 
-  <form class="form-credito" id="form-credito">
-    <label for="nombre">Nombre completo</label>
-    <input type="text" id="nombre" required>
-
-    <label for="telefono">Teléfono</label>
-    <input type="tel" id="telefono" required>
-
-    <label for="email">Correo electrónico</label>
-    <input type="email" id="email" required>
-
-    <label for="agencia">Agencia de tu preferencia</label>
-    <select id="agencia" required>
-      <option value="">Selecciona una agencia</option>
-      <option>Naucalpan</option>
-      <option>CEDA / Central de Abasto</option>
-      <option>Coapa</option>
-      <option>Chalco</option>
-    </select>
-
-    <label for="moto">Moto de tu interés</label>
-    <input type="text" id="moto" placeholder="Ej. Vento Phantom R3 200">
-
-    <button type="submit">Enviar solicitud</button>
-  </form>
-
-  <div class="form-confirm" id="form-confirm">
-    <h3>¡Solicitud enviada!</h3>
-    <p>Un asesor de RiderMex se pondrá en contacto contigo muy pronto.</p>
+  <!-- ═══ FORMULARIO DE COMPRADORES DE MOTO (GoHighLevel · link.ia.marketing) ═══
+       Flujo EXCLUSIVO de compradores de moto — NO mezclar con los leads de inversión.
+       El CTA "Quiero una moto" del Home apunta aquí (motos.html#credito).
+       ▸ Para cambiar el formulario: reemplaza el src del iframe, el id y el
+         data-form-id por los de tu nuevo formulario en link.ia.marketing.
+       El script link.ia.marketing/js/form_embed.js (al final del <body>) ajusta
+       la altura del iframe. -->
+  <div class="ghl-form-wrap">
+    <iframe
+      src="https://link.ia.marketing/widget/form/ixHJReyKsUjRa3qJOBLc"
+      class="ghl-form"
+      style="width:100%;height:720px;min-height:630px;border:none;border-radius:8px;"
+      id="inline-ixHJReyKsUjRa3qJOBLc"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="NuevoLeadWeb"
+      data-height="630"
+      data-layout-iframe-id="inline-ixHJReyKsUjRa3qJOBLc"
+      data-form-id="ixHJReyKsUjRa3qJOBLc"
+      title="Formulario de crédito para moto RiderMex">
+    </iframe>
   </div>
 </section>
 
@@ -492,5 +517,13 @@
 </a>
 
 <script src="script.js"></script>
+
+<!-- Catálogo: estructura de datos preparada para crecer (marcas → modelos → moto individual).
+     No rompe el catálogo actual; queda lista para renderizar desde datos reales. -->
+<script src="catalog-data.js"></script>
+
+<!-- Script del formulario GoHighLevel de compradores de moto (link.ia.marketing).
+     Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->
+<script src="https://link.ia.marketing/js/form_embed.js"></script>
 </body>
 </html>

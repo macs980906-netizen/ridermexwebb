@@ -1,0 +1,10 @@
+{
+  "name": "ridermex-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RiderMex landing (static multi-page site). No bundler: HTML/CSS/JS served as-is.",
+  "scripts": {
+    "build": "echo \"RiderMex es un sitio estatico: no requiere build. Los archivos se sirven tal cual.\"",
+    "dev": "npx --yes serve ."
+  }
+}

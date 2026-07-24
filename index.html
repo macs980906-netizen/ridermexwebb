@@ -326,20 +326,66 @@
 
     .hub-panel:hover::before { opacity: 1; }
 
+    /* Panel MOTOS — tratamiento premium (degradado + acento), coherente con inversiones */
     .hub-panel--motos {
-      background: var(--gris1);
+      background:
+        radial-gradient(120% 100% at 0% 0%, rgba(204,0,0,.16), transparent 55%),
+        linear-gradient(160deg, #1c1113 0%, var(--gris1) 58%, var(--negro) 100%);
       border-right: 1px solid var(--gris3);
     }
-
-    .hub-panel--motos::before { background: radial-gradient(circle, rgba(204,0,0,.14), transparent 70%); }
-    .hub-panel--motos:hover { background: var(--gris2); }
-
-    .hub-panel--inversiones {
-      background: var(--gris1);
+    .hub-panel--motos::before { background: radial-gradient(circle, rgba(255,90,60,.20), transparent 70%); }
+    .hub-panel--motos:hover {
+      background:
+        radial-gradient(120% 100% at 0% 0%, rgba(204,0,0,.26), transparent 55%),
+        linear-gradient(160deg, #271518 0%, var(--gris2) 58%, var(--gris1) 100%);
     }
 
-    .hub-panel--inversiones::before { background: radial-gradient(circle, rgba(0,200,150,.12), transparent 70%); }
-    .hub-panel--inversiones:hover { background: var(--gris2); }
+    /* Panel INVERSIONES — mismo lenguaje visual, acento verde */
+    .hub-panel--inversiones {
+      background:
+        radial-gradient(120% 100% at 100% 0%, rgba(0,200,150,.14), transparent 55%),
+        linear-gradient(200deg, #0f1a17 0%, var(--gris1) 58%, var(--negro) 100%);
+    }
+    .hub-panel--inversiones::before { background: radial-gradient(circle, rgba(0,200,150,.18), transparent 70%); }
+    .hub-panel--inversiones:hover {
+      background:
+        radial-gradient(120% 100% at 100% 0%, rgba(0,200,150,.24), transparent 55%),
+        linear-gradient(200deg, #13241f 0%, var(--gris2) 58%, var(--gris1) 100%);
+    }
+
+    /* acento superior en ambos paneles → identidad RiderMex y coherencia visual */
+    .hub-panel::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      z-index: 2;
+    }
+    .hub-panel--motos::after { background: linear-gradient(90deg, var(--rojo), var(--rojo2)); }
+    .hub-panel--inversiones::after { background: linear-gradient(90deg, var(--verde), #00e0a8); }
+
+    /* separador visual "Tu camino" */
+    .camino-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.75rem 2.5rem 0.5rem;
+    }
+    .camino-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gris3), transparent);
+    }
+    .camino-divider-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      white-space: nowrap;
+    }
 
     .hub-tag {
       font-family: 'Barlow Condensed', sans-serif;
@@ -811,14 +857,44 @@
       Motos, movilidad<br/>
       e <em>inversión</em> en un solo lugar
     </h1>
+    <!-- ▸ COPY EDITABLE DEL HOME — cambia este mensaje base aquí -->
     <p class="hero-sub">
-      Estrena tu moto con opciones accesibles de compra y financiamiento, o participa en el crecimiento de RiderMex a través de un modelo de inversión respaldado por operación real y agencias activas.
+      Estrena tu moto con opciones de compra, financiamiento o participación. Elige tu camino en RiderMex.
     </p>
     <div class="hero-scroll">Elige tu camino</div>
-    <p class="hero-camino-desc">En RiderMex puedes elegir cómo avanzar: estrenar una moto con opciones accesibles de compra y financiamiento, o invertir en el crecimiento de una empresa con operación real y agencias activas.</p>
   </section>
 
-  <!-- BARRA DE CIFRAS -->
+  <!-- ═══ TU CAMINO · 1 · ELECCIÓN (comprador / inversor) ═══
+       Primero la decisión del usuario, luego las métricas de respaldo. -->
+  <section class="hub">
+
+    <!-- CTA "Quiero una moto" → formulario de motos (motos.html#credito).
+         ▸ Para enviar al catálogo en su lugar, cambia el href a "motos.html#catalogo". -->
+    <a href="motos.html#credito" class="hub-panel hub-panel--motos reveal">
+      <div>
+        <p class="hub-tag hub-tag--motos">Para compradores</p>
+        <h2 class="hub-title">Quiero<br/>una moto</h2>
+        <p class="hub-desc">
+          Más de 10 marcas disponibles. Crédito en 2 minutos con financieras externas: Maxikash, Galgo y Atrato. Sin enganche con Atrato.
+        </p>
+      </div>
+      <span class="hub-cta hub-cta--motos">Quiero mi moto →</span>
+    </a>
+
+    <a href="inversiones.html" class="hub-panel hub-panel--inversiones reveal">
+      <div>
+        <p class="hub-tag hub-tag--inv">Para inversores</p>
+        <h2 class="hub-title">Quiero<br/>invertir</h2>
+        <p class="hub-desc">
+          Capital en movimiento. Modelos de inversión con rendimientos estimados, respaldados por operación real y agencias activas.
+        </p>
+      </div>
+      <span class="hub-cta hub-cta--inv">Ver modelos →</span>
+    </a>
+
+  </section>
+
+  <!-- ═══ TU CAMINO · 2 · MÉTRICAS DE RESPALDO ═══ -->
   <div class="stats reveal">
     <div class="stat">
       <div class="stat-num">4</div>
@@ -838,47 +914,11 @@
     </div>
   </div>
 
-  <!-- HUB DE DECISIÓN -->
-  <section class="hub">
-
-    <a href="motos.html" class="hub-panel hub-panel--motos reveal">
-      <div>
-        <p class="hub-tag hub-tag--motos">Para compradores</p>
-        <h2 class="hub-title">Quiero<br/>una moto</h2>
-        <p class="hub-desc">
-          Más de 10 marcas disponibles. Crédito en 2 minutos con financieras externas: Maxikash, Galgo y Atrato. Sin enganche con Atrato.
-        </p>
-      </div>
-      <span class="hub-cta hub-cta--motos">Ver catálogo →</span>
-    </a>
-
-    <a href="inversiones.html" class="hub-panel hub-panel--inversiones reveal">
-      <div>
-        <p class="hub-tag hub-tag--inv">Para inversores</p>
-        <h2 class="hub-title">Quiero<br/>invertir</h2>
-        <p class="hub-desc">
-          Capital en movimiento. Modelos A, B y C con retornos estructurados. Operado por RiderMex — Capital en movimiento.
-        </p>
-      </div>
-      <span class="hub-cta hub-cta--inv">Ver modelos →</span>
-    </a>
-
-  </section>
-
-  <!-- STATS -->
-  <div class="stats reveal">
-    <div class="stat">
-      <div class="stat-num">$199<span>+</span></div>
-      <div class="stat-label">desde por semana con enganche</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2<span>min</span></div>
-      <div class="stat-label">para tramitar tu crédito</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">4<span>+</span></div>
-      <div class="stat-label">agencias en CDMX y Estado de México</div>
-    </div>
+  <!-- ═══ TU CAMINO · 3 · SEPARADOR VISUAL ═══ -->
+  <div class="camino-divider reveal" aria-hidden="true">
+    <span class="camino-divider-line"></span>
+    <span class="camino-divider-label">Tu camino</span>
+    <span class="camino-divider-line"></span>
   </div>
 
   <!-- MARCAS -->
