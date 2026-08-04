@@ -68,7 +68,8 @@ header {
   position: relative;
 }
 
-.logo img { height: 44px; }
+.logo { flex-shrink: 0; display: flex; align-items: center; }
+.logo img { height: 40px; width: auto; max-width: none; display: block; }
 
 nav ul {
   list-style: none;

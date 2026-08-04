@@ -5,12 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RiderMex Inversiones</title>
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Tarjeta de modelo clicable + CTA */
+  .modelo-card[role="button"] { cursor: pointer; }
+  .modelo-card .modelo-cta {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    background: var(--rojo);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .2px;
+    box-shadow: 0 8px 22px rgba(225,6,0,.30);
+    transition: transform .2s var(--ease), box-shadow .2s;
+  }
+  .modelo-card:hover .modelo-cta { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(225,6,0,.45); }
+  .modelo-card.destacado .modelo-cta { background: var(--dorado); color: var(--negro); box-shadow: 0 8px 22px rgba(201,162,39,.35); }
+  .modelo-card:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
+
+  /* Badge del modelo destacado: legible y bien encuadrado */
+  .modelo-badge {
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(0,0,0,.35);
+  }
+
+  /* Banner de modelo preseleccionado (sobre el formulario) */
+  .inv-preseleccion {
+    max-width: 720px;
+    margin: 0 auto 22px;
+    background: linear-gradient(180deg, #161616, #0e0e0e);
+    border: 1px solid rgba(201,162,39,.45);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    color: #eaeaea;
+  }
+  .inv-preseleccion strong { color: #fff; }
+  .inv-preseleccion .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--dorado); flex: 0 0 auto;
+    box-shadow: 0 0 0 4px rgba(201,162,39,.2);
+  }
+</style>
 </head>
 <body>
 
 <header>
   <div class="nav-wrap">
-    <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="RiderMex"></a>
+    <a href="index.html" class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -92,6 +136,12 @@
   <h2 class="section-title">Quiero <span>invertir</span></h2>
   <p class="section-subtitle">Un asesor de RiderMex Inversiones te contactará</p>
 
+  <!-- Banner de modelo preseleccionado (se rellena al elegir un modelo arriba). -->
+  <div id="modelo-preseleccion-inv" class="inv-preseleccion" style="display:none;">
+    <span class="dot"></span>
+    <span>Te interesa: <strong id="modelo-preseleccion-inv-nombre"></strong></span>
+  </div>
+
   <!-- ═══ FORMULARIO DE INVERSIONISTAS (GoHighLevel · link.ridermex.com) ═══
        Flujo EXCLUSIVO de inversionistas — NO mezclar con los leads de motos.
        ▸ Para cambiar el formulario: reemplaza el src del iframe, el id y el
@@ -137,7 +187,7 @@
 <script>
   const INVESTMENT_MODELS = [
     {
-      n: '1', nombre: 'Modelo 1',
+      slug: 'modelo-1', n: '1', nombre: 'Modelo 1',
       rendimiento: '20% – 22%', nota: 'rendimiento estimado',
       resumen: 'Inversión única, sin aportaciones mensuales.',
       detalles: [
@@ -148,7 +198,7 @@
       destacado: false, badge: ''
     },
     {
-      n: '2', nombre: 'Modelo 2',
+      slug: 'modelo-2', n: '2', nombre: 'Modelo 2',
       rendimiento: '20% – 22%', nota: 'rendimiento estimado',
       resumen: 'Entrada accesible con aportaciones mensuales.',
       detalles: [
@@ -160,24 +210,27 @@
       destacado: false, badge: ''
     },
     {
-      n: '3', nombre: 'Modelo 3',
+      slug: 'modelo-3', n: '3', nombre: 'Modelo 3',
       rendimiento: '12% – 15%', nota: 'rendimiento estimado',
       resumen: 'Inversión única con rendimientos desde el primer mes.',
       detalles: [
         'Inversión única de $120,000 MXN',
-        'Rendimientos desde el primer mes',
+        'Recibes rendimiento desde el primer mes',
         'Rendimiento estimado entre 12% y 15%',
         'Sujeto a las condiciones operativas del modelo'
       ],
-      destacado: true, badge: 'Desde el primer mes'
+      destacado: true, badge: 'Rinde desde el mes 1'
     }
   ];
+
+  const INVESTMENT_FORM_ID = 'contacto-inversion';
 
   (function renderInvestmentModels() {
     const grid = document.getElementById('grid-inversion');
     if (!grid) return;
     grid.innerHTML = INVESTMENT_MODELS.map(m => `
-      <div class="modelo-card${m.destacado ? ' destacado' : ''}">
+      <div class="modelo-card${m.destacado ? ' destacado' : ''}" data-plan="${m.slug}"
+           role="button" tabindex="0" aria-label="Elegir ${m.nombre} e ir al formulario">
         ${m.badge ? `<span class="modelo-badge">${m.badge}</span>` : ''}
         <div class="modelo-letra">${m.n}</div>
         <h3>${m.nombre}</h3>
@@ -185,10 +238,44 @@
         <div class="modelo-rend-nota">${m.nota}</div>
         <p>${m.resumen}</p>
         <ul>${m.detalles.map(d => `<li>${d}</li>`).join('')}</ul>
+        <span class="modelo-cta">Quiero este modelo →</span>
       </div>
     `).join('');
     // re-activar animación de aparición si el observer ya corrió
     grid.querySelectorAll('.modelo-card').forEach(c => c.classList.add('is-visible'));
+
+    // Preselección: al hacer clic en un modelo, se marca en el banner del
+    // formulario y se hace scroll hacia él (flujo tipo "moto seleccionada").
+    const bannerWrap = document.getElementById('modelo-preseleccion-inv');
+    const bannerName = document.getElementById('modelo-preseleccion-inv-nombre');
+
+    function selectPlan(slug, scroll) {
+      const m = INVESTMENT_MODELS.find(x => x.slug === slug);
+      if (!m) return;
+      if (bannerWrap && bannerName) {
+        bannerName.textContent = m.nombre + ' — ' + m.resumen;
+        bannerWrap.style.display = 'flex';
+      }
+      try {
+        history.replaceState(null, '', '?plan=' + slug + '#' + INVESTMENT_FORM_ID);
+      } catch (e) {}
+      if (scroll) {
+        const form = document.getElementById(INVESTMENT_FORM_ID);
+        if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    grid.querySelectorAll('.modelo-card').forEach(card => {
+      const go = () => selectPlan(card.dataset.plan, true);
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+    });
+
+    // Si se llega con ?plan=slug, marca el modelo sin forzar scroll.
+    const pre = new URLSearchParams(window.location.search).get('plan');
+    if (pre) selectPlan(pre, false);
   })();
 </script>
 
