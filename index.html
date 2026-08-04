@@ -525,6 +525,69 @@
     .marca:hover { color: var(--blanco); }
     .marca:hover::after { width: 70%; }
 
+    /* marcas clicables: área táctil cómoda */
+    .marca { display: inline-block; padding: 0.4rem 0.6rem; cursor: pointer; text-decoration: none; }
+
+    /* ─── ELIGE TU CAMINO (header de transición Hero → decisión) ─── */
+    .camino-hero {
+      text-align: center;
+      padding: clamp(3.5rem, 8vw, 6rem) 2rem clamp(2.5rem, 5vw, 4rem);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--negro) 0%, var(--gris1) 55%, var(--negro) 100%);
+      border-top: 1px solid var(--gris3);
+    }
+    .camino-hero::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(ellipse 60% 70% at 50% 40%, rgba(204,0,0,.12), transparent 70%);
+    }
+    .camino-hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.85rem;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--rojo);
+      margin-bottom: 1.1rem;
+    }
+    .camino-hero-kicker::before, .camino-hero-kicker::after {
+      content: ''; width: 36px; height: 1px; background: var(--rojo); opacity: 0.6;
+    }
+    .camino-hero-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; text-transform: uppercase;
+      font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.92; letter-spacing: 0.01em; color: var(--blanco);
+    }
+    .camino-hero-title em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--rojo) 0%, var(--rojo2) 50%, var(--rojo) 100%);
+      background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: shimmer 6s linear infinite;
+    }
+    .camino-hero-sub {
+      color: var(--texto); max-width: 560px; margin: 1.25rem auto 0;
+      font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.6;
+    }
+
+    /* ─── HEADER DE MÉTRICAS ("Lo que respalda nuestro camino") ─── */
+    .stats-header { text-align: center; padding: clamp(3rem, 6vw, 4.5rem) 2rem 1.75rem; }
+    .stats-header-kicker {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.85rem;
+    }
+    .stats-header-kicker::before, .stats-header-kicker::after {
+      content: ''; width: 30px; height: 1px; background: var(--rojo); opacity: 0.6;
+    }
+    .stats-header-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; text-transform: uppercase;
+      font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.05; letter-spacing: 0.04em; color: var(--blanco);
+    }
+
+    /* Métrica de crédito: label arriba, valor "2 min" abajo */
+    .stat--credito .stat-label--top { margin-top: 0; margin-bottom: 0.5rem; }
+
+    /* Separador "Tu camino" con más presencia (transición al recorrido) */
+    .camino-divider { padding: clamp(3rem, 6vw, 4.5rem) 2.5rem 1rem; }
+    .camino-divider-label { font-size: clamp(1.05rem, 2.6vw, 1.55rem); font-weight: 700; letter-spacing: 0.3em; }
+
     /* ─── FOOTER ─── */
     footer {
       padding: 2rem 2.5rem;
@@ -570,25 +633,27 @@
       .stat { border-right: none; border-bottom: 1px solid var(--gris3); }
       .stat:last-child { border-bottom: none; }
 
-      .hub { grid-template-columns: 1fr 1fr; min-height: 0; }
+      /* Cards apiladas en móvil para que se lean con su descripción */
+      .hub { grid-template-columns: 1fr; min-height: 0; }
+      .hub-panel--motos { border-right: none; border-bottom: 1px solid var(--gris3); }
 
       .hub-panel {
-        padding: 1.75rem 1.1rem;
+        padding: 2rem 1.4rem;
         min-height: 0;
       }
 
-      .hub-tag { font-size: 0.6rem; margin-bottom: 0.6rem; }
-      .hub-title { font-size: 1.5rem; margin-bottom: 0.6rem; }
-      .hub-desc { display: none; }
-      .hub-cta { padding: 0.6rem 1rem; font-size: 0.75rem; gap: 0.4rem; }
+      .hub-tag { font-size: 0.62rem; margin-bottom: 0.7rem; }
+      .hub-title { font-size: 1.9rem; margin-bottom: 0.85rem; }
+      .hub-desc { display: block; max-width: none; margin-bottom: 1.6rem; }
+      .hub-cta { padding: 0.7rem 1.3rem; font-size: 0.8rem; gap: 0.4rem; }
       .hub-divider { display: none; }
 
       footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
 
     @media (max-width: 420px) {
-      .hub-title { font-size: 1.25rem; }
-      .hub-cta { padding: 0.55rem 0.8rem; font-size: 0.7rem; }
+      .hub-title { font-size: 1.65rem; }
+      .hub-cta { padding: 0.65rem 1.1rem; font-size: 0.78rem; }
     }
 
     /* ═══════════════════════════════════════════════════════
@@ -859,23 +924,29 @@
     </h1>
     <!-- ▸ COPY EDITABLE DEL HOME — cambia este mensaje base aquí -->
     <p class="hero-sub">
-      Estrena tu moto con opciones de compra, financiamiento o participación. Elige tu camino en RiderMex.
+      Estrena tu moto con opciones de compra, financiamiento o participa en uno de nuestros modelos de inversión. Elegir tu camino es más fácil con RiderMex.
     </p>
-    <div class="hero-scroll">Elige tu camino</div>
+  </section>
+
+  <!-- ═══ ELIGE TU CAMINO · header de transición hacia la decisión ═══ -->
+  <section class="camino-hero reveal">
+    <span class="camino-hero-kicker">Compra · Inversión</span>
+    <h2 class="camino-hero-title">Elige tu <em>camino</em></h2>
+    <p class="camino-hero-sub">¿Estrenar tu próxima moto o hacer crecer tu capital? Empieza por donde quieras.</p>
   </section>
 
   <!-- ═══ TU CAMINO · 1 · ELECCIÓN (comprador / inversor) ═══
        Primero la decisión del usuario, luego las métricas de respaldo. -->
   <section class="hub">
 
-    <!-- CTA "Quiero una moto" → formulario de motos (motos.html#credito).
-         ▸ Para enviar al catálogo en su lugar, cambia el href a "motos.html#catalogo". -->
-    <a href="motos.html#credito" class="hub-panel hub-panel--motos reveal">
+    <!-- CTA "Quiero mi moto" → catálogo de motos (catalogo.html) para explorar
+         todas las marcas y modelos antes de iniciar el trámite. -->
+    <a href="catalogo.html" class="hub-panel hub-panel--motos reveal">
       <div>
         <p class="hub-tag hub-tag--motos">Para compradores</p>
         <h2 class="hub-title">Quiero<br/>una moto</h2>
         <p class="hub-desc">
-          Más de 10 marcas disponibles. Crédito en 2 minutos con financieras externas: Maxikash, Galgo y Atrato. Sin enganche con Atrato.
+          Contamos con más de 10 marcas disponibles, aprobación de crédito en 2 minutos y sin enganche.
         </p>
       </div>
       <span class="hub-cta hub-cta--motos">Quiero mi moto →</span>
@@ -884,9 +955,9 @@
     <a href="inversiones.html" class="hub-panel hub-panel--inversiones reveal">
       <div>
         <p class="hub-tag hub-tag--inv">Para inversores</p>
-        <h2 class="hub-title">Quiero<br/>invertir</h2>
+        <h2 class="hub-title">Construye<br/>otro camino</h2>
         <p class="hub-desc">
-          Capital en movimiento. Modelos de inversión con rendimientos estimados, respaldados por operación real y agencias activas.
+          Entra a un modelo con capital en movimiento, rendimientos estimados y respaldo de operación real, agencias activas y fideicomisos.
         </p>
       </div>
       <span class="hub-cta hub-cta--inv">Ver modelos →</span>
@@ -895,6 +966,10 @@
   </section>
 
   <!-- ═══ TU CAMINO · 2 · MÉTRICAS DE RESPALDO ═══ -->
+  <div class="stats-header reveal">
+    <span class="stats-header-kicker">Respaldo real</span>
+    <h3 class="stats-header-title">Lo que respalda nuestro camino</h3>
+  </div>
   <div class="stats reveal">
     <div class="stat">
       <div class="stat-num">4</div>
@@ -908,9 +983,10 @@
       <div class="stat-num">+<span>100</span></div>
       <div class="stat-label">Modelos disponibles</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">2<span>min</span></div>
-      <div class="stat-label">Aprobación de crédito</div>
+    <!-- Métrica de crédito: label arriba, valor abajo (lectura más lógica). -->
+    <div class="stat stat--credito">
+      <div class="stat-label stat-label--top">Aprobación de crédito</div>
+      <div class="stat-num">2<span>&nbsp;min</span></div>
     </div>
   </div>
 
@@ -921,23 +997,7 @@
     <span class="camino-divider-line"></span>
   </div>
 
-  <!-- MARCAS -->
-  <div class="marcas reveal">
-    <p class="marcas-label">Marcas disponibles</p>
-    <div class="marcas-list">
-      <span class="marca">Vento</span>
-      <span class="marca">Bajaj</span>
-      <span class="marca">Islo</span>
-      <span class="marca">Carabela</span>
-      <span class="marca">Zmoto</span>
-      <span class="marca">Ryder</span>
-      <span class="marca">TVS</span>
-      <span class="marca">CF Moto</span>
-      <span class="marca">CF Lite</span>
-      <span class="marca">UM Motorcycles</span>
-      <span class="marca">Honda</span>
-    </div>
-  </div>
+  <!-- MARCAS: se movió después de la animación del recorrido (ver más abajo). -->
 
   <!-- ═══════════════════════════════════════════════════════
        RIDER JOURNEY — Recorrido por ecosistemas (scroll-driven)
@@ -1092,6 +1152,26 @@
 
     </div><!-- /journey-sticky -->
   </section><!-- /journey-outer -->
+
+  <!-- MARCAS (después del recorrido) — cada marca lleva al catálogo por marca.
+       Marcas con catálogo real → su ficha de marca; el resto → slug preparado
+       (el catálogo muestra un estado limpio si aún no tiene modelos). -->
+  <div class="marcas reveal">
+    <p class="marcas-label">Marcas disponibles</p>
+    <div class="marcas-list">
+      <a class="marca" href="catalogo.html#/marca/vento">Vento</a>
+      <a class="marca" href="catalogo.html#/marca/bajaj">Bajaj</a>
+      <a class="marca" href="catalogo.html#/marca/islo">Islo</a>
+      <a class="marca" href="catalogo.html#/marca/carabela">Carabela</a>
+      <a class="marca" href="catalogo.html#/marca/zmoto">Zmoto</a>
+      <a class="marca" href="catalogo.html#/marca/ryder">Ryder</a>
+      <a class="marca" href="catalogo.html#/marca/tvs">TVS</a>
+      <a class="marca" href="catalogo.html#/marca/cfmoto">CF Moto</a>
+      <a class="marca" href="catalogo.html#/marca/cfmoto">CF Lite</a>
+      <a class="marca" href="catalogo.html#/marca/um">UM Motorcycles</a>
+      <a class="marca" href="catalogo.html#/marca/honda">Honda</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
