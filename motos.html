@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RiderMex — Catálogo de Motos</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="catalog.css">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
         <li><a href="#agencias">Agencias</a></li>
         <li><a href="inversiones.html">Inversiones</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
@@ -172,6 +173,10 @@
   <span class="eyebrow">Catálogo completo</span>
   <h2 class="section-title">Elige tu <span>marca</span></h2>
   <p class="section-subtitle">9 marcas, más de 100 modelos — pregunta disponibilidad y precio por modelo en tu agencia</p>
+
+  <p style="text-align:center;margin:-6px 0 26px;">
+    <a href="catalogo.html" class="btn-moto" style="display:inline-block;">Ver catálogo completo con fichas por modelo →</a>
+  </p>
 
   <div class="filtros marca-tabs">
     <button class="filtro-btn active" data-marca="vento">Vento</button>
@@ -467,9 +472,17 @@
 
 <!-- ===================== FORMULARIO CRÉDITO ===================== -->
 <section id="credito" class="credito-bg reveal">
+  <!-- Ancla alterna usada por el CTA "Quiero esta moto" del catálogo. -->
+  <span id="formulario-motos" style="position:absolute;margin-top:-90px;"></span>
   <span class="eyebrow">Último paso</span>
   <h2 class="section-title">Solicita tu <span>crédito ahora</span></h2>
   <p class="section-subtitle">Completa tus datos y un asesor te contacta en minutos para confirmar tu preaprobación</p>
+
+  <!-- Banner de modelo preseleccionado (se rellena si llega ?modelo=slug). -->
+  <div id="modelo-preseleccion" class="modelo-preseleccion" style="display:none;">
+    <span class="dot"></span>
+    <span>Estás solicitando información sobre: <strong id="modelo-preseleccion-nombre"></strong></span>
+  </div>
 
   <!-- ═══ FORMULARIO DE COMPRADORES DE MOTO (GoHighLevel · link.ia.marketing) ═══
        Flujo EXCLUSIVO de compradores de moto — NO mezclar con los leads de inversión.
@@ -521,6 +534,25 @@
 <!-- Catálogo: estructura de datos preparada para crecer (marcas → modelos → moto individual).
      No rompe el catálogo actual; queda lista para renderizar desde datos reales. -->
 <script src="catalog-data.js"></script>
+
+<!-- Data normalizada del catálogo (para mostrar el modelo preseleccionado). -->
+<script src="src/data/motorcycles.js"></script>
+<script>
+  // Si el catálogo envió ?modelo=slug, mostramos qué moto está solicitando el usuario.
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var slug = params.get("modelo");
+    if (!slug || !window.RIDERMEX_CATALOG) return;
+    var moto = window.RIDERMEX_CATALOG.getMotorcycleBySlug(slug);
+    if (!moto) return;
+    var banner = document.getElementById("modelo-preseleccion");
+    var name = document.getElementById("modelo-preseleccion-nombre");
+    if (banner && name) {
+      name.textContent = moto.brand + " " + moto.model;
+      banner.style.display = "flex";
+    }
+  })();
+</script>
 
 <!-- Script del formulario GoHighLevel de compradores de moto (link.ia.marketing).
      Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->

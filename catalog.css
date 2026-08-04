@@ -1,0 +1,401 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RIDERMEX · CATÁLOGO (marketplace) — estilos
+   Depende de styles.css (variables, header, footer, nav). Este archivo
+   añade el layout de catálogo, tarjetas de marca/modelo y ficha individual.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.catalog-page {
+  background: var(--negro);
+  color: var(--blanco);
+  min-height: 100vh;
+}
+.catalog-page main { display: block; }
+
+.catalog-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 24px 90px;
+}
+
+/* ── Encabezado de sección ─────────────────────────────────────────────── */
+.cat-head { text-align: center; margin-bottom: 34px; }
+.cat-eyebrow {
+  display: inline-block;
+  color: var(--rojo);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+.cat-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+.cat-title span { color: var(--rojo); }
+.cat-subtitle {
+  color: #9a9a9a;
+  max-width: 640px;
+  margin: 12px auto 0;
+  font-size: 15.5px;
+}
+
+/* ── Breadcrumb ────────────────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #7d7d7d;
+  margin-bottom: 22px;
+}
+.breadcrumb a { color: #b9b9b9; transition: color .2s; }
+.breadcrumb a:hover { color: var(--rojo); }
+.breadcrumb .sep { color: #444; }
+.breadcrumb .current { color: #fff; font-weight: 600; }
+
+/* ── Buscador ──────────────────────────────────────────────────────────── */
+.cat-search {
+  max-width: 520px;
+  margin: 24px auto 0;
+  position: relative;
+}
+.cat-search input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  border-radius: 12px;
+  border: 1px solid var(--gris-borde);
+  background: var(--negro2);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.cat-search input::placeholder { color: #6b6b6b; }
+.cat-search input:focus {
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 3px rgba(225,6,0,.15);
+}
+.cat-search svg {
+  position: absolute;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px;
+  stroke: #6b6b6b;
+}
+
+/* ── Toolbar (volver / contador) ───────────────────────────────────────── */
+.cat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.cat-count { color: #8a8a8a; font-size: 14px; }
+
+/* ── Botones ───────────────────────────────────────────────────────────── */
+.btn-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .2s var(--ease), box-shadow .2s, background .2s, border-color .2s;
+}
+.btn-cat-primary {
+  background: var(--rojo);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(225,6,0,.35);
+}
+.btn-cat-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(225,6,0,.5); }
+.btn-cat-ghost {
+  background: transparent;
+  color: #e6e6e6;
+  border-color: var(--gris-borde);
+}
+.btn-cat-ghost:hover { border-color: var(--rojo); color: #fff; }
+
+/* ── Grids ─────────────────────────────────────────────────────────────── */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+  gap: 22px;
+}
+
+/* ── Tarjeta de marca ──────────────────────────────────────────────────── */
+.brand-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, #171717, #0e0e0e);
+  border: 1px solid var(--gris-borde);
+  cursor: pointer;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.brand-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(225,6,0,.6);
+  box-shadow: 0 20px 44px rgba(0,0,0,.5), 0 0 0 1px rgba(225,6,0,.15);
+}
+.brand-card-media {
+  aspect-ratio: 16 / 10;
+  background: #0b0b0b;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.brand-card-media img { width: 100%; height: 100%; object-fit: cover; }
+.brand-card-body { padding: 18px 18px 20px; }
+.brand-card-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+}
+.brand-card-count { color: #8f8f8f; font-size: 13.5px; margin-top: 3px; }
+.brand-card-cta {
+  margin-top: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--rojo); font-weight: 600; font-size: 14px;
+}
+.brand-card:hover .brand-card-cta { gap: 10px; }
+.brand-card-cta svg { width: 16px; height: 16px; transition: transform .2s; }
+
+/* ── Tarjeta de modelo ─────────────────────────────────────────────────── */
+.model-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, #161616, #0d0d0d);
+  border: 1px solid var(--gris-borde);
+  cursor: pointer;
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+}
+.model-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(225,6,0,.6);
+  box-shadow: 0 22px 50px rgba(0,0,0,.55);
+}
+.model-card-media {
+  aspect-ratio: 4 / 3;
+  background: #0b0b0b;
+  overflow: hidden;
+}
+.model-card-media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s var(--ease);
+}
+.model-card:hover .model-card-media img { transform: scale(1.05); }
+.model-card-body { padding: 16px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+.model-card-brand {
+  color: var(--rojo); font-weight: 700; font-size: 11.5px;
+  text-transform: uppercase; letter-spacing: 1.4px;
+}
+.model-card-name {
+  font-family: 'Poppins', sans-serif; font-weight: 700;
+  font-size: 18px; margin-top: 4px; line-height: 1.25;
+}
+.model-card-desc { color: #8f8f8f; font-size: 13.5px; margin-top: 6px; flex: 1; }
+.model-card-price { color: #fff; font-weight: 700; margin-top: 10px; font-size: 15px; }
+.model-card-foot {
+  margin-top: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--rojo); font-weight: 600; font-size: 13.5px;
+}
+.model-card:hover .model-card-foot { gap: 10px; }
+.model-card-foot svg { width: 15px; height: 15px; }
+
+/* ── Estado vacío / error ──────────────────────────────────────────────── */
+.cat-empty {
+  text-align: center;
+  padding: 70px 24px;
+  border: 1px dashed var(--gris-borde);
+  border-radius: var(--radius);
+  background: var(--negro2);
+}
+.cat-empty h2 { font-family: 'Poppins', sans-serif; font-size: 26px; }
+.cat-empty p { color: #8f8f8f; margin: 12px auto 22px; max-width: 460px; }
+.cat-empty-icon { color: var(--rojo); margin-bottom: 14px; }
+.cat-empty-icon svg { width: 54px; height: 54px; stroke: var(--rojo); }
+
+/* ═══ FICHA INDIVIDUAL (marketplace) ═══════════════════════════════════ */
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 42px;
+  align-items: start;
+}
+
+/* Galería */
+.gallery-main {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0b0b0b;
+  border: 1px solid var(--gris-borde);
+}
+.gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+.gallery-thumb {
+  flex: 0 0 auto;
+  width: 82px; height: 62px;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 2px solid var(--gris-borde);
+  background: #0b0b0b;
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumb:hover { transform: translateY(-2px); }
+.gallery-thumb.is-active { border-color: var(--rojo); }
+
+/* Panel de información */
+.detail-brand {
+  color: var(--rojo); font-weight: 700; letter-spacing: 1.6px;
+  text-transform: uppercase; font-size: 13px;
+}
+.detail-title {
+  font-family: 'Poppins', sans-serif; font-weight: 800;
+  font-size: clamp(26px, 4vw, 38px); line-height: 1.12;
+  margin: 6px 0 10px; letter-spacing: -0.5px;
+}
+.detail-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.detail-chip {
+  background: var(--gris); border: 1px solid var(--gris-borde);
+  color: #cfcfcf; font-size: 12.5px; font-weight: 600;
+  padding: 5px 12px; border-radius: 999px;
+}
+.detail-chip.avail { color: #57d38c; border-color: rgba(87,211,140,.3); }
+.detail-short { color: #b3b3b3; font-size: 16px; margin-bottom: 18px; }
+.detail-price {
+  font-family: 'Poppins', sans-serif; font-weight: 800;
+  font-size: 30px; margin-bottom: 6px;
+}
+.detail-price-note { color: #8a8a8a; font-size: 12.5px; margin-bottom: 18px; }
+
+/* Card resumen de destacados */
+.detail-summary {
+  background: linear-gradient(180deg, #161616, #0e0e0e);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 6px 0 22px;
+}
+.detail-summary h4 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1.4px;
+  color: #8a8a8a; margin-bottom: 12px; font-weight: 700;
+}
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; }
+.summary-item { min-width: 0; }
+.summary-item .lbl { color: #808080; font-size: 12px; }
+.summary-item .val { color: #fff; font-weight: 600; font-size: 14.5px; word-wrap: break-word; }
+
+.detail-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.detail-actions .btn-cat { flex: 1 1 auto; justify-content: center; min-width: 180px; }
+
+/* Secciones inferiores */
+.detail-section { margin-top: 46px; }
+.detail-section h2 {
+  font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700;
+  margin-bottom: 16px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--gris-borde);
+}
+.detail-section p.desc-text { color: #b3b3b3; font-size: 15.5px; max-width: 760px; }
+
+/* Características destacadas (grid de tiles) */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.feature-tile {
+  background: var(--negro2);
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.feature-tile .lbl {
+  color: var(--rojo); font-size: 11.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.feature-tile .val { color: #fff; font-weight: 600; margin-top: 5px; font-size: 15px; }
+
+/* Ficha técnica colapsable */
+.spec-accordion {
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--negro2);
+}
+.spec-accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.spec-accordion summary::-webkit-details-marker { display: none; }
+.spec-accordion summary .chev {
+  transition: transform .25s var(--ease); width: 20px; height: 20px; stroke: var(--rojo);
+}
+.spec-accordion[open] summary .chev { transform: rotate(180deg); }
+.spec-table { width: 100%; border-collapse: collapse; }
+.spec-table tr { border-top: 1px solid var(--gris-borde); }
+.spec-table td { padding: 12px 20px; font-size: 14px; vertical-align: top; }
+.spec-table td.k { color: #8f8f8f; width: 42%; }
+.spec-table td.v { color: #ededed; font-weight: 500; }
+.spec-source { padding: 14px 20px; font-size: 12.5px; color: #6f6f6f; border-top: 1px solid var(--gris-borde); }
+.spec-source a { color: #9a9a9a; text-decoration: underline; }
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .detail-layout { grid-template-columns: 1fr; gap: 26px; }
+}
+@media (max-width: 560px) {
+  .catalog-wrap { padding: 26px 16px 70px; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .detail-actions .btn-cat { flex: 1 1 100%; }
+  .brand-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+  .model-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+  .model-card-name { font-size: 16px; }
+}
+
+/* Banner de modelo seleccionado (motos.html) */
+.modelo-preseleccion {
+  max-width: 720px;
+  margin: 0 auto 22px;
+  background: linear-gradient(180deg, #161616, #0e0e0e);
+  border: 1px solid rgba(225,6,0,.4);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  color: #eaeaea;
+}
+.modelo-preseleccion strong { color: #fff; }
+.modelo-preseleccion .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rojo); flex: 0 0 auto; box-shadow: 0 0 0 4px rgba(225,6,0,.2); }
