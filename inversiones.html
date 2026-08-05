@@ -50,7 +50,7 @@
   }
 </style>
 </head>
-<body>
+<body class="dark-page">
 
 <header>
   <div class="nav-wrap">
@@ -59,7 +59,7 @@
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="motos.html">Catálogo de motos</a></li>
-        <li><a href="#inversiones">Modelos</a></li>
+        <li><a href="#inversiones">Modelos de inversión</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
         <li><a href="#contacto-inversion" class="btn-credito-nav">Quiero invertir</a></li>
       </ul>
@@ -71,7 +71,7 @@
 <section class="hero">
   <span class="hero-kicker">Respaldado por operación real y estructura legal</span>
   <h1>RiderMex <span>Inversiones</span></h1>
-  <p>Haz crecer tu capital junto con el crecimiento de una empresa con 4 agencias activas, una quinta próximamente y un modelo respaldado por contratos formales, fideicomiso y notario público.</p>
+  <p>Haz crecer tu capital junto con el crecimiento de una empresa con 5 agencias activas y un modelo de inversión respaldado por contratos formales, fideicomiso y notario público.</p>
   <a href="#contacto-inversion" class="hero-cta">Quiero invertir</a>
 </section>
 
@@ -79,8 +79,8 @@
 <div class="trust-bar reveal">
   <div class="trust-inner">
     <div class="trust-stat">
-      <div class="num">4</div>
-      <div class="label">Agencias activas · 1 próximamente</div>
+      <div class="num">5</div>
+      <div class="label">Agencias activas</div>
     </div>
     <div class="trust-stat">
       <div class="num">9</div>
@@ -100,8 +100,8 @@
 <!-- ===================== MODELOS ===================== -->
 <section id="inversiones" class="inversiones-bg reveal">
   <span class="eyebrow">Planes de inversión</span>
-  <h2 class="section-title">Nuestros <span>Modelos</span></h2>
-  <p class="section-subtitle" style="color:#aaa;">Elige el plan que se ajuste a tu objetivo y horizonte de inversión</p>
+  <h2 class="section-title">Nuestros <span>Modelos de inversión</span></h2>
+  <p class="section-subtitle" style="color:#aaa;">Elige el modelo de inversión que se ajuste a tu objetivo y horizonte</p>
 
   <div class="trust-badges">
     <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg>Contrato formal por escrito</span>
@@ -113,7 +113,7 @@
        de esta página). Para editar montos, rendimientos o meses, cambia ese array. -->
   <div class="grid-inversion" id="grid-inversion"></div>
 
-  <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo. La información presentada es de carácter informativo.</p>
+  <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo de inversión. La información presentada es de carácter informativo.</p>
 
   <!-- ═══ CTA · CALCULADORA DE INVERSIÓN ═══
        El HTML de la calculadora vive en /calculadora-inversion/index.html (dentro del repo).
@@ -123,7 +123,7 @@
       <div class="calc-cta-text">
         <span class="calc-cta-eyebrow">Herramienta</span>
         <h3>Calcula el retorno de tu inversión aquí</h3>
-        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo podría hacer sentido para ti.</p>
+        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo de inversión podría hacer sentido para ti.</p>
       </div>
       <a class="calc-cta-btn" href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Calcular mi retorno →</a>
     </div>
@@ -183,6 +183,15 @@
     <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Reemplaza href="#" cuando esté lista. -->
     <a href="#">Aviso de privacidad</a>
   </p>
+  <p style="margin-top:14px;"><strong>RiderMex:</strong>
+    <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a> ·
+    <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+  </p>
+  <p style="margin-top:6px;"><strong>RiderMex Inversiones:</strong>
+    <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a> ·
+    <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
+  </p>
   <p style="margin-top:14px;">© 2026 RiderMex Inversiones · <a href="index.html">Volver al inicio</a></p>
 </footer>
 
@@ -196,7 +205,7 @@
 <script>
   const INVESTMENT_MODELS = [
     {
-      slug: 'modelo-1', n: '1', nombre: 'Modelo 1',
+      slug: 'modelo-1', n: '1', nombre: 'Modelo de inversión 1',
       rendimiento: '20% – 22%', nota: 'rendimiento estimado',
       resumen: 'Inversión única, sin aportaciones mensuales.',
       detalles: [
@@ -207,7 +216,7 @@
       destacado: false, badge: ''
     },
     {
-      slug: 'modelo-2', n: '2', nombre: 'Modelo 2',
+      slug: 'modelo-2', n: '2', nombre: 'Modelo de inversión 2',
       rendimiento: '20% – 22%', nota: 'rendimiento estimado',
       resumen: 'Entrada accesible con aportaciones mensuales.',
       detalles: [
@@ -219,14 +228,14 @@
       destacado: false, badge: ''
     },
     {
-      slug: 'modelo-3', n: '3', nombre: 'Modelo 3',
+      slug: 'modelo-3', n: '3', nombre: 'Modelo de inversión 3',
       rendimiento: '12% – 15%', nota: 'rendimiento estimado',
       resumen: 'Inversión única con rendimientos desde el primer mes.',
       detalles: [
         'Inversión única de $120,000 MXN',
         'Recibes rendimiento desde el primer mes',
         'Rendimiento estimado entre 12% y 15%',
-        'Sujeto a las condiciones operativas del modelo'
+        'Sujeto a las condiciones operativas del modelo de inversión'
       ],
       destacado: true, badge: 'Rinde desde el mes 1'
     }
@@ -247,7 +256,7 @@
         <div class="modelo-rend-nota">${m.nota}</div>
         <p>${m.resumen}</p>
         <ul>${m.detalles.map(d => `<li>${d}</li>`).join('')}</ul>
-        <span class="modelo-cta">Quiero este modelo →</span>
+        <span class="modelo-cta">Quiero este modelo de inversión →</span>
       </div>
     `).join('');
     // re-activar animación de aparición si el observer ya corrió

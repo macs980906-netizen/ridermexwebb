@@ -672,7 +672,12 @@
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
     .footer-col a { text-decoration: none; transition: color .2s; }
     .footer-col a:hover { color: var(--blanco); }
-    .footer-social { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .footer-social { display: flex; gap: 1rem; margin-top: 0.35rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .footer-social-label {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem !important;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--rojo) !important;
+      margin-top: 0.9rem; font-weight: 700;
+    }
     .footer-bottom {
       max-width: 1180px; margin: 0 auto;
       padding: 1.25rem 2.5rem; border-top: 1px solid var(--gris3);
@@ -848,11 +853,35 @@
               drop-shadow(0 0 42px rgba(204,0,0,.6));
     }
 
+    /* ── Número fantasma: aprovecha el espacio vacío de la escena (izquierda) ── */
+    .journey-ghost {
+      position: absolute; z-index: 3; left: 4%; top: 8%;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem;
+      pointer-events: none; user-select: none;
+    }
+    .journey-ghost-num {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; line-height: 0.8;
+      font-size: clamp(7rem, 18vw, 17rem);
+      color: rgba(255,255,255,.06);
+      -webkit-text-stroke: 1.5px rgba(255,255,255,.10);
+      letter-spacing: -0.02em;
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+    }
+    .journey-ghost-env {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: clamp(0.85rem, 1.6vw, 1.1rem); letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(204,0,0,.55); margin-left: 0.5rem;
+    }
+    .journey-ghost-total {
+      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1rem, 2.2vw, 1.6rem);
+      color: rgba(255,255,255,.14); font-weight: 700; margin-left: 0.6rem; margin-top: -0.4rem;
+    }
+
     /* ── Panel de texto (glass oscuro → legible sobre fondo claro u oscuro) ── */
     .journey-panel {
       position: absolute; z-index: 5;
-      top: 11%; right: 4%;
-      width: min(42%, 560px);
+      top: 10%; right: 4%;
+      width: min(44%, 600px);
     }
     .journey-step {
       position: absolute; inset: 0;
@@ -954,6 +983,8 @@
       .jroad-desktop { display: none; }
       .jroad-mobile { display: block; }
       .journey-panel { top: auto; bottom: 8%; right: auto; left: 50%; transform: translateX(-50%); width: min(90%, 460px); }
+      .journey-ghost { left: 5%; top: 4%; }
+      .journey-ghost-num { font-size: clamp(4.5rem, 22vw, 8rem); }
       .journey-card { padding: 1.4rem 1.4rem 1.6rem; }
       .journey-title { font-size: clamp(1.55rem, 7vw, 2.2rem); }
       .journey-desc { font-size: .9rem; margin-bottom: 1.4rem; }
@@ -1038,10 +1069,10 @@
         <p class="hub-tag hub-tag--inv">Para inversores</p>
         <h2 class="hub-title">Construye<br/>otro camino</h2>
         <p class="hub-desc">
-          Entra a un modelo con capital en movimiento, rendimientos estimados y respaldo de operación real, agencias activas y fideicomisos.
+          Entra a un modelo de inversión con capital en movimiento, rendimientos estimados y respaldo de operación real, agencias activas y fideicomisos.
         </p>
       </div>
-      <span class="hub-cta hub-cta--inv">Ver modelos →</span>
+      <span class="hub-cta hub-cta--inv">Ver modelos de inversión →</span>
     </a>
 
   </section>
@@ -1053,8 +1084,8 @@
   </div>
   <div class="stats reveal">
     <div class="stat">
-      <div class="stat-num">4</div>
-      <div class="stat-label">Agencias activas · 1 próximamente</div>
+      <div class="stat-num">5</div>
+      <div class="stat-label">Agencias activas</div>
     </div>
     <div class="stat">
       <div class="stat-num">9</div>
@@ -1175,6 +1206,13 @@
              alt="Logo de RiderMex avanzando por el camino del proceso">
       </div>
 
+      <!-- ═══ NÚMERO FANTASMA (usa el espacio vacío de la escena; lo actualiza el JS) ═══ -->
+      <div class="journey-ghost" aria-hidden="true">
+        <span class="journey-ghost-env" id="jGhostEnv">BOSQUE</span>
+        <span class="journey-ghost-num" id="jGhostNum">01</span>
+        <span class="journey-ghost-total" id="jGhostTotal">/ 05 · Tu camino</span>
+      </div>
+
       <!-- ═══ PANEL DE TEXTO (5 pasos; el contenido lo llena journeySteps) ═══ -->
       <div class="journey-panel">
         <div class="journey-step is-active" data-step="0">
@@ -1268,10 +1306,16 @@
       <div class="footer-col footer-brand">
         <img src="assets/img/logo-white.png" alt="RiderMex">
         <p>Motos, movilidad e inversión en un solo lugar. Financiamos tu libertad.</p>
+        <p class="footer-social-label">RiderMex</p>
         <div class="footer-social">
-          <a href="https://facebook.com/ridermexof" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <p class="footer-social-label">RiderMex Inversiones</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
       <div class="footer-col">
@@ -1406,8 +1450,8 @@
         eyebrow: 'LISTO PARA ARRANCAR',
         title: 'TU MOTO,<br/><em>LISTA PARA</em><br/>ARRANCAR',
         description: 'Cerramos el proceso contigo y te acompañamos hasta que estés listo para subirte a tu nueva moto.',
-        // CTA COMPRA — cambia el href por tu WhatsApp o formulario:
-        cta: { label: 'QUIERO EMPEZAR MI PROCESO', href: 'https://wa.me/525599900619?text=Hola%2C%20quiero%20empezar%20mi%20proceso%20con%20RiderMex' }
+        // CTA COMPRA — WhatsApp de compradores RiderMex:
+        cta: { label: 'QUIERO EMPEZAR MI PROCESO', href: 'https://wa.me/5215510000645?text=Hola%2C%20quiero%20empezar%20mi%20proceso%20con%20RiderMex' }
       },
       {
         id: 'investment-path', step: 'PASO 05 / 05', environment: 'Ruta inversión',
@@ -1539,10 +1583,13 @@
           currentStep = stepIdx;
           steps[currentStep] && steps[currentStep].classList.add('is-active');
           dots.forEach((d, i) => { d.classList.toggle('done', i < currentStep); d.classList.toggle('active', i === currentStep); });
-          if (statusText) {
-            const env = journeySteps[currentStep] && journeySteps[currentStep].environment;
-            statusText.textContent = (env || 'EN RUTA').toUpperCase();
-          }
+          const env = journeySteps[currentStep] && journeySteps[currentStep].environment;
+          if (statusText) statusText.textContent = (env || 'EN RUTA').toUpperCase();
+          // Número fantasma en el espacio vacío de la escena
+          const gNum = document.getElementById('jGhostNum');
+          const gEnv = document.getElementById('jGhostEnv');
+          if (gNum) gNum.textContent = String(currentStep + 1).padStart(2, '0');
+          if (gEnv) gEnv.textContent = (env || 'En ruta').toUpperCase();
         }
 
         // ── Glow final + riel de progreso ──

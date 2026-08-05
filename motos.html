@@ -108,8 +108,8 @@
     </div>
     <div class="pilar-card">
       <div class="pilar-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></div>
-      <h3>4 agencias cerca de ti</h3>
-      <p>Naucalpan, CEDA, Coapa y Chalco — con una 5ª agencia próximamente.</p>
+      <h3>5 agencias cerca de ti</h3>
+      <p>Naucalpan, CEDA, Coapa, Chalco y nuestra 5ª sucursal.</p>
     </div>
   </div>
 </section>
@@ -191,21 +191,11 @@
   <p class="section-subtitle">Visítanos en cualquiera de nuestras sucursales</p>
 
   <!-- ═══ AGENCIAS ═══ Ubicaciones reales de Google Maps (abren en nueva pestaña).
-       Direcciones: se derivaron del nombre de lugar + coordenadas de cada liga
-       corta de Google Maps (Rider Mex Gustavo Baz, Central de Abastos, Coapa,
-       Chalco). Naucalpan tiene dirección completa confirmada; para CEDA, Coapa y
-       Chalco se muestra la localidad/zona confirmada y el número/calle exacto
-       queda marcado "por confirmar" (Google no expone la calle en la liga corta).
-       ▸ PENDIENTE: confirmar calle y número exactos de CEDA, Coapa y Chalco.
+       Direcciones y horarios confirmados para Naucalpan, CEDA, Coapa y Chalco.
+       ▸ PENDIENTE: falta la dirección / liga de Google Maps / horario de la 5ª
+         sucursal (marcada abajo como "por confirmar").
        Estructura preparada para el tour 360: cuando exista la URL, sustituye el
-       <span> "Tour 360 · Próximamente" por un <a> con target="_blank".
-       Datos de referencia:
-         const agencies = [
-           { name: "Naucalpan",              googleMapsUrl: "https://maps.app.goo.gl/8JzPoomq7miDJgpb6", tour360Url: "" },
-           { name: "CEDA / Central de Abastos", googleMapsUrl: "https://maps.app.goo.gl/184gp5qYb4c3xvca6", tour360Url: "" },
-           { name: "Coapa",                  googleMapsUrl: "https://maps.app.goo.gl/jmXYJPeA9UENghr6A", tour360Url: "" },
-           { name: "Chalco",                 googleMapsUrl: "https://maps.app.goo.gl/oTFbM1T9N3GxbDin8", tour360Url: "" },
-         ] -->
+       <span> "Tour 360 · Próximamente" por un <a> con target="_blank". -->
   <div class="grid-agencias">
 
     <div class="agencia-card">
@@ -221,7 +211,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex CEDA / Central de Abasto</h3>
-      <p><strong>Dirección:</strong> Central de Abasto, Iztapalapa, Ciudad de México <em>(calle y número por confirmar)</em></p>
+      <p><strong>Dirección:</strong> Canal de Tezontle 1500, Central de Abasto, Iztapalapa, 09040 Ciudad de México, CDMX</p>
+      <p><strong>Horario:</strong> Lun–Dom 9:30–20:00</p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
@@ -231,7 +222,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex Coapa</h3>
-      <p><strong>Dirección:</strong> Coapa, Coyoacán, Ciudad de México <em>(calle y número por confirmar)</em></p>
+      <p><strong>Dirección:</strong> Calz. de Tlalpan 3604, Huipulco, Tlalpan, 14370 Ciudad de México, CDMX</p>
+      <p><strong>Horario:</strong> Lun–Vie 10:00–19:00, Sáb 10:00–16:00, Dom cerrado</p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
@@ -241,7 +233,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex Chalco</h3>
-      <p><strong>Dirección:</strong> Chalco de Díaz Covarrubias, Estado de México <em>(calle y número por confirmar)</em></p>
+      <p><strong>Dirección:</strong> Francisco Javier Mina 13, Chalco Centro, 56600 Chalco de Díaz Covarrubias, Méx.</p>
+      <p><strong>Horario:</strong> Lun–Vie 10:00–19:00, Sáb 10:00–14:00, Dom cerrado</p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
@@ -249,9 +242,12 @@
       </div>
     </div>
 
-    <div class="agencia-card proxima">
-      <h3>5ª agencia <span class="badge-proxima">Próxima apertura</span></h3>
-      <p>Próximamente anunciaremos la ubicación de nuestra quinta agencia.</p>
+    <!-- 5ª SUCURSAL — ya activa. PENDIENTE: dirección, liga de Google Maps y horario. -->
+    <div class="agencia-card">
+      <h3>RiderMex · 5ª sucursal</h3>
+      <p><strong>Dirección:</strong> <em>Por confirmar</em></p>
+      <p>Consulta la ubicación más cercana con tu asesor.</p>
+      <p><strong>Tel:</strong> 55 1000 0680</p>
     </div>
 
   </div>
@@ -335,10 +331,14 @@
   <!-- Sucursales: en lugar de una sola dirección, llevamos a la sección de agencias. -->
   <p><a href="#agencias" class="footer-sucursales-link">📍 Consulta nuestras sucursales</a></p>
   <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
-  <p style="margin-top:14px;">
-    <a href="https://facebook.com/ridermexof" target="_blank" rel="noopener">Facebook</a> ·
-    <a href="https://instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
-    <a href="https://tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+  <p style="margin-top:14px;"><strong>RiderMex:</strong>
+    <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a> ·
+    <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+  </p>
+  <p style="margin-top:6px;"><strong>RiderMex Inversiones:</strong>
+    <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a> ·
+    <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
   </p>
   <p style="margin-top:14px;">© 2026 RiderMex — Financiamos tu libertad · <a href="index.html">Volver al inicio</a></p>
 </footer>

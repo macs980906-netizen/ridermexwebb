@@ -5322,8 +5322,13 @@
     "category": "Scooter",
     "shortDescription": "Scooter · 150 cc",
     "description": "Scooter utilitario con enfoque urbano y diseño deportivo.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/coyote-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/coyote-1.jpg",
+      "assets/img/motos/catalogo/carabela/coyote-2.jpg",
+      "assets/img/motos/catalogo/carabela/coyote-3.jpg",
+      "assets/img/motos/catalogo/carabela/coyote-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5400,8 +5405,13 @@
     "category": "Scooter",
     "shortDescription": "Scooter · 175 cc",
     "description": "Scooter de mayor cilindrada con enfoque de movilidad y confort.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/venom175-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/venom175-1.jpg",
+      "assets/img/motos/catalogo/carabela/venom175-2.jpg",
+      "assets/img/motos/catalogo/carabela/venom175-3.jpg",
+      "assets/img/motos/catalogo/carabela/venom175-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5470,8 +5480,13 @@
     "category": "Utilitaria",
     "shortDescription": "Utilitaria · 150 cc",
     "description": "Ligera y rápida, equipada con parrilla de carga.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/kronos-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/kronos-1.jpg",
+      "assets/img/motos/catalogo/carabela/kronos-2.jpg",
+      "assets/img/motos/catalogo/carabela/kronos-3.jpg",
+      "assets/img/motos/catalogo/carabela/kronos-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5548,8 +5563,13 @@
     "category": "Utilitaria",
     "shortDescription": "Utilitaria · 150 cc",
     "description": "Moto utilitaria con parrilla de carga y enfoque de trabajo/traslado.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/bat150-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/bat150-1.jpg",
+      "assets/img/motos/catalogo/carabela/bat150-2.jpg",
+      "assets/img/motos/catalogo/carabela/bat150-3.jpg",
+      "assets/img/motos/catalogo/carabela/bat150-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5590,8 +5610,13 @@
     "category": "Semiautomática",
     "shortDescription": "Semiautomática · 110 cc",
     "description": "Alta autonomía y conducción cómoda para ciudad.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/hunter110-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/hunter110-1.jpg",
+      "assets/img/motos/catalogo/carabela/hunter110-2.jpg",
+      "assets/img/motos/catalogo/carabela/hunter110-3.jpg",
+      "assets/img/motos/catalogo/carabela/hunter110-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5668,8 +5693,13 @@
     "category": "Crucero",
     "shortDescription": "Crucero · 200 cc",
     "description": "Cruiser con postura relajada y enfoque de paseo.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/fishbone-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/fishbone-1.jpg",
+      "assets/img/motos/catalogo/carabela/fishbone-2.jpg",
+      "assets/img/motos/catalogo/carabela/fishbone-3.jpg",
+      "assets/img/motos/catalogo/carabela/fishbone-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5710,8 +5740,13 @@
     "category": "Street",
     "shortDescription": "Street · 200 cc",
     "description": "Street con iluminación LED/DRL y tablero digital.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/kronos200-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/kronos200-1.jpg",
+      "assets/img/motos/catalogo/carabela/kronos200-2.jpg",
+      "assets/img/motos/catalogo/carabela/kronos200-3.jpg",
+      "assets/img/motos/catalogo/carabela/kronos200-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5788,8 +5823,13 @@
     "category": "Street",
     "shortDescription": "Street · 250 cc",
     "description": "Street con freno ABS y enfoque deportivo.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/r250z-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/r250z-1.jpg",
+      "assets/img/motos/catalogo/carabela/r250z-2.jpg",
+      "assets/img/motos/catalogo/carabela/r250z-3.jpg",
+      "assets/img/motos/catalogo/carabela/r250z-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5838,8 +5878,13 @@
     "category": "Street",
     "shortDescription": "Street · 300 cc",
     "description": "Street de enfoque deportivo; las fotos siguen la línea de referencia enviada.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/r300z4v-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/r300z4v-1.jpg",
+      "assets/img/motos/catalogo/carabela/r300z4v-2.jpg",
+      "assets/img/motos/catalogo/carabela/r300z4v-3.jpg",
+      "assets/img/motos/catalogo/carabela/r300z4v-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5888,8 +5933,13 @@
     "category": "Todo terreno / Kart",
     "shortDescription": "Todo terreno / Kart · 98 cc",
     "description": "Kart recreativo. Fuente oficial disponible con pocas fotos completas.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/atlas98-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/atlas98-1.jpg",
+      "assets/img/motos/catalogo/carabela/atlas98-2.jpg",
+      "assets/img/motos/catalogo/carabela/atlas98-3.jpg",
+      "assets/img/motos/catalogo/carabela/atlas98-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -5958,8 +6008,13 @@
     "category": "Todo terreno",
     "shortDescription": "Todo terreno · 110 cc",
     "description": "Mini enduro orientada a usuarios jóvenes.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/arenapro-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/arenapro-1.jpg",
+      "assets/img/motos/catalogo/carabela/arenapro-2.jpg",
+      "assets/img/motos/catalogo/carabela/arenapro-3.jpg",
+      "assets/img/motos/catalogo/carabela/arenapro-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -6036,8 +6091,13 @@
     "category": "Todo terreno",
     "shortDescription": "Todo terreno · 249 cc",
     "description": "Doble propósito / adventure con orientación de viaje y ruta.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/routersonora-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/routersonora-1.jpg",
+      "assets/img/motos/catalogo/carabela/routersonora-2.jpg",
+      "assets/img/motos/catalogo/carabela/routersonora-3.jpg",
+      "assets/img/motos/catalogo/carabela/routersonora-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -6078,8 +6138,13 @@
     "category": "Todo terreno",
     "shortDescription": "Todo terreno · 110 cc",
     "description": "Mini moto off-road para uso recreativo.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/dirt3-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/dirt3-1.jpg",
+      "assets/img/motos/catalogo/carabela/dirt3-2.jpg",
+      "assets/img/motos/catalogo/carabela/dirt3-3.jpg",
+      "assets/img/motos/catalogo/carabela/dirt3-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -6112,8 +6177,13 @@
     "category": "Todo terreno",
     "shortDescription": "Todo terreno · 320 cc",
     "description": "Dual sport / adventure con crashbar y DRL LED.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/dakota320r-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/dakota320r-1.jpg",
+      "assets/img/motos/catalogo/carabela/dakota320r-2.jpg",
+      "assets/img/motos/catalogo/carabela/dakota320r-3.jpg",
+      "assets/img/motos/catalogo/carabela/dakota320r-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -6190,8 +6260,13 @@
     "category": "ATV",
     "shortDescription": "ATV · 150 cc",
     "description": "ATV con parrillas de carga y enfoque recreativo / transporte.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/hills150-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/hills150-1.jpg",
+      "assets/img/motos/catalogo/carabela/hills150-2.jpg",
+      "assets/img/motos/catalogo/carabela/hills150-3.jpg",
+      "assets/img/motos/catalogo/carabela/hills150-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -6268,8 +6343,13 @@
     "category": "ATV",
     "shortDescription": "ATV · 200 cc",
     "description": "ATV deportiva; la fuente oficial ofrece pocas fotos completas.",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/carabela/voodoo-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/carabela/voodoo-1.jpg",
+      "assets/img/motos/catalogo/carabela/voodoo-2.jpg",
+      "assets/img/motos/catalogo/carabela/voodoo-3.jpg",
+      "assets/img/motos/catalogo/carabela/voodoo-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -7929,10 +8009,8 @@
     "category": "Motocarro",
     "shortDescription": "Motocarro · 200 c.c.",
     "description": "",
-    "mainImage": "https://www.rydermx.com/web/image/product.template/104408/image_1920",
-    "gallery": [
-      "https://www.rydermx.com/web/image/product.template/104408/image_1920"
-    ],
+    "mainImage": "",
+    "gallery": [],
     "highlights": [
       {
         "label": "Categoría",
@@ -8880,8 +8958,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/nk250low-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/nk250low-1.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250low-2.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250low-3.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250low-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9027,8 +9110,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/nk250high-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/nk250high-1.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250high-2.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250high-3.jpg",
+      "assets/img/motos/catalogo/cfmoto/nk250high-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9174,8 +9262,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sr250low-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sr250low-1.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250low-2.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250low-3.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250low-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9321,8 +9414,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sr250high-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sr250high-1.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250high-2.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250high-3.jpg",
+      "assets/img/motos/catalogo/cfmoto/sr250high-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9468,8 +9566,13 @@
     "category": "",
     "shortDescription": "229 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/230dual-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/230dual-1.jpg",
+      "assets/img/motos/catalogo/cfmoto/230dual-2.jpg",
+      "assets/img/motos/catalogo/cfmoto/230dual-3.jpg",
+      "assets/img/motos/catalogo/cfmoto/230dual-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9615,8 +9718,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/nk250fun-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/nk250fun-1.png",
+      "assets/img/motos/catalogo/cfmoto/nk250fun-2.png",
+      "assets/img/motos/catalogo/cfmoto/nk250fun-3.png",
+      "assets/img/motos/catalogo/cfmoto/nk250fun-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9694,8 +9802,13 @@
     "category": "",
     "shortDescription": "292 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/nk300-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/nk300-1.png",
+      "assets/img/motos/catalogo/cfmoto/nk300-2.png",
+      "assets/img/motos/catalogo/cfmoto/nk300-3.png",
+      "assets/img/motos/catalogo/cfmoto/nk300-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9773,8 +9886,13 @@
     "category": "",
     "shortDescription": "449 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/nk450-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/nk450-1.png",
+      "assets/img/motos/catalogo/cfmoto/nk450-2.png",
+      "assets/img/motos/catalogo/cfmoto/nk450-3.png",
+      "assets/img/motos/catalogo/cfmoto/nk450-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9840,8 +9958,13 @@
     "category": "",
     "shortDescription": "249 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sr250fun-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sr250fun-1.png",
+      "assets/img/motos/catalogo/cfmoto/sr250fun-2.png",
+      "assets/img/motos/catalogo/cfmoto/sr250fun-3.png",
+      "assets/img/motos/catalogo/cfmoto/sr250fun-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -9923,8 +10046,13 @@
     "category": "",
     "shortDescription": "298 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sr300sport-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sr300sport-1.png",
+      "assets/img/motos/catalogo/cfmoto/sr300sport-2.png",
+      "assets/img/motos/catalogo/cfmoto/sr300sport-3.png",
+      "assets/img/motos/catalogo/cfmoto/sr300sport-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -10006,8 +10134,13 @@
     "category": "",
     "shortDescription": "449 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sr450-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sr450-1.png",
+      "assets/img/motos/catalogo/cfmoto/sr450-2.png",
+      "assets/img/motos/catalogo/cfmoto/sr450-3.png",
+      "assets/img/motos/catalogo/cfmoto/sr450-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -10093,8 +10226,13 @@
     "category": "",
     "shortDescription": "449.5 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/mt450-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/mt450-1.png",
+      "assets/img/motos/catalogo/cfmoto/mt450-2.png",
+      "assets/img/motos/catalogo/cfmoto/mt450-3.png",
+      "assets/img/motos/catalogo/cfmoto/mt450-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -10172,8 +10310,13 @@
     "category": "",
     "shortDescription": "126 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/papioxoracer-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/papioxoracer-1.png",
+      "assets/img/motos/catalogo/cfmoto/papioxoracer-2.png",
+      "assets/img/motos/catalogo/cfmoto/papioxoracer-3.png",
+      "assets/img/motos/catalogo/cfmoto/papioxoracer-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -10243,8 +10386,13 @@
     "category": "",
     "shortDescription": "149 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/cfmoto/sc150-1.png",
+    "gallery": [
+      "assets/img/motos/catalogo/cfmoto/sc150-1.png",
+      "assets/img/motos/catalogo/cfmoto/sc150-2.png",
+      "assets/img/motos/catalogo/cfmoto/sc150-3.png",
+      "assets/img/motos/catalogo/cfmoto/sc150-4.png"
+    ],
     "highlights": [
       {
         "label": "Cilindrada",
@@ -10318,8 +10466,13 @@
     "category": "Scooter",
     "shortDescription": "Scooter",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/matrix-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/matrix-1.jpg",
+      "assets/img/motos/catalogo/um/matrix-2.jpg",
+      "assets/img/motos/catalogo/um/matrix-3.jpg",
+      "assets/img/motos/catalogo/um/matrix-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10344,8 +10497,13 @@
     "category": "Scooter",
     "shortDescription": "Scooter · 149.6 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/xpeed-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/xpeed-1.jpg",
+      "assets/img/motos/catalogo/um/xpeed-2.jpg",
+      "assets/img/motos/catalogo/um/xpeed-3.jpg",
+      "assets/img/motos/catalogo/um/xpeed-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10402,8 +10560,13 @@
     "category": "Sport",
     "shortDescription": "Sport · 223 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/xtreetrs2504v-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/xtreetrs2504v-1.jpg",
+      "assets/img/motos/catalogo/um/xtreetrs2504v-2.jpg",
+      "assets/img/motos/catalogo/um/xtreetrs2504v-3.jpg",
+      "assets/img/motos/catalogo/um/xtreetrs2504v-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10460,8 +10623,13 @@
     "category": "Doble propósito / Adventure",
     "shortDescription": "Doble propósito / Adventure · 250 cc (referencia del modelo)",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/dsrrally2504v-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/dsrrally2504v-1.jpg",
+      "assets/img/motos/catalogo/um/dsrrally2504v-2.jpg",
+      "assets/img/motos/catalogo/um/dsrrally2504v-3.jpg",
+      "assets/img/motos/catalogo/um/dsrrally2504v-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10494,8 +10662,13 @@
     "category": "Cruiser",
     "shortDescription": "Cruiser · 279.5 cc",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/renegadesport300s-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/renegadesport300s-1.jpg",
+      "assets/img/motos/catalogo/um/renegadesport300s-2.jpg",
+      "assets/img/motos/catalogo/um/renegadesport300s-3.jpg",
+      "assets/img/motos/catalogo/um/renegadesport300s-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10552,8 +10725,13 @@
     "category": "Cruiser clásica",
     "shortDescription": "Cruiser clásica",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/renegadeclassiclx-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/renegadeclassiclx-1.jpg",
+      "assets/img/motos/catalogo/um/renegadeclassiclx-2.jpg",
+      "assets/img/motos/catalogo/um/renegadeclassiclx-3.jpg",
+      "assets/img/motos/catalogo/um/renegadeclassiclx-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10578,8 +10756,13 @@
     "category": "Cruiser",
     "shortDescription": "Cruiser · 300 cc (referencia del modelo)",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/catalogo/um/renegadest300-1.jpg",
+    "gallery": [
+      "assets/img/motos/catalogo/um/renegadest300-1.jpg",
+      "assets/img/motos/catalogo/um/renegadest300-2.jpg",
+      "assets/img/motos/catalogo/um/renegadest300-3.jpg",
+      "assets/img/motos/catalogo/um/renegadest300-4.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -10604,7 +10787,6 @@
     "available": true
   }
 ];
-
 
   // ── Derivación de marcas a partir de las motos ─────────────────────────
   function buildBrands(motos) {

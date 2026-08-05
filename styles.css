@@ -20,20 +20,24 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Fondo oscuro en la raíz: evita bordes/laterales blancos en el tema oscuro
-   (hero de motos/inversiones, catálogo) y en el overscroll. */
-html { scroll-behavior: smooth; background: var(--negro); }
+html { scroll-behavior: smooth; background: var(--blanco); overflow-x: hidden; }
 
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: var(--negro);
+  background: var(--blanco);
   color: var(--negro);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* Evita scroll horizontal y los "bordes blancos" laterales que provoca
+     cualquier desbordamiento (hero de motos/inversiones, catálogo). */
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
 }
+
+/* Páginas de tema oscuro (inversiones): fondo oscuro de raíz para que no se
+   asomen laterales blancos alrededor de las secciones oscuras ni en overscroll. */
+body.dark-page, html:has(body.dark-page) { background: var(--negro); }
 
 h1, h2, h3, .font-display {
   font-family: 'Poppins', 'Inter', sans-serif;
@@ -129,11 +133,14 @@ nav a:hover { color: var(--blanco); }
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(225,6,0,.18), transparent 60%),
     linear-gradient(180deg, var(--negro) 0%, var(--negro2) 100%);
   color: var(--blanco);
-  padding: 110px 24px 90px;
+  /* Header compacto: el header es sticky (ya ocupa su espacio), así que este
+     padding es aire puro → se reduce para que el hero no sobre tanto espacio. */
+  padding: 60px 24px 56px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 768px) { .hero { padding: 44px 20px 44px; } }
 
 .hero::before {
   content: '';
@@ -1408,6 +1415,11 @@ body::before {
 .hero, .steps-section, .inversiones-bg, .showcase, .paths-section, .gateway-panel, .gateway-split {
   isolation: isolate;
 }
+
+/* Recorta el sangrado horizontal de los orbes decorativos (right:-120px) sin
+   romper el position:sticky del showcase (clip no crea contenedor de scroll).
+   position:relative contiene el orbe (::after) dentro de la sección. */
+.steps-section, .showcase, .paths-section, .inversiones-bg { position: relative; overflow-x: clip; }
 
 .hero::after, .steps-section::after, .inversiones-bg::after, .showcase::after, .paths-section::after {
   content: '';
