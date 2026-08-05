@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto – RiderMex</title>
+  <meta name="description" content="¿Ya decidiste qué necesitas? Elige tu camino: compra una moto o invierte con RiderMex." />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rojo:    #CC0000;
+      --rojo2:   #ff5a3c;
+      --negro:   #0A0A0A;
+      --gris1:   #141414;
+      --gris2:   #1E1E1E;
+      --gris3:   #2C2C2C;
+      --blanco:  #F5F5F5;
+      --verde:   #00C896;
+      --texto:   #AAAAAA;
+      --ease: cubic-bezier(.22,1,.36,1);
+    }
+
+    html { scroll-behavior: smooth; background: var(--negro); }
+
+    body {
+      background: var(--negro);
+      color: var(--blanco);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gris3);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 48px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--texto); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; position: relative;
+    }
+    .nav-links a.is-active { color: var(--blanco); }
+    .nav-links a:hover { color: var(--blanco); }
+    .nav-toggle {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav-toggle span { display: block; width: 100%; height: 2px; background: var(--blanco); border-radius: 2px; transition: transform .25s var(--ease), opacity .25s; }
+    .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ─── CONTACTO ─── */
+    .contacto {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .contacto::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(204,0,0,0.14) 0%, transparent 70%);
+    }
+    .contacto-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem;
+      letter-spacing: 0.3em; text-transform: uppercase; color: var(--rojo); margin-bottom: 1.1rem; font-weight: 700;
+    }
+    .contacto-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; text-transform: uppercase;
+      font-size: clamp(2.4rem, 6.5vw, 4.5rem); line-height: 0.95; margin-bottom: 1rem;
+    }
+    .contacto-title em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--rojo) 0%, var(--rojo2) 50%, var(--rojo) 100%);
+      background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; animation: shimmer 6s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+    .contacto-sub { color: var(--texto); max-width: 560px; margin: 0 auto 3rem; font-size: clamp(1rem, 2vw, 1.15rem); }
+
+    .contacto-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem;
+      width: 100%; max-width: 900px;
+    }
+    .contacto-card {
+      display: flex; flex-direction: column; align-items: flex-start;
+      text-align: left; padding: 2.5rem 2rem; border-radius: 14px;
+      border: 1px solid var(--gris3); position: relative; overflow: hidden;
+      text-decoration: none; color: inherit;
+      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .contacto-card:hover { transform: translateY(-6px); }
+    .contacto-card--moto {
+      background: radial-gradient(120% 100% at 0% 0%, rgba(204,0,0,.16), transparent 55%), linear-gradient(160deg, #1c1113 0%, var(--gris1) 60%, var(--negro) 100%);
+    }
+    .contacto-card--moto:hover { border-color: rgba(204,0,0,.5); box-shadow: 0 20px 50px rgba(204,0,0,.18); }
+    .contacto-card--inv {
+      background: radial-gradient(120% 100% at 100% 0%, rgba(0,200,150,.14), transparent 55%), linear-gradient(200deg, #0f1a17 0%, var(--gris1) 60%, var(--negro) 100%);
+    }
+    .contacto-card--inv:hover { border-color: rgba(0,200,150,.5); box-shadow: 0 20px 50px rgba(0,200,150,.15); }
+    .contacto-card::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+    .contacto-card--moto::after { background: linear-gradient(90deg, var(--rojo), var(--rojo2)); }
+    .contacto-card--inv::after { background: linear-gradient(90deg, var(--verde), #00e0a8); }
+
+    .contacto-card-tag {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .contacto-card--moto .contacto-card-tag { color: var(--rojo); }
+    .contacto-card--inv .contacto-card-tag { color: var(--verde); }
+    .contacto-card-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; text-transform: uppercase;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem); line-height: 1; margin-bottom: 1rem;
+    }
+    .contacto-card-desc { color: var(--texto); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+    .contacto-card-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 1.7rem; border-radius: 4px; margin-top: auto;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .contacto-card--moto .contacto-card-cta { background: var(--rojo); color: var(--blanco); box-shadow: 0 10px 26px rgba(204,0,0,.3); }
+    .contacto-card--inv .contacto-card-cta { background: var(--verde); color: var(--negro); box-shadow: 0 10px 26px rgba(0,200,150,.25); }
+
+    .contacto-directo { margin-top: 3rem; color: var(--texto); font-size: 0.9rem; }
+    .contacto-directo a { color: var(--blanco); text-decoration: none; font-weight: 600; }
+    .contacto-directo a:hover { color: var(--rojo); }
+
+    footer {
+      padding: 2rem 2.5rem; border-top: 1px solid var(--gris3);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; color: var(--gris3); flex-wrap: wrap; gap: 0.75rem;
+    }
+    footer a { color: var(--gris3); text-decoration: none; }
+    footer a:hover { color: var(--texto); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: 0;
+        background: rgba(10,10,10,.97); backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--gris3); padding: 10px 1.25rem 18px;
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { display: block; padding: 12px 0; width: 100%; }
+      .contacto-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
+    <ul class="nav-links">
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="motos.html#agencias">Agencias</a></li>
+      <li><a href="inversiones.html">Inversiones</a></li>
+      <li><a href="quienes-somos.html">Quiénes somos</a></li>
+      <li><a href="contacto.html" class="is-active">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- CONTACTO: decisión por intención -->
+  <main class="contacto">
+    <p class="contacto-eyebrow">Contacto RiderMex</p>
+    <h1 class="contacto-title">¿Ya decidiste <em>qué necesitas?</em></h1>
+    <p class="contacto-sub">Elige tu camino y te conectamos directo con el equipo correcto.</p>
+
+    <div class="contacto-grid">
+
+      <!-- OPCIÓN 1 · COMPRAR UNA MOTO -->
+      <!-- ═══ WHATSAPP DE COMPRA ═══
+           PENDIENTE: reemplaza el href="#" de abajo por la liga de WhatsApp
+           definitiva para compradores (formato: https://wa.me/52XXXXXXXXXX?text=...).
+           El botón ya está listo visualmente; solo falta la URL final. -->
+      <a class="contacto-card contacto-card--moto" href="#" data-wa-compra rel="noopener">
+        <span class="contacto-card-tag">Para compradores</span>
+        <span class="contacto-card-title">Comprar una moto</span>
+        <span class="contacto-card-desc">Escríbenos por WhatsApp y un asesor te ayuda a elegir tu moto, tu plan de pago y tu agencia más cercana.</span>
+        <span class="contacto-card-cta">Escribir por WhatsApp →</span>
+      </a>
+
+      <!-- OPCIÓN 2 · QUIERO INVERTIR → formulario/contacto de inversiones ya integrado -->
+      <a class="contacto-card contacto-card--inv" href="inversiones.html#contacto-inversion">
+        <span class="contacto-card-tag">Para inversores</span>
+        <span class="contacto-card-title">Quiero invertir</span>
+        <span class="contacto-card-desc">Conoce los modelos de inversión y déjanos tus datos: un asesor de RiderMex Inversiones te contactará.</span>
+        <span class="contacto-card-cta">Ir a inversiones →</span>
+      </a>
+
+    </div>
+
+    <p class="contacto-directo">
+      ¿Prefieres llamar? <a href="tel:5510000680">55 1000 0680</a> · <a href="mailto:info@ridermex.com">info@ridermex.com</a>
+    </p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 RiderMex · Financiamos tu libertad</span>
+    <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Reemplaza href="#" cuando esté lista. -->
+    <span><a href="#">Aviso de privacidad</a> · <a href="index.html">Inicio</a></span>
+  </footer>
+
+  <script>
+    // Menú hamburguesa (mobile)
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('is-active');
+        navLinks.classList.toggle('is-open');
+      });
+    }
+
+    // WhatsApp de compra: si el href sigue en "#" (placeholder), evita el salto
+    // y avisa en consola dónde poner la URL. Al reemplazar el href, funciona solo.
+    const waCompra = document.querySelector('[data-wa-compra]');
+    if (waCompra && waCompra.getAttribute('href') === '#') {
+      waCompra.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.warn('[RiderMex] Falta la URL de WhatsApp de compra en contacto.html (atributo href del enlace [data-wa-compra]).');
+      });
+    }
+  </script>
+
+</body>
+</html>

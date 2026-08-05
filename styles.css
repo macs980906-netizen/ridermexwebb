@@ -20,14 +20,19 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* Fondo oscuro en la raíz: evita bordes/laterales blancos en el tema oscuro
+   (hero de motos/inversiones, catálogo) y en el overscroll. */
+html { scroll-behavior: smooth; background: var(--negro); }
 
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: var(--blanco);
+  background: var(--negro);
   color: var(--negro);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 h1, h2, h3, .font-display {
@@ -69,7 +74,7 @@ header {
 }
 
 .logo { flex-shrink: 0; display: flex; align-items: center; }
-.logo img { height: 40px; width: auto; max-width: none; display: block; }
+.logo img { height: 50px; width: auto; max-width: none; display: block; }
 
 nav ul {
   list-style: none;
@@ -100,11 +105,15 @@ nav a:not(.btn-credito-nav):hover::after { width: 100%; }
 nav a:hover { color: var(--blanco); }
 
 .btn-credito-nav {
+  display: inline-block;            /* necesario para que overflow:hidden recorte
+                                       el barrido de brillo y no quede un "shard"
+                                       gris pegado a la izquierda (sobre el tel). */
   background: var(--rojo);
   color: var(--blanco) !important;
   padding: 11px 22px;
   border-radius: 8px;
   font-weight: 600;
+  line-height: 1;
   box-shadow: 0 6px 18px rgba(225,6,0,.35);
   transition: transform .2s var(--ease), box-shadow .2s;
 }
@@ -317,11 +326,15 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: .25;
+  opacity: .4;
   transition: opacity .4s;
 }
 
 .showcase-frame.is-active { opacity: 1; }
+/* Texto del frame activo: más brillante y legible (no opaco ni difuminado). */
+.showcase-frame.is-active h3 { color: #ffffff; }
+.showcase-frame.is-active p { color: #e6e6e6; }
+.showcase-frame.is-active .showcase-price { color: #ffffff; }
 
 .showcase-frame .showcase-tag {
   color: var(--rojo);
@@ -340,7 +353,7 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
 }
 
 .showcase-frame p {
-  color: #aaa;
+  color: #cfcfcf;
   font-size: 16px;
   margin-bottom: 18px;
   max-width: 380px;
@@ -812,15 +825,26 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
   gap: 26px;
 }
 
+.grid-inversion { align-items: stretch; }
+
 .modelo-card {
   background: linear-gradient(160deg, #161616, #101010);
   border-radius: var(--radius);
-  padding: 36px 32px;
+  padding: 40px 32px 32px;
   text-align: center;
   border: 1px solid #262626;
   transition: border-color .25s, transform .25s var(--ease), box-shadow .25s;
   position: relative;
+  /* Layout de columna para alinear título, cuerpo y CTA entre tarjetas */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+/* La lista crece y empuja el CTA al fondo → todos los botones alineados */
+.modelo-card ul { flex: 1 1 auto; }
+.modelo-card .modelo-cta { align-self: center; margin-top: 22px; }
+/* Tarjeta destacada: más aire arriba para alojar el badge sin encimarse */
+.modelo-card.destacado { padding-top: 58px; }
 
 .modelo-card:hover {
   border-color: var(--rojo);
@@ -834,7 +858,9 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
 
 .modelo-badge {
   position: absolute;
-  top: -12px;
+  /* Dentro de la tarjeta (la card tiene overflow:hidden por el glow del cursor,
+     por eso el badge no puede sobresalir hacia arriba o se corta). */
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--dorado);
@@ -843,8 +869,13 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
   font-weight: 700;
   letter-spacing: .5px;
   text-transform: uppercase;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border-radius: 20px;
+  white-space: nowrap;
+  max-width: calc(100% - 28px);
+  z-index: 2;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
 }
 
 .modelo-letra {
@@ -970,10 +1001,27 @@ footer {
   border-top: 1px solid rgba(255,255,255,.06);
 }
 
-footer .logo img { height: 38px; margin: 0 auto 18px; }
+footer .logo img { height: 46px; margin: 0 auto 18px; }
 
 footer a { color: var(--blanco); transition: color .2s; }
 footer a:hover { color: var(--rojo); }
+
+/* Enlace "Consulta nuestras sucursales" (reemplaza la dirección única) */
+.footer-sucursales-link {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.footer-sucursales-link:hover {
+  color: #fff !important;
+  border-color: var(--rojo);
+  background: rgba(225,6,0,.12);
+}
 
 .whatsapp-float {
   position: fixed;
@@ -1390,15 +1438,18 @@ body::before {
 .hero-cta::before, .btn-credito-nav::before, .form-credito button::before {
   content: '';
   position: absolute;
-  top: 0; left: -60%;
+  top: 0; left: 0;
   width: 40%; height: 100%;
   background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
-  transform: skewX(-20deg);
-  transition: left .6s var(--ease);
+  /* Animar transform (compositor) en vez de `left` → barrido fluido, sin trabarse. */
+  transform: translateX(-180%) skewX(-20deg);
+  transition: transform .6s var(--ease);
+  will-change: transform;
+  pointer-events: none;
 }
 
 .hero-cta:hover::before, .btn-credito-nav:hover::before, .form-credito button:hover::before {
-  left: 130%;
+  transform: translateX(320%) skewX(-20deg);
 }
 
 /* CTA principal con pulso de glow */

@@ -135,7 +135,7 @@
         <div class="showcase-price">Pagos desde <span>$199 / semana*</span></div>
       </div>
 
-      <div class="showcase-frame" data-img="assets/img/motos/bajaj-dominar-400.webp" data-name="Bajaj Dominar 400 UG" data-price="Bajaj">
+      <div class="showcase-frame" data-img="https://images.ctfassets.net/8zlbnewncp6f/7gOgd7IxhELCRVvsDNi4Lh/918f6a7325dc74b0f7b15b82b206ad65/imagen_principal.jpg?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" data-name="Bajaj Dominar 400 UG" data-price="Bajaj">
         <span class="showcase-tag">Bajaj · Sport</span>
         <h3>Dominar 400 UG</h3>
         <p>Potencia y tecnología Bajaj para quien busca más de su moto.</p>
@@ -149,7 +149,7 @@
         <div class="showcase-price">Pagos desde <span>$199 / semana*</span></div>
       </div>
 
-      <div class="showcase-frame" data-img="assets/img/motos/tvs-rtr-200.webp" data-name="TVS Rtr 200" data-price="TVS">
+      <div class="showcase-frame" data-img="assets/img/motos/tvs-rtr-200.webp" data-name="TVS Rtr 200" data-price="TVS" data-pos="74% center">
         <span class="showcase-tag">TVS · Naked</span>
         <h3>Rtr 200</h3>
         <p>Respaldo de marca TVS con el rendimiento que exige tu día a día.</p>
@@ -191,9 +191,14 @@
   <p class="section-subtitle">Visítanos en cualquiera de nuestras sucursales</p>
 
   <!-- ═══ AGENCIAS ═══ Ubicaciones reales de Google Maps (abren en nueva pestaña).
+       Direcciones: se derivaron del nombre de lugar + coordenadas de cada liga
+       corta de Google Maps (Rider Mex Gustavo Baz, Central de Abastos, Coapa,
+       Chalco). Naucalpan tiene dirección completa confirmada; para CEDA, Coapa y
+       Chalco se muestra la localidad/zona confirmada y el número/calle exacto
+       queda marcado "por confirmar" (Google no expone la calle en la liga corta).
+       ▸ PENDIENTE: confirmar calle y número exactos de CEDA, Coapa y Chalco.
        Estructura preparada para el tour 360: cuando exista la URL, sustituye el
-       <span> "Tour 360 · Próximamente" por un <a> con target="_blank". Prioridad
-       futura: 1) Ver tienda en 360  ·  2) Abrir Google Maps.
+       <span> "Tour 360 · Próximamente" por un <a> con target="_blank".
        Datos de referencia:
          const agencies = [
            { name: "Naucalpan",              googleMapsUrl: "https://maps.app.goo.gl/8JzPoomq7miDJgpb6", tour360Url: "" },
@@ -216,8 +221,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex CEDA / Central de Abasto</h3>
+      <p><strong>Dirección:</strong> Central de Abasto, Iztapalapa, Ciudad de México <em>(calle y número por confirmar)</em></p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
@@ -226,8 +231,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex Coapa</h3>
+      <p><strong>Dirección:</strong> Coapa, Coyoacán, Ciudad de México <em>(calle y número por confirmar)</em></p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
@@ -236,8 +241,8 @@
 
     <div class="agencia-card">
       <h3>RiderMex Chalco</h3>
+      <p><strong>Dirección:</strong> Chalco de Díaz Covarrubias, Estado de México <em>(calle y número por confirmar)</em></p>
       <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
       <div class="agencia-actions">
         <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
@@ -327,7 +332,8 @@
 
 <footer>
   <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
-  <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+  <!-- Sucursales: en lugar de una sola dirección, llevamos a la sección de agencias. -->
+  <p><a href="#agencias" class="footer-sucursales-link">📍 Consulta nuestras sucursales</a></p>
   <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
   <p style="margin-top:14px;">
     <a href="https://facebook.com/ridermexof" target="_blank" rel="noopener">Facebook</a> ·

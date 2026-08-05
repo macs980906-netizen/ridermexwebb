@@ -2561,9 +2561,8 @@
     "category": "Dominar",
     "shortDescription": "Dominar · 373.3 cc",
     "description": "",
-    "mainImage": "assets/img/motos/bajaj-dominar-400.webp",
+    "mainImage": "https://images.ctfassets.net/8zlbnewncp6f/7gOgd7IxhELCRVvsDNi4Lh/918f6a7325dc74b0f7b15b82b206ad65/imagen_principal.jpg?fit=pad&fm=webp&h=1200&q=95&w=1600",
     "gallery": [
-      "assets/img/motos/bajaj-dominar-400.webp",
       "https://images.ctfassets.net/8zlbnewncp6f/7gOgd7IxhELCRVvsDNi4Lh/918f6a7325dc74b0f7b15b82b206ad65/imagen_principal.jpg?fit=pad&fm=webp&h=1200&q=95&w=1600",
       "https://images.ctfassets.net/8zlbnewncp6f/3hwW5s9KVwDe8PL9XZMg9y/557059b7da0854977736f31f1abd5e8c/DOM400-ROJA.jpg?fit=pad&fm=webp&h=1200&q=95&w=1600",
       "https://images.ctfassets.net/8zlbnewncp6f/2bvTgLJZvsFwRUKAitZ46O/3d835fd5134b05f612a94141881aa16f/imagen_principal__79_.png?fit=pad&fm=webp&h=1200&q=95&w=1600",

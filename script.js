@@ -90,6 +90,10 @@ if (showcase) {
       setTimeout(() => {
         showcaseImg.src = f.dataset.img || showcaseImg.src;
         showcaseImg.alt = f.dataset.name || '';
+        // Encuadre por imagen: fotos de acción (p. ej. TVS RTR 200) traen la
+        // moto descentrada; data-fit/data-pos corrigen recorte y centrado.
+        showcaseImg.style.objectFit = f.dataset.fit || 'cover';
+        showcaseImg.style.objectPosition = f.dataset.pos || 'center center';
         showcaseImg.style.opacity = 1;
         showcaseImg.style.transform = 'scale(1)';
       }, 220);
