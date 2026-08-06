@@ -29,7 +29,7 @@
       font-family: 'Barlow', sans-serif;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* grano sutil estilo film/premium */
@@ -602,8 +602,6 @@
       font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.05; letter-spacing: 0.04em; color: var(--blanco);
     }
 
-    /* Métrica de crédito: label arriba, valor "2 min" abajo */
-    .stat--credito .stat-label--top { margin-top: 0; margin-bottom: 0.5rem; }
 
     /* Separador "Tu camino" con más presencia (transición al recorrido) */
     .camino-divider {
@@ -853,35 +851,12 @@
               drop-shadow(0 0 42px rgba(204,0,0,.6));
     }
 
-    /* ── Número fantasma: aprovecha el espacio vacío de la escena (izquierda) ── */
-    .journey-ghost {
-      position: absolute; z-index: 3; left: 4%; top: 8%;
-      display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem;
-      pointer-events: none; user-select: none;
-    }
-    .journey-ghost-num {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; line-height: 0.8;
-      font-size: clamp(7rem, 18vw, 17rem);
-      color: rgba(255,255,255,.06);
-      -webkit-text-stroke: 1.5px rgba(255,255,255,.10);
-      letter-spacing: -0.02em;
-      transition: opacity .5s var(--ease), transform .5s var(--ease);
-    }
-    .journey-ghost-env {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: clamp(0.85rem, 1.6vw, 1.1rem); letter-spacing: 0.35em;
-      text-transform: uppercase; color: rgba(204,0,0,.55); margin-left: 0.5rem;
-    }
-    .journey-ghost-total {
-      font-family: 'Barlow Condensed', sans-serif; font-size: clamp(1rem, 2.2vw, 1.6rem);
-      color: rgba(255,255,255,.14); font-weight: 700; margin-left: 0.6rem; margin-top: -0.4rem;
-    }
-
-    /* ── Panel de texto (glass oscuro → legible sobre fondo claro u oscuro) ── */
+    /* ── Panel de texto (glass oscuro → legible sobre fondo claro u oscuro).
+          Más ancho y centrado verticalmente para llenar mejor la escena. ── */
     .journey-panel {
       position: absolute; z-index: 5;
-      top: 10%; right: 4%;
-      width: min(44%, 600px);
+      top: 50%; right: 5%; transform: translateY(-50%);
+      width: min(48%, 660px);
     }
     .journey-step {
       position: absolute; inset: 0;
@@ -899,8 +874,8 @@
       background: linear-gradient(160deg, rgba(12,12,14,.82), rgba(12,12,14,.6));
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(204,0,0,.28);
-      border-radius: 12px;
-      padding: 1.9rem 1.9rem 2.05rem;
+      border-radius: 14px;
+      padding: 2.4rem 2.4rem 2.6rem;
       box-shadow: 0 24px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
     }
 
@@ -923,13 +898,13 @@
 
     .journey-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900; font-size: clamp(1.9rem, 3.1vw, 3rem);
-      line-height: .96; text-transform: uppercase; color: var(--blanco);
-      margin-bottom: 1.15rem; letter-spacing: -.01em;
+      font-weight: 900; font-size: clamp(2.15rem, 3.8vw, 3.5rem);
+      line-height: .95; text-transform: uppercase; color: var(--blanco);
+      margin-bottom: 1.25rem; letter-spacing: -.01em;
     }
     .journey-title em { font-style: normal; color: var(--rojo); }
 
-    .journey-desc { font-size: .95rem; color: #C9C9C9; max-width: 460px; line-height: 1.7; margin-bottom: 1.9rem; }
+    .journey-desc { font-size: 1.05rem; color: #D2D2D2; max-width: 520px; line-height: 1.75; margin-bottom: 2.1rem; }
 
     .journey-cta-wrap { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
 
@@ -983,8 +958,6 @@
       .jroad-desktop { display: none; }
       .jroad-mobile { display: block; }
       .journey-panel { top: auto; bottom: 8%; right: auto; left: 50%; transform: translateX(-50%); width: min(90%, 460px); }
-      .journey-ghost { left: 5%; top: 4%; }
-      .journey-ghost-num { font-size: clamp(4.5rem, 22vw, 8rem); }
       .journey-card { padding: 1.4rem 1.4rem 1.6rem; }
       .journey-title { font-size: clamp(1.55rem, 7vw, 2.2rem); }
       .journey-desc { font-size: .9rem; margin-bottom: 1.4rem; }
@@ -1016,6 +989,7 @@
   <nav>
     <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
     <ul class="nav-links">
+      <li><a href="motos.html">Comprar moto</a></li>
       <li><a href="catalogo.html">Catálogo</a></li>
       <li><a href="motos.html#agencias">Agencias</a></li>
       <li><a href="inversiones.html">Inversiones</a></li>
@@ -1051,9 +1025,10 @@
        Primero la decisión del usuario, luego las métricas de respaldo. -->
   <section class="hub">
 
-    <!-- CTA "Quiero mi moto" → catálogo de motos (catalogo.html) para explorar
-         todas las marcas y modelos antes de iniciar el trámite. -->
-    <a href="catalogo.html" class="hub-panel hub-panel--motos reveal">
+    <!-- CTA "Quiero mi moto" → landing informativa de compra (motos.html):
+         proceso, beneficios, showcase, agencias y formulario. El catálogo por
+         marca/modelo (catalogo.html) queda como paso siguiente dentro de esa página. -->
+    <a href="motos.html" class="hub-panel hub-panel--motos reveal">
       <div>
         <p class="hub-tag hub-tag--motos">Para compradores</p>
         <h2 class="hub-title">Quiero<br/>una moto</h2>
@@ -1095,10 +1070,10 @@
       <div class="stat-num">+<span>100</span></div>
       <div class="stat-label">Modelos disponibles</div>
     </div>
-    <!-- Métrica de crédito: label arriba, valor abajo (lectura más lógica). -->
-    <div class="stat stat--credito">
-      <div class="stat-label stat-label--top">Aprobación de crédito</div>
+    <!-- Métrica de crédito: valor arriba, texto abajo (igual que las demás). -->
+    <div class="stat">
       <div class="stat-num">2<span>&nbsp;min</span></div>
+      <div class="stat-label">Aprobación de crédito</div>
     </div>
   </div>
 
@@ -1204,13 +1179,6 @@
         <div class="journey-moto-glow" aria-hidden="true"></div>
         <img class="journey-moto-img" src="assets/img/logo-white.png"
              alt="Logo de RiderMex avanzando por el camino del proceso">
-      </div>
-
-      <!-- ═══ NÚMERO FANTASMA (usa el espacio vacío de la escena; lo actualiza el JS) ═══ -->
-      <div class="journey-ghost" aria-hidden="true">
-        <span class="journey-ghost-env" id="jGhostEnv">BOSQUE</span>
-        <span class="journey-ghost-num" id="jGhostNum">01</span>
-        <span class="journey-ghost-total" id="jGhostTotal">/ 05 · Tu camino</span>
       </div>
 
       <!-- ═══ PANEL DE TEXTO (5 pasos; el contenido lo llena journeySteps) ═══ -->
@@ -1585,11 +1553,6 @@
           dots.forEach((d, i) => { d.classList.toggle('done', i < currentStep); d.classList.toggle('active', i === currentStep); });
           const env = journeySteps[currentStep] && journeySteps[currentStep].environment;
           if (statusText) statusText.textContent = (env || 'EN RUTA').toUpperCase();
-          // Número fantasma en el espacio vacío de la escena
-          const gNum = document.getElementById('jGhostNum');
-          const gEnv = document.getElementById('jGhostEnv');
-          if (gNum) gNum.textContent = String(currentStep + 1).padStart(2, '0');
-          if (gEnv) gEnv.textContent = (env || 'En ruta').toUpperCase();
         }
 
         // ── Glow final + riel de progreso ──

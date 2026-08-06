@@ -20,7 +20,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; background: var(--blanco); overflow-x: hidden; }
+/* overflow-x: clip (no 'hidden') → recorta el desbordamiento horizontal SIN
+   convertir html/body en contenedor de scroll (hidden fuerza overflow-y:auto y
+   eso rompe el position:sticky del showcase). */
+html { scroll-behavior: smooth; background: var(--blanco); overflow-x: clip; }
 
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
@@ -28,9 +31,9 @@ body {
   color: var(--negro);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  /* Evita scroll horizontal y los "bordes blancos" laterales que provoca
-     cualquier desbordamiento (hero de motos/inversiones, catálogo). */
-  overflow-x: hidden;
+  /* clip (no hidden): evita scroll horizontal / bordes blancos sin romper el
+     position:sticky del showcase (hidden forzaría overflow-y:auto). */
+  overflow-x: clip;
   width: 100%;
   max-width: 100%;
 }
@@ -129,6 +132,10 @@ nav a:hover { color: var(--blanco); }
 
 /* ===== HERO ===== */
 .hero {
+  /* Full-bleed: la regla genérica `section{max-width:1240px}` dejaba 100px de
+     body blanco a cada lado del hero oscuro (bordes blancos en motos.html). */
+  max-width: none;
+  width: 100%;
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, rgba(225,6,0,.18), transparent 60%),
     linear-gradient(180deg, var(--negro) 0%, var(--negro2) 100%);
@@ -724,6 +731,10 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
   padding: 28px;
   border-left: 4px solid var(--rojo);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  /* Columna: alto consistente y botón alineado al fondo entre tarjetas. */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .agencia-card:hover {
@@ -1416,12 +1427,15 @@ body::before {
   isolation: isolate;
 }
 
-/* Recorta el sangrado horizontal de los orbes decorativos (right:-120px) sin
-   romper el position:sticky del showcase (clip no crea contenedor de scroll).
-   position:relative contiene el orbe (::after) dentro de la sección. */
-.steps-section, .showcase, .paths-section, .inversiones-bg { position: relative; overflow-x: clip; }
+/* Contiene el sangrado horizontal de los orbes decorativos (right:-120px).
+   OJO: el showcase NO se incluye aquí — overflow/clip en su contenedor rompe el
+   position:sticky de la imagen; en su lugar se le quita el orbe (abajo). */
+.steps-section, .paths-section, .inversiones-bg { position: relative; overflow-x: clip; }
 
-.hero::after, .steps-section::after, .inversiones-bg::after, .showcase::after, .paths-section::after {
+/* El showcase no lleva orbe (evita desbordamiento sin tocar su sticky). */
+.showcase::after { content: none !important; }
+
+.hero::after, .steps-section::after, .inversiones-bg::after, .paths-section::after {
   content: '';
   position: absolute;
   width: 480px;
@@ -1627,7 +1641,8 @@ header.is-scrolled { box-shadow: 0 4px 24px rgba(225,6,0,.08); border-bottom-col
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: auto;   /* empuja el botón al fondo → alineado entre tarjetas */
+  padding-top: 16px;
 }
 .agencia-btn {
   display: inline-flex;
