@@ -115,14 +115,25 @@ const marcaTabs = document.querySelector('.marca-tabs');
 if (marcaTabs) {
   const tabBtns = marcaTabs.querySelectorAll('.filtro-btn');
   const panels = document.querySelectorAll('.marca-panel');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const marca = btn.dataset.marca;
-      panels.forEach(p => p.classList.toggle('is-active', p.dataset.marca === marca));
+
+  const activarMarca = (marca) => {
+    let encontrada = false;
+    tabBtns.forEach(b => {
+      const esta = b.dataset.marca === marca;
+      b.classList.toggle('active', esta);
+      if (esta) encontrada = true;
     });
+    panels.forEach(p => p.classList.toggle('is-active', p.dataset.marca === marca));
+    return encontrada;
+  };
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => activarMarca(btn.dataset.marca));
   });
+
+  // Deep link desde el Home: motos.html?marca=vento#marcas abre esa marca.
+  const marcaParam = (new URLSearchParams(window.location.search).get('marca') || '').toLowerCase();
+  if (marcaParam) activarMarca(marcaParam);
 }
 
 // Cualquier otro grupo de filtros simple (tarjetas con data-marca)

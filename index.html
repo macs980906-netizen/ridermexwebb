@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RiderMex – Financiamos tu libertad</title>
+  <title>RiderMex – Venta, distribución y financiamiento de motocicletas</title>
+  <meta name="description" content="Más de 10 marcas y +100 modelos de motocicletas con financiamiento, aprobación de crédito en 2 minutos y agencias en CDMX y Edomex. Encuentra tu próxima moto con RiderMex." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/fotos/hero-bajaj-showroom.jpg" fetchpriority="high">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,6 +23,7 @@
       --verde:   #00C896;
       --texto:   #AAAAAA;
       --ease: cubic-bezier(.22,1,.36,1);
+      --maxw: 1240px;
     }
 
     html { scroll-behavior: smooth; }
@@ -31,6 +36,10 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
+    /* height:auto evita que los atributos width/height del HTML deformen
+       la imagen cuando el CSS cambia su ancho. */
+    img { max-width: 100%; height: auto; display: block; }
 
     /* grano sutil estilo film/premium */
     body::after {
@@ -64,6 +73,90 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
+    /* ─── UTILIDADES DE SECCIÓN ─── */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
+
+    .section { padding: 5.5rem 0; }
+    .section--tight { padding: 4rem 0; }
+
+    /* El nav es fijo: los anclas (#como-comprar, #agencias…) no deben
+       quedar ocultas debajo de él al saltar. */
+    [id] { scroll-margin-top: 104px; }
+    @media (max-width: 768px) { [id] { scroll-margin-top: 86px; } }
+
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .74rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      margin-bottom: .9rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.1rem, 5vw, 3.6rem);
+      line-height: .98;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+    }
+    .section-title em { font-style: normal; color: var(--rojo); }
+
+    .section-sub {
+      color: var(--texto);
+      font-size: 1rem;
+      max-width: 620px;
+      margin-top: 1rem;
+      line-height: 1.7;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .95rem 1.9rem;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: opacity .2s, transform .2s, box-shadow .3s, border-color .3s;
+      white-space: nowrap;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s var(--ease);
+    }
+    .btn:hover::before { left: 130%; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--rojo); color: #fff; box-shadow: 0 10px 26px rgba(204,0,0,.32); }
+    .btn-ghost { background: rgba(255,255,255,.03); color: var(--blanco); border: 1.5px solid var(--gris3); }
+    .btn-ghost:hover { border-color: rgba(204,0,0,.6); }
+    .btn-verde { background: var(--verde); color: #06231b; box-shadow: 0 10px 26px rgba(0,200,150,.24); }
+    .btn-sm { padding: .7rem 1.25rem; font-size: .85rem; }
+
     /* ─── NAV ─── */
     nav {
       position: fixed;
@@ -72,7 +165,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 2.5rem;
+      gap: 1.5rem;
+      padding: .85rem 2.5rem;
       background: rgba(10,10,10,0.92);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--gris3);
@@ -81,28 +175,33 @@
 
     nav.is-scrolled { border-bottom-color: rgba(204,0,0,.3); box-shadow: 0 4px 24px rgba(204,0,0,.1); }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    /* LOGO — archivo original: assets/img/logo-white.png
+       (aquí se usa el derivado optimizado logo-white-512.png, mismo arte y color) */
+    .nav-logo img {
+      height: 58px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
+      transition: height .3s var(--ease);
     }
+    nav.is-scrolled .nav-logo img { height: 50px; }
 
-    .nav-logo img { height: 38px; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 1.6rem; }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
 
     .nav-links a {
       color: var(--texto);
       text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
       transition: color 0.2s;
       position: relative;
+      white-space: nowrap;
     }
 
     .nav-links a::after {
@@ -116,6 +215,16 @@
 
     .nav-links a:hover { color: var(--blanco); }
     .nav-links a:hover::after { width: 100%; }
+
+    .nav-links a.nav-cta {
+      color: #fff;
+      background: var(--rojo);
+      padding: .55rem 1.1rem;
+      border-radius: 3px;
+      box-shadow: 0 8px 20px rgba(204,0,0,.28);
+    }
+    .nav-links a.nav-cta::after { display: none; }
+    .nav-links a.nav-cta:hover { opacity: .9; }
 
     .nav-toggle {
       display: none;
@@ -143,69 +252,60 @@
     .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
     .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* ─── HERO ─── */
+    /* ═══════════════════════════════════════════════════════
+       1 · HERO — composición editorial: copy + motocicleta grande
+       ▸ FOTO DEL HERO: assets/fotos/hero-bajaj-showroom.jpg
+         (para cambiarla, sustituye el src del <img class="hero-photo">
+          y el href del <link rel="preload"> del <head>)
+    ═══════════════════════════════════════════════════════ */
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 7rem 2rem 2.5rem;
       position: relative;
+      padding: 9rem 0 0;
       overflow: hidden;
       isolation: isolate;
+      border-bottom: 1px solid var(--gris3);
     }
 
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(204,0,0,0.14) 0%, transparent 70%);
+      background: radial-gradient(ellipse 70% 60% at 15% 30%, rgba(204,0,0,0.16) 0%, transparent 70%);
       pointer-events: none;
-    }
-
-    .hero-orb {
-      position: absolute;
-      width: 460px; height: 460px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(204,0,0,.18), transparent 70%);
-      filter: blur(6px);
-      top: -140px; right: -100px;
       z-index: -1;
-      animation: floatOrb 16s ease-in-out infinite;
     }
 
-    .hero-orb--2 {
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(0,200,150,.12), transparent 70%);
-      top: auto; right: auto;
-      bottom: -120px; left: -80px;
-      animation-duration: 20s;
-      animation-direction: reverse;
-    }
-
-    @keyframes floatOrb {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(-40px, 50px) scale(1.15); }
+    .hero-grid {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+      gap: 3rem;
+      align-items: center;
     }
 
     .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       color: var(--rojo);
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.3rem;
     }
+    .hero-eyebrow::before { content: ''; width: 34px; height: 1.5px; background: var(--rojo); }
 
     .hero-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      line-height: 0.95;
-      letter-spacing: -0.01em;
+      font-size: clamp(3rem, 6.6vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: -0.015em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
     .hero-title em {
@@ -221,53 +321,153 @@
     @keyframes shimmer { to { background-position: 200% center; } }
 
     .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
       color: var(--texto);
       max-width: 520px;
-      margin-bottom: 2.5rem;
+      line-height: 1.7;
+      margin-bottom: 2.1rem;
     }
 
+    .hero-cta { display: flex; flex-wrap: wrap; gap: .85rem; margin-bottom: 2.2rem; }
 
-    .hero-scroll {
-      margin-top: 1.5rem;
-      color: var(--texto);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .hero-facts {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      gap: .55rem 1.6rem;
+      list-style: none;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gris3);
     }
-
-    .hero-scroll::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 16px;
-      background: linear-gradient(to bottom, var(--texto), transparent);
-    }
-
-    .hero-camino-desc {
-      margin-top: 1.25rem;
+    .hero-facts li {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .92rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       color: var(--texto);
-      font-size: 0.95rem;
-      max-width: 560px;
-      line-height: 1.6;
-      position: relative;
-      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .hero-facts li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--rojo);
+      box-shadow: 0 0 8px rgba(204,0,0,.8);
+      flex-shrink: 0;
     }
 
-    /* ─── STATS ─── */
+    .hero-visual {
+      position: relative;
+      align-self: stretch;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 460px;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 6px 6px 0 0;
+      border: 1px solid var(--gris3);
+      border-bottom: none;
+      background: var(--gris1);
+    }
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 55% center;
+    }
+    .hero-photo-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,10,.72) 0%, transparent 42%),
+        linear-gradient(to top, rgba(10,10,10,.9) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      position: absolute;
+      z-index: 2;
+      left: -1.2rem;
+      bottom: 2.4rem;
+      background: rgba(10,10,10,.86);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(204,0,0,.4);
+      border-left: 3px solid var(--rojo);
+      padding: .85rem 1.15rem;
+      border-radius: 4px;
+      box-shadow: 0 18px 44px rgba(0,0,0,.55);
+    }
+    .hero-badge strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .hero-badge span {
+      display: block;
+      font-size: .72rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--texto);
+      margin-top: .3rem;
+    }
+
+    /* Tira de marcas al pie del hero */
+    .hero-brands {
+      margin-top: 3.5rem;
+      border-top: 1px solid var(--gris3);
+      background: rgba(20,20,20,.6);
+    }
+    .hero-brands-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 1.1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-brands-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gris3);
+      color: #6b6b6b;
+    }
+    .hero-brands-list { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; justify-content: center; }
+    .hero-brands-list a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--texto);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .hero-brands-list a:hover { color: var(--blanco); }
+
+    /* ═══ 2 · RESPALDO / MÉTRICAS ═══ */
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--gris3);
       border-bottom: 1px solid var(--gris3);
+      background: linear-gradient(180deg, rgba(204,0,0,.05), transparent 60%);
     }
 
     .stat {
-      padding: 2.5rem 2rem;
+      padding: 2.6rem 1.5rem;
       text-align: center;
       border-right: 1px solid var(--gris3);
     }
@@ -277,276 +477,575 @@
     .stat-num {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: 3rem;
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
       color: var(--blanco);
       line-height: 1;
+      text-transform: uppercase;
       text-shadow: 0 0 30px rgba(204,0,0,.25);
     }
 
     .stat-num span { color: var(--rojo); }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--texto);
-      margin-top: 0.5rem;
-      letter-spacing: 0.04em;
+      margin-top: 0.6rem;
+      letter-spacing: 0.05em;
     }
 
-    /* ─── HUB ─── */
-    .hub {
+    /* ═══ 3 · MARCAS ═══ */
+    .marcas-hero {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 60vh;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
     }
 
-    .hub-panel {
-      padding: 5rem 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .marca-card {
       position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
+      display: block;
       text-decoration: none;
       color: inherit;
+      border: 1px solid var(--gris3);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--gris1);
+      transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
+      isolation: isolate;
     }
+    .marca-card:hover { transform: translateY(-6px); border-color: rgba(204,0,0,.55); box-shadow: 0 24px 50px rgba(0,0,0,.55); }
 
-    .hub-panel::before {
-      content: '';
-      position: absolute;
-      top: var(--my, 50%);
-      left: var(--mx, 50%);
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      transform: translate(-50%,-50%);
-      opacity: 0;
-      transition: opacity .35s;
-      pointer-events: none;
+    .marca-card-img {
+      position: relative;
+      aspect-ratio: 16 / 11;
+      overflow: hidden;
+      background: #ededee;
     }
+    .marca-card-img img {
+      width: 100%; height: 100%;
+      transition: transform .6s var(--ease);
+    }
+    .marca-card-img img.is-contain { object-fit: contain; padding: 1.1rem; background: #fff; }
+    .marca-card-img img.is-cover   { object-fit: cover; }
+    .marca-card:hover .marca-card-img img { transform: scale(1.05); }
 
-    .hub-panel:hover::before { opacity: 1; }
-
-    /* Panel MOTOS — tratamiento premium (degradado + acento), coherente con inversiones */
-    .hub-panel--motos {
-      background:
-        radial-gradient(120% 100% at 0% 0%, rgba(204,0,0,.16), transparent 55%),
-        linear-gradient(160deg, #1c1113 0%, var(--gris1) 58%, var(--negro) 100%);
-      border-right: 1px solid var(--gris3);
+    .marca-card-body {
+      padding: 1.25rem 1.35rem 1.4rem;
+      background: linear-gradient(180deg, var(--gris1), var(--negro));
+      border-top: 2px solid var(--rojo);
     }
-    .hub-panel--motos::before { background: radial-gradient(circle, rgba(255,90,60,.20), transparent 70%); }
-    .hub-panel--motos:hover {
-      background:
-        radial-gradient(120% 100% at 0% 0%, rgba(204,0,0,.26), transparent 55%),
-        linear-gradient(160deg, #271518 0%, var(--gris2) 58%, var(--gris1) 100%);
-    }
-
-    /* Panel INVERSIONES — mismo lenguaje visual, acento verde */
-    .hub-panel--inversiones {
-      background:
-        radial-gradient(120% 100% at 100% 0%, rgba(0,200,150,.14), transparent 55%),
-        linear-gradient(200deg, #0f1a17 0%, var(--gris1) 58%, var(--negro) 100%);
-    }
-    .hub-panel--inversiones::before { background: radial-gradient(circle, rgba(0,200,150,.18), transparent 70%); }
-    .hub-panel--inversiones:hover {
-      background:
-        radial-gradient(120% 100% at 100% 0%, rgba(0,200,150,.24), transparent 55%),
-        linear-gradient(200deg, #13241f 0%, var(--gris2) 58%, var(--gris1) 100%);
-    }
-
-    /* acento superior en ambos paneles → identidad RiderMex y coherencia visual */
-    .hub-panel::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      z-index: 2;
-    }
-    .hub-panel--motos::after { background: linear-gradient(90deg, var(--rojo), var(--rojo2)); }
-    .hub-panel--inversiones::after { background: linear-gradient(90deg, var(--verde), #00e0a8); }
-
-    /* separador visual "Tu camino" */
-    .camino-divider {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.75rem 2.5rem 0.5rem;
-    }
-    .camino-divider-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gris3), transparent);
-    }
-    .camino-divider-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--rojo);
-      white-space: nowrap;
-    }
-
-    .hub-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .hub-tag--motos { color: var(--rojo); }
-    .hub-tag--inv   { color: var(--verde); }
-
-    .hub-title {
+    .marca-card-body h3 {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1;
+      font-size: 1.65rem;
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .marca-card-body p { color: var(--texto); font-size: .9rem; margin-top: .45rem; line-height: 1.6; }
+    .marca-card-link {
+      display: inline-block;
+      margin-top: .9rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--rojo);
     }
 
-    .hub-desc {
-      font-size: 0.95rem;
+    .marcas-rest {
+      margin-top: 1.1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+      gap: .7rem;
+    }
+    .marca-tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: .9rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      background: linear-gradient(160deg, var(--gris1), var(--negro));
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       color: var(--texto);
-      max-width: 340px;
-      line-height: 1.7;
-      margin-bottom: 3rem;
-      position: relative;
-      z-index: 1;
+      transition: color .25s, border-color .25s, transform .25s var(--ease), background .25s;
+    }
+    .marca-tile:hover {
+      color: var(--blanco);
+      border-color: rgba(204,0,0,.5);
+      transform: translateY(-3px);
+      background: linear-gradient(160deg, #1d1315, var(--gris1));
     }
 
-    .hub-cta {
+    /* ═══ 4 · MOTOS DESTACADAS ═══ */
+    .motos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+
+    .moto-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gris3);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--gris1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform .35s var(--ease), border-color .3s, box-shadow .35s;
+    }
+    .moto-card:hover { transform: translateY(-6px); border-color: rgba(204,0,0,.55); box-shadow: 0 24px 50px rgba(0,0,0,.55); }
+
+    .moto-card-img {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #fff;
+      overflow: hidden;
+    }
+    .moto-card-img img { width: 100%; height: 100%; transition: transform .6s var(--ease); }
+    .moto-card-img img.is-contain { object-fit: contain; padding: .9rem; }
+    .moto-card-img img.is-cover   { object-fit: cover; }
+    .moto-card:hover .moto-card-img img { transform: scale(1.04); }
+
+    .moto-tag {
+      position: absolute;
+      top: .8rem; left: .8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      background: rgba(10,10,10,.88);
+      color: #fff;
+      border: 1px solid rgba(204,0,0,.5);
+      padding: .3rem .6rem;
+      border-radius: 3px;
+    }
+
+    .moto-card-body {
+      padding: 1.1rem 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      flex: 1;
+    }
+    .moto-marca {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--rojo);
+    }
+    .moto-modelo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.45rem;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .moto-cat { font-size: .85rem; color: var(--texto); }
+    .moto-cta {
+      margin-top: auto;
+      padding-top: .9rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blanco);
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 0.9rem 2rem;
-      border: none;
-      border-radius: 4px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s;
-      align-self: flex-start;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      gap: .45rem;
+      transition: color .2s, gap .2s;
     }
+    .moto-card:hover .moto-cta { color: var(--rojo); gap: .8rem; }
 
-    .hub-cta::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -60%;
-      width: 40%; height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
-      transform: skewX(-20deg);
-      transition: left .6s var(--ease);
-    }
-
-    .hub-cta:hover::before { left: 130%; }
-    .hub-cta:hover { opacity: 0.88; transform: translateY(-2px); }
-
-    .hub-cta--motos {
-      background: var(--rojo);
-      color: var(--blanco);
-      box-shadow: 0 10px 26px rgba(204,0,0,.3);
-    }
-
-    .hub-cta--inv {
-      background: var(--verde);
-      color: var(--negro);
-      box-shadow: 0 10px 26px rgba(0,200,150,.25);
-    }
-
-    .hub-divider {
+    .motos-foot {
+      margin-top: 1.8rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 48px;
-      background: var(--negro);
-      border-left: 1px solid var(--gris3);
-      border-right: 1px solid var(--gris3);
-      writing-mode: vertical-rl;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--gris3);
-      text-transform: uppercase;
-      font-family: 'Barlow Condensed', sans-serif;
-      position: relative;
-    }
-
-    /* ─── MARCAS ─── */
-    .marcas {
-      padding: 4rem 2.5rem;
-      border-top: 1px solid var(--gris3);
-    }
-
-    .marcas-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--texto);
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .marcas-list {
-      display: flex;
+      justify-content: space-between;
+      gap: 1.2rem;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem 2rem;
     }
+    .motos-foot p { color: var(--texto); font-size: .9rem; max-width: 620px; }
 
-    .marca {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.1em;
-      color: var(--texto);
-      text-transform: uppercase;
-      transition: color 0.2s;
+    /* ═══ BANDA EDITORIAL FULL-BLEED ═══ */
+    .banda {
       position: relative;
+      min-height: 62vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-top: 1px solid var(--gris3);
+      border-bottom: 1px solid var(--gris3);
     }
-
-    .marca::after {
+    .banda-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+    .banda::before {
       content: '';
-      position: absolute;
-      left: 50%; bottom: -6px;
-      width: 0; height: 1.5px;
-      background: var(--rojo);
-      transform: translateX(-50%);
-      transition: width .25s var(--ease);
+      position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(10,10,10,.94) 0%, rgba(10,10,10,.75) 45%, rgba(10,10,10,.35) 100%),
+        linear-gradient(180deg, rgba(10,10,10,.5), rgba(10,10,10,.5));
+    }
+    .banda-content { max-width: 620px; }
+    .banda p { color: #cfcfcf; line-height: 1.75; margin-bottom: 1.6rem; }
+    .banda p.banda-quote {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4.6vw, 3.6rem);
+      line-height: .98;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 1.1rem;
+    }
+    .banda p.banda-quote em { font-style: normal; color: var(--rojo); }
+
+    /* ═══ 5 · CÓMO COMPRAR ═══ */
+    .como-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 3rem;
+      align-items: start;
     }
 
-    .marca:hover { color: var(--blanco); }
-    .marca:hover::after { width: 70%; }
+    .pasos { display: flex; flex-direction: column; }
+    .paso {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.3rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--gris3);
+    }
+    .paso:first-child { border-top: 1px solid var(--gris3); }
+    .paso-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--rojo);
+      min-width: 3rem;
+      opacity: .85;
+    }
+    .paso h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: .35rem;
+    }
+    .paso p { color: var(--texto); font-size: .95rem; line-height: 1.7; }
 
-    /* ─── FOOTER ─── */
+    .como-visual { position: relative; }
+    .como-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--gris3);
+    }
+    .como-photo--wide { aspect-ratio: 4 / 3; }
+
+    .como-note {
+      margin-top: 1.1rem;
+      border: 1px solid var(--gris3);
+      border-left: 3px solid var(--rojo);
+      border-radius: 6px;
+      background: linear-gradient(160deg, var(--gris1), var(--negro));
+      padding: 1.2rem 1.3rem;
+    }
+    .como-note strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .como-note p { color: var(--texto); font-size: .9rem; line-height: 1.7; }
+
+    .sin-band {
+      margin-top: 2.6rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .7rem;
+    }
+    .sin-item {
+      border: 1px solid var(--gris3);
+      border-radius: 6px;
+      padding: 1rem 1.15rem;
+      background: rgba(20,20,20,.6);
+    }
+    .sin-item strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: .25rem;
+    }
+    .sin-item span { color: var(--texto); font-size: .87rem; }
+
+    /* ═══ 6 · BENEFICIOS ═══ */
+    .beneficios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+    }
+    .beneficio {
+      position: relative;
+      border: 1px solid var(--gris3);
+      border-radius: 8px;
+      padding: 1.6rem 1.5rem 1.7rem;
+      background: linear-gradient(160deg, var(--gris1) 0%, var(--negro) 100%);
+      transition: transform .3s var(--ease), border-color .3s;
+    }
+    .beneficio:hover { transform: translateY(-4px); border-color: rgba(204,0,0,.45); }
+    .beneficio-icon {
+      width: 42px; height: 42px;
+      border-radius: 8px;
+      display: grid; place-items: center;
+      background: rgba(204,0,0,.12);
+      border: 1px solid rgba(204,0,0,.3);
+      margin-bottom: 1rem;
+    }
+    .beneficio-icon svg { width: 21px; height: 21px; stroke: var(--rojo); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .beneficio h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.28rem;
+      text-transform: uppercase;
+      line-height: 1.08;
+      margin-bottom: .45rem;
+    }
+    .beneficio p { color: var(--texto); font-size: .92rem; line-height: 1.7; }
+
+    /* ═══ 7 · AGENCIAS ═══ */
+    .agencias-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 2.6rem;
+      align-items: start;
+    }
+    .agencias-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .9rem;
+    }
+    .agencia-card {
+      border: 1px solid var(--gris3);
+      border-radius: 8px;
+      padding: 1.3rem 1.35rem 1.4rem;
+      background: linear-gradient(160deg, var(--gris1), var(--negro));
+      transition: border-color .3s, transform .3s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .agencia-card:hover { border-color: rgba(204,0,0,.45); transform: translateY(-3px); }
+    .agencia-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.22rem;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .agencia-card p { color: var(--texto); font-size: .86rem; line-height: 1.6; margin-bottom: .35rem; }
+    .agencia-card p strong { color: #d6d6d6; font-weight: 600; }
+    .agencia-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: auto; padding-top: .9rem; }
+    .agencia-btn {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .5rem .85rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 1px solid var(--gris3);
+      color: var(--blanco);
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .agencia-btn-maps { border-color: rgba(204,0,0,.5); }
+    .agencia-btn-maps:hover { background: var(--rojo); border-color: var(--rojo); }
+    .agencia-btn.is-soon { color: #6b6b6b; cursor: default; }
+    .agencia-card.proxima { border-style: dashed; }
+    .badge-proxima {
+      display: inline-block;
+      font-family: 'Barlow', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--rojo);
+      border: 1px solid rgba(204,0,0,.4);
+      border-radius: 999px;
+      padding: .15rem .55rem;
+      margin-left: .4rem;
+      vertical-align: middle;
+    }
+
+    .agencias-visual { position: relative; }
+    .agencias-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center 58%;
+      border-radius: 8px;
+      border: 1px solid var(--gris3);
+    }
+    .agencias-photo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; margin-top: .7rem; }
+    .agencias-photo-pair img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--gris3);
+    }
+
+    /* ═══ 9 · DESCUBRIMIENTO RIDERMEX INVERSIONES ═══ */
+    .inv-discover {
+      position: relative;
+      border-top: 1px solid var(--gris3);
+      background:
+        radial-gradient(90% 120% at 88% 10%, rgba(0,200,150,.16), transparent 58%),
+        linear-gradient(200deg, #0d1a16 0%, var(--gris1) 55%, var(--negro) 100%);
+      overflow: hidden;
+    }
+    .inv-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 3rem;
+      align-items: center;
+    }
+    .inv-eyebrow { color: var(--verde); }
+    .inv-title em { color: var(--verde); }
+    .inv-list { list-style: none; margin: 1.6rem 0 2rem; display: grid; gap: .7rem; }
+    .inv-list li {
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start;
+      color: var(--texto);
+      font-size: .95rem;
+      line-height: 1.6;
+    }
+    .inv-list li::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      background: var(--verde);
+      box-shadow: 0 0 12px rgba(0,200,150,.6);
+      margin-top: .5rem;
+      flex-shrink: 0;
+    }
+    .inv-visual { display: flex; justify-content: center; align-items: center; }
+    .inv-logo-shell {
+      width: min(340px, 80%);
+      padding: 2rem;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      border: 1px solid rgba(0,200,150,.22);
+      box-shadow: 0 28px 70px rgba(0,0,0,.5);
+    }
+    .inv-disclaimer { color: #7d7d7d; font-size: .8rem; margin-top: 1.4rem; max-width: 620px; line-height: 1.6; }
+
+    /* ═══ FOOTER ═══ */
     footer {
-      padding: 2rem 2.5rem;
+      border-top: 1px solid var(--gris3);
+      background: var(--negro);
+      padding: 3.5rem 0 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+    .footer-brand img { height: 62px; width: auto; margin-bottom: 1rem; max-width: 100%; }
+    .footer-brand p { color: var(--texto); font-size: .88rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .82rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: grid; gap: .55rem; }
+    .footer-col a, .footer-col li { color: var(--texto); font-size: .88rem; text-decoration: none; line-height: 1.5; }
+    .footer-col a:hover { color: var(--blanco); }
+    .footer-bottom {
+      margin-top: 2.8rem;
+      padding-top: 1.4rem;
       border-top: 1px solid var(--gris3);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
-      color: var(--gris3);
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: .78rem;
+      color: #6b6b6b;
     }
+    .footer-bottom a { color: #6b6b6b; text-decoration: none; }
+    .footer-bottom a:hover { color: var(--texto); }
 
-    footer a {
-      color: var(--gris3);
-      text-decoration: none;
+    /* WhatsApp flotante */
+    .whatsapp-float {
+      position: fixed;
+      right: 18px; bottom: 18px;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      display: grid; place-items: center;
+      box-shadow: 0 12px 30px rgba(37,211,102,.35);
+      z-index: 95;
+      transition: transform .25s var(--ease);
     }
-
-    footer a:hover { color: var(--texto); }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    .whatsapp-float svg { width: 30px; height: 30px; }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1080px) {
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { font-size: .88rem; }
+      .marcas-hero, .motos-grid, .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { padding-top: 7.5rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-visual { min-height: 0; }
+      .hero-photo-frame { max-width: 100%; aspect-ratio: 4 / 3; border-radius: 6px; border-bottom: 1px solid var(--gris3); }
+      .hero-badge { left: 1rem; bottom: 1rem; }
+      .como-grid, .agencias-layout, .inv-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2n) { border-right: none; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--gris3); }
+      .sin-band { grid-template-columns: 1fr; }
+      .como-photo { aspect-ratio: 4 / 3; }
+      .agencias-photo { aspect-ratio: 4 / 3; }
+    }
+
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
+      nav { padding: .7rem 1.15rem; }
+      .nav-logo img { height: 48px; }
+      nav.is-scrolled .nav-logo img { height: 44px; }
       .nav-toggle { display: flex; }
+      .nav-right { gap: 0; }
 
       .nav-links {
         display: none;
@@ -565,30 +1064,24 @@
 
       .nav-links.is-open { display: flex; }
       .nav-links a { display: block; padding: 12px 0; width: 100%; }
+      .nav-links a.nav-cta { text-align: center; margin-top: .6rem; padding: .75rem 1rem; }
 
-      .stats { grid-template-columns: 1fr; }
-      .stat { border-right: none; border-bottom: 1px solid var(--gris3); }
-      .stat:last-child { border-bottom: none; }
-
-      .hub { grid-template-columns: 1fr 1fr; min-height: 0; }
-
-      .hub-panel {
-        padding: 1.75rem 1.1rem;
-        min-height: 0;
-      }
-
-      .hub-tag { font-size: 0.6rem; margin-bottom: 0.6rem; }
-      .hub-title { font-size: 1.5rem; margin-bottom: 0.6rem; }
-      .hub-desc { display: none; }
-      .hub-cta { padding: 0.6rem 1rem; font-size: 0.75rem; gap: 0.4rem; }
-      .hub-divider { display: none; }
-
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .wrap { padding: 0 1.25rem; }
+      .hero-grid { padding: 0 1.25rem; }
+      .hero-brands-inner { padding: 1rem 1.25rem; }
+      .section { padding: 3.8rem 0; }
+      .marcas-hero, .motos-grid, .beneficios-grid, .agencias-grid { grid-template-columns: 1fr; }
+      .banda { min-height: 0; padding: 4rem 0; }
+      .banda::before { background: linear-gradient(180deg, rgba(10,10,10,.78), rgba(10,10,10,.92)); }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .agencias-photo-pair { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 420px) {
-      .hub-title { font-size: 1.25rem; }
-      .hub-cta { padding: 0.55rem 0.8rem; font-size: 0.7rem; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--gris3); }
+      .stat:last-child { border-bottom: none; }
+      .hero-facts { gap: .45rem 1rem; }
     }
 
     /* ═══════════════════════════════════════════════════════
@@ -673,7 +1166,8 @@
       pointer-events: none;
     }
     /*
-      LOGO/MOTO — ruta actual: assets/img/logo-white.png
+      LOGO/MOTO — archivo original: assets/img/logo-white.png
+      (se usa el derivado optimizado assets/img/logo-white-512.png)
       Para cambiarla, edita el src del <img class="journey-moto-img"> en el HTML.
     */
     .journey-moto-img {
@@ -796,7 +1290,7 @@
       background: rgba(10,10,10,.5); border: 1px solid rgba(204,0,0,.3);
       padding: .3rem .7rem; border-radius: 3px; backdrop-filter: blur(6px);
     }
-    .journey-status-badge .jdot-live { width:6px; height:6px; border-radius:50%; background:var(--rojo); animation: pulse 2s ease-in-out infinite; }
+    .journey-status-badge .jdot-live { width:6px; height:6px; border-radius:50%; background:var(--rojo); animation: jMotoGlow 2s ease-in-out infinite; }
 
     /* riel de progreso del recorrido (parte inferior) */
     .journey-rail { position: absolute; z-index: 4; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.08); }
@@ -830,123 +1324,534 @@
       .journey-step { position: relative; inset: auto; opacity: 1 !important; transform: none !important; filter: none !important; pointer-events: auto; margin-bottom: 1rem; }
       .journey-dots, .journey-status-badge { display: none; }
       .journey-moto-img, .journey-moto-glow, .jel-cloud, .jel-bird { animation: none; }
+      .reveal { opacity: 1; transform: none; filter: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ═══ NAV — se conservan todas las rutas existentes ═══ -->
   <nav>
-    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
-    <ul class="nav-links">
-      <li><a href="motos.html">Catálogo</a></li>
-      <li><a href="motos.html#agencias">Agencias</a></li>
-      <li><a href="inversiones.html">Inversiones</a></li>
-      <li><a href="quienes-somos.html">Quiénes somos</a></li>
-      <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">Contacto</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <a class="nav-logo" href="index.html">
+      <img src="assets/img/logo-white-512.png" alt="RiderMex" width="512" height="512">
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="motos.html#catalogo">Catálogo</a></li>
+        <li><a href="#como-comprar">Cómo comprar</a></li>
+        <li><a href="#agencias">Agencias</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">Contacto</a></li>
+        <li><a class="nav-cta" href="motos.html#credito">Tramita tu crédito</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-orb" aria-hidden="true"></div>
-    <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
-    <p class="hero-eyebrow">México · Movilidad · Capital</p>
-    <h1 class="hero-title">
-      Motos, movilidad<br/>
-      e <em>inversión</em> en un solo lugar
-    </h1>
-    <!-- ▸ COPY EDITABLE DEL HOME — cambia este mensaje base aquí -->
-    <p class="hero-sub">
-      Estrena tu moto con opciones de compra, financiamiento o participación. Elige tu camino en RiderMex.
-    </p>
-    <div class="hero-scroll">Elige tu camino</div>
-  </section>
-
-  <!-- ═══ TU CAMINO · 1 · ELECCIÓN (comprador / inversor) ═══
-       Primero la decisión del usuario, luego las métricas de respaldo. -->
-  <section class="hub">
-
-    <!-- CTA "Quiero una moto" → formulario de motos (motos.html#credito).
-         ▸ Para enviar al catálogo en su lugar, cambia el href a "motos.html#catalogo". -->
-    <a href="motos.html#credito" class="hub-panel hub-panel--motos reveal">
-      <div>
-        <p class="hub-tag hub-tag--motos">Para compradores</p>
-        <h2 class="hub-title">Quiero<br/>una moto</h2>
-        <p class="hub-desc">
-          Más de 10 marcas disponibles. Crédito en 2 minutos con financieras externas: Maxikash, Galgo y Atrato. Sin enganche con Atrato.
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 1 · HERO DE MOTOCICLETAS
+       ▸ COPY EDITABLE: eyebrow, título, subtítulo y CTAs de abajo.
+  ════════════════════════════════════════════════════ -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Movilidad · Motos · Financiamiento</p>
+        <h1 class="hero-title">Tu próxima<br/>moto <em>empieza</em><br/>aquí</h1>
+        <p class="hero-sub">
+          Encuentra tu próxima moto entre más de 10 marcas, explora nuestros modelos y conoce
+          las opciones de financiamiento disponibles para comenzar tu camino con RiderMex.
         </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="motos.html#catalogo">Ver catálogo →</a>
+          <a class="btn btn-ghost" href="#como-comprar">Conoce cómo comprar</a>
+        </div>
+        <ul class="hero-facts">
+          <li>Crédito en 2 minutos</li>
+          <li>Solo con tu INE</li>
+          <li>Entrega inmediata</li>
+          <li>4 agencias</li>
+        </ul>
       </div>
-      <span class="hub-cta hub-cta--motos">Quiero mi moto →</span>
-    </a>
 
-    <a href="inversiones.html" class="hub-panel hub-panel--inversiones reveal">
-      <div>
-        <p class="hub-tag hub-tag--inv">Para inversores</p>
-        <h2 class="hub-title">Quiero<br/>invertir</h2>
-        <p class="hub-desc">
-          Capital en movimiento. Modelos de inversión con rendimientos estimados, respaldados por operación real y agencias activas.
-        </p>
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <!-- FOTO PRINCIPAL DEL HERO (piso de venta RiderMex) -->
+          <img class="hero-photo"
+               src="assets/fotos/hero-bajaj-showroom.jpg"
+               alt="Motocicleta en exhibición en una agencia RiderMex"
+               width="960" height="1280"
+               fetchpriority="high" decoding="async">
+          <div class="hero-badge">
+            <strong>+100 modelos</strong>
+            <span>Nuevas y seminuevas</span>
+          </div>
+        </div>
       </div>
-      <span class="hub-cta hub-cta--inv">Ver modelos →</span>
-    </a>
+    </div>
 
-  </section>
+    <!-- Tira de marcas: acceso directo al catálogo por marca -->
+    <div class="hero-brands">
+      <div class="hero-brands-inner">
+        <span class="hero-brands-label">Marcas que distribuimos</span>
+        <div class="hero-brands-list">
+          <a href="motos.html?marca=vento#marcas">Vento</a>
+          <a href="motos.html?marca=bajaj#marcas">Bajaj</a>
+          <a href="motos.html?marca=cfmoto#marcas">CF Moto</a>
+          <a href="motos.html?marca=tvs#marcas">TVS</a>
+          <a href="motos.html?marca=islo#marcas">Islo</a>
+          <a href="motos.html?marca=carabela#marcas">Carabela</a>
+          <a href="motos.html?marca=zmoto#marcas">Zmoto</a>
+          <a href="motos.html?marca=ryder#marcas">Ryder</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <!-- ═══ TU CAMINO · 2 · MÉTRICAS DE RESPALDO ═══ -->
-  <div class="stats reveal">
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 2 · RESPALDO / MÉTRICAS
+  ════════════════════════════════════════════════════ -->
+  <section class="stats reveal" aria-label="RiderMex en números">
+    <div class="stat">
+      <div class="stat-num">+<span>10</span></div>
+      <div class="stat-label">Marcas disponibles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+<span>100</span></div>
+      <div class="stat-label">Modelos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2 <span>min</span></div>
+      <div class="stat-label">Aprobación de crédito</div>
+    </div>
     <div class="stat">
       <div class="stat-num">4</div>
       <div class="stat-label">Agencias activas · 1 próximamente</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">9</div>
-      <div class="stat-label">Marcas distribuidas</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">+<span>100</span></div>
-      <div class="stat-label">Modelos disponibles</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">2<span>min</span></div>
-      <div class="stat-label">Aprobación de crédito</div>
-    </div>
-  </div>
+  </section>
 
-  <!-- ═══ TU CAMINO · 3 · SEPARADOR VISUAL ═══ -->
-  <div class="camino-divider reveal" aria-hidden="true">
-    <span class="camino-divider-line"></span>
-    <span class="camino-divider-label">Tu camino</span>
-    <span class="camino-divider-line"></span>
-  </div>
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 3 · MARCAS PROTAGONISTAS + CATÁLOGO
+       ▸ Cada marca lleva a su panel dentro del catálogo (motos.html).
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="marcas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Marcas</span>
+          <h2 class="section-title">Las marcas que<br/><em>mueven</em> a México</h2>
+        </div>
+        <p class="section-sub">
+          Distribuimos las marcas con mayor demanda del mercado mexicano. Elige una y revisa
+          todos sus modelos disponibles en el catálogo RiderMex.
+        </p>
+      </div>
 
-  <!-- MARCAS -->
-  <div class="marcas reveal">
-    <p class="marcas-label">Marcas disponibles</p>
-    <div class="marcas-list">
-      <span class="marca">Vento</span>
-      <span class="marca">Bajaj</span>
-      <span class="marca">Islo</span>
-      <span class="marca">Carabela</span>
-      <span class="marca">Zmoto</span>
-      <span class="marca">Ryder</span>
-      <span class="marca">TVS</span>
-      <span class="marca">CF Moto</span>
-      <span class="marca">CF Lite</span>
-      <span class="marca">UM Motorcycles</span>
-      <span class="marca">Honda</span>
+      <div class="marcas-hero">
+        <a class="marca-card reveal" href="motos.html?marca=vento#marcas">
+          <div class="marca-card-img">
+            <img class="is-contain" src="assets/img/motos/vento-crossmax-300-rally.jpg"
+                 alt="Vento Crossmax 300 Rally" width="2000" height="2000" loading="lazy" decoding="async">
+          </div>
+          <div class="marca-card-body">
+            <h3>Vento</h3>
+            <p>El catálogo más amplio: motonetas, ciudad, trabajo, doble propósito, sport y cuatrimotos.</p>
+            <span class="marca-card-link">Ver modelos Vento →</span>
+          </div>
+        </a>
+
+        <a class="marca-card reveal" href="motos.html?marca=bajaj#marcas">
+          <div class="marca-card-img">
+            <img class="is-contain" src="assets/img/motos/bajaj-dominar-400.webp"
+                 alt="Bajaj Dominar 400" width="1640" height="997" loading="lazy" decoding="async">
+          </div>
+          <div class="marca-card-body">
+            <h3>Bajaj</h3>
+            <p>La familia Pulsar y Dominar: potencia, tecnología y respaldo internacional.</p>
+            <span class="marca-card-link">Ver modelos Bajaj →</span>
+          </div>
+        </a>
+
+        <a class="marca-card reveal" href="motos.html?marca=cfmoto#marcas">
+          <div class="marca-card-img">
+            <img class="is-cover" src="assets/img/motos/cfmoto-250nk-fun.jpg"
+                 alt="CF Moto 250 NK en carretera" width="980" height="551" loading="lazy" decoding="async">
+          </div>
+          <div class="marca-card-body">
+            <h3>CF Moto</h3>
+            <p>Naked y deportivas con diseño premium, para quien busca dar el siguiente paso.</p>
+            <span class="marca-card-link">Ver modelos CF Moto →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="marcas-rest reveal">
+        <a class="marca-tile" href="motos.html?marca=tvs#marcas">TVS</a>
+        <a class="marca-tile" href="motos.html?marca=islo#marcas">Islo</a>
+        <a class="marca-tile" href="motos.html?marca=carabela#marcas">Carabela</a>
+        <a class="marca-tile" href="motos.html?marca=zmoto#marcas">Zmoto</a>
+        <a class="marca-tile" href="motos.html?marca=ryder#marcas">Ryder</a>
+        <a class="marca-tile" href="motos.html?marca=cfmoto#marcas">CF Lite</a>
+        <a class="marca-tile" href="motos.html#catalogo">UM Motorcycles</a>
+        <a class="marca-tile" href="motos.html#catalogo">Honda</a>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 4 · MOTOS DESTACADAS
+       ▸ Solo modelos que existen en el catálogo real (motos.html).
+       ▸ El CTA lleva al panel de la marca dentro del catálogo.
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="modelos" style="border-top:1px solid var(--gris3); background:linear-gradient(180deg, rgba(20,20,20,.5), transparent 40%);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Modelos destacados</span>
+          <h2 class="section-title">Las más <em>buscadas</em><br/>en piso</h2>
+        </div>
+        <p class="section-sub">
+          Una selección de los modelos con más movimiento en nuestras agencias. Consulta
+          disponibilidad y condiciones de financiamiento con tu asesor.
+        </p>
+      </div>
+
+      <div class="motos-grid">
+        <a class="moto-card reveal" href="motos.html?marca=vento#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Doble propósito</span>
+            <img class="is-contain" src="assets/img/motos/vento-crossmax-300-rally.jpg"
+                 alt="Vento Crossmax 300 Rally" width="2000" height="2000" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">Vento</span>
+            <h3 class="moto-modelo">Crossmax 300 Rally</h3>
+            <p class="moto-cat">Lista para ciudad y camino, todos los días.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+
+        <a class="moto-card reveal" href="motos.html?marca=bajaj#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Sport</span>
+            <img class="is-contain" src="assets/img/motos/bajaj-dominar-400.webp"
+                 alt="Bajaj Dominar 400 UG" width="1640" height="997" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">Bajaj</span>
+            <h3 class="moto-modelo">Dominar 400 UG</h3>
+            <p class="moto-cat">Potencia y tecnología para quien busca más.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+
+        <a class="moto-card reveal" href="motos.html?marca=cfmoto#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Sport</span>
+            <img class="is-cover" src="assets/img/motos/cfmoto-250sr-fun.jpg"
+                 alt="CF Moto 250 SR Fun" width="980" height="551" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">CF Moto</span>
+            <h3 class="moto-modelo">250 SR Fun</h3>
+            <p class="moto-cat">Deportiva de entrada con acabados premium.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+
+        <a class="moto-card reveal" href="motos.html?marca=cfmoto#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Naked</span>
+            <img class="is-cover" src="assets/img/motos/cfmoto-250nk-fun.jpg"
+                 alt="CF Moto 250 NK Fun" width="980" height="551" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">CF Moto</span>
+            <h3 class="moto-modelo">250 NK Fun</h3>
+            <p class="moto-cat">Naked urbana, ágil y con presencia.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+
+        <a class="moto-card reveal" href="motos.html?marca=tvs#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Naked</span>
+            <img class="is-contain" src="assets/img/motos/tvs-rtr-200.webp"
+                 alt="TVS Rtr 200" width="1920" height="720" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">TVS</span>
+            <h3 class="moto-modelo">Rtr 200</h3>
+            <p class="moto-cat">Rendimiento probado para el día a día.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+
+        <a class="moto-card reveal" href="motos.html?marca=zmoto#marcas">
+          <div class="moto-card-img">
+            <span class="moto-tag">Naked</span>
+            <img class="is-contain" src="assets/img/motos/zmoto-crx300.png"
+                 alt="Zmoto CRX 300" width="1024" height="714" loading="lazy" decoding="async">
+          </div>
+          <div class="moto-card-body">
+            <span class="moto-marca">Zmoto</span>
+            <h3 class="moto-modelo">CRX 300</h3>
+            <p class="moto-cat">Diseño deportivo a un precio accesible.</p>
+            <span class="moto-cta">Ver modelo →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="motos-foot reveal">
+        <p>Más de 100 modelos entre motonetas, ciudad, trabajo, doble propósito, sport, cuatrimotos y motocarros. Pregunta disponibilidad y precio por modelo en tu agencia.</p>
+        <a class="btn btn-primary" href="motos.html#catalogo">Ver catálogo completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BANDA EDITORIAL — foto de piso de venta RiderMex ═══ -->
+  <section class="banda reveal">
+    <img class="banda-img" src="assets/fotos/showroom-libertad.jpg"
+         alt="Piso de venta de una agencia RiderMex" width="1280" height="960" loading="lazy" decoding="async">
+    <div class="wrap">
+      <div class="banda-content">
+        <span class="eyebrow">La experiencia RiderMex</span>
+        <p class="banda-quote">La libertad no es un lujo, <em>es tu motor</em></p>
+        <p>
+          Nuestras agencias no son un catálogo en pantalla: son piso de venta con inventario real,
+          asesores que te explican tus opciones y motos listas para entregarte el mismo día que firmas.
+        </p>
+        <a class="btn btn-ghost" href="#agencias">Conoce nuestras agencias →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 5 · CÓMO COMPRAR TU MOTO
+       ▸ Integra la información del proceso de compra ("Quiero una moto").
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="como-comprar">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Proceso RiderMex</span>
+          <h2 class="section-title">Cómo comprar<br/><em>tu moto</em></h2>
+        </div>
+        <p class="section-sub">
+          De cero a rodando, sin vueltas ni esperas innecesarias. Así es el proceso completo,
+          desde que eliges tu moto hasta que te la llevas.
+        </p>
+      </div>
+
+      <div class="como-grid">
+        <div class="pasos reveal">
+          <div class="paso">
+            <span class="paso-num">01</span>
+            <div>
+              <h3>Elige tu moto</h3>
+              <p>Explora el catálogo por marca y categoría, o pásate a cualquiera de nuestras agencias a verlas en persona.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso-num">02</span>
+            <div>
+              <h3>Regístrate en 30 segundos</h3>
+              <p>Llena tus datos básicos en el formulario y dinos qué moto te interesa. Sin papeleo interminable.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso-num">03</span>
+            <div>
+              <h3>Aprobación en 2 minutos</h3>
+              <p>Revisamos tus opciones de financiamiento con nuestras financieras aliadas. Aprobamos tu crédito solo con tu INE, sin aval.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso-num">04</span>
+            <div>
+              <h3>Confirmamos tu preaprobación</h3>
+              <p>Un asesor te contacta el mismo día para cerrar condiciones: enganche, plazo y pago semanal a tu medida.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <span class="paso-num">05</span>
+            <div>
+              <h3>Firma y estrena</h3>
+              <p>Pasas a tu agencia, firmas tu contrato y te vas rodando. Entrega inmediata el mismo día que firmas.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:2rem; display:flex; gap:.85rem; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="motos.html#credito">Tramita tu crédito →</a>
+            <a class="btn btn-ghost" href="motos.html#catalogo">Ver catálogo</a>
+          </div>
+        </div>
+
+        <div class="como-visual reveal">
+          <img class="como-photo" src="assets/fotos/cliente-entrega-01.jpg"
+               alt="Cliente RiderMex estrenando su motocicleta afuera de la agencia"
+               width="1280" height="960" loading="lazy" decoding="async">
+          <div class="como-note">
+            <strong>Lo que necesitas para empezar</strong>
+            <p>Tu INE es suficiente para arrancar el trámite. Enganche desde $2,299 y pagos semanales desde $199, sin aval. El monto exacto depende del modelo, enganche y plazo — confírmalo con tu asesor.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contraste con el mercado (información del apartado "Quiero una moto") -->
+      <div class="sin-band reveal">
+        <div class="sin-item">
+          <strong>Sin trámites eternos</strong>
+          <span>Nada de semanas de espera para una respuesta que no llega.</span>
+        </div>
+        <div class="sin-item">
+          <strong>Sin mil documentos</strong>
+          <span>Ni comprobantes infinitos, ni avales, ni referencias de más.</span>
+        </div>
+        <div class="sin-item">
+          <strong>Sin rechazos sin razón</strong>
+          <span>Te explicamos tus opciones reales y qué sigue en tu proceso.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 6 · BENEFICIOS RIDERMEX
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="beneficios" style="border-top:1px solid var(--gris3); background:linear-gradient(180deg, rgba(20,20,20,.55), transparent 45%);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Por qué RiderMex</span>
+          <h2 class="section-title">Ventajas de comprar<br/>con <em>nosotros</em></h2>
+        </div>
+      </div>
+
+      <div class="beneficios-grid">
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+          <h3>Autorización relámpago</h3>
+          <p>Aprobamos tu crédito en 2 minutos, solo con tu INE y sin aval.</p>
+        </div>
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Pagos accesibles</h3>
+          <p>Desde $199 semanales y enganche desde $2,299, ajustados a tu bolsillo.</p>
+        </div>
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><path d="M3 12h13l-2.5-3M3 12l2.5 3M16 7h3l2 5v4h-3"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <h3>Entrega inmediata</h3>
+          <p>Te llevas tu moto el mismo día que firmas tu contrato en la agencia.</p>
+        </div>
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v4M16 4v4"/></svg></div>
+          <h3>Opciones de financiamiento</h3>
+          <p>Trabajamos con financieras aliadas, incluidas alternativas sin enganche según tu perfil.</p>
+        </div>
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>Catálogo amplio</h3>
+          <p>Más de 10 marcas y +100 modelos: motonetas, trabajo, doble propósito, sport y más.</p>
+        </div>
+        <div class="beneficio reveal">
+          <div class="beneficio-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <h3>Agencias cerca de ti</h3>
+          <p>Naucalpan, CEDA, Coapa y Chalco — con una quinta agencia próximamente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 7 · AGENCIAS
+       ▸ Ubicaciones reales de Google Maps (abren en nueva pestaña).
+       ▸ Estructura preparada para el tour 360: cuando exista la URL,
+         sustituye el <span> "Tour 360 · Próximamente" por un <a>.
+  ════════════════════════════════════════════════════ -->
+  <section class="section" id="agencias">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">Dónde encontrarnos</span>
+          <h2 class="section-title">Nuestras <em>agencias</em></h2>
+        </div>
+        <p class="section-sub">
+          Cuatro agencias activas en CDMX y Estado de México, con una quinta próximamente.
+          Ven a ver tu moto, pruébala y arranca tu trámite en el mismo lugar.
+        </p>
+      </div>
+
+      <div class="agencias-layout">
+        <div class="agencias-grid reveal">
+          <div class="agencia-card">
+            <h3>RiderMex Naucalpan</h3>
+            <p><strong>Dirección:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+            <p><strong>Horario:</strong> Lun–Vie 9:30–18:30, Sáb 9:30–15:30</p>
+            <p><strong>Tel:</strong> 55 1000 0680</p>
+            <div class="agencia-actions">
+              <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+              <span class="agencia-btn is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+            </div>
+          </div>
+
+          <div class="agencia-card">
+            <h3>RiderMex CEDA / Central de Abasto</h3>
+            <p><strong>Tel:</strong> 55 1000 0680</p>
+            <p>Confirma dirección y horario con tu asesor.</p>
+            <div class="agencia-actions">
+              <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+              <span class="agencia-btn is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+            </div>
+          </div>
+
+          <div class="agencia-card">
+            <h3>RiderMex Coapa</h3>
+            <p><strong>Tel:</strong> 55 1000 0680</p>
+            <p>Confirma dirección y horario con tu asesor.</p>
+            <div class="agencia-actions">
+              <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+              <span class="agencia-btn is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+            </div>
+          </div>
+
+          <div class="agencia-card">
+            <h3>RiderMex Chalco</h3>
+            <p><strong>Tel:</strong> 55 1000 0680</p>
+            <p>Confirma dirección y horario con tu asesor.</p>
+            <div class="agencia-actions">
+              <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+              <span class="agencia-btn is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
+            </div>
+          </div>
+
+          <div class="agencia-card proxima" style="grid-column: 1 / -1;">
+            <h3>5ª agencia <span class="badge-proxima">Próxima apertura</span></h3>
+            <p>Próximamente anunciaremos la ubicación de nuestra quinta agencia.</p>
+          </div>
+        </div>
+
+        <div class="agencias-visual reveal">
+          <img class="agencias-photo" src="assets/fotos/showroom-199-semanales.jpg"
+               alt="Piso de venta de una agencia RiderMex con motos y cascos en exhibición"
+               width="1600" height="1204" loading="lazy" decoding="async">
+          <div class="agencias-photo-pair">
+            <img src="assets/fotos/showroom-inicio-de-todo.jpg" alt="Muro de llaves de una agencia RiderMex" width="900" height="1600" loading="lazy" decoding="async">
+            <img src="assets/fotos/agencia-asesora.jpg" alt="Asesora de RiderMex en piso de venta" width="1280" height="960" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════════════════════════════
-       RIDER JOURNEY — Recorrido por ecosistemas (scroll-driven)
+       SECCIÓN 8 · RIDER JOURNEY — Recorrido por ecosistemas (scroll-driven)
        · TEXTOS/CTAs: se editan en el array journeySteps del <script>.
        · Elementos decorativos: cambia su posición/tamaño en el atributo
          style="left:… ; bottom:… ; width:…" de cada <img class="jel">.
        · Assets base: assets/RIDERMEX_CAMINO_ELEMENTSPNG/<ecosistema>/
   ════════════════════════════════════════════════════════ -->
-  <section class="journey-outer" id="proceso" aria-label="Proceso RiderMex">
+  <section class="journey-outer" id="proceso" aria-label="Tu recorrido RiderMex">
     <div class="journey-sticky">
 
       <!-- ═══ ESCENAS / ECOSISTEMAS (fondo + elementos con parallax) ═══ -->
@@ -1025,7 +1930,7 @@
       <!-- ═══ MOTO (capa independiente; posición/escala/rotación por JS) ═══ -->
       <div class="journey-moto-wrap" id="jMoto">
         <div class="journey-moto-glow" aria-hidden="true"></div>
-        <img class="journey-moto-img" src="assets/img/logo-white.png"
+        <img class="journey-moto-img" src="assets/img/logo-white-512.png"
              alt="Logo de RiderMex avanzando por el camino del proceso">
       </div>
 
@@ -1093,14 +1998,109 @@
     </div><!-- /journey-sticky -->
   </section><!-- /journey-outer -->
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 9 · DESCUBRE RIDERMEX INVERSIONES
+       ▸ Segunda ruta del ecosistema, después del recorrido.
+  ════════════════════════════════════════════════════ -->
+  <section class="section inv-discover" id="inversiones">
+    <div class="wrap">
+      <div class="inv-grid">
+        <div class="reveal">
+          <span class="eyebrow inv-eyebrow">La otra ruta</span>
+          <h2 class="section-title inv-title">RiderMex <em>Inversiones</em></h2>
+          <p class="section-sub">
+            El mismo negocio que vende motocicletas también abre la puerta a participar en su
+            crecimiento. Una operación real, con agencias físicas, inventario y documentación revisable.
+          </p>
+          <ul class="inv-list">
+            <li>Modelos de inversión con rendimientos estimados y calendario de flujos definido.</li>
+            <li>Respaldo en operación real: agencias activas, inventario y proceso comercial.</li>
+            <li>Contrato formal, Legal Kit y documentación revisable antes de participar.</li>
+            <li>Calculadora para explorar escenarios antes de tomar cualquier decisión.</li>
+          </ul>
+          <div style="display:flex; gap:.85rem; flex-wrap:wrap;">
+            <a class="btn btn-verde" href="inversiones.html">RiderMex Inversiones →</a>
+            <a class="btn btn-ghost" href="inversiones.html#calculadora">Abrir calculadora</a>
+          </div>
+          <p class="inv-disclaimer">
+            Los rendimientos mostrados en el apartado de inversiones son estimados, no garantizados.
+            Toda inversión implica riesgo y debe revisarse con el contrato oficial y tus asesores.
+          </p>
+        </div>
+        <div class="inv-visual reveal">
+          <div class="inv-logo-shell">
+            <img src="assets/inversiones/logo-ridermex-inversiones.png"
+                 alt="RiderMex Inversiones" width="560" height="560" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    <span>© 2026 RiderMex · Financiamos tu libertad</span>
-    <span>
-      <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
-      <a href="#">Aviso de privacidad</a>
-    </span>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo-white-512.png" alt="RiderMex" width="512" height="512" loading="lazy">
+          <p>Venta, distribución y financiamiento de motocicletas nuevas y seminuevas en CDMX y Estado de México.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="motos.html#catalogo">Catálogo de motos</a></li>
+            <li><a href="#como-comprar">Cómo comprar</a></li>
+            <li><a href="#agencias">Agencias</a></li>
+            <li><a href="inversiones.html">RiderMex Inversiones</a></li>
+            <li><a href="quienes-somos.html">Quiénes somos</a></li>
+            <li><a href="motos.html#credito">Tramita tu crédito</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Sucursales</h4>
+          <ul>
+            <li><a href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">Naucalpan</a></li>
+            <li><a href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">CEDA / Central de Abasto</a></li>
+            <li><a href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">Coapa</a></li>
+            <li><a href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">Chalco</a></li>
+            <li>5ª agencia · próximamente</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:5510000680">55 1000 0680</a></li>
+            <li><a href="mailto:info@ridermex.com">info@ridermex.com</a></li>
+            <li><a href="https://wa.me/5215510000680" target="_blank" rel="noopener">WhatsApp motos</a></li>
+            <li><a href="https://wa.me/5215599900619" target="_blank" rel="noopener">WhatsApp inversiones</a></li>
+            <li>
+              <a href="https://facebook.com/ridermexof" target="_blank" rel="noopener">Facebook</a> ·
+              <a href="https://instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
+              <a href="https://tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</span>
+        <span>
+          © 2026 RiderMex · Financiamos tu libertad &nbsp;·&nbsp;
+          <!-- PENDIENTE: sustituir por la URL final del aviso de privacidad -->
+          <a href="#" title="Pendiente: URL final del aviso de privacidad">Aviso de privacidad</a> &nbsp;·&nbsp;
+          <!-- PENDIENTE: sustituir por la URL final de términos y condiciones -->
+          <a href="#" title="Pendiente: URL final de términos y condiciones">Términos y condiciones</a>
+        </span>
+      </div>
+    </div>
   </footer>
+
+  <a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+  </a>
 
   <script>
     // Barra de progreso de scroll
@@ -1144,17 +2144,8 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     revealEls.forEach(el => observer.observe(el));
-
-    // Glow que sigue al cursor en los paneles del hub
-    document.querySelectorAll('.hub-panel').forEach(panel => {
-      panel.addEventListener('mousemove', (e) => {
-        const rect = panel.getBoundingClientRect();
-        panel.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-        panel.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-      });
-    });
 
     // ══════════════════════════════════════════════════════════════
     // RIDER JOURNEY — Recorrido cinematográfico por ecosistemas

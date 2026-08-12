@@ -3,66 +3,428 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RiderMex Inversiones</title>
-<link rel="stylesheet" href="styles.css">
+<title>RiderMex Inversiones · Entiende el modelo</title>
+<meta name="description" content="Información clara sobre RiderMex Inversiones: qué es, cómo funciona, modelos de inversión, rendimientos estimados, respaldo legal, calculadora de escenarios y siguientes pasos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   RIDERMEX INVERSIONES
+   Experiencia integrada desde el HTML original de inversiones
+   (assets/index (3).html), conservando su sistema visual.
+   ▸ Modelos de inversión: array INVESTMENT_MODELS al final del <body>.
+   ▸ Calculadora: assets/inversiones/calculadora.html (iframe encapsulado).
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --red:#e61919;
+  --red2:#ff3535;
+  --green:#25D366;
+  --green2:#128C7E;
+  --black:#050505;
+  --black2:#0b0b0d;
+  --card:#151518;
+  --card2:#1b1b20;
+  --white:#f5f5f7;
+  --muted:#a5a5ae;
+  --muted2:#6b6b75;
+  --border:rgba(255,255,255,.09);
+  --border2:rgba(255,255,255,.16);
+  --gold:#b8963c;
+  --gold2:rgba(184,150,60,.14);
+  --shadow:0 28px 90px rgba(0,0,0,.48);
+  --max:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 12% -10%, rgba(230,25,25,.10), transparent 34rem),
+    radial-gradient(circle at 86% 4%, rgba(37,211,102,.06), transparent 31rem),
+    var(--black);
+  color:var(--white);
+  font-family:"Barlow",system-ui,sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:78px 78px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.86),transparent 70%);
+  pointer-events:none;z-index:-2;
+}
+a{color:inherit}
+/* height:auto evita que los atributos width/height del HTML deformen la
+   imagen cuando el CSS cambia su ancho. */
+img{max-width:100%;height:auto;display:block}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:999;box-shadow:0 0 18px rgba(230,25,25,.7)}
+.top-line{height:4px;background:linear-gradient(90deg,transparent,var(--red),#ff5757,var(--red),transparent)}
+
+.nav{
+  position:sticky;top:0;z-index:90;
+  backdrop-filter:blur(18px);
+  background:rgba(5,5,5,.78);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;padding:12px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+/* LOGO — archivo original: assets/img/logo-white.png
+   (derivado optimizado logo-white-512.png, mismo arte y color) */
+.nav-logo{height:58px;width:auto;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.22))}
+.nav-links{display:flex;align-items:center;gap:18px;font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.nav-links a{text-decoration:none;transition:color .25s ease;white-space:nowrap}
+.nav-links a:hover{color:var(--white)}
+.nav-pill{border:1px solid var(--border2);border-radius:999px;padding:8px 13px;color:var(--white);background:rgba(255,255,255,.04)}
+.nav-pill span{color:var(--red)}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0}
+.nav-toggle span{display:block;width:100%;height:2px;background:var(--white);border-radius:2px;transition:transform .25s ease,opacity .25s ease}
+.nav-toggle.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.is-active span:nth-child(2){opacity:0}
+.nav-toggle.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.hero{position:relative;overflow:hidden;min-height:76vh;display:grid;place-items:center;padding:74px 22px 68px}
+.hero::before{
+  content:"";position:absolute;width:920px;height:920px;top:-560px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(230,25,25,.12),transparent 62%);filter:blur(10px)
+}
+.hero-content{position:relative;max-width:1020px;text-align:center}
+.logo-shell{
+  width:fit-content;margin:0 auto 28px;padding:18px 24px;border-radius:30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.028));
+  border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 70px rgba(0,0,0,.36);backdrop-filter:blur(8px)
+}
+.hero-logo{width:min(210px,54vw);display:block;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--red);font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+.eyebrow::before,.eyebrow::after{content:"";width:42px;height:1px;background:rgba(230,25,25,.42)}
+h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(52px,9vw,112px);line-height:.84;letter-spacing:2px;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--red);text-shadow:0 0 34px rgba(230,25,25,.22)}
+.hero-copy{max-width:800px;margin:24px auto 0;color:var(--muted);font-size:clamp(16px,2.1vw,20px);line-height:1.72;font-weight:300}
+.hero-actions{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn{min-height:50px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:14px 24px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.btn-primary{background:linear-gradient(135deg,#d81818,#f12b2b);color:#fff;box-shadow:0 16px 34px rgba(230,25,25,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(230,25,25,.28)}
+.btn-whatsapp{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border:1px solid rgba(37,211,102,.55);box-shadow:0 16px 34px rgba(37,211,102,.18)}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(37,211,102,.28);border-color:rgba(37,211,102,.85)}
+.btn-ghost{border:1px solid var(--border2);background:rgba(255,255,255,.04);color:var(--white)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.26)}
+.wa-icon{width:20px;height:20px;display:block;flex:0 0 auto}
+
+.metrics{max-width:var(--max);margin:-44px auto 0;padding:0 22px;position:relative;z-index:5;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.024));box-shadow:var(--shadow);padding:24px}
+.metric strong{display:block;font-family:"Bebas Neue",sans-serif;font-size:42px;line-height:1;letter-spacing:1px;position:relative}
+.metric strong span{color:var(--red)}
+.metric p{margin-top:8px;color:var(--muted);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;position:relative}
+
+.section{max-width:var(--max);margin:0 auto;padding:86px 22px 0}
+/* El nav es sticky: las anclas no deben quedar debajo de él al saltar. */
+[id]{scroll-margin-top:96px}
+@media (max-width:700px){[id]{scroll-margin-top:80px}}
+.section-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:28px}
+.kicker{color:var(--red);font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(42px,6.2vw,76px);line-height:.9;letter-spacing:1.5px;text-transform:uppercase;text-wrap:balance}
+.desc{color:var(--muted);line-height:1.75;font-size:16px;max-width:790px;margin-top:14px;font-weight:300}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card,.mini-card,.model-card,.trust-card,.faq-card{border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));border-radius:24px;padding:24px;position:relative;overflow:hidden;box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.card h3,.mini-card h3,.model-card h3,.trust-card h3,.faq-card h3{font-size:21px;line-height:1.2;margin-bottom:10px}
+.card p,.mini-card p,.model-card p,.trust-card p,.faq-card p{color:var(--muted);line-height:1.68;font-weight:300}
+.num{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:rgba(230,25,25,.11);border:1px solid rgba(230,25,25,.25);font-family:"Barlow Condensed",sans-serif;font-weight:800;margin-bottom:16px}
+
+.what-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+.big-card{border:1px solid var(--border);border-radius:30px;padding:32px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.022));box-shadow:var(--shadow)}
+.big-card h3{font-size:30px;line-height:1.15;margin-bottom:14px}
+.big-card p{color:var(--muted);line-height:1.78;font-weight:300}
+.check-list{display:grid;gap:13px;margin-top:20px}
+.check{display:flex;gap:12px;align-items:flex-start;color:var(--muted);line-height:1.55}
+.check strong{color:var(--white)}
+.check::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--green);box-shadow:0 0 14px rgba(37,211,102,.45);margin-top:7px;flex:0 0 auto}
+
+.flow-box{border:1px solid var(--border);border-radius:30px;background:rgba(255,255,255,.035);box-shadow:var(--shadow);padding:20px}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}
+.flow-step{border:1px solid var(--border);border-radius:20px;padding:18px;background:rgba(0,0,0,.18);min-height:175px}
+.flow-step span{font-family:"Bebas Neue",sans-serif;color:var(--red);font-size:34px;display:block;line-height:1;margin-bottom:10px}
+.flow-step h3{font-size:18px;margin-bottom:8px}
+.flow-step p{color:var(--muted);font-size:14px;line-height:1.55;font-weight:300}
+
+.money-card{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.money-item{border:1px solid var(--border);border-radius:26px;padding:26px;background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.022));box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.money-item strong{font-family:"Bebas Neue",sans-serif;font-size:54px;line-height:1;display:block;margin-bottom:10px}
+.money-item strong span{color:var(--green)}
+.money-item p{color:var(--muted);line-height:1.65}
+
+/* ── Modelos de inversión (tarjetas generadas desde INVESTMENT_MODELS) ── */
+.trust-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.trust-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);background:rgba(255,255,255,.04);border-radius:999px;padding:9px 15px;color:var(--muted);font-size:13px}
+.trust-badge svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.grid-inversion{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.modelo-card{border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));border-radius:24px;padding:26px;position:relative;overflow:hidden;box-shadow:0 18px 55px rgba(0,0,0,.22);transition:transform .3s ease,border-color .3s ease}
+.modelo-card:hover{transform:translateY(-4px);border-color:rgba(230,25,25,.35)}
+.modelo-card.destacado{border-color:rgba(37,211,102,.36);background:radial-gradient(circle at 88% 0%,rgba(37,211,102,.13),transparent 46%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022))}
+.modelo-badge{position:absolute;top:18px;right:18px;font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#062b1c;background:var(--green);border-radius:999px;padding:5px 11px}
+.modelo-letra{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(230,25,25,.12);border:1px solid rgba(230,25,25,.28);font-family:"Bebas Neue",sans-serif;font-size:22px;margin-bottom:16px}
+.modelo-card h3{font-family:"Bebas Neue",sans-serif;font-size:28px;letter-spacing:1px;margin-bottom:6px}
+.modelo-rendimiento{font-family:"Bebas Neue",sans-serif;font-size:42px;line-height:1;color:var(--white)}
+.modelo-rend-nota{color:var(--muted2);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px}
+.modelo-card p{color:var(--muted);line-height:1.68;font-weight:300;margin-bottom:14px}
+.modelo-card ul{list-style:none;display:grid;gap:9px}
+.modelo-card li{display:flex;gap:10px;color:var(--muted);font-size:14px;line-height:1.55}
+.modelo-card li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--red);margin-top:7px;flex:0 0 auto}
+.inversion-disclaimer{color:var(--muted2);font-size:12px;line-height:1.7;margin-top:18px;max-width:820px}
+
+/* ── Calculadora (iframe encapsulado) ── */
+.calc-panel{border:1px solid rgba(37,211,102,.24);border-radius:30px;padding:30px;background:radial-gradient(circle at 90% 0%,rgba(37,211,102,.14),transparent 44%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));box-shadow:var(--shadow)}
+.calc-head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+.calc-head h3{font-family:"Bebas Neue",sans-serif;font-size:clamp(30px,4.2vw,52px);line-height:.94;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
+.calc-head p{color:var(--muted);line-height:1.7;max-width:680px;font-weight:300}
+.calc-actions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.calc-shell{display:none;margin-top:24px}
+.calc-shell.is-open{display:block}
+.calc-frame-wrap{position:relative;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.42)}
+.investment-calculator-frame{display:block;width:100%;height:min(1180px,150vh);min-height:640px;border:0}
+.calc-hint{color:var(--muted2);font-size:12px;line-height:1.6;margin-top:12px}
+
+/* ── Formulario de inversionistas ── */
+.form-panel{border:1px solid var(--border);border-radius:30px;padding:26px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));box-shadow:var(--shadow)}
+.ghl-form{width:100%;height:624px;min-height:624px;border:none;border-radius:16px;background:#fff;display:block}
+
+.media-panel{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;border:1px solid rgba(230,25,25,.24);border-radius:30px;padding:34px;background:radial-gradient(circle at 92% 0%,rgba(230,25,25,.16),transparent 42%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));box-shadow:var(--shadow)}
+.media-panel h3{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,5vw,64px);line-height:.92;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px}
+.media-panel p{color:var(--muted);line-height:1.75;max-width:720px;font-weight:300}
+
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.trust-card span{font-family:"Bebas Neue",sans-serif;font-size:36px;color:var(--green);display:block;margin-bottom:12px;line-height:1}
+
+.zoom-panel{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;border:1px solid rgba(37,211,102,.24);border-radius:30px;padding:34px;background:radial-gradient(circle at 90% 0%,rgba(37,211,102,.16),transparent 42%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));box-shadow:var(--shadow)}
+.zoom-panel h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,5vw,68px);line-height:.9;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:12px}
+.zoom-panel p{color:var(--muted);line-height:1.75;max-width:720px;font-weight:300}
+
+.accordion{display:grid;gap:12px;margin-top:28px}
+details{border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.034);overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;font-weight:800;font-size:17px;line-height:1.35}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:"Bebas Neue",sans-serif;color:var(--red);font-size:28px;line-height:1}
+details[open] summary::after{content:"–"}
+.detail-body{padding:0 22px 22px;color:var(--muted);line-height:1.75;font-weight:300}
+.detail-body strong{color:var(--white)}
+
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.risk-card{border:1px solid rgba(184,150,60,.24);background:linear-gradient(180deg,rgba(184,150,60,.09),rgba(255,255,255,.022));border-radius:22px;padding:22px}
+.risk-card strong{display:block;color:var(--white);font-size:17px;margin-bottom:8px}
+.risk-card p{color:var(--muted);line-height:1.65;font-size:14px;font-weight:300}
+
+.cta{max-width:var(--max);margin:92px auto 0;padding:0 22px 90px}
+.cta-box{border-radius:34px;border:1px solid var(--border);background:radial-gradient(circle at 50% 0%,rgba(230,25,25,.16),transparent 46%),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.024));box-shadow:var(--shadow);padding:64px 34px;text-align:center;position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.05);border-radius:26px;pointer-events:none}
+.cta-box h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(44px,7vw,84px);line-height:.9;text-transform:uppercase;letter-spacing:1.5px;position:relative;text-wrap:balance}
+.cta-box h2 span{color:var(--red)}
+.cta-box p{position:relative;color:var(--muted);max-width:680px;margin:18px auto 30px;line-height:1.75;font-size:16px;font-weight:300}
+
+.disclaimer{max-width:var(--max);margin:0 auto;padding:0 22px 44px}
+.disclaimer p{border:1px solid var(--border);background:rgba(255,255,255,.028);border-radius:18px;padding:18px 20px;color:var(--muted2);font-size:12px;line-height:1.7}
+footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
+.footer-inner{max-width:var(--max);margin:0 auto;padding:42px 22px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:26px}
+.footer-branding img{height:58px;width:auto;margin-bottom:14px}
+.footer-branding strong{display:block;font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:2px}
+.footer-branding p{color:var(--muted);margin-top:5px;font-size:14px}
+.footer-links{display:flex;flex-direction:column;align-items:flex-end;gap:8px;color:var(--muted);font-size:13px}
+.footer-links a{text-decoration:none;transition:color .25s ease}
+.footer-links a:hover{color:var(--white)}
+
+.whatsapp-float{position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px rgba(37,211,102,.35);z-index:95;transition:transform .25s ease}
+.whatsapp-float:hover{transform:scale(1.08)}
+.whatsapp-float svg{width:30px;height:30px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media (max-width:1080px){
+  .metrics,.card-grid,.trust-grid,.money-card,.risk-grid,.grid-inversion{grid-template-columns:1fr 1fr}
+  .what-grid,.media-panel,.zoom-panel,.calc-head{grid-template-columns:1fr}
+  .flow-steps{grid-template-columns:1fr}
+  .section-head{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:0;
+    background:rgba(5,5,5,.97);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);padding:10px 22px 18px;
+  }
+  .nav-links.is-open{display:flex}
+  .nav-links a{display:block;width:100%;padding:12px 0}
+  .nav-links a.nav-pill{text-align:center;margin-top:8px;padding:12px}
+}
+@media (max-width:700px){
+  .hero{min-height:auto;padding-top:56px}
+  .nav-logo{height:48px}
+  .metrics,.card-grid,.trust-grid,.money-card,.risk-grid,.grid-inversion{grid-template-columns:1fr}
+  .metric,.big-card,.card,.mini-card,.model-card,.trust-card,.money-item,.modelo-card{padding:22px}
+  .section{padding-top:66px}
+  .hero-actions .btn{width:100%;max-width:340px}
+  .flow-box,.media-panel,.zoom-panel,.cta-box,.calc-panel,.form-panel{padding:22px}
+  .investment-calculator-frame{height:min(920px,140vh)}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-links{align-items:flex-start}
+}
+</style>
 </head>
 <body>
+<div class="progress" id="progress"></div>
+<div class="top-line"></div>
 
-<header>
-  <div class="nav-wrap">
-    <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="RiderMex"></a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="motos.html">Catálogo de motos</a></li>
-        <li><a href="#inversiones">Modelos</a></li>
-        <li><a href="quienes-somos.html">Quiénes somos</a></li>
-        <li><a href="#contacto-inversion" class="btn-credito-nav">Quiero invertir</a></li>
-      </ul>
-    </nav>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+<!-- ═══ NAV — mantiene el acceso a todo el sitio ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="Ir al inicio de RiderMex">
+      <img class="nav-logo" src="assets/img/logo-white-512.png" alt="RiderMex" width="512" height="512">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="motos.html#catalogo">Catálogo de motos</a>
+      <a href="#que-es">Qué es</a>
+      <a href="#modelos">Modelos</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#respaldo">Respaldo</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a class="nav-pill" href="#contacto-inversion"><span>Quiero</span> invertir</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" id="inicio">
+  <div class="hero-content reveal">
+    <div class="logo-shell">
+      <img class="hero-logo" src="assets/inversiones/logo-ridermex-inversiones.png" alt="RiderMex Inversiones" width="560" height="560">
+    </div>
+    <p class="eyebrow">RiderMex Inversiones</p>
+    <h1>Invierte en tiendas de <span>motos</span> con operación real</h1>
+    <p class="hero-copy">
+      RiderMex vende motocicletas nuevas y seminuevas a clientes que las usan para trabajar y moverse.
+      Como inversionista, participas en el crecimiento de tiendas físicas, con rendimientos estimados,
+      contratos y documentación revisable.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#que-es">Entender el modelo</a>
+      <a class="btn btn-ghost" href="#calculadora">Calcular mi escenario</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2C8.95 3.2 3.2 8.87 3.2 15.84c0 2.23.6 4.41 1.74 6.33L3.2 28.8l6.82-1.77a12.9 12.9 0 0 0 6 1.5h.01c7.07 0 12.82-5.67 12.82-12.64S23.09 3.2 16.02 3.2Zm0 23.18h-.01a10.7 10.7 0 0 1-5.45-1.48l-.39-.23-4.04 1.05 1.08-3.88-.25-.4a10.35 10.35 0 0 1-1.6-5.55c0-5.79 4.78-10.5 10.66-10.5 2.85 0 5.52 1.1 7.53 3.08a10.36 10.36 0 0 1 3.12 7.42c0 5.79-4.78 10.5-10.65 10.5Zm5.84-7.86c-.32-.16-1.9-.92-2.2-1.03-.3-.1-.52-.16-.74.16-.22.31-.85 1.03-1.04 1.24-.19.21-.38.24-.7.08-.32-.16-1.35-.49-2.58-1.55-.95-.84-1.6-1.87-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.22-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.74-1.76-1.02-2.41-.27-.63-.54-.54-.74-.55h-.63c-.22 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.58 0 1.52 1.12 2.98 1.28 3.19.16.21 2.2 3.32 5.33 4.65.75.32 1.33.51 1.78.65.75.24 1.43.2 1.97.12.6-.09 1.9-.76 2.17-1.5.27-.73.27-1.36.19-1.5-.08-.13-.29-.21-.61-.37Z"/></svg> Agendar Zoom</a>
+    </div>
   </div>
 </header>
 
-<section class="hero">
-  <span class="hero-kicker">Respaldado por operación real y estructura legal</span>
-  <h1>RiderMex <span>Inversiones</span></h1>
-  <p>Haz crecer tu capital junto con el crecimiento de una empresa con 4 agencias activas, una quinta próximamente y un modelo respaldado por contratos formales, fideicomiso y notario público.</p>
-  <a href="#contacto-inversion" class="hero-cta">Quiero invertir</a>
+<!-- ═══ MÉTRICAS ═══ -->
+<section class="metrics" aria-label="Resumen rápido">
+  <div class="metric reveal"><strong>$75K</strong><p>Ticket desde</p></div>
+  <div class="metric reveal"><strong>20–22<span>%</span></strong><p>Rendimiento estimado modelos 1 y 2</p></div>
+  <div class="metric reveal"><strong>$120K</strong><p>Ticket de operación activa</p></div>
+  <div class="metric reveal"><strong>12–15<span>%</span></strong><p>Rendimiento estimado modelo 3</p></div>
 </section>
 
-<!-- ===================== BARRA DE CONFIANZA ===================== -->
-<div class="trust-bar reveal">
-  <div class="trust-inner">
-    <div class="trust-stat">
-      <div class="num">4</div>
-      <div class="label">Agencias activas · 1 próximamente</div>
-    </div>
-    <div class="trust-stat">
-      <div class="num">9</div>
-      <div class="label">Marcas distribuidas</div>
-    </div>
-    <div class="trust-stat">
-      <div class="num">+<span>1,000</span></div>
-      <div class="label">Motos vendidas</div>
-    </div>
-    <div class="trust-stat">
-      <div class="num">100%</div>
-      <div class="label">Respaldo en activos</div>
+<!-- ═══ QUÉ ES ═══ -->
+<section class="section" id="que-es">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Qué es RiderMex Inversiones</p>
+      <h2 class="reveal">Un modelo claro, no una presentación complicada</h2>
+      <p class="desc reveal">La idea es sencilla: RiderMex tiene una operación comercial de motos; el capital ayuda a impulsar inventario y crecimiento; las ventas generan utilidad; el inversionista participa en rendimientos estimados según el modelo que elija.</p>
     </div>
   </div>
-</div>
+  <div class="what-grid">
+    <div class="big-card reveal">
+      <h3>¿Qué estás financiando?</h3>
+      <p>No compras una moto individual ni tienes que operar una tienda. Participas financieramente en un modelo de agencias de motos, con inventario, proceso comercial, alianzas de financiamiento y reportes.</p>
+      <div class="check-list">
+        <div class="check"><div><strong>RiderMex opera:</strong> tiendas, inventario, vendedores, seguimiento y financiamiento.</div></div>
+        <div class="check"><div><strong>Tú participas:</strong> como inversionista, con un ticket definido y un calendario de flujos estimado.</div></div>
+        <div class="check"><div><strong>Se revisa antes:</strong> contrato, Legal Kit, Data Room y condiciones del modelo elegido.</div></div>
+      </div>
+    </div>
+    <div class="big-card reveal">
+      <h3>¿Qué recibes?</h3>
+      <p>Recibes una participación ligada al modelo seleccionado. El rendimiento no es garantizado, pero se estima con base en la operación, utilidad por moto, rotación de inventario y estructura de pagos.</p>
+      <div class="check-list">
+        <div class="check"><div>Acceso a documentación y revisión legal.</div></div>
+        <div class="check"><div>Rendimiento estimado según tu modelo.</div></div>
+        <div class="check"><div>Opción de revisar tu escenario por Zoom.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ===================== MODELOS ===================== -->
-<section id="inversiones" class="inversiones-bg reveal">
-  <span class="eyebrow">Planes de inversión</span>
-  <h2 class="section-title">Nuestros <span>Modelos</span></h2>
-  <p class="section-subtitle" style="color:#aaa;">Elige el plan que se ajuste a tu objetivo y horizonte de inversión</p>
+<!-- ═══ CÓMO FUNCIONA ═══ -->
+<section class="section" id="funciona">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Cómo funciona</p>
+      <h2 class="reveal">El camino del dinero</h2>
+      <p class="desc reveal">Esto es lo que debe quedar claro antes de tomar una llamada: cómo entra tu inversión, qué hace RiderMex y cómo se genera el rendimiento estimado.</p>
+    </div>
+  </div>
+  <div class="flow-box reveal">
+    <div class="flow-steps">
+      <div class="flow-step"><span>01</span><h3>Eliges modelo</h3><p>$75,000 de contado, $10,000 + aportaciones mensuales, o $120,000 de operación activa.</p></div>
+      <div class="flow-step"><span>02</span><h3>Se revisa legal</h3><p>Contrato, Legal Kit, documentos, tiempos, riesgos y condiciones.</p></div>
+      <div class="flow-step"><span>03</span><h3>RiderMex opera</h3><p>Tiendas, inventario, vendedores, financieras, publicidad y reportes.</p></div>
+      <div class="flow-step"><span>04</span><h3>Se venden motos</h3><p>Clientes compran motos para trabajar, moverse o generar ingresos.</p></div>
+      <div class="flow-step"><span>05</span><h3>Recibes flujos</h3><p>Participas en rendimientos estimados según calendario y contrato.</p></div>
+    </div>
+  </div>
+</section>
 
-  <div class="trust-badges">
-    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg>Contrato formal por escrito</span>
-    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/></svg>Reportes mensuales de rendimiento</span>
-    <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Respaldo en inventario y activos</span>
+<!-- ═══ POR QUÉ EXISTE DEMANDA ═══ -->
+<section class="section" id="cliente">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Por qué existe demanda</p>
+      <h2 class="reveal">La moto como herramienta de trabajo</h2>
+      <p class="desc reveal">El cliente de RiderMex no necesariamente compra una moto por lujo. Muchas veces la compra para trabajar, repartir, moverse más barato o generar ingresos. Eso hace que la demanda tenga una razón económica clara.</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card reveal"><span class="num">1</span><h3>Movilidad diaria</h3><p>La moto resuelve transporte en ciudades con tráfico y costos altos.</p></div>
+    <div class="card reveal"><span class="num">2</span><h3>Herramienta de ingreso</h3><p>Muchos compradores la usan para reparto, delivery, mensajería o autoempleo.</p></div>
+    <div class="card reveal"><span class="num">3</span><h3>Financiamiento accesible</h3><p>Las alianzas financieras permiten que el cliente pueda comprar sin pagar todo de contado.</p></div>
+  </div>
+</section>
+
+<!-- ═══ DE DÓNDE SALE EL RENDIMIENTO ═══ -->
+<section class="section" id="ganancia">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">De dónde sale el rendimiento</p>
+      <h2 class="reveal">La economía de una tienda</h2>
+      <p class="desc reveal">La base del modelo es la utilidad por moto y la rotación de ventas. Estos números ayudan a visualizar la lógica, pero el rendimiento final siempre debe revisarse contra contrato y escenario elegido.</p>
+    </div>
+  </div>
+  <div class="money-card">
+    <div class="money-item reveal"><strong>40</strong><h3>Motos al mes</h3><p>Meta de una tienda estabilizada dentro del modelo comercial.</p></div>
+    <div class="money-item reveal"><strong>$900</strong><h3>Utilidad por moto</h3><p>Utilidad usada como referencia para construir la bolsa de rendimiento.</p></div>
+    <div class="money-item reveal"><strong>$432K</strong><h3>Bolsa anual</h3><p>Resultado aproximado de 480 motos al año por $900 de utilidad.</p></div>
+  </div>
+</section>
+
+<!-- ═══ MODELOS DE INVERSIÓN ═══ -->
+<section class="section" id="modelos">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Modelos de inversión</p>
+      <h2 class="reveal">Elige cómo entrar</h2>
+      <p class="desc reveal">Hay tres formas de participar. Cambian la forma de pago, el rendimiento estimado y el momento en el que comienzas a recibir flujos.</p>
+    </div>
+  </div>
+
+  <div class="trust-badges reveal">
+    <span class="trust-badge"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg>Contrato formal por escrito</span>
+    <span class="trust-badge"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/></svg>Reportes mensuales de rendimiento</span>
+    <span class="trust-badge"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Respaldo en inventario y activos</span>
   </div>
 
   <!-- Modelos reales — se generan desde el array INVESTMENT_MODELS (ver <script> al final
@@ -70,39 +432,165 @@
   <div class="grid-inversion" id="grid-inversion"></div>
 
   <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo. La información presentada es de carácter informativo.</p>
+</section>
 
-  <!-- ═══ CTA · CALCULADORA DE INVERSIÓN ═══
-       El HTML de la calculadora vive en /calculadora-inversion/index.html (dentro del repo).
-       ▸ Para cambiar el destino del botón, edita el href de .calc-cta-btn. -->
-  <div class="calc-cta reveal">
-    <div class="calc-cta-inner">
-      <div class="calc-cta-text">
-        <span class="calc-cta-eyebrow">Herramienta</span>
-        <h3>Calcula el retorno de tu inversión aquí</h3>
-        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo podría hacer sentido para ti.</p>
+<!-- ═══════════════════════════════════════════════════════════
+     CALCULADORA DE INVERSIÓN
+     El simulador vive en assets/inversiones/calculadora.html
+     (copia del archivo original RiderMex_Simulador_Inversion_V3_META_300.html
+      con el logo enlazado como archivo en vez de base64).
+     Se embebe en un iframe encapsulado para evitar conflictos de CSS/JS.
+     El src se asigna al abrir para no cargarlo si el usuario no lo usa.
+═══════════════════════════════════════════════════════════ -->
+<section class="section" id="calculadora">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Herramienta</p>
+      <h2 class="reveal">Calcula el retorno de tu inversión</h2>
+      <p class="desc reveal">Explora distintos escenarios con nuestra calculadora: modelo, número de tickets y horizonte de tiempo. Es una simulación ilustrativa, no una promesa de rendimiento.</p>
+    </div>
+  </div>
+
+  <div class="calc-panel reveal">
+    <div class="calc-head">
+      <div>
+        <h3>Simulador patrimonial RiderMex</h3>
+        <p>Compara los tres modelos, el rendimiento operativo estimado y el escenario de plusvalía potencial sin salir de esta página.</p>
       </div>
-      <a class="calc-cta-btn" href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Calcular mi retorno →</a>
+      <div class="calc-actions">
+        <button class="btn btn-primary" id="calcToggle" type="button" aria-expanded="false" aria-controls="calcShell">Abrir calculadora</button>
+        <a class="btn btn-ghost" href="assets/inversiones/calculadora.html" target="_blank" rel="noopener">Abrir en pestaña nueva</a>
+      </div>
+    </div>
+
+    <div class="calc-shell" id="calcShell">
+      <div class="calc-frame-wrap">
+        <iframe
+          class="investment-calculator-frame"
+          id="calcFrame"
+          data-src="assets/inversiones/calculadora.html"
+          title="Calculadora de inversión RiderMex"
+          loading="lazy"></iframe>
+      </div>
+      <p class="calc-hint">La calculadora se desplaza dentro de su propio marco. Si prefieres verla a pantalla completa, ábrela en una pestaña nueva.</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== FORMULARIO INVERSIÓN ===================== -->
-<section id="contacto-inversion" class="credito-bg reveal">
-  <span class="eyebrow">Contacto</span>
-  <h2 class="section-title">Quiero <span>invertir</span></h2>
-  <p class="section-subtitle">Un asesor de RiderMex Inversiones te contactará</p>
+<!-- ═══ ¿QUÉ PASA SI VENDEN A CRÉDITO? ═══ -->
+<section class="section" id="credito">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Una duda importante</p>
+      <h2 class="reveal">¿Qué pasa si venden a crédito?</h2>
+      <p class="desc reveal">RiderMex trabaja con financieras. El cliente puede comprar a crédito, pero la financiera procesa el financiamiento y normalmente liquida la operación a RiderMex en corto plazo. Eso reduce la exposición directa a cobranza del cliente final.</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card reveal"><span class="num">1</span><h3>Cliente compra</h3><p>El cliente adquiere la moto con una opción de financiamiento.</p></div>
+    <div class="card reveal"><span class="num">2</span><h3>Financiera aprueba</h3><p>Aliados financieros evalúan, originan y manejan el crédito.</p></div>
+    <div class="card reveal"><span class="num">3</span><h3>RiderMex recibe liquidez</h3><p>La operación se busca liquidar a RiderMex en 24 a 48 horas, según proceso y aprobación.</p></div>
+  </div>
+</section>
 
-  <!-- ═══ FORMULARIO DE INVERSIONISTAS (GoHighLevel · link.ridermex.com) ═══
-       Flujo EXCLUSIVO de inversionistas — NO mezclar con los leads de motos.
-       ▸ Para cambiar el formulario: reemplaza el src del iframe, el id y el
-         data-form-id por los de tu nuevo formulario en link.ridermex.com.
-       El script link.ridermex.com/js/form_embed.js (al final del <body>) se
-       encarga de ajustar la altura del iframe. -->
-  <div class="ghl-form-wrap">
+<!-- ═══ RESPALDO ═══ -->
+<section class="section" id="respaldo">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Por qué somos confiables</p>
+      <h2 class="reveal">Respaldo, documentos y operación real</h2>
+      <p class="desc reveal">La confianza no debe depender de promesas. La decisión debe apoyarse en operación física, documentos revisables, estructura legal y transparencia.</p>
+    </div>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card reveal"><span>1</span><h3>Tiendas físicas</h3><p>El modelo se apoya en agencias, inventario, vendedores y operación real.</p></div>
+    <div class="trust-card reveal"><span>2</span><h3>Fideicomisos</h3><p>La estructura busca separar activos, operación y reparto para dar mayor orden al inversionista.</p></div>
+    <div class="trust-card reveal"><span>3</span><h3>Data Room</h3><p>Facturas, contratos, números de serie y documentación pueden revisarse antes de avanzar.</p></div>
+    <div class="trust-card reveal"><span>4</span><h3>Legal Kit</h3><p>Puedes revisarlo con abogados, contador o asesor financiero antes de invertir.</p></div>
+    <div class="trust-card reveal"><span>5</span><h3>Visita a tienda</h3><p>Se puede validar la operación en persona con un asesor.</p></div>
+    <div class="trust-card reveal"><span>6</span><h3>Reportes</h3><p>La idea es que el inversionista tenga visibilidad y seguimiento del modelo.</p></div>
+  </div>
+</section>
+
+<!-- ═══ MEDIOS ═══ -->
+<section class="section" id="medios">
+  <div class="media-panel reveal">
+    <div>
+      <p class="kicker">Presencia pública</p>
+      <h3>RiderMex ya ha sido mencionado en medios</h3>
+      <p>Además de la información del modelo, puedes revisar una recopilación de apariciones y menciones públicas de RiderMex. Esto ayuda a validar que la marca ya tiene presencia y conversación alrededor.</p>
+    </div>
+    <a class="btn btn-primary" href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener">Ver medios</a>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section" id="faq">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Preguntas frecuentes</p>
+      <h2 class="reveal">Lo que debes tener claro</h2>
+      <p class="desc reveal">Estas son las dudas normales antes de agendar Zoom o revisar documentos.</p>
+    </div>
+  </div>
+  <div class="accordion">
+    <details class="reveal"><summary>¿Estoy comprando una moto?</summary><div class="detail-body">No. Participas financieramente en un modelo de operación de tiendas e inventario. RiderMex opera la venta de motos.</div></details>
+    <details class="reveal"><summary>¿Tengo que operar algo?</summary><div class="detail-body">No. RiderMex maneja tiendas, vendedores, inventario, financieras, marketing, operación y reportes.</div></details>
+    <details class="reveal"><summary>¿El rendimiento está garantizado?</summary><div class="detail-body">No. Son rendimientos estimados. Toda inversión implica riesgo y debe revisarse con contrato, Legal Kit y documentos oficiales.</div></details>
+    <details class="reveal"><summary>¿Qué modelo me conviene?</summary><div class="detail-body">Si quieres entrar completo, el modelo de contado de $75,000 puede hacer sentido. Si prefieres pagar poco a poco, el de $10,000 iniciales más aportaciones mensuales. Si buscas flujo más temprano, el de operación activa de $120,000.</div></details>
+    <details class="reveal"><summary>¿Por qué debería agendar un Zoom?</summary><div class="detail-body">Porque en el Zoom se revisa tu escenario: monto, modelo, calendario de flujos, documentación, disponibilidad de lugares y dudas legales/fiscales.</div></details>
+    <details class="reveal"><summary>¿Puedo revisar todo antes de invertir?</summary><div class="detail-body">Sí. La decisión debe tomarse después de revisar contrato, documentos, riesgos, salida, impuestos y estructura.</div></details>
+  </div>
+</section>
+
+<!-- ═══ ZOOM ═══ -->
+<section class="section" id="zoom">
+  <div class="zoom-panel reveal">
+    <div>
+      <p class="kicker">Siguiente paso recomendado</p>
+      <h2>Agenda un Zoom de revisión</h2>
+      <p>Si ya entendiste el modelo, el siguiente paso no es decidir a ciegas: es revisar tu escenario. Vemos qué ticket te conviene, tiempos, disponibilidad, documentos y números.</p>
+    </div>
+    <a class="btn btn-whatsapp" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2C8.95 3.2 3.2 8.87 3.2 15.84c0 2.23.6 4.41 1.74 6.33L3.2 28.8l6.82-1.77a12.9 12.9 0 0 0 6 1.5h.01c7.07 0 12.82-5.67 12.82-12.64S23.09 3.2 16.02 3.2Zm0 23.18h-.01a10.7 10.7 0 0 1-5.45-1.48l-.39-.23-4.04 1.05 1.08-3.88-.25-.4a10.35 10.35 0 0 1-1.6-5.55c0-5.79 4.78-10.5 10.66-10.5 2.85 0 5.52 1.1 7.53 3.08a10.36 10.36 0 0 1 3.12 7.42c0 5.79-4.78 10.5-10.65 10.5Zm5.84-7.86c-.32-.16-1.9-.92-2.2-1.03-.3-.1-.52-.16-.74.16-.22.31-.85 1.03-1.04 1.24-.19.21-.38.24-.7.08-.32-.16-1.35-.49-2.58-1.55-.95-.84-1.6-1.87-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.22-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.74-1.76-1.02-2.41-.27-.63-.54-.54-.74-.55h-.63c-.22 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.58 0 1.52 1.12 2.98 1.28 3.19.16.21 2.2 3.32 5.33 4.65.75.32 1.33.51 1.78.65.75.24 1.43.2 1.97.12.6-.09 1.9-.76 2.17-1.5.27-.73.27-1.36.19-1.5-.08-.13-.29-.21-.61-.37Z"/></svg> Agendar Zoom</a>
+  </div>
+</section>
+
+<!-- ═══ RIESGOS ═══ -->
+<section class="section" id="riesgos">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Información importante</p>
+      <h2 class="reveal">Antes de tomar una decisión</h2>
+      <p class="desc reveal">Esto es una inversión, no una promesa. Por eso la página debe explicarte el modelo y llevarte a revisar documentos antes de avanzar.</p>
+    </div>
+  </div>
+  <div class="risk-grid">
+    <div class="risk-card reveal"><strong>Rendimientos estimados</strong><p>No son garantizados. Dependen de operación, ventas, tiempos, disponibilidad y condiciones contractuales.</p></div>
+    <div class="risk-card reveal"><strong>Revisión legal</strong><p>Antes de aportar capital, revisa contrato, fideicomisos, salida, penalizaciones, responsabilidades y documentos.</p></div>
+    <div class="risk-card reveal"><strong>Decisión informada</strong><p>El Zoom sirve para resolver dudas y revisar si el modelo hace sentido para tu perfil.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FORMULARIO DE INVERSIONISTAS (GoHighLevel · link.ridermex.com)
+     Flujo EXCLUSIVO de inversionistas — NO mezclar con los leads de motos.
+     ▸ Para cambiar el formulario: reemplaza el src del iframe, el id y el
+       data-form-id por los de tu nuevo formulario en link.ridermex.com.
+     El script link.ridermex.com/js/form_embed.js (al final del <body>) se
+     encarga de ajustar la altura del iframe.
+═══════════════════════════════════════════════════════════ -->
+<section class="section" id="contacto-inversion">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Contacto</p>
+      <h2 class="reveal">Quiero invertir</h2>
+      <p class="desc reveal">Déjanos tus datos y un asesor de RiderMex Inversiones te contactará para revisar tu escenario.</p>
+    </div>
+  </div>
+  <div class="form-panel reveal">
     <iframe
       src="https://link.ridermex.com/widget/form/lnNhaDJjELG2qlHVrXkC"
       class="ghl-form"
-      style="width:100%;height:624px;min-height:624px;border:none;border-radius:8px;"
       id="inline-lnNhaDJjELG2qlHVrXkC"
       data-layout="{'id':'INLINE'}"
       data-trigger-type="alwaysShow"
@@ -115,25 +603,59 @@
       data-height="624"
       data-layout-iframe-id="inline-lnNhaDJjELG2qlHVrXkC"
       data-form-id="lnNhaDJjELG2qlHVrXkC"
-      title="Formulario de inversionistas RiderMex">
+      title="Formulario de inversionistas RiderMex"
+      loading="lazy">
     </iframe>
   </div>
 </section>
 
+<!-- ═══ CTA FINAL ═══ -->
+<section class="cta" id="whatsapp">
+  <div class="cta-box reveal">
+    <h2>¿Quieres revisar si este modelo <span>te conviene?</span></h2>
+    <p>Agenda un Zoom por WhatsApp. Revisamos tu presupuesto, el modelo ideal, disponibilidad, calendario de flujos y documentos necesarios para avanzar.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#modelos">Comparar modelos</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2C8.95 3.2 3.2 8.87 3.2 15.84c0 2.23.6 4.41 1.74 6.33L3.2 28.8l6.82-1.77a12.9 12.9 0 0 0 6 1.5h.01c7.07 0 12.82-5.67 12.82-12.64S23.09 3.2 16.02 3.2Zm0 23.18h-.01a10.7 10.7 0 0 1-5.45-1.48l-.39-.23-4.04 1.05 1.08-3.88-.25-.4a10.35 10.35 0 0 1-1.6-5.55c0-5.79 4.78-10.5 10.66-10.5 2.85 0 5.52 1.1 7.53 3.08a10.36 10.36 0 0 1 3.12 7.42c0 5.79-4.78 10.5-10.65 10.5Zm5.84-7.86c-.32-.16-1.9-.92-2.2-1.03-.3-.1-.52-.16-.74.16-.22.31-.85 1.03-1.04 1.24-.19.21-.38.24-.7.08-.32-.16-1.35-.49-2.58-1.55-.95-.84-1.6-1.87-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.22-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.74-1.76-1.02-2.41-.27-.63-.54-.54-.74-.55h-.63c-.22 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.58 0 1.52 1.12 2.98 1.28 3.19.16.21 2.2 3.32 5.33 4.65.75.32 1.33.51 1.78.65.75.24 1.43.2 1.97.12.6-.09 1.9-.76 2.17-1.5.27-.73.27-1.36.19-1.5-.08-.13-.29-.21-.61-.37Z"/></svg> Agendar Zoom</a>
+    </div>
+  </div>
+</section>
+
+<div class="disclaimer">
+  <p>Información de carácter informativo. Los rendimientos son estimados, no garantizados. Toda inversión implica riesgo. Antes de participar, revisa el contrato oficial, Legal Kit, fideicomisos, calendario de pagos, salida y consulta con tus asesores legales, financieros y fiscales.</p>
+</div>
+
 <footer>
-  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
-  <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
-  <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
-  <p style="margin-top:14px;">© 2026 RiderMex Inversiones · <a href="index.html">Volver al inicio</a></p>
+  <div class="footer-inner">
+    <div class="footer-branding">
+      <img src="assets/inversiones/logo-ridermex-inversiones.png" alt="RiderMex Inversiones" width="560" height="560" loading="lazy">
+      <strong>RiderMex Inversiones</strong>
+      <p>Información clara para inversionistas interesados.</p>
+      <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370 · info@ridermex.com · 55 1000 0680</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Volver al inicio</a>
+      <a href="motos.html#catalogo">Catálogo de motos</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="#calculadora">Calculadora de inversión</a>
+      <a href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener">Agendar Zoom por WhatsApp</a>
+      <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener">Ver medios</a>
+      <!-- PENDIENTE: sustituir por la URL final del aviso de privacidad -->
+      <a href="#" title="Pendiente: URL final del aviso de privacidad">Aviso de privacidad</a>
+      <span>© 2026 RiderMex. Todos los derechos reservados.</span>
+    </div>
+  </div>
 </footer>
 
-<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/5215599900619" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp RiderMex Inversiones">
   <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
 </a>
 
 <!-- ═══ MODELOS DE INVERSIÓN (fuente única de datos, editable) ═══
      Cambia aquí montos, rendimientos estimados y condiciones. Los rendimientos
-     son ESTIMADOS (no garantizados). No agregues promesas de rendimiento fijo. -->
+     son ESTIMADOS (no garantizados). No agregues promesas de rendimiento fijo.
+     Estos datos deben mantenerse alineados con la calculadora
+     (assets/inversiones/calculadora.html → const PLANS). -->
 <script>
   const INVESTMENT_MODELS = [
     {
@@ -187,12 +709,73 @@
         <ul>${m.detalles.map(d => `<li>${d}</li>`).join('')}</ul>
       </div>
     `).join('');
-    // re-activar animación de aparición si el observer ya corrió
-    grid.querySelectorAll('.modelo-card').forEach(c => c.classList.add('is-visible'));
   })();
 </script>
 
-<script src="script.js"></script>
+<script>
+// Aparición al hacer scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach((el, i) => {
+  el.style.transitionDelay = `${Math.min(i * 28, 220)}ms`;
+  observer.observe(el);
+});
+
+// Barra de progreso
+const progress = document.getElementById("progress");
+window.addEventListener("scroll", () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+}, { passive: true });
+
+// Menú móvil
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    navToggle.classList.toggle("is-active");
+    navLinks.classList.toggle("is-open");
+  });
+  navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+    navToggle.classList.remove("is-active");
+    navLinks.classList.remove("is-open");
+  }));
+}
+
+// Calculadora: se carga sólo cuando el usuario la abre
+(function initCalculadora() {
+  const toggle = document.getElementById("calcToggle");
+  const shell  = document.getElementById("calcShell");
+  const frame  = document.getElementById("calcFrame");
+  if (!toggle || !shell || !frame) return;
+
+  const abrir = () => {
+    if (!frame.getAttribute("src")) frame.setAttribute("src", frame.dataset.src);
+    shell.classList.add("is-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.textContent = "Ocultar calculadora";
+  };
+  const cerrar = () => {
+    shell.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "Abrir calculadora";
+  };
+
+  toggle.addEventListener("click", () => {
+    shell.classList.contains("is-open") ? cerrar() : abrir();
+  });
+
+  // Si llegan directo a #calculadora (por ejemplo desde el Home), se abre sola.
+  if (window.location.hash === "#calculadora") abrir();
+})();
+</script>
 
 <!-- Script del formulario GoHighLevel de inversionistas (link.ridermex.com).
      Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->

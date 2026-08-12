@@ -4,5 +4,11 @@
   "outputDirectory": ".",
   "framework": null,
   "cleanUrls": false,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/inversiones", "destination": "/inversiones.html" },
+    { "source": "/motos", "destination": "/motos.html" },
+    { "source": "/catalogo", "destination": "/motos.html" },
+    { "source": "/quienes-somos", "destination": "/quienes-somos.html" }
+  ]
 }

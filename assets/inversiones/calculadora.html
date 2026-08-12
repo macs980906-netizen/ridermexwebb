@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Simulador ilustrativo de RiderMex Inversiones: compara modelos, rendimientos estimados y escenarios de plusvalía.">
+<title>RiderMex Inversiones · Simulador</title>
+<style>
+:root{--ink:#101217;--muted:#6d7480;--line:#e4e7eb;--soft:#f5f6f8;--white:#fff;--red:#ed1c2e;--red2:#c51626;--green:#16794f;--shadow:0 24px 70px rgba(16,18,23,.10);--radius:24px;--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}a{color:inherit}
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(16,18,23,.08)}
+.nav{max-width:var(--max);height:72px;margin:auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:44px;height:44px;object-fit:contain;border-radius:10px}.brand b{display:block;font-size:13px;letter-spacing:.03em}.brand span{display:block;font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:2px}.badge{font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#5e6570}
+.hero{background:radial-gradient(circle at 88% 8%,rgba(237,28,46,.13),transparent 27rem),linear-gradient(180deg,#fff 0%,#fafbfc 100%);border-bottom:1px solid var(--line)}.hero-in{max-width:var(--max);margin:auto;padding:72px 22px 62px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:54px;align-items:end}.eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:var(--red)}h1{font-size:clamp(44px,6.4vw,82px);line-height:.96;letter-spacing:-.055em;margin:14px 0 20px;max-width:850px}h1 em{font-style:normal;color:var(--red)}.lead{font-size:18px;line-height:1.65;color:#58606b;max-width:760px;margin:0}.hero-proof{background:var(--ink);color:#fff;padding:28px;border-radius:28px;box-shadow:var(--shadow)}.hero-proof small{display:block;color:#9299a5;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:850}.hero-proof h2{font-size:28px;line-height:1.08;margin:15px 0 12px;letter-spacing:-.035em}.hero-proof p{margin:0;color:#b8bec7;font-size:13px;line-height:1.65}.motors{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:22px}.motor{background:rgba(255,255,255,.07);padding:13px;border-radius:14px}.motor b{display:block;font-size:12px}.motor span{display:block;color:#9da4ae;font-size:10px;margin-top:4px}
+.shell{max-width:var(--max);margin:auto;padding:38px 22px 80px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);gap:22px;align-items:start}.card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 10px 32px rgba(16,18,23,.045);overflow:hidden}.card-head{padding:22px 24px 0}.kicker{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--red);font-weight:900}.card h2{font-size:27px;letter-spacing:-.035em;margin:8px 0 6px}.sub{color:var(--muted);font-size:13px;line-height:1.55;margin:0}.body{padding:22px 24px 25px}
+.label{font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:850;color:#7b838e;margin-bottom:10px}.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:24px}.plan{position:relative;border:1.5px solid var(--line);border-radius:17px;background:#fff;padding:16px;text-align:left;min-height:170px;transition:.18s}.plan:hover{border-color:#c9ced5;transform:translateY(-1px)}.plan.active{border-color:var(--red);box-shadow:0 0 0 3px rgba(237,28,46,.08)}.plan-tag{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--red);background:#fff1f2;border-radius:999px;padding:5px 7px;margin-bottom:12px}.plan h3{font-size:15px;margin:0 0 9px;line-height:1.15}.price{font-size:24px;font-weight:900;letter-spacing:-.04em}.plan p{font-size:10px;color:var(--muted);line-height:1.45;margin:8px 0 0}.selected-mark{display:none;position:absolute;right:10px;top:10px;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;place-items:center;font-size:12px;font-weight:900}.plan.active .selected-mark{display:grid}
+.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}.control{background:var(--soft);border-radius:16px;padding:16px}.stepper{display:flex;align-items:center;justify-content:space-between;gap:12px}.stepper button{width:38px;height:38px;border-radius:50%;border:1px solid #d7dbe0;background:#fff;font-size:20px}.stepper strong{font-size:31px;letter-spacing:-.04em}.pills{display:flex;gap:7px;flex-wrap:wrap}.pill{border:1px solid #d8dce1;background:#fff;border-radius:999px;padding:9px 12px;font-size:11px;font-weight:800;color:#5c6470}.pill.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.result-hero{background:var(--ink);color:#fff;border-radius:21px;padding:22px;margin-bottom:13px}.result-top{display:flex;justify-content:space-between;gap:18px;align-items:start}.result-hero small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9ba2ac;font-weight:850}.result-hero .big{font-size:38px;line-height:1;font-weight:900;letter-spacing:-.05em;margin-top:8px}.result-hero .range{color:#ff6c78}.result-hero p{font-size:11px;line-height:1.5;color:#aeb4bd;margin:8px 0 0}.start-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;min-width:130px}.start-chip b{display:block;font-size:17px;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.kpi{border:1px solid var(--line);border-radius:15px;padding:15px}.kpi span{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#89909a;font-weight:850}.kpi b{display:block;font-size:20px;letter-spacing:-.035em;margin-top:7px}.kpi small{display:block;font-size:10px;color:var(--muted);margin-top:4px;line-height:1.35}
+.chartbox{margin-top:16px;border:1px solid var(--line);border-radius:17px;padding:16px;background:#fff}.chart-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:9px}.chart-head b{font-size:12px}.chart-head span{font-size:10px;color:var(--muted)}#chart{width:100%;height:190px;display:block}
+.plus-card{position:sticky;top:92px}.plus-intro{background:linear-gradient(145deg,#111318,#241013);color:#fff;padding:24px}.plus-intro .kicker{color:#ff7782}.plus-intro h2{font-size:29px;margin:8px 0 8px}.plus-intro p{font-size:12px;line-height:1.6;color:#b7bdc6;margin:0}.ladder{padding:22px 24px}.formula{display:flex;align-items:center;gap:8px;background:#fff5f6;border:1px solid #ffd9dd;border-radius:14px;padding:13px;margin-bottom:17px}.formula strong{font-size:21px;color:var(--red)}.formula span{font-size:11px;line-height:1.4;color:#656d78}.plus-control{display:flex;align-items:center;gap:12px;margin:10px 0 6px}.plus-control button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:19px}.plus-control .num{font-size:34px;font-weight:900;letter-spacing:-.05em;min-width:42px;text-align:center}.plus-help{font-size:10px;color:var(--muted);line-height:1.45}.quick{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.quick button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 10px;font-size:10px;font-weight:800}.quick button.hot{border-color:#ffd1d6;color:var(--red);background:#fff5f6}
+.plus-result{margin:18px 24px 24px;border-radius:18px;background:var(--soft);padding:18px}.plus-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid #e0e3e7}.plus-row:last-child{border-bottom:0}.plus-row span{font-size:11px;color:var(--muted)}.plus-row b{font-size:13px;text-align:right}.plus-row.accent b{color:var(--red);font-size:20px}.eligible{margin:0 24px 24px;border-radius:15px;padding:13px 14px;font-size:10px;line-height:1.5}.eligible.yes{background:#eef8f3;color:#286448;border:1px solid #d8eee3}.eligible.no{background:#fff7ea;color:#805b18;border:1px solid #f0e1bd}
+.explain{max-width:var(--max);margin:0 auto;padding:0 22px 72px}.explain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.info{background:var(--soft);padding:20px;border-radius:18px}.info .n{font-size:10px;color:var(--red);font-weight:900;margin-bottom:18px}.info h3{font-size:16px;margin:0 0 7px}.info p{font-size:11px;color:var(--muted);line-height:1.55;margin:0}
+.cta{background:#0d0f13;color:#fff;padding:68px 22px}.cta-in{max-width:900px;margin:auto;text-align:center}.cta h2{font-size:clamp(32px,5vw,50px);letter-spacing:-.045em;margin:8px 0 10px}.cta p{color:#aeb4bd;font-size:13px;line-height:1.6;max-width:650px;margin:0 auto 22px}.scenario{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:15px 16px;text-align:left;margin:0 auto 18px;max-width:610px;font-size:11px;line-height:1.55;color:#d8dbe0}.copy{border:1px solid rgba(255,255,255,.18);background:#fff;color:#111;border-radius:12px;padding:12px 15px;font-weight:850;margin-bottom:20px}.formwrap{background:#fff;border-radius:17px;padding:8px;max-width:660px;margin:0 auto;overflow:hidden}.disc{font-size:10px!important;color:#777!important;margin-top:15px!important;max-width:720px!important}footer{padding:25px 18px;text-align:center;color:#8a919b;font-size:10px;border-top:1px solid var(--line);line-height:1.55}
+@media(max-width:900px){.hero-in,.shell{grid-template-columns:1fr}.plus-card{position:static}.hero-proof{max-width:600px}}
+@media(max-width:650px){.nav{padding:0 15px;height:66px}.brand img{width:38px;height:38px}.hero-in{padding:50px 16px 45px}h1{font-size:52px}.lead{font-size:15px}.shell{padding:24px 14px 55px}.card-head,.body,.ladder{padding-left:17px;padding-right:17px}.plans{grid-template-columns:1fr}.plan{min-height:auto}.control-grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.result-top{display:block}.start-chip{margin-top:15px}.explain{padding-left:14px;padding-right:14px}.explain-grid{grid-template-columns:1fr}.plus-result,.eligible{margin-left:17px;margin-right:17px}}
+
+.auto-ladder{display:flex;gap:6px;align-items:flex-end;min-height:116px;padding:12px 0 4px;overflow-x:auto}
+.ladder-step{min-width:46px;flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+.ladder-bar{width:100%;min-width:28px;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#ed1c2e,#c51626);opacity:.88}
+.ladder-step small{font-size:8px;color:var(--muted);white-space:nowrap}
+.ladder-step b{font-size:8px;white-space:nowrap}
+.cap-note{margin-top:14px;background:var(--ambersoft);border:1px solid #ecd5a9;border-radius:13px;padding:11px 12px;font-size:10px;line-height:1.5;color:#76511a}
+.math-note{margin:0 24px 24px;border-radius:14px;padding:12px 13px;background:#f7f8fa;border:1px solid var(--line);font-size:9px;line-height:1.5;color:#68707a}
+@media(max-width:650px){.math-note{margin-left:17px;margin-right:17px}.auto-ladder{gap:5px}.ladder-step{min-width:42px}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="nav"><div class="brand"><img src="../img/logo-512.png" alt="RiderMex"><div><b>RiderMex Inversiones</b><span>Simulador patrimonial</span></div></div><div class="badge">Escenario ilustrativo</div></div></header>
+<section class="hero"><div class="hero-in"><div><div class="eyebrow">RiderMex · Simulador</div><h1>Visualiza tus <em>dos motores</em> de valor.</h1><p class="lead">Explora cuánto podría generar tu participación por operación y cómo puede cambiar su valor de referencia conforme avanzan los escalones de precio.</p></div><aside class="hero-proof"><small>La idea en 10 segundos</small><h2>No sólo veas el rendimiento.</h2><p>En RiderMex hay dos conversaciones distintas: lo que puede producir la operación mientras tienes el ticket y la plusvalía potencial que puede existir al venderlo posteriormente.</p><div class="motors"><div class="motor"><b>01 · Operación</b><span>Rendimiento estimado</span></div><div class="motor"><b>02 · Plusvalía</b><span>Valor potencial de salida</span></div></div></aside></div></section>
+<main class="shell">
+<section class="card"><div class="card-head"><div class="kicker">1 · Construye tu escenario</div><h2>¿Cómo quieres entrar?</h2><p class="sub">Selecciona modelo, tickets y horizonte. Los resultados se actualizan al instante.</p></div><div class="body">
+<div class="label">Modelo de inversión</div><div class="plans">
+<button class="plan active" data-plan="contado" onclick="selectPlan('contado')"><span class="selected-mark">✓</span><span class="plan-tag">Más directo</span><h3>Modelo 1 · Contado</h3><div class="price">$75,000</div><p>Pago único · 20%–22% anual estimado · comienza a recibir a partir del mes 6.</p></button>
+<button class="plan" data-plan="mensual" onclick="selectPlan('mensual')"><span class="selected-mark">✓</span><span class="plan-tag">Entrada gradual</span><h3>Modelo 2 · Plan mensual</h3><div class="price">$10,000</div><p>Inicial + 12 aportaciones de $5,400 · 20%–22% estimado · comienza a recibir a partir del mes 18.</p></button>
+<button class="plan" data-plan="operacion" onclick="selectPlan('operacion')"><span class="selected-mark">✓</span><span class="plan-tag">Operación activa</span><h3>Modelo 3 · Reventa</h3><div class="price">$120,000</div><p>Ticket de operación activa puesto a la venta por un inversionista · 12%–15% estimado · desde el mes 1.</p></button>
+</div>
+<div class="control-grid"><div class="control"><div class="label">Cantidad de tickets</div><div class="stepper"><button onclick="chgTickets(-1)">−</button><strong id="ticketCount">1</strong><button onclick="chgTickets(1)">+</button></div></div><div class="control"><div class="label">Horizonte para visualizar</div><div class="pills" id="yearsPills"><button class="pill" data-years="1">1 año</button><button class="pill" data-years="3">3 años</button><button class="pill active" data-years="5">5 años</button><button class="pill" data-years="10">10 años</button><button class="pill" data-years="15">15 años</button></div></div></div>
+<div class="result-hero"><div class="result-top"><div><small>Rendimiento mensual estimado una vez activo</small><div class="big range" id="monthlyRange">—</div><p id="yieldNote">—</p></div><div class="start-chip"><small>Comienza a recibir</small><b id="startMonth">—</b></div></div></div>
+<div class="kpis"><div class="kpi"><span>Aportación total</span><b id="totalContribution">—</b><small id="contributionNote">—</small></div><div class="kpi"><span>Rendimiento operativo acumulado</span><b id="cumReturns">—</b><small>Escenario medio durante el horizonte elegido</small></div><div class="kpi"><span>Elegible para venta</span><b id="saleMonth">—</b><small>18 meses después de liquidar totalmente el ticket</small></div></div>
+<div class="chartbox"><div class="chart-head"><b>Rendimiento operativo acumulado</b><span>Escenario medio del rango estimado</span></div><svg id="chart" viewBox="0 0 680 190" preserveAspectRatio="none"></svg></div>
+</div></section>
+<aside class="card plus-card">
+<div class="plus-intro">
+  <div class="kicker">2 · Plusvalía potencial</div>
+  <h2>Meta máxima: 300 tickets.</h2>
+  <p>El simulador lleva automáticamente la emisión hasta el límite de 300 tickets. Con un incremento de 5% cada 30 tickets, eso representa un máximo de 10 escalones.</p>
+</div>
+
+<div class="ladder">
+  <div class="formula">
+    <strong>10 escalones</strong>
+    <span>300 tickets máximos ÷ 30 tickets por escalón</span>
+  </div>
+
+  <div class="label">Ruta automática de precio</div>
+  <div class="auto-ladder" id="autoLadder"></div>
+
+  <div class="cap-note">
+    <b>Tope de emisión:</b> después del ticket 300, esta calculadora no agrega más escalones ni asume crecimiento adicional por este mecanismo.
+  </div>
+</div>
+
+<div class="plus-result">
+  <div class="plus-row"><span>Precio de entrada por ticket</span><b id="basePrice">—</b></div>
+  <div class="plus-row"><span>Escalones máximos</span><b id="maxSteps">—</b></div>
+  <div class="plus-row"><span>Precio teórico de nueva participación al llegar a 300</span><b id="futurePrice">—</b></div>
+  <div class="plus-row accent"><span>Plusvalía potencial total</span><b id="plusValue">—</b></div>
+  <div class="plus-row"><span>Rendimiento operativo + plusvalía potencial</span><b id="totalPotential">—</b></div>
+</div>
+
+<div class="eligible" id="eligibility">—</div>
+
+<div class="math-note" id="mathNote">
+  Esta proyección supone que cada incremento de 5% se aplica sobre el precio vigente del escalón anterior. La plusvalía no es una ganancia automática: sólo se materializa si posteriormente existe una venta efectiva de la participación.
+</div>
+</aside>
+</main>
+<section class="explain"><div class="explain-grid"><div class="info"><div class="n">01</div><h3>Rendimiento ≠ plusvalía</h3><p>El rendimiento proviene de la operación. La plusvalía depende del valor de referencia del ticket y de que posteriormente exista una venta efectiva.</p></div><div class="info"><div class="n">02</div><h3>La salida tiene tiempo</h3><p>La posibilidad de vender se considera 18 meses después de haber liquidado totalmente la participación, conforme al proceso aplicable.</p></div><div class="info"><div class="n">03</div><h3>No es una promesa</h3><p>El simulador sirve para visualizar escenarios. Los rendimientos son estimados y la plusvalía futura depende de la colocación de tickets y de una venta real.</p></div></div></section>
+<section class="cta"><div class="cta-in"><div class="kicker">¿Quieres aterrizar tu escenario?</div><h2>Revísalo con un asesor.</h2><p>La calculadora te da una referencia visual. Si quieres entender qué modelo corresponde a tu situación, deja tus datos y el equipo de RiderMex puede revisar el escenario contigo.</p><div class="scenario" id="scenarioText">—</div><button class="copy" onclick="copyScenario()" id="copyBtn">Copiar mi escenario</button><div class="formwrap"><iframe data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-id="lnNhaDJjELG2qlHVrXkC" data-form-name="NuevoLeadWebForms" data-height="553" data-layout="{'id':'INLINE'}" data-layout-iframe-id="inline-lnNhaDJjELG2qlHVrXkC" data-trigger-type="alwaysShow" data-trigger-value="" id="inline-lnNhaDJjELG2qlHVrXkC" src="https://link.ridermex.com/widget/form/lnNhaDJjELG2qlHVrXkC" style="width:100%;height:553px;border:none;border-radius:8px;" title="NuevoLeadWebForms">
+</iframe></div><p class="disc">Simulación con fines informativos. Los rendimientos no están garantizados y pueden variar. La plusvalía mostrada es un escenario potencial y sólo se materializa si existe una venta efectiva de la participación. Consulta contrato y documentación vigente antes de tomar una decisión.</p></div></section>
+<footer>RiderMex Inversiones · Simulador ilustrativo 2026</footer>
+<script src="https://link.ridermex.com/js/form_embed.js"></script>
+<script>
+const PLANS={
+ contado:{name:'Modelo 1 · Contado',displayContribution:75000,yieldBasis:75000,baseTicket:75000,startMonth:6,annualMin:.20,annualMax:.22,fullPaidMonth:0,saleEligibleMonth:18,note:'Pago único de $75,000 por ticket'},
+ mensual:{name:'Modelo 2 · Plan mensual',displayContribution:74800,yieldBasis:75000,baseTicket:75000,startMonth:18,annualMin:.20,annualMax:.22,fullPaidMonth:12,saleEligibleMonth:30,note:'$10,000 inicial + 12 aportaciones de $5,400 por ticket'},
+ operacion:{name:'Modelo 3 · Reventa / operación activa',displayContribution:120000,yieldBasis:120000,baseTicket:120000,startMonth:1,annualMin:.12,annualMax:.15,fullPaidMonth:0,saleEligibleMonth:18,note:'Pago único de $120,000 por ticket de operación activa'}
+};
+let plan='contado',tickets=1,years=5; const MAX_TICKETS=300, STEP_SIZE=30, STEP_RATE=.05, MAX_STEPS=MAX_TICKETS/STEP_SIZE;
+const fmt=n=>'$'+Math.round(n).toLocaleString('es-MX');
+function activePlan(){return PLANS[plan]}
+function selectPlan(p){plan=p;document.querySelectorAll('.plan').forEach(x=>x.classList.toggle('active',x.dataset.plan===p));render()}
+function chgTickets(d){tickets=Math.max(1,Math.min(20,tickets+d));render()}
+document.querySelectorAll('[data-years]').forEach(b=>b.addEventListener('click',()=>{years=+b.dataset.years;document.querySelectorAll('[data-years]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+function calc(){
+ const p=activePlan();
+ const basis=p.yieldBasis*tickets;
+ const contribution=p.displayContribution*tickets;
+ const mid=(p.annualMin+p.annualMax)/2;
+ const months=years*12;
+ const activeMonths=Math.max(0,months-p.startMonth+1);
+ const minReturns=basis*p.annualMin*(activeMonths/12);
+ const midReturns=basis*mid*(activeMonths/12);
+ const maxReturns=basis*p.annualMax*(activeMonths/12);
+
+ // Escalation applies only to newly issued $75k participation models.
+ const appliesEscalator=(plan==='contado'||plan==='mensual');
+ const refPerTicket=appliesEscalator ? p.baseTicket*Math.pow(1+STEP_RATE,MAX_STEPS) : p.baseTicket;
+ const plusPer=appliesEscalator ? Math.max(0,refPerTicket-p.baseTicket) : 0;
+ const plus=plusPer*tickets;
+ const eligible=months>=p.saleEligibleMonth;
+ return {p,basis,contribution,mid,months,activeMonths,minReturns,midReturns,maxReturns,refPerTicket,plus,plusPer,eligible,appliesEscalator};
+}
+function render(){
+ const r=calc(),p=r.p;
+ document.getElementById('ticketCount').textContent=tickets;
+ document.getElementById('monthlyRange').textContent=fmt(r.basis*p.annualMin/12)+' – '+fmt(r.basis*p.annualMax/12);
+ document.getElementById('yieldNote').textContent=(p.annualMin*100).toFixed(0)+'%–'+(p.annualMax*100).toFixed(0)+'% anual estimado sobre el valor de referencia del ticket.';
+ document.getElementById('startMonth').textContent='Mes '+p.startMonth;
+ document.getElementById('totalContribution').textContent=fmt(r.contribution);
+ document.getElementById('contributionNote').textContent=p.note+(tickets>1?' · '+tickets+' tickets':'');
+ document.getElementById('cumReturns').textContent=fmt(r.midReturns);
+ document.getElementById('saleMonth').textContent='Mes '+p.saleEligibleMonth;
+
+ document.getElementById('basePrice').textContent=fmt(p.baseTicket);
+ document.getElementById('maxSteps').textContent=r.appliesEscalator ? MAX_STEPS+' escalones' : 'No aplica';
+ document.getElementById('futurePrice').textContent=r.appliesEscalator ? fmt(r.refPerTicket) : 'Modelo secundario';
+ document.getElementById('plusValue').textContent=r.appliesEscalator ? fmt(r.plus) : 'No modelada';
+ document.getElementById('totalPotential').textContent=r.appliesEscalator ? fmt(r.midReturns+r.plus) : fmt(r.midReturns);
+
+ const e=document.getElementById('eligibility');
+ e.className='eligible '+(r.eligible?'yes':'no');
+ e.textContent=r.eligible
+   ? '✓ En este horizonte ya habría transcurrido el tiempo mínimo de '+p.saleEligibleMonth+' meses para poder poner la participación a la venta, sujeto al proceso aplicable.'
+   : 'En un horizonte de '+years+' año'+(years!==1?'s':'')+', todavía no habría transcurrido el tiempo de '+p.saleEligibleMonth+' meses requerido para poner la participación a la venta.';
+
+ const math=document.getElementById('mathNote');
+ if(r.appliesEscalator){
+   math.innerHTML='Con una entrada de <b>'+fmt(p.baseTicket)+'</b>, 10 incrementos consecutivos de 5% llevan el precio teórico de nuevas participaciones a <b>'+fmt(r.refPerTicket)+'</b>. Eso representa <b>'+fmt(r.plusPer)+'</b> de diferencia potencial por ticket. No es una ganancia automática: sólo se materializa si existe una venta efectiva.';
+ }else{
+   math.innerHTML='El Modelo 3 corresponde a una participación de operación activa en mercado secundario. Por eso esta calculadora <b>no le aplica automáticamente los 10 escalones de emisión nueva</b>. Su futura reventa dependerá del proceso y precio efectivo de mercado.';
+ }
+
+ drawAutoLadder(r);
+ document.getElementById('scenarioText').textContent=tickets+' ticket'+(tickets!==1?'s':'')+' · '+p.name+' · aportación '+fmt(r.contribution)+' · rendimiento mensual estimado '+fmt(r.basis*p.annualMin/12)+'–'+fmt(r.basis*p.annualMax/12)+' · horizonte '+years+' año'+(years!==1?'s':'')+(r.appliesEscalator?' · meta máxima 300 tickets · '+MAX_STEPS+' escalones · precio teórico al tope '+fmt(r.refPerTicket)+' · plusvalía potencial '+fmt(r.plus):' · plusvalía de emisión no aplicada a Modelo 3');
+ drawChart(r)
+}
+function drawAutoLadder(r){
+ const el=document.getElementById('autoLadder');
+ if(!r.appliesEscalator){
+   el.innerHTML='<div style="font-size:11px;color:#6d7480;line-height:1.5;padding:12px 2px">Modelo 3: participación de reventa / operación activa. La escalera de emisión nueva no se proyecta aquí.</div>';
+   return;
+ }
+ let html='';
+ for(let i=0;i<=MAX_STEPS;i++){
+   const price=r.p.baseTicket*Math.pow(1+STEP_RATE,i);
+   const h=28+(i/MAX_STEPS)*72;
+   const sold=i*STEP_SIZE;
+   html+='<div class="ladder-step"><div class="ladder-bar" style="height:'+h+'px"></div><b>'+fmt(price)+'</b><small>'+sold+'</small></div>';
+ }
+ el.innerHTML=html;
+}
+function drawChart(r){const svg=document.getElementById('chart'),W=680,H=190,L=58,R=18,T=14,B=32;const n=Math.max(2,years*12);let pts=[];for(let m=0;m<=n;m++){const active=Math.max(0,m-r.p.startMonth+1);const val=r.basis*r.mid*(active/12);pts.push(val)}const max=Math.max(...pts,1)*1.12;const x=i=>L+(i/(pts.length-1))*(W-L-R);const y=v=>T+(H-T-B)-(v/max)*(H-T-B);const step=Math.max(1,Math.floor(pts.length/6));const path=pts.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1)).join(' ');let html='';for(let i=0;i<4;i++){const val=max*i/3;html+=`<line x1="${L}" y1="${y(val)}" x2="${W-R}" y2="${y(val)}" stroke="#eef0f3"/><text x="${L-7}" y="${y(val)+3}" text-anchor="end" fill="#8a919b" font-size="9">${fmt(val)}</text>`}html+=`<path d="M ${x(0)} ${y(0)} ${path.replace(/^M/, 'L')} L ${x(pts.length-1)} ${y(0)} Z" fill="rgba(237,28,46,.07)"/><path d="${path}" fill="none" stroke="#ed1c2e" stroke-width="3"/>`;for(let i=0;i<pts.length;i+=step){html+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle" fill="#8a919b" font-size="9">${Math.round(i/12)}a</text>`}svg.innerHTML=html}
+async function copyScenario(){try{await navigator.clipboard.writeText(document.getElementById('scenarioText').textContent);const b=document.getElementById('copyBtn');b.textContent='Copiado ✓';setTimeout(()=>b.textContent='Copiar mi escenario',1500)}catch(e){}}
+render();
+</script>
+</body></html>

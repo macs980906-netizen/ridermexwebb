@@ -80,7 +80,10 @@
     nav.is-scrolled { border-bottom-color: rgba(204,0,0,.3); box-shadow: 0 4px 24px rgba(204,0,0,.1); }
 
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 38px; display: block; }
+    /* LOGO — archivo original: assets/img/logo-white.png
+       (derivado optimizado logo-white-512.png, mismo arte y color) */
+    .nav-logo img { height: 58px; width: auto; display: block; }
+    @media (max-width: 768px) { .nav-logo img { height: 48px; } }
 
     .nav-links { display: flex; gap: 2rem; list-style: none; }
 
@@ -479,7 +482,7 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
+    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white-512.png" alt="RiderMex" width="512" height="512"></a>
     <ul class="nav-links">
       <li><a href="motos.html">Catálogo</a></li>
       <li><a href="motos.html#agencias">Agencias</a></li>
