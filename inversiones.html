@@ -115,19 +115,53 @@
 
   <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo de inversión. La información presentada es de carácter informativo.</p>
 
-  <!-- ═══ CTA · CALCULADORA DE INVERSIÓN ═══
-       El HTML de la calculadora vive en /calculadora-inversion/index.html (dentro del repo).
-       ▸ Para cambiar el destino del botón, edita el href de .calc-cta-btn. -->
+  <!-- ═══ CALCULADORA DE INVERSIÓN (embebida, sin salir de la página) ═══
+       La calculadora es un HTML autocontenido en /calculadora-inversion/index.html.
+       Se integra vía iframe encapsulado (evita conflictos de CSS/JS) y se carga
+       bajo demanda al pulsar "Abrir calculadora". -->
+  <style>
+    .calc-embed { max-width: 1040px; margin: 22px auto 0; }
+    .investment-calculator-frame {
+      width: 100%; height: 900px; border: 1px solid var(--gris-borde);
+      border-radius: 16px; background: #111113; display: block;
+      box-shadow: var(--shadow-md);
+    }
+    .calc-embed[hidden] { display: none; }
+    .calc-embed-note { text-align:center; color:#888; font-size:12.5px; margin-top:10px; }
+    .calc-embed-note a { color: var(--dorado); }
+    @media (max-width: 640px){ .investment-calculator-frame { height: 1120px; } }
+  </style>
   <div class="calc-cta reveal">
     <div class="calc-cta-inner">
       <div class="calc-cta-text">
         <span class="calc-cta-eyebrow">Herramienta</span>
-        <h3>Calcula el retorno de tu inversión aquí</h3>
-        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo de inversión podría hacer sentido para ti.</p>
+        <h3>Calcula el retorno de tu inversión</h3>
+        <p>Explora distintos escenarios con nuestra calculadora, sin salir de RiderMex Inversiones.</p>
       </div>
-      <a class="calc-cta-btn" href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Calcular mi retorno →</a>
+      <button type="button" class="calc-cta-btn" id="calc-toggle" aria-expanded="false" aria-controls="calc-embed">Abrir calculadora →</button>
     </div>
   </div>
+  <div class="calc-embed reveal" id="calc-embed" hidden>
+    <!-- src se asigna al abrir (carga diferida) -->
+    <iframe class="investment-calculator-frame" id="calc-frame" title="Calculadora de inversión RiderMex" loading="lazy" data-src="/calculadora-inversion/"></iframe>
+    <p class="calc-embed-note">¿Prefieres verla en grande? <a href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Abrir en pestaña nueva</a></p>
+  </div>
+  <script>
+    (function(){
+      var btn=document.getElementById('calc-toggle'), box=document.getElementById('calc-embed'), frame=document.getElementById('calc-frame');
+      if(!btn||!box||!frame) return;
+      btn.addEventListener('click', function(){
+        var open = box.hasAttribute('hidden');
+        if(open){
+          if(!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
+          box.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); btn.textContent='Cerrar calculadora ×';
+          box.scrollIntoView({behavior:'smooth', block:'start'});
+        } else {
+          box.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); btn.textContent='Abrir calculadora →';
+        }
+      });
+    })();
+  </script>
 </section>
 
 <!-- ===================== FORMULARIO INVERSIÓN ===================== -->
