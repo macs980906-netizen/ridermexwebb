@@ -1136,6 +1136,21 @@
     .inv-discover-chips { display:flex; flex-wrap:wrap; justify-content:center; gap:0.7rem; margin-top:2.2rem; }
     .inv-discover-chips span { border:1px solid rgba(0,200,150,.35); color:#bfeee0; border-radius:30px; padding:0.45rem 1.1rem; font-size:0.82rem; }
 
+    /* ── SECCIÓN · EXPERIENCIA RIDERMEX (fotografías reales de showroom) ── */
+    .exp-band { position: relative; overflow: hidden; border-top: 1px solid var(--gris3); border-bottom: 1px solid var(--gris3); background: #060606; }
+    .exp-inner { max-width: 1300px; margin: 0 auto; padding: clamp(3.5rem,7vw,5.5rem) 2rem; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(1.5rem,3vw,2.75rem); align-items: center; }
+    .exp-copy .home-eyebrow { margin-bottom: 1rem; }
+    .exp-copy h2 { font-family:'Barlow Condensed',sans-serif; font-weight:900; text-transform:uppercase; font-size: clamp(2rem,4.5vw,3.4rem); line-height:0.98; color:#fff; margin-bottom:1rem; }
+    .exp-copy h2 em { font-style:normal; background:linear-gradient(100deg,var(--rojo),var(--rojo2),var(--rojo)); background-size:200% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 6s linear infinite; }
+    .exp-copy p { color: var(--texto); font-size: clamp(0.98rem,1.6vw,1.1rem); line-height:1.7; margin-bottom: 1.8rem; max-width: 460px; }
+    .exp-collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, 1fr); gap: 0.85rem; aspect-ratio: 1.15/1; }
+    .exp-collage img { width:100%; height:100%; object-fit: cover; border-radius: 12px; border:1px solid var(--gris3); display:block; }
+    .exp-collage .tall { grid-row: span 2; }
+    @media (max-width: 900px) {
+      .exp-inner { grid-template-columns: 1fr; }
+      .exp-collage { aspect-ratio: 1.4/1; }
+    }
+
     /* ── RESPONSIVE HOME ── */
     @media (max-width: 900px) {
       .moto-hero-inner { grid-template-columns: 1fr; text-align:center; min-height:0; padding-top: 6.5rem; gap:1.5rem; }
@@ -1304,6 +1319,23 @@
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Entrega inmediata</h3><p>Firmas y te la llevas el mismo día que apruebas.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8Z"/></svg></span><div><h3>5 agencias físicas</h3><p>Naucalpan, CEDA, Coapa, Chalco y nuestra 5ª sucursal.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Sin enganche cuando aplica</h3><p>Opciones de arranque flexibles según tu perfil.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 6.5 · EXPERIENCIA RIDERMEX (fotos reales de showroom) ═══ -->
+  <section class="exp-band reveal">
+    <div class="exp-inner">
+      <div class="exp-copy">
+        <span class="home-eyebrow">Experiencia RiderMex</span>
+        <h2>Motos reales, <em>tiendas reales</em></h2>
+        <p>Cientos de riders ya estrenaron su moto con nosotros. Visítanos en cualquiera de nuestras 5 agencias: catálogo en piso, asesoría directa y entrega el mismo día.</p>
+        <a href="#agencias-home" class="btn-r btn-r--primary">Ver agencias →</a>
+      </div>
+      <div class="exp-collage">
+        <img class="tall" src="assets/img/showroom/showroom-1.jpg" alt="Showroom RiderMex" loading="lazy" decoding="async">
+        <img src="assets/img/showroom/showroom-3.jpg" alt="Cliente RiderMex con su moto" loading="lazy" decoding="async">
+        <img src="assets/img/showroom/showroom-2.jpg" alt="Piso de ventas RiderMex" loading="lazy" decoding="async">
+      </div>
     </div>
   </section>
 
