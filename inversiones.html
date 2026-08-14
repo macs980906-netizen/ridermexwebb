@@ -277,6 +277,7 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
    ═══════════════════════════════════════════════════════════════════════ */
 .plus-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:26px;align-items:start}
 .plus-card{
+  min-width:0;   /* sin esto el contenido ancho estira la columna del grid */
   border:1px solid var(--border);border-radius:26px;padding:30px 26px;
   background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));box-shadow:var(--shadow);
 }
@@ -380,8 +381,8 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
   .metrics,.card-grid,.trust-grid,.money-card,.risk-grid{grid-template-columns:1fr 1fr}
   .what-grid,.media-panel,.zoom-panel{grid-template-columns:1fr}
   .flow-steps{grid-template-columns:1fr}
-  .plus-grid{grid-template-columns:1fr}
-  .with-photo{grid-template-columns:1fr}
+  .plus-grid{grid-template-columns:minmax(0,1fr)}
+  .with-photo{grid-template-columns:minmax(0,1fr)}
   .compare-row{grid-template-columns:1fr}
   .compare-row>div{border-right:none}
   .section-head{grid-template-columns:1fr}

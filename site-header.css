@@ -169,10 +169,16 @@
 .rm-nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Enlace "saltar al contenido" (accesibilidad). */
+/* Se oculta con clip (no con left:-9999px) para no crear un cuadro fuera
+   del viewport que altere el ancho de scroll de la página. */
 .rm-skip {
   position: absolute;
-  left: -9999px;
-  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
   z-index: 300;
   background: var(--rm-header-red);
   color: #fff;
@@ -180,7 +186,15 @@
   font-size: .9rem;
   text-decoration: none;
 }
-.rm-skip:focus { left: 8px; top: 8px; }
+.rm-skip:focus {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  left: 8px;
+  top: 8px;
+}
 
 /* ── Tablet ── */
 @media (max-width: 1080px) {
