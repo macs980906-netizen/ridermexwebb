@@ -8,29 +8,9 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = scrolled + '%';
 }, { passive: true });
 
-// Menú hamburguesa (mobile)
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('header nav ul');
-if (navToggle && navMenu) {
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('is-active');
-    navMenu.classList.toggle('is-open');
-  });
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('is-active');
-      navMenu.classList.remove('is-open');
-    });
-  });
-}
-
-// Header con sombra/glow al hacer scroll
-const siteHeader = document.querySelector('header');
-if (siteHeader) {
-  window.addEventListener('scroll', () => {
-    siteHeader.classList.toggle('is-scrolled', window.scrollY > 20);
-  }, { passive: true });
-}
+// Menú móvil y estado del header: los maneja site-header.js, que es el
+// comportamiento del componente global .rm-header (site-header.css).
+// No dupliques esa lógica aquí.
 
 // Glow que sigue al cursor dentro de las tarjetas (sensación interactiva/IA)
 const glowCards = document.querySelectorAll('.pilar-card, .pain-card, .agencia-card, .testimonial-card, .moto-card, .path-card, .modelo-card');

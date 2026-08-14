@@ -1,0 +1,21 @@
+# ═══════════════════════════════════════════════════════════════════════
+# RIDERMEX · robots.txt
+# Se permite el rastreo de todo el sitio público, incluidos CSS, JS e
+# imágenes: bloquearlos impediría a Google renderizar el catálogo y ver
+# las fotografías de los modelos.
+# ═══════════════════════════════════════════════════════════════════════
+
+User-agent: *
+Allow: /
+
+# Archivos fuente y de trabajo: no son páginas, no aportan a la búsqueda.
+Disallow: /assets/CATALOGO/
+Disallow: /assets/RiderMex_Simulador_Inversion_V3_META_300.html
+Disallow: /assets/index%20(3).html
+Disallow: /scripts/
+Disallow: /docs/
+
+# Parámetros de campaña: evitan que se indexen variantes duplicadas del Home.
+Disallow: /*?ref=
+
+Sitemap: https://www.ridermex.com/sitemap.xml

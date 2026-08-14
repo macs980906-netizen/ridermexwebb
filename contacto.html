@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto – RiderMex</title>
-  <meta name="description" content="¿Ya decidiste qué necesitas? Elige tu camino: compra una moto o invierte con RiderMex." />
+  <!-- ═══ SEO ═══ Dominio canónico: https://www.ridermex.com -->
+  <title>Contacto RiderMex | Habla con un asesor de motos o inversión</title>
+  <meta name="description" content="Contacta a RiderMex: escríbenos por WhatsApp para comprar una moto, conoce los modelos de RiderMex Inversiones o llama al 55 1000 0680." />
+  <link rel="canonical" href="https://www.ridermex.com/contacto.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RiderMex" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content="Contacto RiderMex | Habla con un asesor de motos o inversión" />
+  <meta property="og:description" content="Escríbenos por WhatsApp para comprar una moto o conoce los modelos de RiderMex Inversiones." />
+  <meta property="og:url" content="https://www.ridermex.com/contacto.html" />
+  <meta property="og:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg" />
+  <meta property="og:image:alt" content="Piso de ventas RiderMex con motocicletas nuevas alineadas" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contacto RiderMex | Habla con un asesor de motos o inversión" />
+  <meta name="twitter:description" content="Escríbenos por WhatsApp para comprar una moto o conoce los modelos de RiderMex Inversiones." />
+  <meta name="twitter:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,46 +54,18 @@
       min-height: 100vh;
     }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--gris3);
-    }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 48px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--texto); text-decoration: none; font-size: 0.875rem;
-      font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; position: relative;
-    }
-    .nav-links a.is-active { color: var(--blanco); }
-    .nav-links a:hover { color: var(--blanco); }
-    .nav-toggle {
-      display: none; flex-direction: column; justify-content: center; gap: 5px;
-      width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 0;
-    }
-    .nav-toggle span { display: block; width: 100%; height: 2px; background: var(--blanco); border-radius: 2px; transition: transform .25s var(--ease), opacity .25s; }
-    .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
-    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ─── NAV ───
+       El header es el componente global .rm-header (site-header.css). */
 
     /* ─── CONTACTO ─── */
     .contacto {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--rm-header-h, 86px));
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 9rem 1.5rem 5rem;
+      padding: 4rem 1.5rem 5rem;
       position: relative;
       overflow: hidden;
       isolation: isolate;
@@ -156,38 +148,41 @@
     footer a:hover { color: var(--texto); }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; align-items: flex-start; gap: 0;
-        background: rgba(10,10,10,.97); backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--gris3); padding: 10px 1.25rem 18px;
-      }
-      .nav-links.is-open { display: flex; }
-      .nav-links a { display: block; padding: 12px 0; width: 100%; }
+      /* El responsive del header vive en site-header.css. */
       .contacto-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
+  <!-- Header global (mismo componente en todas las páginas). -->
+  <link rel="stylesheet" href="site-header.css">
+  <script src="site-header.js" defer></script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
-    <ul class="nav-links">
-      <li><a href="catalogo.html">Catálogo</a></li>
-      <li><a href="motos.html#agencias">Agencias</a></li>
-      <li><a href="inversiones.html">Inversiones</a></li>
-      <li><a href="quienes-somos.html">Quiénes somos</a></li>
-      <li><a href="contacto.html" class="is-active">Contacto</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-  </nav>
+  <!-- ═══ HEADER GLOBAL · componente único (site-header.css / .js) ═══ -->
+  <a class="rm-skip" href="#contenido">Saltar al contenido</a>
+  <header class="rm-header">
+    <div class="rm-header-inner">
+      <a class="rm-logo" href="index.html" aria-label="RiderMex — Inicio">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54">
+      </a>
+      <nav class="rm-nav" aria-label="Navegación principal">
+        <ul class="rm-nav-links">
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="motos.html#agencias">Agencias</a></li>
+          <li><a href="motos.html#credito">Financiamiento</a></li>
+          <li><a href="inversiones.html">Inversiones</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li class="rm-nav-cta"><a href="motos.html#formulario-motos">Tramita tu crédito</a></li>
+        </ul>
+      </nav>
+      <button class="rm-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
 
   <!-- CONTACTO: decisión por intención -->
-  <main class="contacto">
+  <main class="contacto" id="contenido">
     <p class="contacto-eyebrow">Contacto RiderMex</p>
     <h1 class="contacto-title">¿Ya decidiste <em>qué necesitas?</em></h1>
     <p class="contacto-sub">Elige tu camino y te conectamos directo con el equipo correcto.</p>
@@ -223,19 +218,17 @@
   <footer>
     <span>© 2026 RiderMex · Financiamos tu libertad</span>
     <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Reemplaza href="#" cuando esté lista. -->
-    <span><a href="#">Aviso de privacidad</a> · <a href="index.html">Inicio</a></span>
+    <span>
+      <a href="index.html">Inicio</a> ·
+      <a href="catalogo.html">Catálogo</a> ·
+      <a href="motos.html#agencias">Agencias</a> ·
+      <a href="quienes-somos.html">Quiénes somos</a> ·
+      <a href="#">Aviso de privacidad</a>
+    </span>
   </footer>
 
   <script>
-    // Menú hamburguesa (mobile)
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('is-active');
-        navLinks.classList.toggle('is-open');
-      });
-    }
+    // El menú móvil lo maneja site-header.js (header global).
 
     // WhatsApp de compra: si el href sigue en "#" (placeholder), evita el salto
     // y avisa en consola dónde poner la URL. Al reemplazar el href, funciona solo.

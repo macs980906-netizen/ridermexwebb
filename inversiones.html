@@ -3,8 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RiderMex Inversiones · Entiende el Modelo</title>
-<meta name="description" content="Información clara sobre RiderMex Inversiones: qué es, cómo funciona, modelos de inversión, rendimientos estimados, respaldo legal y siguientes pasos.">
+<!-- ═══ SEO ═══ Dominio canónico: https://www.ridermex.com -->
+<title>RiderMex Inversiones | Modelos de participación</title>
+<meta name="description" content="RiderMex Inversiones: cómo funciona el modelo, los tres esquemas de participación, rendimientos estimados, sistema de plusvalía por escalones, respaldo documental y siguientes pasos.">
+<link rel="canonical" href="https://www.ridermex.com/inversiones.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#050505">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="RiderMex Inversiones | Modelos de participación">
+<meta property="og:description" content="Cómo funciona el modelo, los tres esquemas de participación, rendimientos estimados y el sistema de plusvalía por escalones.">
+<meta property="og:url" content="https://www.ridermex.com/inversiones.html">
+<meta property="og:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg">
+<meta property="og:image:alt" content="Piso de ventas de una agencia RiderMex con motocicletas nuevas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RiderMex Inversiones | Modelos de participación">
+<meta name="twitter:description" content="Cómo funciona el modelo, los tres esquemas de participación, rendimientos estimados y el sistema de plusvalía por escalones.">
+<meta name="twitter:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
@@ -53,24 +71,9 @@ a{color:inherit}
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--red);z-index:999;box-shadow:0 0 18px rgba(230,25,25,.7)}
 .top-line{height:4px;background:linear-gradient(90deg,transparent,var(--red),#ff5757,var(--red),transparent)}
 
-.nav{
-  position:sticky;top:0;z-index:90;
-  backdrop-filter:blur(18px);
-  background:rgba(5,5,5,.78);
-  border-bottom:1px solid var(--border);
-}
-.nav-inner{
-  max-width:var(--max);margin:0 auto;padding:14px 22px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-}
-.nav-logo{height:44px;width:auto;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.22))}
-.nav-links{display:flex;align-items:center;gap:18px;font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.nav-links a{text-decoration:none;transition:color .25s ease}
-.nav-links a:hover{color:var(--white)}
-.nav-pill{border:1px solid var(--border2);border-radius:999px;padding:8px 13px;color:var(--white);background:rgba(255,255,255,.04)}
-.nav-pill span{color:var(--red)}
+/* El header es el componente global .rm-header (site-header.css). */
 
-.hero{position:relative;overflow:hidden;min-height:82vh;display:grid;place-items:center;padding:84px 22px 74px}
+.hero{position:relative;overflow:hidden;min-height:78vh;display:grid;place-items:center;padding:52px 22px 64px}
 .hero::before{
   content:"";position:absolute;width:920px;height:920px;top:-560px;left:50%;transform:translateX(-50%);
   background:radial-gradient(circle,rgba(230,25,25,.12),transparent 62%);filter:blur(10px)
@@ -84,7 +87,9 @@ a{color:inherit}
 .hero-logo{width:min(240px,62vw);display:block;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--red);font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
 .eyebrow::before,.eyebrow::after{content:"";width:42px;height:1px;background:rgba(230,25,25,.42)}
-h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(58px,10vw,126px);line-height:.84;letter-spacing:2px;text-transform:uppercase;text-wrap:balance}
+/* El mínimo del clamp era 58px: en 390px de ancho, palabras largas como
+   "OPERACIÓN" se salían del viewport. 42px las mantiene dentro. */
+h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(42px,9vw,126px);line-height:.86;letter-spacing:1.5px;text-transform:uppercase;text-wrap:balance;overflow-wrap:break-word}
 h1 span{color:var(--red);text-shadow:0 0 34px rgba(230,25,25,.22)}
 .hero-copy{max-width:800px;margin:24px auto 0;color:var(--muted);font-size:clamp(16px,2.1vw,20px);line-height:1.72;font-weight:300}
 .hero-actions{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
@@ -106,7 +111,7 @@ h1 span{color:var(--red);text-shadow:0 0 34px rgba(230,25,25,.22)}
 .section{max-width:var(--max);margin:0 auto;padding:86px 22px 0}
 .section-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:28px}
 .kicker{color:var(--red);font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
-.section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(42px,6.2vw,76px);line-height:.9;letter-spacing:1.5px;text-transform:uppercase;text-wrap:balance}
+.section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(34px,6.2vw,76px);line-height:.9;letter-spacing:1.5px;text-transform:uppercase;text-wrap:balance}
 .desc{color:var(--muted);line-height:1.75;font-size:16px;max-width:790px;margin-top:14px;font-weight:300}
 
 .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -154,7 +159,7 @@ h1 span{color:var(--red);text-shadow:0 0 34px rgba(230,25,25,.22)}
 .trust-card span{font-family:"Bebas Neue",sans-serif;font-size:36px;color:var(--green);display:block;margin-bottom:12px;line-height:1}
 
 .zoom-panel{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;border:1px solid rgba(37,211,102,.24);border-radius:30px;padding:34px;background:radial-gradient(circle at 90% 0%,rgba(37,211,102,.16),transparent 42%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.022));box-shadow:var(--shadow)}
-.zoom-panel h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,5vw,68px);line-height:.9;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:12px}
+.zoom-panel h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(32px,5vw,68px);line-height:.9;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:12px}
 .zoom-panel p{color:var(--muted);line-height:1.75;max-width:720px;font-weight:300}
 
 .accordion{display:grid;gap:12px;margin-top:28px}
@@ -174,7 +179,7 @@ details[open] summary::after{content:"–"}
 .cta{max-width:var(--max);margin:92px auto 0;padding:0 22px 90px}
 .cta-box{border-radius:34px;border:1px solid var(--border);background:radial-gradient(circle at 50% 0%,rgba(230,25,25,.16),transparent 46%),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.024));box-shadow:var(--shadow);padding:64px 34px;text-align:center;position:relative;overflow:hidden}
 .cta-box::before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.05);border-radius:26px;pointer-events:none}
-.cta-box h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(44px,7vw,84px);line-height:.9;text-transform:uppercase;letter-spacing:1.5px;position:relative;text-wrap:balance}
+.cta-box h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(36px,7vw,84px);line-height:.9;text-transform:uppercase;letter-spacing:1.5px;position:relative;text-wrap:balance}
 .cta-box h2 span{color:var(--red)}
 .cta-box p{position:relative;color:var(--muted);max-width:680px;margin:18px auto 30px;line-height:1.75;font-size:16px;font-weight:300}
 
@@ -191,18 +196,198 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ═══════════════════════════════════════════════════════════════════════
+   CINTILLO "RIDERMEX EN LOS MEDIOS" (debajo del hero)
+   ═══════════════════════════════════════════════════════════════════════ */
+.medios-cintillo{
+  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
+  max-width:var(--max);margin:0 auto;padding:16px 22px;
+  border:1px solid var(--border2);border-radius:999px;
+  background:linear-gradient(90deg,rgba(230,25,25,.10),rgba(255,255,255,.045) 45%,rgba(230,25,25,.10));
+  text-decoration:none;transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+}
+.medios-cintillo:hover{border-color:rgba(230,25,25,.55);transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.medios-cintillo:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.mc-label{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--white)}
+.mc-sep{width:1px;height:18px;background:var(--border2)}
+.mc-text{color:var(--muted);font-size:14px;font-weight:300}
+.mc-cta{
+  display:inline-flex;align-items:center;gap:7px;color:var(--red2);
+  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+}
+.mc-cta svg{width:15px;height:15px;transition:transform .25s ease}
+.medios-cintillo:hover .mc-cta svg{transform:translateX(4px)}
+.medios-wrap{max-width:var(--max);margin:0 auto;padding:26px 22px 0}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIAGRAMAS · el bloque complejo se explica con una figura, no con texto
+   corrido. Todo es HTML/CSS/SVG: indexable, responsive y editable.
+   ═══════════════════════════════════════════════════════════════════════ */
+.diagram{
+  margin-top:26px;border:1px solid var(--border);border-radius:26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  box-shadow:var(--shadow);padding:30px 26px;
+}
+.diagram-title{
+  font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:3px;
+  text-transform:uppercase;color:var(--muted2);margin-bottom:22px;text-align:center;
+}
+
+/* Flujo horizontal con conectores (estilo esquema de proceso). */
+.dflow{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0}
+.dnode{position:relative;text-align:center;padding:0 14px}
+/* Conector: flecha hacia el siguiente nodo. */
+.dnode:not(:last-child)::after{
+  content:"";position:absolute;top:34px;right:-10px;width:20px;height:2px;
+  background:linear-gradient(90deg,rgba(230,25,25,.65),rgba(230,25,25,.15));
+}
+.dnode-ico{
+  width:68px;height:68px;margin:0 auto 14px;border-radius:20px;display:grid;place-items:center;
+  border:1px solid var(--border2);background:rgba(255,255,255,.05);color:var(--red2);
+}
+.dnode-ico svg{width:30px;height:30px}
+.dnode h4{font-family:"Barlow Condensed",sans-serif;font-size:16px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:6px}
+.dnode p{color:var(--muted);font-size:13.5px;line-height:1.6;font-weight:300}
+.dnode-tag{
+  display:inline-block;margin-bottom:9px;font-family:"Barlow Condensed",sans-serif;font-size:11px;
+  font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red)
+}
+
+/* Cadena de valor con cifras (de dónde sale el rendimiento).
+   Flex y no grid: los operadores (× × =) deben quedar pegados a sus
+   tarjetas; con auto-fit ocupaban una columna completa y la cadena se
+   partía dejando el "=" solo al inicio de la segunda fila. */
+.dchain{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;align-items:stretch}
+.dchain-item{
+  flex:1 1 160px;min-width:150px;
+  border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.035);
+  padding:20px 18px;text-align:center;position:relative;
+}
+.dchain-item strong{display:block;font-family:"Bebas Neue",sans-serif;font-size:clamp(30px,4.5vw,44px);line-height:1;color:var(--white);letter-spacing:1px}
+.dchain-item span{display:block;margin-top:8px;font-family:"Barlow Condensed",sans-serif;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.dchain-item p{margin-top:9px;color:var(--muted);font-size:13px;line-height:1.6;font-weight:300}
+.dchain-op{
+  flex:0 0 auto;width:26px;
+  display:grid;place-items:center;font-family:"Bebas Neue",sans-serif;font-size:30px;color:var(--muted2);
+  border:none;background:none;padding:0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PLUSVALÍA · escalones + mercado secundario
+   ═══════════════════════════════════════════════════════════════════════ */
+.plus-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:26px;align-items:start}
+.plus-card{
+  border:1px solid var(--border);border-radius:26px;padding:30px 26px;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));box-shadow:var(--shadow);
+}
+.plus-headline{
+  border:1px solid rgba(230,25,25,.42);border-radius:20px;padding:22px 20px;text-align:center;
+  background:radial-gradient(circle at 50% 0%,rgba(230,25,25,.18),transparent 68%);margin-bottom:22px;
+}
+.plus-headline strong{
+  display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  font-family:"Bebas Neue",sans-serif;font-size:clamp(28px,4.2vw,44px);
+  line-height:1;letter-spacing:1.5px;color:var(--white);
+}
+.plus-headline strong em{font-style:normal;color:var(--red2)}
+.plus-headline .ph-arrow{color:var(--red);font-size:.8em;line-height:1}
+.plus-headline span{
+  display:block;margin-top:8px;font-family:"Barlow Condensed",sans-serif;font-size:12px;
+  font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--muted);
+}
+.plus-card > p{color:var(--muted);font-size:14.5px;line-height:1.75;font-weight:300}
+.plus-card > p + p{margin-top:12px}
+
+/* Escalera de escalones: cada peldaño sube un poco más. */
+/* Altura fija: los % de cada peldaño se resuelven contra este contenedor. */
+.stairs{display:flex;align-items:flex-end;gap:10px;margin:24px 0 6px;height:230px}
+.stair{flex:1;display:flex;flex-direction:column;justify-content:flex-end;text-align:center}
+.stair-bar{
+  border:1px solid var(--border2);border-bottom:none;border-radius:12px 12px 0 0;
+  background:linear-gradient(180deg,rgba(230,25,25,.30),rgba(230,25,25,.06));
+  display:flex;flex-direction:column;justify-content:center;gap:4px;padding:12px 6px;
+}
+.stair:first-child .stair-bar{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04))}
+.stair-bar b{font-family:"Bebas Neue",sans-serif;font-size:clamp(18px,2.6vw,26px);line-height:1;color:var(--white);letter-spacing:1px}
+.stair-bar i{font-style:normal;font-family:"Barlow Condensed",sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red2)}
+.stair-foot{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--border);
+  font-family:"Barlow Condensed",sans-serif;font-size:11.5px;font-weight:800;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--muted);
+}
+.stairs-legend{color:var(--muted2);font-size:12.5px;line-height:1.6;text-align:center}
+
+/* Aviso de plusvalía: visible, no letra chica escondida. */
+.plus-warning{
+  margin-top:22px;display:flex;gap:14px;align-items:flex-start;
+  border:1px solid rgba(230,25,25,.42);border-left:4px solid var(--red);
+  border-radius:16px;padding:18px 20px;background:rgba(230,25,25,.07);
+}
+.plus-warning svg{width:22px;height:22px;flex-shrink:0;color:var(--red2);margin-top:2px}
+.plus-warning p{color:#e8dcdc;font-size:14px;line-height:1.7}
+.plus-warning strong{color:#fff}
+
+/* Timeline vertical: ¿cuándo puedes vender? */
+.timeline{margin-top:22px;display:grid;gap:0;list-style:none;padding:0}
+.tl-step{position:relative;padding:0 0 26px 56px}
+.tl-step:last-child{padding-bottom:0}
+.tl-step::before{
+  content:attr(data-step);position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;font-family:"Bebas Neue",sans-serif;font-size:19px;
+  color:#fff;background:linear-gradient(135deg,#d81818,#f12b2b);box-shadow:0 10px 22px rgba(230,25,25,.28);
+}
+.tl-step:not(:last-child)::after{
+  content:"";position:absolute;left:18.5px;top:42px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,rgba(230,25,25,.55),rgba(255,255,255,.08));
+}
+.tl-step h4{font-family:"Barlow Condensed",sans-serif;font-size:17px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:6px;padding-top:8px}
+.tl-step p{color:var(--muted);font-size:14px;line-height:1.7;font-weight:300}
+
+/* Nota del modelo de $120,000 */
+.plus-note{
+  margin-top:22px;border:1px solid var(--border2);border-radius:18px;padding:20px 22px;
+  background:rgba(255,255,255,.035);
+}
+.plus-note h4{font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:8px}
+.plus-note p{color:var(--muted);font-size:14px;line-height:1.75;font-weight:300}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BANDAS EDITORIALES CON FOTOGRAFÍA REAL (visten sin saturar)
+   ═══════════════════════════════════════════════════════════════════════ */
+.photo-band{position:relative;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.photo-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%;z-index:-2}
+.photo-band::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(5,5,5,.95) 0%,rgba(5,5,5,.86) 40%,rgba(5,5,5,.55) 100%);
+}
+.photo-band-inner{max-width:var(--max);margin:0 auto;padding:74px 22px;max-width:min(var(--max),100%)}
+.photo-band-copy{max-width:620px}
+.photo-band h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(30px,5.4vw,58px);line-height:.95;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.photo-band h2 span{color:var(--red)}
+.photo-band p{color:var(--muted);font-size:16px;line-height:1.75;font-weight:300}
+.photo-band .kicker{margin-bottom:14px}
+
+/* Fotografía lateral dentro de una sección (sin robar protagonismo). */
+.section-photo{
+  border-radius:22px;overflow:hidden;border:1px solid var(--border);
+  box-shadow:var(--shadow);aspect-ratio:4/3;
+}
+.section-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block}
+.with-photo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:26px;align-items:center;margin-top:26px}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 @media (max-width:1080px){
   .metrics,.card-grid,.trust-grid,.money-card,.risk-grid{grid-template-columns:1fr 1fr}
   .what-grid,.media-panel,.zoom-panel{grid-template-columns:1fr}
   .flow-steps{grid-template-columns:1fr}
+  .plus-grid{grid-template-columns:1fr}
+  .with-photo{grid-template-columns:1fr}
   .compare-row{grid-template-columns:1fr}
   .compare-row>div{border-right:none}
   .section-head{grid-template-columns:1fr}
 }
 @media (max-width:700px){
-  .nav-links a:not(.nav-pill){display:none}
-  .hero{min-height:auto;padding-top:64px}
+  .hero{min-height:auto;padding-top:40px}
   .metrics,.card-grid,.trust-grid,.money-card,.risk-grid{grid-template-columns:1fr}
   .metric,.big-card,.card,.mini-card,.model-card,.trust-card,.money-item{padding:22px}
   .section{padding-top:66px}
@@ -213,28 +398,63 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
   .flow-box,.media-panel,.zoom-panel,.cta-box{padding:22px}
   .footer-inner{grid-template-columns:1fr}
   .footer-links{align-items:flex-start}
+  /* Diagramas apilados en móvil: la flecha horizontal se vuelve vertical. */
+  .dflow{grid-template-columns:1fr;gap:22px}
+  .dnode{padding:0}
+  .dnode:not(:last-child)::after{
+    top:auto;right:auto;left:50%;bottom:-13px;width:2px;height:14px;transform:translateX(-50%);
+    background:linear-gradient(180deg,rgba(230,25,25,.65),rgba(230,25,25,.15));
+  }
+  .dchain{grid-template-columns:1fr}
+  .dchain-op{padding:2px 0}
+  .diagram,.plus-card{padding:22px 18px}
+  .stairs{height:180px;gap:6px}
+  .stair-foot{font-size:10px;letter-spacing:.8px}
+  .photo-band-inner{padding:54px 20px}
+  .photo-band::before{background:linear-gradient(180deg,rgba(5,5,5,.90),rgba(5,5,5,.80))}
+  .medios-cintillo{border-radius:22px;padding:16px 18px;gap:10px;text-align:center;justify-content:center}
+  .mc-sep{display:none}
+  .tl-step{padding-left:48px}
 }
 </style>
+<!-- Header global: siempre después del CSS de la página. -->
+<link rel="stylesheet" href="site-header.css">
+<script src="site-header.js" defer></script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <div class="top-line"></div>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="index.html" aria-label="Volver a RiderMex Motos"><img class="nav-logo" src="assets/fotos/logo_ridermexinversiones.png" alt="RiderMex"></a>
-    <div class="nav-links">
-      <a href="index.html">Motos</a><a href="#que-es">Qué es</a>
-      <a href="#modelos">Modelos</a><a href="#simulador">Simulador</a>
-      <a href="#respaldo">Respaldo</a>
-      <a class="nav-pill" href="#zoom"><span>Agendar</span> Zoom</a>
-    </div>
+<!-- ═══ HEADER GLOBAL · componente único (site-header.css / .js) ═══
+     Mismo header que el resto del sitio: Inversiones es una vertical de
+     RiderMex, no un sitio aparte. El logo de RiderMex Inversiones sigue
+     siendo el protagonista del hero, justo debajo. -->
+<a class="rm-skip" href="#contenido">Saltar al contenido</a>
+<header class="rm-header">
+  <div class="rm-header-inner">
+    <a class="rm-logo" href="index.html" aria-label="RiderMex — Inicio">
+      <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54">
+    </a>
+    <nav class="rm-nav" aria-label="Navegación principal">
+      <ul class="rm-nav-links">
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="motos.html#credito">Financiamiento</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li class="rm-nav-cta"><a href="motos.html#formulario-motos">Tramita tu crédito</a></li>
+      </ul>
+    </nav>
+    <button class="rm-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
-</nav>
+</header>
 
-<header class="hero" id="inicio">
+<main id="contenido">
+
+<section class="hero" id="inicio">
   <div class="hero-content reveal">
-    <div class="logo-shell"><img class="hero-logo" src="assets/fotos/logo_ridermexinversiones.png" alt="RiderMex"></div>
+    <div class="logo-shell"><img class="hero-logo" src="assets/fotos/logo_ridermexinversiones.png" alt="RiderMex Inversiones" width="240" height="240" fetchpriority="high" decoding="async"></div>
     <p class="eyebrow">RiderMex Inversiones</p>
     <h1>Invierte en tiendas de <span>motos</span> con operación real</h1>
     <p class="hero-copy">
@@ -245,7 +465,21 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <a class="btn btn-whatsapp" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener"><svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.02 3.2C8.95 3.2 3.2 8.87 3.2 15.84c0 2.23.6 4.41 1.74 6.33L3.2 28.8l6.82-1.77a12.9 12.9 0 0 0 6 1.5h.01c7.07 0 12.82-5.67 12.82-12.64S23.09 3.2 16.02 3.2Zm0 23.18h-.01a10.7 10.7 0 0 1-5.45-1.48l-.39-.23-4.04 1.05 1.08-3.88-.25-.4a10.35 10.35 0 0 1-1.6-5.55c0-5.79 4.78-10.5 10.66-10.5 2.85 0 5.52 1.1 7.53 3.08a10.36 10.36 0 0 1 3.12 7.42c0 5.79-4.78 10.5-10.65 10.5Zm5.84-7.86c-.32-.16-1.9-.92-2.2-1.03-.3-.1-.52-.16-.74.16-.22.31-.85 1.03-1.04 1.24-.19.21-.38.24-.7.08-.32-.16-1.35-.49-2.58-1.55-.95-.84-1.6-1.87-1.78-2.18-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.22-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.74-1.76-1.02-2.41-.27-.63-.54-.54-.74-.55h-.63c-.22 0-.55.08-.84.39-.29.31-1.1 1.06-1.1 2.58 0 1.52 1.12 2.98 1.28 3.19.16.21 2.2 3.32 5.33 4.65.75.32 1.33.51 1.78.65.75.24 1.43.2 1.97.12.6-.09 1.9-.76 2.17-1.5.27-.73.27-1.36.19-1.5-.08-.13-.29-.21-.61-.37Z"/></svg> Agendar Zoom</a>
     </div>
   </div>
-</header>
+</section>
+
+<!-- ═══ CINTILLO · RIDERMEX EN LOS MEDIOS ═══
+     Va justo debajo del hero. Enlaza al sitio de medios ya existente
+     (https://medios-ridermex.netlify.app/) en pestaña nueva; NO se
+     reconstruye ese contenido dentro de este proyecto. -->
+<a class="medios-cintillo reveal"
+   href="https://medios-ridermex.netlify.app/"
+   target="_blank" rel="noopener noreferrer"
+   aria-label="RiderMex en los medios — ver apariciones (se abre en una pestaña nueva)">
+  <span class="mc-label">RiderMex en los medios</span>
+  <span class="mc-sep" aria-hidden="true"></span>
+  <span class="mc-text">Apariciones y menciones públicas de la marca</span>
+  <span class="mc-cta">Ver apariciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
 
 <section class="metrics" aria-label="Resumen rápido">
   <div class="metric reveal"><strong>$70K</strong><p>Ticket desde</p></div>
@@ -292,13 +526,54 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <p class="desc reveal">Esto es lo que debe quedar claro antes de tomar una llamada: cómo entra tu inversión, qué hace RiderMex y cómo se genera el rendimiento estimado.</p>
     </div>
   </div>
-  <div class="flow-box reveal">
-    <div class="flow-steps">
-      <div class="flow-step"><span>01</span><h3>Eliges modelo</h3><p>$70,000 contado, $10,000 + mensualidades, o $120,000 tienda operando.</p></div>
-      <div class="flow-step"><span>02</span><h3>Se revisa legal</h3><p>Contrato, Legal Kit, documentos, tiempos, riesgos y condiciones.</p></div>
-      <div class="flow-step"><span>03</span><h3>RiderMex opera</h3><p>Tiendas, inventario, vendedores, financieras, publicidad y reportes.</p></div>
-      <div class="flow-step"><span>04</span><h3>Se venden motos</h3><p>Clientes compran motos para trabajar, moverse o generar ingresos.</p></div>
-      <div class="flow-step"><span>05</span><h3>Recibes flujos</h3><p>Participas en rendimientos estimados según calendario y contrato.</p></div>
+  <!-- Diagrama de flujo: mismo contenido que antes, contado como esquema. -->
+  <div class="diagram reveal">
+    <p class="diagram-title">Recorrido del capital · de tu aportación al flujo estimado</p>
+    <div class="dflow">
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <span class="dnode-tag">Paso 01</span>
+        <h4>Eliges modelo</h4>
+        <p>$70,000 de contado, $10,000 + mensualidades, o $120,000 en tienda operando.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="m9 14 2 2 4-4"/></svg></div>
+        <span class="dnode-tag">Paso 02</span>
+        <h4>Se revisa legal</h4>
+        <p>Contrato, Legal Kit, documentos, tiempos, riesgos y condiciones.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <span class="dnode-tag">Paso 03</span>
+        <h4>RiderMex opera</h4>
+        <p>Tiendas, inventario, vendedores, financieras, publicidad y reportes.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M15 17h-6l-2-5h5l2 5 2-6h3"/></svg></div>
+        <span class="dnode-tag">Paso 04</span>
+        <h4>Se venden motos</h4>
+        <p>Clientes compran motos para trabajar, moverse o generar ingresos.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <span class="dnode-tag">Paso 05</span>
+        <h4>Recibes flujos</h4>
+        <p>Participas en rendimientos estimados según calendario y contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Banda editorial: fotografía real de operación, texto mínimo. -->
+<section class="photo-band reveal" aria-label="Operación real de RiderMex">
+  <img src="assets/img/showroom/piso-ventas-ridermex.jpg"
+       alt="Motocicletas nuevas alineadas en el piso de ventas de una agencia RiderMex"
+       loading="lazy" decoding="async" width="900" height="1600">
+  <div class="photo-band-inner">
+    <div class="photo-band-copy">
+      <p class="kicker">Operación real</p>
+      <h2>El modelo se apoya en <span>tiendas que ya venden</span></h2>
+      <p>Detrás de cada esquema de participación hay agencias físicas, inventario en piso y un proceso comercial activo. Puedes visitar una sucursal y validar la operación en persona antes de decidir.</p>
     </div>
   </div>
 </section>
@@ -326,10 +601,35 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <p class="desc reveal">La base del modelo es la utilidad por moto y la rotación de ventas. Estos números ayudan a visualizar la lógica, pero el rendimiento final siempre debe revisarse contra contrato y escenario elegido.</p>
     </div>
   </div>
-  <div class="money-card">
-    <div class="money-item reveal"><strong>40</strong><h3>Motos al mes</h3><p>Meta de una tienda estabilizada dentro del modelo comercial.</p></div>
-    <div class="money-item reveal"><strong>$900</strong><h3>Utilidad por moto</h3><p>Utilidad usada como referencia para construir la bolsa de rendimiento.</p></div>
-    <div class="money-item reveal"><strong>$432K</strong><h3>Bolsa anual</h3><p>Resultado aproximado de 480 motos al año por $900 de utilidad.</p></div>
+  <!-- Los mismos números, expresados como la operación aritmética que son. -->
+  <div class="diagram reveal">
+    <p class="diagram-title">Cómo se construye la bolsa anual de rendimiento</p>
+    <div class="dchain">
+      <div class="dchain-item">
+        <strong>40</strong>
+        <span>Motos al mes</span>
+        <p>Meta de una tienda estabilizada dentro del modelo comercial.</p>
+      </div>
+      <div class="dchain-op" aria-hidden="true">×</div>
+      <div class="dchain-item">
+        <strong>12</strong>
+        <span>Meses</span>
+        <p>480 motos al año como referencia de rotación.</p>
+      </div>
+      <div class="dchain-op" aria-hidden="true">×</div>
+      <div class="dchain-item">
+        <strong>$900</strong>
+        <span>Utilidad por moto</span>
+        <p>Utilidad usada como referencia para construir la bolsa.</p>
+      </div>
+      <div class="dchain-op" aria-hidden="true">=</div>
+      <div class="dchain-item" style="border-color:rgba(230,25,25,.45);background:rgba(230,25,25,.09)">
+        <strong>$432K</strong>
+        <span>Bolsa anual</span>
+        <p>Resultado aproximado del que se construye el rendimiento estimado.</p>
+      </div>
+    </div>
+    <p class="stairs-legend" style="margin-top:18px">Cifras de referencia para entender la lógica del modelo. El rendimiento final siempre debe revisarse contra el contrato y el escenario elegido.</p>
   </div>
 </section>
 
@@ -355,6 +655,94 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <div><strong>Tienda operando</strong></div><div>$120,000</div><div><strong>12–15% anual</strong></div><div>Mes 2</div><div>Para quien busca flujo más temprano en operación activa.</div>
     </div>
   </div>
+
+  <!-- Por qué el ticket de $120,000 tiene una entrada distinta. -->
+  <div class="plus-note reveal">
+    <h4>Sobre el modelo de $120,000</h4>
+    <p>El modelo de $120,000 corresponde a participaciones de operación activa que inversionistas actuales están poniendo a la venta. Por eso combina una entrada más alta con acceso a una operación ya madura.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PLUSVALÍA · sistema de escalones + mercado secundario
+     Construido en HTML/CSS (no es una imagen): indexable, responsive,
+     accesible y editable. Cifras: +5% cada 30 tickets colocados.
+════════════════════════════════════════════════════════════════════════ -->
+<section class="section" id="plusvalia">
+  <div class="section-head">
+    <div>
+      <p class="kicker reveal">Sistema de escalones + mercado secundario</p>
+      <h2 class="reveal">Cómo funciona la plusvalía</h2>
+      <p class="desc reveal">Entrar antes puede importar no sólo por el tiempo que tu capital participa en la operación, sino por el escalón de precio en el que adquieres tu ticket.</p>
+    </div>
+  </div>
+
+  <div class="plus-grid">
+
+    <!-- Columna 1 · el escalón de precio -->
+    <div class="plus-card reveal">
+      <div class="plus-headline">
+        <strong><span class="ph-a">Cada 30 tickets</span><span class="ph-arrow" aria-hidden="true">→</span><em>+5%</em></strong>
+        <span>Escalón de precio de nuevas participaciones</span>
+      </div>
+
+      <p>El precio de las nuevas participaciones avanza por escalones. No necesitas memorizar una tabla: lo relevante es que tu precio de entrada queda fijado en un escalón y los tickets nuevos pueden venderse a precios superiores conforme avanza la colocación.</p>
+
+      <!-- Escalera: progresión visual de los escalones. -->
+      <div class="stairs" role="img"
+           aria-label="Progresión de escalones: tu entrada fija el precio actual; a los 30 tickets colocados el precio sube 5%, a los 60 otro 5% y a los 90 otro 5%.">
+        <div class="stair" style="height:52%">
+          <div class="stair-bar" style="height:100%"><b>Tu entrada</b><i>Precio actual</i></div>
+          <div class="stair-foot">Hoy</div>
+        </div>
+        <div class="stair" style="height:66%">
+          <div class="stair-bar" style="height:100%"><b>+5%</b><i>Escalón 2</i></div>
+          <div class="stair-foot">+30 tickets</div>
+        </div>
+        <div class="stair" style="height:82%">
+          <div class="stair-bar" style="height:100%"><b>+5%</b><i>Escalón 3</i></div>
+          <div class="stair-foot">+60 tickets</div>
+        </div>
+        <div class="stair" style="height:100%">
+          <div class="stair-bar" style="height:100%"><b>+5%</b><i>Escalón 4</i></div>
+          <div class="stair-foot">+90 tickets</div>
+        </div>
+      </div>
+      <p class="stairs-legend">Cada escalón aplica al precio de las participaciones nuevas, no a un pago automático hacia el inversionista.</p>
+
+      <!-- Aclaración con visibilidad alta (no letra chica). -->
+      <div class="plus-warning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v5M12 17.5v.5"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+        <p><strong>Importante:</strong> la plusvalía se materializa cuando existe una venta efectiva. El incremento de escalones no debe entenderse como una ganancia en efectivo automática ni como una recompensa garantizada.</p>
+      </div>
+    </div>
+
+    <!-- Columna 2 · cuándo puedes vender -->
+    <div class="plus-card reveal">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.4vw,36px);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">¿Cuándo puedes vender?</h3>
+      <p>El camino de una participación desde que la liquidas hasta que puede cambiar de manos.</p>
+
+      <ol class="timeline">
+        <li class="tl-step" data-step="1">
+          <h4>Adquieres y liquidas tu ticket</h4>
+          <p>El plazo se cuenta a partir de que la participación queda totalmente pagada.</p>
+        </li>
+        <li class="tl-step" data-step="2">
+          <h4>Cumples 18 meses desde la liquidación total</h4>
+          <p>A partir de ese punto puedes poner tu ticket a la venta conforme al proceso vigente.</p>
+        </li>
+        <li class="tl-step" data-step="3">
+          <h4>RiderMex o comunidad de inversionistas</h4>
+          <p>La participación puede ofrecerse a RiderMex o dentro de la comunidad de inversionistas, sujeto al proceso y condiciones aplicables.</p>
+        </li>
+        <li class="tl-step" data-step="4">
+          <h4>Si se vende, capturas la diferencia</h4>
+          <p>Tu plusvalía real depende de tu precio de entrada y del precio efectivo al que se cierre la venta.</p>
+        </li>
+      </ol>
+    </div>
+
+  </div>
 </section>
 
 <section class="section" id="simulador"><div class="section-head"><div><p class="kicker reveal">Herramienta</p><h2 class="reveal">Simula tu inversión</h2><p class="desc reveal">Compara modelos, rendimientos estimados y escenarios de plusvalía con nuestro simulador ilustrativo — sin salir de esta página.</p></div></div><div class="reveal" style="margin-top:26px;border-radius:24px;overflow:hidden;border:1px solid var(--border2);box-shadow:var(--shadow);background:#fff"><iframe title="Simulador de inversión RiderMex" src="calculadora-inversion/" loading="lazy" style="width:100%;height:1180px;border:0;display:block"></iframe></div><p style="text-align:center;margin-top:14px;color:var(--muted);font-size:13px">¿Prefieres verlo en grande? <a href="calculadora-inversion/" target="_blank" rel="noopener" style="color:var(--red2)">Abrir el simulador en pestaña nueva ↗</a></p></section><section class="section" id="credito">
@@ -365,10 +753,34 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <p class="desc reveal">RiderMex trabaja con financieras. El cliente puede comprar a crédito, pero la financiera procesa el financiamiento y normalmente liquida la operación a RiderMex en corto plazo. Eso reduce la exposición directa a cobranza del cliente final.</p>
     </div>
   </div>
-  <div class="card-grid">
-    <div class="card reveal"><span class="num">1</span><h3>Cliente compra</h3><p>El cliente adquiere la moto con una opción de financiamiento.</p></div>
-    <div class="card reveal"><span class="num">2</span><h3>Financiera aprueba</h3><p>Aliados financieros evalúan, originan y manejan el crédito.</p></div>
-    <div class="card reveal"><span class="num">3</span><h3>RiderMex recibe liquidez</h3><p>La operación se busca liquidar a RiderMex en 24 a 48 horas, según proceso y aprobación.</p></div>
+  <div class="diagram reveal">
+    <p class="diagram-title">Venta a crédito · quién asume qué</p>
+    <div class="dflow">
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+        <span class="dnode-tag">Cliente</span>
+        <h4>Compra su moto</h4>
+        <p>El cliente adquiere la moto con una opción de financiamiento.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <span class="dnode-tag">Financiera</span>
+        <h4>Origina el crédito</h4>
+        <p>Los aliados financieros evalúan, aprueban y manejan el crédito y su cobranza.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M12 12v5M9.5 14h5"/></svg></div>
+        <span class="dnode-tag">RiderMex</span>
+        <h4>Recibe liquidez</h4>
+        <p>La operación se busca liquidar a RiderMex en 24 a 48 horas, según proceso y aprobación.</p>
+      </div>
+      <div class="dnode">
+        <div class="dnode-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <span class="dnode-tag">Efecto</span>
+        <h4>Menor exposición a cobranza</h4>
+        <p>Al liquidar la financiera, se reduce la exposición directa a la cobranza del cliente final.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -388,6 +800,19 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
     <div class="trust-card reveal"><span>5</span><h3>Visita a tienda</h3><p>Se puede validar la operación en persona con un asesor.</p></div>
     <div class="trust-card reveal"><span>6</span><h3>Reportes</h3><p>La idea es que el inversionista tenga visibilidad y seguimiento del modelo.</p></div>
   </div>
+
+  <!-- Fotografía real: valida "operación física" sin añadir texto. -->
+  <div class="with-photo reveal">
+    <div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,3.4vw,38px);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Puedes verlo en persona</h3>
+      <p style="color:var(--muted);font-size:15.5px;line-height:1.75;font-weight:300">La forma más directa de validar el modelo es visitar una agencia: ver el inventario en piso, hablar con el equipo comercial y revisar la documentación con un asesor. Las <a href="motos.html#agencias" style="color:var(--red2);font-weight:600">5 agencias RiderMex</a> están en la Ciudad de México y el Estado de México.</p>
+    </div>
+    <div class="section-photo">
+      <img src="assets/img/showroom/cliente-moto-ridermex.jpg"
+           alt="Clienta probando una motocicleta en una agencia RiderMex, con el catálogo en piso al fondo"
+           loading="lazy" decoding="async" width="956" height="1280">
+    </div>
+  </div>
 </section>
 
 <section class="section" id="medios">
@@ -397,7 +822,7 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
       <h3>RiderMex ya ha sido mencionado en medios</h3>
       <p>Además de la información del modelo, puedes revisar una recopilación de apariciones y menciones públicas de RiderMex. Esto ayuda a validar que la marca ya tiene presencia y conversación alrededor.</p>
     </div>
-    <a class="btn btn-primary" href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener">Ver medios</a>
+    <a class="btn btn-primary" href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">Ver apariciones →</a>
   </div>
 </section>
 
@@ -416,6 +841,8 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
     <details class="reveal"><summary>¿Qué modelo me conviene?</summary><div class="detail-body">Si quieres entrar completo, el modelo de contado de $70,000 puede hacer sentido. Si prefieres pagar poco a poco, el de $10,000 + mensualidades. Si buscas flujo más temprano, tienda operando de $120,000.</div></details>
     <details class="reveal"><summary>¿Por qué debería agendar un Zoom?</summary><div class="detail-body">Porque en el Zoom se revisa tu escenario: monto, modelo, calendario de flujos, documentación, disponibilidad de lugares y dudas legales/fiscales.</div></details>
     <details class="reveal"><summary>¿Puedo revisar todo antes de invertir?</summary><div class="detail-body">Sí. La decisión debe tomarse después de revisar contrato, documentos, riesgos, salida, impuestos y estructura.</div></details>
+    <details class="reveal"><summary>¿Cómo funciona la plusvalía?</summary><div class="detail-body">El precio de las nuevas participaciones avanza por escalones: cada 30 tickets colocados sube un 5%. Tu precio de entrada queda fijado en el escalón en el que adquiriste tu ticket. La plusvalía se materializa únicamente cuando existe una venta efectiva: el incremento de escalones no es una ganancia en efectivo automática ni una recompensa garantizada. <a href="#plusvalia" style="color:var(--red2)">Ver cómo funciona la plusvalía</a>.</div></details>
+    <details class="reveal"><summary>¿Cuándo puedo vender mi participación?</summary><div class="detail-body">A partir de los 18 meses contados desde que tu ticket queda totalmente liquidado. Desde ese punto puedes ofrecerlo a RiderMex o dentro de la comunidad de inversionistas, conforme al proceso y las condiciones vigentes. Tu plusvalía real depende de tu precio de entrada y del precio efectivo al que se cierre la venta.</div></details>
   </div>
 </section>
 
@@ -456,6 +883,8 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
   </div>
 </section>
 
+</main>
+
 <div class="disclaimer">
   <p>Información de carácter informativo. Los rendimientos son estimados, no garantizados. Toda inversión implica riesgo. Antes de participar, revisa el contrato oficial, Legal Kit, fideicomisos, calendario de pagos, salida y consulta con tus asesores legales, financieros y fiscales.</p>
 </div>
@@ -463,14 +892,14 @@ footer{border-top:1px solid var(--border);background:rgba(255,255,255,.025)}
 <footer>
   <div class="footer-inner">
     <div class="footer-branding">
-      <img src="assets/fotos/logo_ridermexinversiones.png" alt="RiderMex">
+      <img src="assets/fotos/logo_ridermexinversiones.png" alt="RiderMex Inversiones" width="58" height="58" loading="lazy" decoding="async">
       <strong>RiderMex Inversiones</strong>
       <p>Información clara para inversionistas interesados.</p>
     </div>
     <div class="footer-links">
       <a href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener">Agendar Zoom por WhatsApp</a>
       <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener">Ver medios</a>
-      <a href="index.html">RiderMex Motos</a><a href="catalogo.html">Catálogo</a><a href="contacto.html">Contacto</a><!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Reemplaza href="#" cuando esté lista. --><a href="#">Aviso de privacidad</a><span>© 2026 RiderMex. Todos los derechos reservados.</span>
+      <a href="index.html">RiderMex Motos</a><a href="catalogo.html">Catálogo</a><a href="motos.html#agencias">Agencias</a><a href="quienes-somos.html">Quiénes somos</a><a href="contacto.html">Contacto</a><!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Reemplaza href="#" cuando esté lista. --><a href="#">Aviso de privacidad</a><span>© 2026 RiderMex. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>
@@ -495,6 +924,52 @@ window.addEventListener("scroll", () => {
   const h = document.documentElement.scrollHeight - window.innerHeight;
   progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
 }, { passive:true });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     DATOS ESTRUCTURADOS
+     FAQPage replica LITERALMENTE las preguntas visibles de #faq. Si editas
+     una respuesta arriba, edítala también aquí.
+     NO se declara ningún producto financiero, rendimiento ni oferta: son
+     rendimientos estimados, no garantizados.
+════════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.ridermex.com/inversiones.html#webpage",
+      "url": "https://www.ridermex.com/inversiones.html",
+      "name": "RiderMex Inversiones | Modelos de participación",
+      "description": "Cómo funciona el modelo de RiderMex Inversiones, los tres esquemas de participación, el sistema de plusvalía por escalones y el respaldo documental.",
+      "inLanguage": "es-MX",
+      "isPartOf": { "@id": "https://www.ridermex.com/#website" },
+      "about": { "@id": "https://www.ridermex.com/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.ridermex.com/" },
+        { "@type": "ListItem", "position": 2, "name": "RiderMex Inversiones", "item": "https://www.ridermex.com/inversiones.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "isPartOf": { "@id": "https://www.ridermex.com/inversiones.html#webpage" },
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Estoy comprando una moto?", "acceptedAnswer": { "@type": "Answer", "text": "No. Participas financieramente en un modelo de operación de tiendas e inventario. RiderMex opera la venta de motos." } },
+        { "@type": "Question", "name": "¿Tengo que operar algo?", "acceptedAnswer": { "@type": "Answer", "text": "No. RiderMex maneja tiendas, vendedores, inventario, financieras, marketing, operación y reportes." } },
+        { "@type": "Question", "name": "¿El rendimiento está garantizado?", "acceptedAnswer": { "@type": "Answer", "text": "No. Son rendimientos estimados. Toda inversión implica riesgo y debe revisarse con contrato, Legal Kit y documentos oficiales." } },
+        { "@type": "Question", "name": "¿Qué modelo me conviene?", "acceptedAnswer": { "@type": "Answer", "text": "Si quieres entrar completo, el modelo de contado de $70,000 puede hacer sentido. Si prefieres pagar poco a poco, el de $10,000 más mensualidades. Si buscas flujo más temprano, tienda operando de $120,000." } },
+        { "@type": "Question", "name": "¿Por qué debería agendar un Zoom?", "acceptedAnswer": { "@type": "Answer", "text": "Porque en el Zoom se revisa tu escenario: monto, modelo, calendario de flujos, documentación, disponibilidad de lugares y dudas legales y fiscales." } },
+        { "@type": "Question", "name": "¿Puedo revisar todo antes de invertir?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. La decisión debe tomarse después de revisar contrato, documentos, riesgos, salida, impuestos y estructura." } },
+        { "@type": "Question", "name": "¿Cómo funciona la plusvalía?", "acceptedAnswer": { "@type": "Answer", "text": "El precio de las nuevas participaciones avanza por escalones: cada 30 tickets colocados sube un 5%. Tu precio de entrada queda fijado en el escalón en el que adquiriste tu ticket. La plusvalía se materializa únicamente cuando existe una venta efectiva: el incremento de escalones no es una ganancia en efectivo automática ni una recompensa garantizada." } },
+        { "@type": "Question", "name": "¿Cuándo puedo vender mi participación?", "acceptedAnswer": { "@type": "Answer", "text": "A partir de los 18 meses contados desde que tu ticket queda totalmente liquidado. Desde ese punto puedes ofrecerlo a RiderMex o dentro de la comunidad de inversionistas, conforme al proceso y las condiciones vigentes. Tu plusvalía real depende de tu precio de entrada y del precio efectivo al que se cierre la venta." } }
+      ]
+    }
+  ]
+}
 </script>
 </body>
 </html>

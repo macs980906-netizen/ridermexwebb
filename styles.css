@@ -59,76 +59,15 @@ button { font-family: inherit; }
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 
-/* ===== HEADER ===== */
-header {
-  background: rgba(10,10,10,.85);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.nav-wrap {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 24px;
-  position: relative;
-}
+/* ===== HEADER =====
+   El header dejó de vivir aquí: ahora es el componente global .rm-header
+   (site-header.css + site-header.js), idéntico en las 6 páginas del sitio.
+   No añadir reglas `header`, `nav ul` ni `nav a` en este archivo: chocarían
+   con el componente global en todas las páginas que cargan styles.css. */
 
 .logo { flex-shrink: 0; display: flex; align-items: center; }
 .logo img { height: 50px; width: auto; max-width: none; display: block; }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-nav a {
-  color: rgba(255,255,255,.85);
-  font-weight: 500;
-  font-size: 14.5px;
-  letter-spacing: .2px;
-  transition: color .2s;
-  position: relative;
-}
-
-nav a:not(.btn-credito-nav)::after {
-  content: '';
-  position: absolute;
-  left: 0; bottom: -6px;
-  width: 0; height: 2px;
-  background: var(--rojo);
-  transition: width .25s var(--ease);
-}
-
-nav a:not(.btn-credito-nav):hover::after { width: 100%; }
-nav a:hover { color: var(--blanco); }
-
-.btn-credito-nav {
-  display: inline-block;            /* necesario para que overflow:hidden recorte
-                                       el barrido de brillo y no quede un "shard"
-                                       gris pegado a la izquierda (sobre el tel). */
-  background: var(--rojo);
-  color: var(--blanco) !important;
-  padding: 11px 22px;
-  border-radius: 8px;
-  font-weight: 600;
-  line-height: 1;
-  box-shadow: 0 6px 18px rgba(225,6,0,.35);
-  transition: transform .2s var(--ease), box-shadow .2s;
-}
-
-.btn-credito-nav:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(225,6,0,.45);
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -1060,57 +999,9 @@ footer a:hover { color: var(--rojo); }
 .whatsapp-float:hover { transform: scale(1.08); }
 .whatsapp-float svg { width: 28px; height: 28px; }
 
-/* ===== MENÚ HAMBURGUESA (mobile) ===== */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 32px;
-  height: 32px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: var(--blanco);
-  border-radius: 2px;
-  transition: transform .25s var(--ease), opacity .25s;
-}
-
-.nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.is-active span:nth-child(2) { opacity: 0; }
-.nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* El menú hamburguesa forma parte del header global (site-header.css). */
 
 @media (max-width: 768px) {
-  .nav-toggle { display: flex; }
-
-  nav ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    background: rgba(10,10,10,.97);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    padding: 10px 24px 18px;
-  }
-
-  nav ul.is-open { display: flex; }
-
-  nav ul li { width: 100%; }
-  nav a { display: block; padding: 12px 0; width: 100%; }
-  .btn-credito-nav { display: inline-block; margin-top: 8px; }
-
   .hero h1 { font-size: 32px; }
   .hero p { font-size: 16px; }
   section { padding: 64px 20px; }
@@ -1548,8 +1439,7 @@ body::before {
 }
 
 /* Header: línea inferior con glow rojo sutil al hacer scroll */
-header { transition: box-shadow .3s, border-color .3s; }
-header.is-scrolled { box-shadow: 0 4px 24px rgba(225,6,0,.08); border-bottom-color: rgba(225,6,0,.15); }
+/* El estado is-scrolled del header lo define site-header.css. */
 
 /* Stats con número grande: leve glow para que se sientan "vivos" */
 .trust-stat .num, .gateway-panel-stats .n, .path-card .n {
@@ -1687,4 +1577,59 @@ header.is-scrolled { box-shadow: 0 4px 24px rgba(225,6,0,.08); border-bottom-col
   .agencia-actions { flex-direction: column; }
   .agencia-btn { justify-content: center; width: 100%; }
   .ghl-form-wrap { padding: 8px; border-radius: 14px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   REQUISITOS / PROCESO / TIEMPOS — junto al formulario de crédito
+   Responde directamente las dudas de compra sin abrir otra página.
+   ═══════════════════════════════════════════════════════════════════════ */
+.credito-faq {
+  max-width: 980px;
+  margin: 46px auto 0;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  text-align: left;
+}
+.credito-faq h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(19px, 3vw, 24px);
+  font-weight: 700;
+  color: var(--blanco);
+  margin-bottom: 20px;
+  text-align: center;
+}
+.credito-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px 26px;
+}
+.credito-faq-grid h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 7px;
+}
+.credito-faq-grid h4::before {
+  content: '';
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--rojo);
+  margin-right: 9px;
+  vertical-align: middle;
+}
+.credito-faq-grid p {
+  color: rgba(255,255,255,.72);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+.credito-faq-grid strong { color: var(--blanco); }
+.credito-faq-grid a, .credito-faq-note a { color: var(--rojo2, #ff5a3c); font-weight: 600; }
+.credito-faq-note {
+  margin-top: 22px;
+  text-align: center;
+  color: rgba(255,255,255,.55);
+  font-size: 13.5px;
+  line-height: 1.6;
 }

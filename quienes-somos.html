@@ -3,7 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiénes somos – RiderMex</title>
+  <!-- ═══ SEO ═══ Dominio canónico: https://www.ridermex.com -->
+  <title>Quiénes somos | RiderMex, venta y distribución de motos</title>
+  <meta name="description" content="Conoce a RiderMex: empresa mexicana de venta y distribución de motocicletas, con catálogo multimarca, financiamiento y agencias en CDMX y Estado de México." />
+  <link rel="canonical" href="https://www.ridermex.com/quienes-somos.html" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RiderMex" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content="Quiénes somos | RiderMex, venta y distribución de motos" />
+  <meta property="og:description" content="Empresa mexicana de venta y distribución de motocicletas, con catálogo multimarca, financiamiento y agencias." />
+  <meta property="og:url" content="https://www.ridermex.com/quienes-somos.html" />
+  <meta property="og:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg" />
+  <meta property="og:image:alt" content="Piso de ventas RiderMex con motocicletas nuevas alineadas" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Quiénes somos | RiderMex, venta y distribución de motos" />
+  <meta name="twitter:description" content="Empresa mexicana de venta y distribución de motocicletas, con catálogo multimarca, financiamiento y agencias." />
+  <meta name="twitter:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,77 +83,8 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--gris3);
-      transition: border-color .3s, box-shadow .3s;
-    }
-
-    nav.is-scrolled { border-bottom-color: rgba(204,0,0,.3); box-shadow: 0 4px 24px rgba(204,0,0,.1); }
-
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 48px; width: auto; display: block; }
-
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-
-    .nav-links a {
-      color: var(--texto);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-      position: relative;
-    }
-
-    .nav-links a.is-active { color: var(--blanco); }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -6px;
-      width: 0; height: 1.5px;
-      background: var(--rojo);
-      transition: width .25s var(--ease);
-    }
-
-    .nav-links a:hover { color: var(--blanco); }
-    .nav-links a:hover::after, .nav-links a.is-active::after { width: 100%; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 32px;
-      height: 32px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--blanco);
-      border-radius: 2px;
-      transition: transform .25s var(--ease), opacity .25s;
-    }
-
-    .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
-    .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ─── NAV ───
+       El header es el componente global .rm-header (site-header.css). */
 
     /* ─── HERO ─── */
     .hero {
@@ -141,7 +93,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 9rem 2rem 4rem;
+      padding: 4rem 2rem 4rem;
       position: relative;
       overflow: hidden;
       isolation: isolate;
@@ -448,47 +400,41 @@
     footer a:hover { color: var(--texto); }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
-      .nav-toggle { display: flex; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        background: rgba(10,10,10,.97);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid var(--gris3);
-        padding: 10px 1.25rem 18px;
-      }
-
-      .nav-links.is-open { display: flex; }
-      .nav-links a { display: block; padding: 12px 0; width: 100%; }
-
+      /* El responsive del header vive en site-header.css. */
       .mv-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
       section { padding: 3.5rem 1.5rem; }
     }
   </style>
+  <!-- Header global (mismo componente en todas las páginas). -->
+  <link rel="stylesheet" href="site-header.css">
+  <script src="site-header.js" defer></script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
-    <ul class="nav-links">
-      <li><a href="motos.html">Catálogo</a></li>
-      <li><a href="motos.html#agencias">Agencias</a></li>
-      <li><a href="inversiones.html">Inversiones</a></li>
-      <li><a href="quienes-somos.html" class="is-active">Quiénes somos</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
-  </nav>
+  <!-- ═══ HEADER GLOBAL · componente único (site-header.css / .js) ═══ -->
+  <a class="rm-skip" href="#contenido">Saltar al contenido</a>
+  <header class="rm-header">
+    <div class="rm-header-inner">
+      <a class="rm-logo" href="index.html" aria-label="RiderMex — Inicio">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54">
+      </a>
+      <nav class="rm-nav" aria-label="Navegación principal">
+        <ul class="rm-nav-links">
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="motos.html#agencias">Agencias</a></li>
+          <li><a href="motos.html#credito">Financiamiento</a></li>
+          <li><a href="inversiones.html">Inversiones</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li class="rm-nav-cta"><a href="motos.html#formulario-motos">Tramita tu crédito</a></li>
+        </ul>
+      </nav>
+      <button class="rm-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="contenido">
 
   <!-- HERO -->
   <section class="hero">
@@ -608,11 +554,17 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <span>© 2026 RiderMex · Financiamos tu libertad</span>
     <span>
+      <a href="catalogo.html">Catálogo</a> &nbsp;·&nbsp;
+      <a href="motos.html#agencias">Agencias</a> &nbsp;·&nbsp;
+      <a href="contacto.html">Contacto</a> &nbsp;·&nbsp;
       <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
+      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. -->
       <a href="#">Aviso de privacidad</a>
     </span>
   </footer>
@@ -627,25 +579,7 @@
       progressBar.style.width = scrolled + '%';
     }, { passive: true });
 
-    const siteNav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('is-active');
-        navLinks.classList.toggle('is-open');
-      });
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('is-active');
-          navLinks.classList.remove('is-open');
-        });
-      });
-    }
+    // Menú móvil y estado del header: los maneja site-header.js (global).
 
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {

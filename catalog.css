@@ -399,3 +399,84 @@
 }
 .modelo-preseleccion strong { color: #fff; }
 .modelo-preseleccion .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--rojo); flex: 0 0 auto; box-shadow: 0 0 0 4px rgba(225,6,0,.2); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TEXTO INTRODUCTORIO POR MARCA (contenido indexable además del grid)
+   ═══════════════════════════════════════════════════════════════════════ */
+.brand-intro {
+  max-width: 760px;
+  margin: -10px 0 26px;
+  color: #b4b4b4;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.brand-intro strong { color: var(--blanco); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   "TAMBIÉN PUEDES EXPLORAR" — modelos relacionados de la misma marca
+   ═══════════════════════════════════════════════════════════════════════ */
+.detail-related { margin-top: 44px; }
+.detail-related h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 26px);
+  margin-bottom: 6px;
+}
+.detail-related .rel-lead { color: #9a9a9a; font-size: 14.5px; margin-bottom: 18px; }
+.detail-related .model-grid { margin-top: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ÍNDICE ESTÁTICO DEL CATÁLOGO
+   Sirve a rastreadores y a personas que quieren ver todo de un vistazo.
+   Va discreto (no compite con el grid) pero es texto real, no oculto.
+   ═══════════════════════════════════════════════════════════════════════ */
+.cat-index {
+  margin-top: 72px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(255, 255, 255, .09);
+}
+.cat-index > h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 26px);
+  margin-bottom: 10px;
+}
+.cat-index-lead {
+  color: #9a9a9a;
+  font-size: 14.5px;
+  line-height: 1.7;
+  max-width: 760px;
+  margin-bottom: 26px;
+}
+.cat-index-lead strong { color: var(--blanco); }
+#cat-index-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 26px 30px;
+}
+.cat-index-brand h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+.cat-index-brand h3 a { color: var(--blanco); text-decoration: none; }
+.cat-index-brand h3 a:hover { color: var(--rojo); text-decoration: underline; }
+.cat-index-count {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--rojo);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.cat-index-brand > p { color: #8e8e8e; font-size: 13.5px; line-height: 1.6; margin-bottom: 10px; }
+.cat-index-brand ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.cat-index-brand li { font-size: 13.5px; line-height: 1.5; }
+.cat-index-brand li a { color: #cfcfcf; text-decoration: none; }
+.cat-index-brand li a:hover { color: var(--rojo); text-decoration: underline; }
+.cat-index-meta { color: #6f6f6f; font-size: 12px; }

@@ -16,6 +16,24 @@
   var PLACEHOLDER = CAT.PLACEHOLDER_IMAGE;
   var FORM_TARGET = CAT.MOTORCYCLE_FORM_TARGET;
 
+  // Dominio canónico del sitio (usado en los datos estructurados).
+  var SITE = "https://www.ridermex.com";
+  var CATALOG_URL = SITE + "/catalogo.html";
+
+  // Texto introductorio por marca. Mismo contenido que el índice estático
+  // de catalogo.html (scripts/build-catalog-index.py): si cambias uno,
+  // cambia el otro. Solo describe lo que la data realmente contiene.
+  var BRAND_INTRO = {
+    bajaj: "Modelos Bajaj disponibles en RiderMex, con las familias Pulsar, Dominar, Avenger y Boxer.",
+    carabela: "Modelos Carabela disponibles en RiderMex: urbanas, doble propósito, todo terreno y cuatrimotos.",
+    cfmoto: "Modelos CF Moto disponibles en RiderMex, entre naked NK, deportivas SR y doble propósito.",
+    islo: "Modelos Islo disponibles en RiderMex, con opciones utilitarias y de trabajo.",
+    ryder: "Modelos Ryder disponibles en RiderMex, incluyendo motocarros de carga y de pasajeros.",
+    um: "Modelos UM Motorcycles disponibles en RiderMex, con la gama Renegade, DSR y Xtreet.",
+    vento: "Modelos Vento disponibles en RiderMex: motonetas, scooters, urbanas y doble propósito.",
+    zmoto: "Modelos Zmoto disponibles en RiderMex, con opciones urbanas, scooters y todo terreno."
+  };
+
   // ── utilidades ─────────────────────────────────────────────────────────
   function esc(s) {
     return String(s == null ? "" : s)
@@ -27,8 +45,14 @@
     var s = src || PLACEHOLDER;
     return '<img src="' + esc(s) + '" alt="' + esc(alt) + '"' +
       (extraClass ? ' class="' + extraClass + '"' : "") +
-      (eager ? "" : ' loading="lazy"') +
+      (eager ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') +
       ' onerror="this.onerror=null;this.src=window.RIDERMEX_CATALOG.PLACEHOLDER_IMAGE">';
+  }
+  // Alt descriptivo y único por imagen (evita "imagen1" / "moto").
+  function altFor(m, i) {
+    var base = "Motocicleta " + m.brand + " " + m.model +
+      (m.category ? " (" + m.category + ")" : "") + " disponible en RiderMex";
+    return i > 0 ? base + " — vista " + (i + 1) : base;
   }
   function chevron() {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
@@ -56,9 +80,37 @@
 
   // ── VISTA 1: marcas ──────────────────────────────────────────────────
   function renderBrands(query) {
-    setTitle("Catálogo de Motos | RiderMex");
     var brands = CAT.getAllBrands();
     var q = (query || "").trim().toLowerCase();
+
+    applySEO({
+      title: "Catálogo de motos RiderMex | Marcas y modelos",
+      description: "Catálogo de motos RiderMex: " + brands.length + " marcas y " +
+        CAT.motorcycles.length + " modelos con fotografías, características y ficha técnica."
+    });
+    // ItemList de marcas: ayuda a entender la estructura del catálogo.
+    setJsonLd({
+      "@context": "https://schema.org",
+      "@graph": [
+        crumbList([
+          { label: "Inicio", url: SITE + "/" },
+          { label: "Catálogo", url: CATALOG_URL }
+        ]),
+        {
+          "@type": "ItemList",
+          name: "Marcas de motos disponibles en RiderMex",
+          numberOfItems: brands.length,
+          itemListElement: brands.map(function (b, i) {
+            return {
+              "@type": "ListItem",
+              position: i + 1,
+              name: b.name,
+              url: CATALOG_URL + "#/marca/" + b.slug
+            };
+          })
+        }
+      ]
+    });
 
     var head =
       '<div class="cat-head">' +
@@ -119,12 +171,45 @@
       );
       return;
     }
-    setTitle(brand.name + " | Catálogo RiderMex");
     var models = CAT.getMotorcyclesByBrand(brandSlug);
     var q = (query || "").trim().toLowerCase();
     var shown = q ? models.filter(function (m) {
       return (m.model + " " + (m.category || "")).toLowerCase().indexOf(q) !== -1;
     }) : models;
+
+    var intro = BRAND_INTRO[brandSlug] ||
+      "Modelos " + brand.name + " disponibles en RiderMex.";
+
+    applySEO({
+      title: "Motos " + brand.name + " | Catálogo RiderMex",
+      description: intro + " " + models.length +
+        (models.length === 1 ? " modelo" : " modelos") +
+        " con fotografías, características y ficha técnica.",
+      image: absUrl(brand.image)
+    });
+    setJsonLd({
+      "@context": "https://schema.org",
+      "@graph": [
+        crumbList([
+          { label: "Inicio", url: SITE + "/" },
+          { label: "Catálogo", url: CATALOG_URL },
+          { label: brand.name, url: CATALOG_URL + "#/marca/" + brand.slug }
+        ]),
+        {
+          "@type": "ItemList",
+          name: "Modelos " + brand.name + " en RiderMex",
+          numberOfItems: models.length,
+          itemListElement: models.map(function (m, i) {
+            return {
+              "@type": "ListItem",
+              position: i + 1,
+              name: m.brand + " " + m.model,
+              url: CATALOG_URL + "#/moto/" + m.slug
+            };
+          })
+        }
+      ]
+    });
 
     var bc = breadcrumb([
       { label: "Inicio", href: "index.html" },
@@ -135,8 +220,14 @@
     var head =
       '<div class="cat-head" style="text-align:left">' +
         '<span class="cat-eyebrow">Catálogo · ' + esc(brand.name) + "</span>" +
-        '<h1 class="cat-title">Modelos <span>' + esc(brand.name) + "</span></h1>" +
+        '<h1 class="cat-title">Motos <span>' + esc(brand.name) + "</span></h1>" +
       "</div>" +
+      // Contexto textual indexable, además del grid de tarjetas.
+      '<p class="brand-intro">' + esc(intro) +
+        " Explora fotografías, características y opciones para iniciar tu proceso de compra: " +
+        'abre la ficha del modelo que te interese y pide información sin salir del catálogo. ' +
+        'También puedes <a href="index.html#preguntas-frecuentes">revisar cómo elegir tu moto</a> ' +
+        'o <a href="motos.html#formulario-motos">tramitar tu crédito</a>.</p>' +
       '<div class="cat-toolbar">' +
         '<a class="btn-cat btn-cat-ghost" href="#/">‹ Volver al catálogo</a>' +
         '<span class="cat-count">' + models.length + (models.length === 1 ? " modelo" : " modelos") + "</span>" +
@@ -162,7 +253,7 @@
     var price = m.price ? '<div class="model-card-price">' + esc(m.price) + "</div>" : "";
     var desc = m.shortDescription ? '<div class="model-card-desc">' + esc(m.shortDescription) + "</div>" : "";
     return '<a class="model-card" href="#/moto/' + esc(m.slug) + '">' +
-      '<div class="model-card-media">' + imgTag(m.mainImage, m.brand + " " + m.model) + "</div>" +
+      '<div class="model-card-media">' + imgTag(m.mainImage, altFor(m, 0)) + "</div>" +
       '<div class="model-card-body">' +
         '<div class="model-card-brand">' + esc(m.brand) + "</div>" +
         '<div class="model-card-name">' + esc(m.model) + "</div>" +
@@ -187,11 +278,49 @@
       );
       return;
     }
-    setTitle(m.brand + " " + m.model + " | Catálogo RiderMex");
-    setMeta("description", "Conoce " + m.brand + " " + m.model +
-      " en el catálogo RiderMex y solicita atención personalizada.");
-
     var images = CAT.getImages(m);
+
+    var descLine = (m.shortDescription || m.category || "").trim();
+    applySEO({
+      title: m.brand + " " + m.model + " | Características y fotos | RiderMex",
+      description: m.brand + " " + m.model +
+        (descLine ? " — " + descLine + "." : ".") +
+        " Fotografías, características y ficha técnica en el catálogo RiderMex." +
+        " Solicita información y conoce las opciones de financiamiento.",
+      image: absUrl(images[0])
+    });
+
+    // Product SIN precio, stock, SKU, rating ni reviews: esos datos no
+    // existen confirmados en el proyecto y no se inventan.
+    var product = {
+      "@type": "Product",
+      name: m.brand + " " + m.model,
+      brand: { "@type": "Brand", name: m.brand },
+      url: CATALOG_URL + "#/moto/" + m.slug
+    };
+    if (m.description && m.description.trim()) product.description = m.description.trim();
+    else if (descLine) product.description = descLine;
+    if (m.category) product.category = m.category;
+    var absImgs = images.map(absUrl).filter(Boolean);
+    if (absImgs.length) product.image = absImgs;
+    if (m.specs && m.specs.length) {
+      product.additionalProperty = m.specs.map(function (s) {
+        return { "@type": "PropertyValue", name: s.label, value: s.value };
+      });
+    }
+    setJsonLd({
+      "@context": "https://schema.org",
+      "@graph": [
+        crumbList([
+          { label: "Inicio", url: SITE + "/" },
+          { label: "Catálogo", url: CATALOG_URL },
+          { label: m.brand, url: CATALOG_URL + "#/marca/" + m.brandSlug },
+          { label: m.model, url: CATALOG_URL + "#/moto/" + m.slug }
+        ]),
+        product
+      ]
+    });
+
     var bc = breadcrumb([
       { label: "Inicio", href: "index.html" },
       { label: "Catálogo", href: "#/" },
@@ -202,13 +331,14 @@
     // Galería
     var thumbs = images.length > 1
       ? '<div class="gallery-thumbs">' + images.map(function (src, i) {
-          return '<div class="gallery-thumb' + (i === 0 ? " is-active" : "") + '" data-src="' + esc(src) + '">' +
-            imgTag(src, m.model + " vista " + (i + 1)) + "</div>";
+          return '<div class="gallery-thumb' + (i === 0 ? " is-active" : "") + '" data-src="' + esc(src) +
+            '" data-alt="' + esc(altFor(m, i)) + '">' +
+            imgTag(src, altFor(m, i)) + "</div>";
         }).join("") + "</div>"
       : "";
     var gallery =
       '<div class="detail-gallery">' +
-        '<div class="gallery-main">' + imgTag(images[0], m.brand + " " + m.model, null, true) + "</div>" +
+        '<div class="gallery-main">' + imgTag(images[0], altFor(m, 0), null, true) + "</div>" +
         thumbs +
       "</div>";
 
@@ -289,11 +419,46 @@
         "</details></div>";
     }
 
+    // ── También puedes explorar ──
+    // Criterio real, no inventado: primero modelos de la MISMA marca y la
+    // MISMA categoría; si no alcanzan, se completa con la misma marca.
+    // Si la marca solo tiene este modelo, el bloque no se muestra.
+    var siblings = CAT.getMotorcyclesByBrand(m.brandSlug).filter(function (x) {
+      return x.slug !== m.slug;
+    });
+    var sameCat = m.category ? siblings.filter(function (x) { return x.category === m.category; }) : [];
+    var related = sameCat.concat(siblings.filter(function (x) { return sameCat.indexOf(x) === -1; }))
+                         .slice(0, 4);
+    var relatedSection = "";
+    if (related.length) {
+      var lead = sameCat.length
+        ? "Otros modelos " + m.brand + " de la misma categoría en el catálogo RiderMex."
+        : "Otros modelos " + m.brand + " disponibles en el catálogo RiderMex.";
+      relatedSection =
+        '<div class="detail-related"><h2>También puedes explorar</h2>' +
+        '<p class="rel-lead">' + esc(lead) + "</p>" +
+        '<div class="model-grid">' + related.map(modelCard).join("") + "</div>" +
+        '<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">' +
+          '<a class="btn-cat btn-cat-ghost" href="#/marca/' + esc(m.brandSlug) + '">Ver todos los modelos ' + esc(m.brand) + "</a>" +
+          '<a class="btn-cat btn-cat-ghost" href="#/">Volver al catálogo completo</a>' +
+        "</div></div>";
+    }
+
+    // Bloque de ayuda a la decisión: responde "cómo pido información".
+    var howToSection =
+      '<div class="detail-section"><h2>Cómo solicitar información de este modelo</h2>' +
+      '<p class="desc-text">Pulsa «Quiero esta moto» y tu solicitud llega con el modelo ya ' +
+      'identificado, para que un asesor te confirme disponibilidad, condiciones y opciones ' +
+      'de financiamiento. También puedes verlo en persona en cualquiera de las ' +
+      '<a href="motos.html#agencias">5 agencias RiderMex</a> o llamar al ' +
+      '<a href="tel:5510000680">55 1000 0680</a>.</p></div>';
+
     root.innerHTML = bc +
       '<div class="detail-layout">' + gallery + info + "</div>" +
-      descSection + featSection + specSection;
+      descSection + featSection + specSection + howToSection + relatedSection;
 
     bindGallery();
+    bindGlow();
   }
 
   // ── componentes compartidos ──────────────────────────────────────────
@@ -323,7 +488,8 @@
     thumbs.forEach(function (t) {
       t.addEventListener("click", function () {
         var src = t.getAttribute("data-src");
-        if (main && src) main.src = src;
+        var alt = t.getAttribute("data-alt");
+        if (main && src) { main.src = src; if (alt) main.alt = alt; }
         thumbs.forEach(function (x) { x.classList.remove("is-active"); });
         t.classList.add("is-active");
       });
@@ -361,6 +527,60 @@
     if (!el) { el = document.createElement("meta"); el.setAttribute("name", name); document.head.appendChild(el); }
     el.setAttribute("content", content);
   }
+  function setOG(property, content) {
+    var el = document.querySelector('meta[property="' + property + '"]');
+    if (!el) { el = document.createElement("meta"); el.setAttribute("property", property); document.head.appendChild(el); }
+    el.setAttribute("content", content);
+  }
+
+  // ── SEO por vista ─────────────────────────────────────────────────────
+  // El hash no crea URLs distintas para el buscador, así que el canónico
+  // es SIEMPRE catalogo.html. Lo que sí cambia por vista es el título, la
+  // descripción, las tarjetas sociales y los datos estructurados, para
+  // que al compartir un enlace o al leerlo un motor de respuesta se
+  // describa la vista real.
+  function applySEO(opts) {
+    setTitle(opts.title);
+    setMeta("description", opts.description);
+    setOG("og:title", opts.title);
+    setOG("og:description", opts.description);
+    setOG("og:url", CATALOG_URL);
+    if (opts.image && opts.image.indexOf("http") === 0) setOG("og:image", opts.image);
+    setMeta("twitter:title", opts.title);
+    setMeta("twitter:description", opts.description);
+  }
+
+  // JSON-LD dinámico: se reemplaza en cada cambio de vista.
+  function setJsonLd(data) {
+    var id = "cat-jsonld";
+    var el = document.getElementById(id);
+    if (!data) { if (el) el.parentNode.removeChild(el); return; }
+    if (!el) {
+      el = document.createElement("script");
+      el.type = "application/ld+json";
+      el.id = id;
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(data);
+  }
+
+  function crumbList(items) {
+    return {
+      "@type": "BreadcrumbList",
+      itemListElement: items.map(function (it, i) {
+        var entry = { "@type": "ListItem", position: i + 1, name: it.label };
+        if (it.url) entry.item = it.url;
+        return entry;
+      })
+    };
+  }
+
+  function absUrl(src) {
+    if (!src) return null;
+    if (src.indexOf("http") === 0) return src;
+    if (src.indexOf("data:") === 0) return null;
+    return SITE + "/" + src.replace(/^\//, "");
+  }
 
   // ── router ────────────────────────────────────────────────────────────
   var currentSearch = "";
@@ -368,6 +588,12 @@
     var hash = location.hash.replace(/^#\/?/, ""); // sin "#/" inicial
     var parts = hash.split("/").filter(Boolean);
     window.scrollTo({ top: 0, behavior: "auto" });
+
+    // El índice estático sigue en el HTML servido (lo que ve un rastreador),
+    // pero se oculta dentro de una marca o de una ficha para no repetir todo
+    // el catálogo debajo del contenido de la vista.
+    var idx = document.getElementById("indice-catalogo");
+    if (idx) idx.style.display = parts.length ? "none" : "";
 
     if (parts[0] === "moto" && parts[1]) {
       renderDetail(decodeURIComponent(parts[1]));

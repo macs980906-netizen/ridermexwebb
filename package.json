@@ -4,7 +4,10 @@
   "private": true,
   "description": "RiderMex landing (static multi-page site). No bundler: HTML/CSS/JS served as-is.",
   "scripts": {
-    "build": "echo \"RiderMex es un sitio estatico: no requiere build. Los archivos se sirven tal cual.\"",
+    "build": "node scripts/verify.mjs",
+    "verify": "node scripts/verify.mjs",
+    "catalog:index": "python3 scripts/build-catalog-index.py",
+    "catalog:fotos": "python3 scripts/prefer-white-background.py",
     "dev": "npx --yes serve ."
   }
 }

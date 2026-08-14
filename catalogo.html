@@ -3,42 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo de Motos | RiderMex</title>
-<meta name="description" content="Explora el catálogo de motos RiderMex por marca y modelo. Fichas con imágenes, características y atención personalizada.">
+
+<!-- ═══ SEO ═══ Dominio canónico: https://www.ridermex.com -->
+<title>Catálogo de motos RiderMex | Marcas y modelos</title>
+<meta name="description" content="Catálogo de motos RiderMex: 8 marcas y 142 modelos con fotografías, características y ficha técnica. Compara marcas y modelos y solicita información de la moto que te interesa.">
+<!-- El catálogo es una SPA con hash routing (#/marca/…, #/moto/…). El hash no
+     llega al servidor ni genera URLs distintas para el buscador, por eso el
+     canónico de todas las vistas es siempre esta página. -->
+<link rel="canonical" href="https://www.ridermex.com/catalogo.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0A0A0A">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Catálogo de motos RiderMex | Marcas y modelos">
+<meta property="og:description" content="8 marcas y 142 modelos con fotografías, características y ficha técnica.">
+<meta property="og:url" content="https://www.ridermex.com/catalogo.html">
+<meta property="og:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg">
+<meta property="og:image:alt" content="Piso de ventas RiderMex con motocicletas nuevas alineadas">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Catálogo de motos RiderMex | Marcas y modelos">
+<meta name="twitter:description" content="8 marcas y 142 modelos con fotografías, características y ficha técnica.">
+<meta name="twitter:image" content="https://www.ridermex.com/assets/img/hero/showroom-ridermex-hero.jpg">
+
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="catalog.css">
+<!-- Header global: siempre después del CSS de la página. -->
+<link rel="stylesheet" href="site-header.css">
+<script src="site-header.js" defer></script>
 </head>
 <body class="catalog-page">
 
-<header>
-  <div class="nav-wrap">
-    <a href="index.html" class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
+<!-- ═══ HEADER GLOBAL · componente único (site-header.css / .js) ═══ -->
+<a class="rm-skip" href="#contenido">Saltar al contenido</a>
+<header class="rm-header">
+  <div class="rm-header-inner">
+    <a class="rm-logo" href="index.html" aria-label="RiderMex — Inicio">
+      <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54">
+    </a>
+    <nav class="rm-nav" aria-label="Navegación principal">
+      <ul class="rm-nav-links">
         <li><a href="catalogo.html">Catálogo</a></li>
         <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="motos.html#credito">Financiamiento</a></li>
         <li><a href="inversiones.html">Inversiones</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
-        <li><a href="tel:5510000680">55 1000 0680</a></li>
-        <li><a href="motos.html#formulario-motos" class="btn-credito-nav">Tramita tu crédito</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li class="rm-nav-cta"><a href="motos.html#formulario-motos">Tramita tu crédito</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <button class="rm-nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main>
+<main id="contenido">
   <div class="catalog-wrap">
     <div id="catalog-root"><!-- render dinámico --></div>
+
+    <!-- ═══ ÍNDICE ESTÁTICO DEL CATÁLOGO ═══
+         El render de arriba es JavaScript: un rastreador que no ejecute JS no
+         vería ni una marca ni un modelo. Este bloque va en el HTML servido y
+         da a buscadores y motores de respuesta el texto y los enlaces reales
+         de las 8 marcas y los 142 modelos. Se genera con
+         `python3 scripts/build-catalog-index.py` cada vez que cambia
+         src/data/motorcycles.js. NO editar a mano. -->
+    <section class="cat-index" id="indice-catalogo" aria-labelledby="indice-catalogo-titulo">
+      <h2 id="indice-catalogo-titulo">Índice completo del catálogo</h2>
+      <p class="cat-index-lead">
+        El catálogo RiderMex reúne <strong>142 modelos</strong> de <strong>8 marcas</strong>.
+        Cada modelo tiene su ficha con fotografías, características destacadas y ficha
+        técnica. Elige una marca para ver sus modelos o abre directamente el modelo que
+        buscas.
+      </p>
+      <div id="cat-index-content">
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/bajaj">Motos Bajaj en RiderMex</a> <span class="cat-index-count">20 modelos</span></h3>
+      <p>Modelos Bajaj disponibles en RiderMex, con las familias Pulsar, Dominar, Avenger y Boxer.</p>
+      <ul>
+      <li><a href="#/moto/bajaj-avenger-cruise-220">Bajaj Avenger Cruise 220</a> <span class="cat-index-meta">Avenger · 220 cc</span></li>
+      <li><a href="#/moto/bajaj-boxer-bm-150">Bajaj Boxer BM 150</a> <span class="cat-index-meta">Boxer · 144.8 cc</span></li>
+      <li><a href="#/moto/bajaj-dominar-250-ug">Bajaj Dominar 250 UG</a> <span class="cat-index-meta">Dominar · 248.8–249 cc</span></li>
+      <li><a href="#/moto/bajaj-dominar-400-te">Bajaj Dominar 400 TE</a> <span class="cat-index-meta">Dominar · 373.3 cc</span></li>
+      <li><a href="#/moto/bajaj-dominar-400-ug">Bajaj Dominar 400 UG</a> <span class="cat-index-meta">Dominar · 373.3 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-200-rs">Bajaj Pulsar 200 RS</a> <span class="cat-index-meta">Pulsar RS · 199.5–200 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-f-250">Bajaj Pulsar F 250</a> <span class="cat-index-meta">Pulsar F · 249.07 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-125-car">Bajaj Pulsar N 125 Car</a> <span class="cat-index-meta">Pulsar N · 125 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-125-fi-cbs">Bajaj Pulsar N 125 FI CBS</a> <span class="cat-index-meta">Pulsar N · 124.6 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-160">Bajaj Pulsar N 160</a> <span class="cat-index-meta">Pulsar N · 164.82 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-160-fi-abs-premium">Bajaj Pulsar N 160 FI + ABS Premium</a> <span class="cat-index-meta">Pulsar N · 164.82 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-160-fi-abs-ug">Bajaj Pulsar N 160 FI + ABS UG</a> <span class="cat-index-meta">Pulsar N · 164.82 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-250">Bajaj Pulsar N 250</a> <span class="cat-index-meta">Pulsar N · 249–250 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-n-250-fi-abs">Bajaj Pulsar N 250 FI + ABS</a> <span class="cat-index-meta">Pulsar N · 249.07 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-125-ug">Bajaj Pulsar NS 125 UG</a> <span class="cat-index-meta">Pulsar NS · 125 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-160">Bajaj Pulsar NS 160</a> <span class="cat-index-meta">Pulsar NS · 160 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-200">Bajaj Pulsar NS 200</a> <span class="cat-index-meta">Pulsar NS · 199.5–200 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-200-fi-abs">Bajaj Pulsar NS 200 FI ABS</a> <span class="cat-index-meta">Pulsar NS · 199.5–200 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-400-ug">Bajaj Pulsar NS 400 UG</a> <span class="cat-index-meta">Pulsar NS · 373.27 cc</span></li>
+      <li><a href="#/moto/bajaj-pulsar-ns-400-z">Bajaj Pulsar NS 400 Z</a> <span class="cat-index-meta">Pulsar NS · 373.27 cc</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/carabela">Motos Carabela en RiderMex</a> <span class="cat-index-count">16 modelos</span></h3>
+      <p>Modelos Carabela disponibles en RiderMex: urbanas, doble propósito, todo terreno y cuatrimotos.</p>
+      <ul>
+      <li><a href="#/moto/carabela-arena-pro">Carabela Arena Pro</a> <span class="cat-index-meta">Todo terreno · 110 cc</span></li>
+      <li><a href="#/moto/carabela-atlas-98">Carabela Atlas 98</a> <span class="cat-index-meta">Todo terreno / Kart · 98 cc</span></li>
+      <li><a href="#/moto/carabela-bat-150">Carabela Bat 150</a> <span class="cat-index-meta">Utilitaria · 150 cc</span></li>
+      <li><a href="#/moto/carabela-coyote">Carabela Coyote</a> <span class="cat-index-meta">Scooter · 150 cc</span></li>
+      <li><a href="#/moto/carabela-dakota-320r">Carabela Dakota 320R</a> <span class="cat-index-meta">Todo terreno · 320 cc</span></li>
+      <li><a href="#/moto/carabela-dirt3">Carabela Dirt3</a> <span class="cat-index-meta">Todo terreno · 110 cc</span></li>
+      <li><a href="#/moto/carabela-fishbone">Carabela Fishbone</a> <span class="cat-index-meta">Crucero · 200 cc</span></li>
+      <li><a href="#/moto/carabela-hills-150">Carabela Hills 150</a> <span class="cat-index-meta">ATV · 150 cc</span></li>
+      <li><a href="#/moto/carabela-hunter-110">Carabela Hunter 110</a> <span class="cat-index-meta">Semiautomática · 110 cc</span></li>
+      <li><a href="#/moto/carabela-kronos">Carabela Kronos</a> <span class="cat-index-meta">Utilitaria · 150 cc</span></li>
+      <li><a href="#/moto/carabela-kronos-200">Carabela Kronos 200</a> <span class="cat-index-meta">Street · 200 cc</span></li>
+      <li><a href="#/moto/carabela-r250z">Carabela R250Z</a> <span class="cat-index-meta">Street · 250 cc</span></li>
+      <li><a href="#/moto/carabela-r300z-4v">Carabela R300Z 4V</a> <span class="cat-index-meta">Street · 300 cc</span></li>
+      <li><a href="#/moto/carabela-route-r-sonora">Carabela Route R Sonora</a> <span class="cat-index-meta">Todo terreno · 249 cc</span></li>
+      <li><a href="#/moto/carabela-venom-175">Carabela Venom 175</a> <span class="cat-index-meta">Scooter · 175 cc</span></li>
+      <li><a href="#/moto/carabela-voodoo">Carabela Voodoo</a> <span class="cat-index-meta">ATV · 200 cc</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/cfmoto">Motos CF Moto en RiderMex</a> <span class="cat-index-count">14 modelos</span></h3>
+      <p>Modelos CF Moto disponibles en RiderMex, entre naked NK, deportivas SR y doble propósito.</p>
+      <ul>
+      <li><a href="#/moto/cfmoto-230-dual">CF Moto 230 DUAL</a> <span class="cat-index-meta">229 cc</span></li>
+      <li><a href="#/moto/cfmoto-mt450">CF Moto MT450</a> <span class="cat-index-meta">449.5 cc</span></li>
+      <li><a href="#/moto/cfmoto-nk250-fun">CF Moto NK250 FUN</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-nk250-high">CF Moto NK250 HIGH</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-nk250-low">CF Moto NK250 LOW</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-nk300">CF Moto NK300</a> <span class="cat-index-meta">292 cc</span></li>
+      <li><a href="#/moto/cfmoto-nk450">CF Moto NK450</a> <span class="cat-index-meta">449 cc</span></li>
+      <li><a href="#/moto/cfmoto-papio-xo-racer">CF Moto PAPIO XO RACER</a> <span class="cat-index-meta">126 cc</span></li>
+      <li><a href="#/moto/cfmoto-sc150">CF Moto SC150</a> <span class="cat-index-meta">149 cc</span></li>
+      <li><a href="#/moto/cfmoto-sr250-fun">CF Moto SR250 FUN</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-sr250-high">CF Moto SR250 HIGH</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-sr250-low">CF Moto SR250 LOW</a> <span class="cat-index-meta">249 cc</span></li>
+      <li><a href="#/moto/cfmoto-sr300-sport">CF Moto SR300 SPORT</a> <span class="cat-index-meta">298 cc</span></li>
+      <li><a href="#/moto/cfmoto-sr450">CF Moto SR450</a> <span class="cat-index-meta">449 cc</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/islo">Motos Islo en RiderMex</a> <span class="cat-index-count">6 modelos</span></h3>
+      <p>Modelos Islo disponibles en RiderMex, con opciones utilitarias y de trabajo.</p>
+      <ul>
+      <li><a href="#/moto/islo-blackwing">Islo Blackwing</a> <span class="cat-index-meta">Crucero · 250 cc</span></li>
+      <li><a href="#/moto/islo-freedom">Islo Freedom</a> <span class="cat-index-meta">Utilitaria · 149.5 cc</span></li>
+      <li><a href="#/moto/islo-montana-adv250">Islo Montana ADV250</a> <span class="cat-index-meta">Doble propósito · 250 cc</span></li>
+      <li><a href="#/moto/islo-mutant-250r">Islo Mutant 250R</a> <span class="cat-index-meta">Street · 250 cc</span></li>
+      <li><a href="#/moto/islo-rabbit-rush">Islo Rabbit Rush</a> <span class="cat-index-meta">Motoneta · 149.5 cc</span></li>
+      <li><a href="#/moto/islo-trip-150">Islo Trip 150</a> <span class="cat-index-meta">Utilitaria · 149.5 cc</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/ryder">Motos Ryder en RiderMex</a> <span class="cat-index-count">19 modelos</span></h3>
+      <p>Modelos Ryder disponibles en RiderMex, incluyendo motocarros de carga y de pasajeros.</p>
+      <ul>
+      <li><a href="#/moto/ryder-ad-1">Ryder AD-1</a> <span class="cat-index-meta">Scooter · 150 c.c.</span></li>
+      <li><a href="#/moto/ryder-ad-1-5">Ryder AD-1.5</a> <span class="cat-index-meta">Scooter · 150 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-200">Ryder Aztekita 200</a> <span class="cat-index-meta">Motocarro · 200 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-250-cc">Ryder Aztekita 250 CC</a> <span class="cat-index-meta">Motocarro · 250 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-300-cc">Ryder Aztekita 300 CC</a> <span class="cat-index-meta">Motocarro · 300 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-300-volteo">Ryder Aztekita 300 Volteo</a> <span class="cat-index-meta">Motocarro · 300 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-350-plus">Ryder Aztekita 350 Plus</a> <span class="cat-index-meta">ATV / Trabajo · 350 c.c.</span></li>
+      <li><a href="#/moto/ryder-aztekita-atv-300">Ryder Aztekita ATV 300</a> <span class="cat-index-meta">ATV · 300 c.c.</span></li>
+      <li><a href="#/moto/ryder-md-1-5">Ryder MD-1.5</a> <span class="cat-index-meta">Scooter · 150 c.c.</span></li>
+      <li><a href="#/moto/ryder-md-1-75">Ryder MD-1.75</a> <span class="cat-index-meta">Scooter · 150/175 c.c.</span></li>
+      <li><a href="#/moto/ryder-md-2-180">Ryder MD-2 180</a> <span class="cat-index-meta">Scooter · 180 c.c.</span></li>
+      <li><a href="#/moto/ryder-md-adv-180">Ryder MD-ADV 180</a> <span class="cat-index-meta">Scooter / ADV · 180 c.c.</span></li>
+      <li><a href="#/moto/ryder-rd-1">Ryder RD-1</a> <span class="cat-index-meta">Urban Sport · 125 c.c. aprox.</span></li>
+      <li><a href="#/moto/ryder-rd-1-5">Ryder RD-1.5</a> <span class="cat-index-meta">Urban Sport · 150 c.c. aprox.</span></li>
+      <li><a href="#/moto/ryder-rd-2">Ryder RD-2</a> <span class="cat-index-meta">Urban Sport · 200 c.c.</span></li>
+      <li><a href="#/moto/ryder-rd-2-5">Ryder RD-2.5</a> <span class="cat-index-meta">Urban Sport · 250 c.c.</span></li>
+      <li><a href="#/moto/ryder-rd-3r">Ryder RD-3R</a> <span class="cat-index-meta">Urban Sport · 300 c.c.</span></li>
+      <li><a href="#/moto/ryder-sd-3">Ryder SD-3</a> <span class="cat-index-meta">Urban Sport · 300 c.c.</span></li>
+      <li><a href="#/moto/ryder-ud-1">Ryder UD-1</a> <span class="cat-index-meta">Utilitaria · 125 c.c. aprox.</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/um">Motos UM en RiderMex</a> <span class="cat-index-count">7 modelos</span></h3>
+      <p>Modelos UM Motorcycles disponibles en RiderMex, con la gama Renegade, DSR y Xtreet.</p>
+      <ul>
+      <li><a href="#/moto/um-dsr-rally-250-4v">UM DSR Rally 250 4V</a> <span class="cat-index-meta">Doble propósito / Adventure · 250 cc (referencia del modelo)</span></li>
+      <li><a href="#/moto/um-matrix">UM Matrix</a> <span class="cat-index-meta">Scooter</span></li>
+      <li><a href="#/moto/um-renegade-classic-lx">UM Renegade Classic LX</a> <span class="cat-index-meta">Cruiser clásica</span></li>
+      <li><a href="#/moto/um-renegade-st-300">UM Renegade ST 300</a> <span class="cat-index-meta">Cruiser · 300 cc (referencia del modelo)</span></li>
+      <li><a href="#/moto/um-renegade-sport-300s">UM Renegade Sport 300S</a> <span class="cat-index-meta">Cruiser · 279.5 cc</span></li>
+      <li><a href="#/moto/um-xpeed">UM Xpeed</a> <span class="cat-index-meta">Scooter · 149.6 cc</span></li>
+      <li><a href="#/moto/um-xtreet-rs-250-4v">UM Xtreet RS 250 4V</a> <span class="cat-index-meta">Sport · 223 cc</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/vento">Motos Vento en RiderMex</a> <span class="cat-index-count">43 modelos</span></h3>
+      <p>Modelos Vento disponibles en RiderMex: motonetas, scooters, urbanas y doble propósito.</p>
+      <ul>
+      <li><a href="#/moto/vento-alpina-300">Vento ALPINA 300</a> <span class="cat-index-meta">Adventure · 300 c.c.</span></li>
+      <li><a href="#/moto/vento-atom-2-0-170">Vento ATOM 2.0 170</a> <span class="cat-index-meta">Motoneta · 170 c.c.</span></li>
+      <li><a href="#/moto/vento-axus-170">Vento AXUS 170</a> <span class="cat-index-meta">Motoneta · 170 c.c.</span></li>
+      <li><a href="#/moto/vento-blast-125">Vento BLAST 125</a> <span class="cat-index-meta">Ciudad · 125 c.c.</span></li>
+      <li><a href="#/moto/vento-colt-300">Vento COLT 300</a> <span class="cat-index-meta">Rebeldes / Custom · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-corsel-300">Vento CORSEL 300</a> <span class="cat-index-meta">Trabajo · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-cougar-250">Vento COUGAR 250</a> <span class="cat-index-meta">Rebeldes / Custom · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-crossmax-170">Vento CROSSMAX 170</a> <span class="cat-index-meta">Doble Propósito · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-crossmax-220">Vento CROSSMAX 220</a> <span class="cat-index-meta">Doble Propósito · 220 c.c.</span></li>
+      <li><a href="#/moto/vento-crossmax-250">Vento CROSSMAX 250</a> <span class="cat-index-meta">Doble Propósito · 250 c.c.</span></li>
+      <li><a href="#/moto/vento-crossmax-330rally">Vento CROSSMAX 330RALLY</a> <span class="cat-index-meta">Doble Propósito · 330 c.c.</span></li>
+      <li><a href="#/moto/vento-cyclone-210">Vento CYCLONE 210</a> <span class="cat-index-meta">Urban Sport · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-dakar-300">Vento DAKAR 300</a> <span class="cat-index-meta">Adventure · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-dakar-330">Vento DAKAR 330</a> <span class="cat-index-meta">Adventure · 330 c.c.</span></li>
+      <li><a href="#/moto/vento-falkon-250z3">Vento FALKON 250Z3</a> <span class="cat-index-meta">Urban Sport · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-gladiator-200-2-0">Vento GLADIATOR 200. 2.0</a> <span class="cat-index-meta">Cuatrimoto · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-gtspro-300">Vento GTSPRO 300</a> <span class="cat-index-meta">Adventure · 300 c.c.</span></li>
+      <li><a href="#/moto/vento-hipster-170">Vento HIPSTER 170</a> <span class="cat-index-meta">Motoneta · 170 c.c.</span></li>
+      <li><a href="#/moto/vento-hyper-310">Vento HYPER 310</a> <span class="cat-index-meta">Urban Sport · 310 c.c.</span></li>
+      <li><a href="#/moto/vento-intrepidsx-125">Vento INTREPIDSX 125</a> <span class="cat-index-meta">Ciudad · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-lithium-190">Vento LITHIUM 190</a> <span class="cat-index-meta">Ciudad · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-m1-200">Vento M1 200</a> <span class="cat-index-meta">Motoneta · 200 c.c.</span></li>
+      <li><a href="#/moto/vento-n-400">Vento N 400</a> <span class="cat-index-meta">Pendiente · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-nitrox-250t3">Vento NITROX 250T3</a> <span class="cat-index-meta">Urban Sport · 250 c.c.</span></li>
+      <li><a href="#/moto/vento-nitrox-300t3">Vento NITROX 300T3</a> <span class="cat-index-meta">Urban Sport · 300 c.c.</span></li>
+      <li><a href="#/moto/vento-nitrox-330">Vento NITROX 330</a> <span class="cat-index-meta">Urban Sport · 330 c.c.</span></li>
+      <li><a href="#/moto/vento-onyx-250">Vento ONYX 250</a> <span class="cat-index-meta">Urban Sport · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-ovni-170">Vento OVNI 170</a> <span class="cat-index-meta">Ciudad · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-ovnitrack-170">Vento OVNITRACK 170</a> <span class="cat-index-meta">Doble Propósito · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-phantom-170s">Vento PHANTOM 170S.</a> <span class="cat-index-meta">Motoneta · 170 c.c.</span></li>
+      <li><a href="#/moto/vento-r-300">Vento R 300</a> <span class="cat-index-meta">Pendiente · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-rambler-125">Vento RAMBLER 125</a> <span class="cat-index-meta">Doble Propósito · 125 c.c.</span></li>
+      <li><a href="#/moto/vento-rapid-125rt">Vento RAPID 125RT</a> <span class="cat-index-meta">Ciudad · 125 c.c.</span></li>
+      <li><a href="#/moto/vento-reptile-200xt">Vento REPTILE 200XT</a> <span class="cat-index-meta">Cuatrimoto · 200 c.c.</span></li>
+      <li><a href="#/moto/vento-rex-350">Vento REX 350</a> <span class="cat-index-meta">Cuatrimoto · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-rex-550">Vento REX 550</a> <span class="cat-index-meta">Cuatrimoto · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-rocketman-300">Vento ROCKETMAN 300</a> <span class="cat-index-meta">Rebeldes / Custom · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-rocketman-300pl">Vento ROCKETMAN 300PL</a> <span class="cat-index-meta">Rebeldes / Custom · 300 c.c.</span></li>
+      <li><a href="#/moto/vento-ruda-f4-170">Vento RUDA F4 170</a> <span class="cat-index-meta">Motoneta · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-ryder-190">Vento RYDER 190</a> <span class="cat-index-meta">Ciudad · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-screamer-300">Vento SCREAMER 300</a> <span class="cat-index-meta">Rebeldes / Custom · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-screamer-sportivo-300">Vento SCREAMER SPORTIVO 300</a> <span class="cat-index-meta">Rebeldes / Custom · Consultar página oficial</span></li>
+      <li><a href="#/moto/vento-spectra-125">Vento SPECTRA 125</a> <span class="cat-index-meta">Ciudad · 125 c.c.</span></li>
+      </ul>
+      </div>
+      <div class="cat-index-brand">
+      <h3><a href="#/marca/zmoto">Motos Zmoto en RiderMex</a> <span class="cat-index-count">17 modelos</span></h3>
+      <p>Modelos Zmoto disponibles en RiderMex, con opciones urbanas, scooters y todo terreno.</p>
+      <ul>
+      <li><a href="#/moto/zmoto-300-pro">Zmoto 300 Pro</a> <span class="cat-index-meta">Doble propósito / enduro · 300 cc</span></li>
+      <li><a href="#/moto/zmoto-aktiva-150">Zmoto Aktiva 150</a> <span class="cat-index-meta">Scooter · 150 cc</span></li>
+      <li><a href="#/moto/zmoto-crx-150">Zmoto CRX 150</a> <span class="cat-index-meta">Street · 150 cc</span></li>
+      <li><a href="#/moto/zmoto-crx-200">Zmoto CRX 200</a> <span class="cat-index-meta">Street · 200 cc</span></li>
+      <li><a href="#/moto/zmoto-crx-300">Zmoto CRX 300</a> <span class="cat-index-meta">Street deportiva · 300 cc</span></li>
+      <li><a href="#/moto/zmoto-carguero-320">Zmoto Carguero 320</a> <span class="cat-index-meta">Motocarro con caja hidráulica · 300–320 cc</span></li>
+      <li><a href="#/moto/zmoto-maxx-125">Zmoto Maxx 125</a> <span class="cat-index-meta">Semiautomática urbana · 125 cc</span></li>
+      <li><a href="#/moto/zmoto-nitro-150">Zmoto Nitro 150</a> <span class="cat-index-meta">Street utilitaria · 150 cc</span></li>
+      <li><a href="#/moto/zmoto-rapid-150">Zmoto Rapid 150</a> <span class="cat-index-meta">Scooter · 150 cc</span></li>
+      <li><a href="#/moto/zmoto-runga-250">Zmoto Runga 250</a> <span class="cat-index-meta">Motocarro de carga · 250 cc</span></li>
+      <li><a href="#/moto/zmoto-runga-250z">Zmoto Runga 250Z</a> <span class="cat-index-meta">Motocarro con cabina · 250 cc</span></li>
+      <li><a href="#/moto/zmoto-runga-320z">Zmoto Runga 320Z</a> <span class="cat-index-meta">Motocarro de carga · 320 cc</span></li>
+      <li><a href="#/moto/zmoto-runga-pasajeros">Zmoto Runga Pasajeros</a> <span class="cat-index-meta">Motocarro de pasajeros · 250 cc</span></li>
+      <li><a href="#/moto/zmoto-sx6-250">Zmoto SX6 250</a> <span class="cat-index-meta">Doble propósito · 250 cc</span></li>
+      <li><a href="#/moto/zmoto-zm-150">Zmoto ZM 150</a> <span class="cat-index-meta">Scooter · 150 cc</span></li>
+      <li><a href="#/moto/zmoto-zmax-200">Zmoto Zmax 200</a> <span class="cat-index-meta">Motocarro compacto de carga · 200 cc</span></li>
+      <li><a href="#/moto/zmoto-zmax-plus">Zmoto Zmax Plus</a> <span class="cat-index-meta">Motocarro compacto de carga · 200 cc</span></li>
+      </ul>
+      </div>
+    </div>
+    </section>
   </div>
 </main>
 
 <footer>
-  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
+  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex" width="46" height="46" loading="lazy" decoding="async"></div>
   <!-- Sucursales: en lugar de una sola dirección, llevamos a la sección de agencias. -->
   <p><a href="motos.html#agencias" class="footer-sucursales-link">📍 Consulta nuestras sucursales</a></p>
-  <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
+  <p style="margin-top:6px;"><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
   <p style="margin-top:14px;"><strong>RiderMex:</strong>
     <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a> ·
     <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
@@ -48,18 +286,40 @@
     <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a> ·
     <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
   </p>
-  <p style="margin-top:14px;">© 2026 RiderMex — Financiamos tu libertad · <a href="index.html">Volver al inicio</a></p>
+  <p style="margin-top:14px;">© 2026 RiderMex — Financiamos tu libertad ·
+    <a href="index.html">Inicio</a> ·
+    <a href="quienes-somos.html">Quiénes somos</a> ·
+    <a href="contacto.html">Contacto</a> ·
+    <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. -->
+    <a href="#">Aviso de privacidad</a>
+  </p>
 </footer>
 
-<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escribir a RiderMex por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
 </a>
+
+<!-- Datos estructurados del catálogo. El ItemList de marcas y los
+     BreadcrumbList por vista los inyecta catalog.js según la ruta activa. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://www.ridermex.com/catalogo.html#webpage",
+  "url": "https://www.ridermex.com/catalogo.html",
+  "name": "Catálogo de motos RiderMex",
+  "description": "Catálogo de motos RiderMex organizado por marca y modelo, con fotografías, características y ficha técnica.",
+  "inLanguage": "es-MX",
+  "isPartOf": { "@id": "https://www.ridermex.com/#website" },
+  "about": { "@id": "https://www.ridermex.com/#organization" }
+}
+</script>
 
 <!-- Data normalizada del catálogo (generada desde assets/CATALOGO). -->
 <script src="src/data/motorcycles.js"></script>
 <!-- Router + render del catálogo. -->
 <script src="catalog.js"></script>
-<!-- Nav móvil / header scroll (guardado con if, seguro en esta página). -->
+<!-- Barra de progreso, reveals y glow de tarjetas (compartido). -->
 <script src="script.js"></script>
 </body>
 </html>

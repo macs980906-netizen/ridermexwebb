@@ -8,3 +8,7 @@ Thumbs.db
 
 # Dependencies (not used by this static site, but kept for safety)
 node_modules/
+
+# Python
+__pycache__/
+*.pyc

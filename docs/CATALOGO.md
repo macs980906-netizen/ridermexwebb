@@ -55,3 +55,41 @@ Reescribe `src/data/motorcycles.js`. Se puede editar a mano después.
 - No inventar marcas, modelos, precios ni características: sólo datos de la fuente.
 - Precio sólo se muestra si el campo existe y es inequívoco (Ryder y CF Moto hoy).
 - Campos vacíos no se renderizan.
+
+## SEO del catálogo
+
+El catálogo es una SPA con hash routing. El hash **no llega al servidor**, así que
+Google no ve `#/marca/...` ni `#/moto/...` como URLs distintas. Lo que se hizo:
+
+- **Canonical único:** todas las vistas canonizan a `catalogo.html`. No se meten
+  rutas con hash en `sitemap.xml`.
+- **Índice estático:** `catalogo.html` incluye un bloque `#indice-catalogo` con las
+  8 marcas y los 142 modelos como texto y enlaces reales dentro del HTML servido.
+  Es lo que lee un rastreador que no ejecuta JS.
+  Se genera con `python3 scripts/build-catalog-index.py`.
+  **Hay que regenerarlo cada vez que cambie `src/data/motorcycles.js`.**
+- **Metadata por vista:** `catalog.js` actualiza `title`, `description`, Open Graph
+  y Twitter Card según la ruta activa (marcas / marca / ficha), para que al
+  compartir un enlace se describa la vista real.
+- **JSON-LD dinámico:** `catalog.js` inyecta `BreadcrumbList` en las tres vistas,
+  `ItemList` en catálogo y marca, y `Product` en la ficha. El `Product` **no**
+  declara `offers`, `price`, `sku`, `aggregateRating` ni `review`: esos datos no
+  existen confirmados en el proyecto.
+- **Texto introductorio por marca:** el objeto `BRAND_INTRO` está duplicado en
+  `catalog.js` y en `scripts/build-catalog-index.py`. Si cambias uno, cambia el otro.
+
+## Consistencia de fotografías
+
+`scripts/prefer-white-background.py` reordena la galería de cada modelo para que la
+primera imagen (la que se usa en grids y vitrinas) tenga fondo blanco de estudio
+cuando exista esa opción entre las fotos ya presentes en el proyecto.
+
+```bash
+pip install pillow
+python3 scripts/prefer-white-background.py --dry-run   # ver qué cambiaría
+python3 scripts/prefer-white-background.py             # aplicar
+```
+
+No descarga ni genera imágenes: sólo reordena. Los umbrales (`MIN_LUM`, `MAX_SAT`,
+`MAX_STD`) están calibrados para que una foto de calle luminosa **no** pase por
+foto de producto.

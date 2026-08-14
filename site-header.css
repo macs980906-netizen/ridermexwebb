@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RIDERMEX · HEADER GLOBAL (componente único)
+   ───────────────────────────────────────────────────────────────────────
+   Un solo componente para TODAS las páginas del sitio. La referencia
+   maestra son las proporciones del Home:
+     · logo 54px de alto
+     · padding 1.25rem 2.5rem
+     · navegación 0.875rem / 500 / letter-spacing .04em
+   Se carga con:  <link rel="stylesheet" href="site-header.css">
+   y se acompaña de site-header.js (menú móvil + estado is-scrolled).
+
+   IMPORTANTE: este archivo va SIEMPRE DESPUÉS del CSS propio de cada
+   página para que sus reglas ganen sobre navs antiguos.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --rm-header-h: 86px;          /* 54px logo + 2 × 1.25rem padding */
+  --rm-header-bg: rgba(10, 10, 10, 0.92);
+  --rm-header-line: #2C2C2C;
+  --rm-header-red: #CC0000;
+  --rm-header-text: #AAAAAA;
+  --rm-header-text-on: #F5F5F5;
+}
+
+.rm-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--rm-header-bg);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid var(--rm-header-line);
+  transition: border-color .3s, box-shadow .3s;
+  /* Aísla al header de tipografías/colores heredados de cada página. */
+  font-family: 'Barlow', system-ui, -apple-system, Segoe UI, sans-serif;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+.rm-header.is-scrolled {
+  border-bottom-color: rgba(204, 0, 0, .3);
+  box-shadow: 0 4px 24px rgba(204, 0, 0, .12);
+}
+
+.rm-header-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--rm-header-h);
+}
+
+/* ── Logo: misma presencia en todas las páginas ── */
+.rm-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.rm-logo img {
+  height: 54px;
+  width: 54px;          /* el logo es cuadrado (2084×2084): evita CLS */
+  max-width: none;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── Navegación ── */
+.rm-nav { display: flex; align-items: center; }
+
+.rm-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rm-nav-links li { margin: 0; padding: 0; list-style: none; }
+
+.rm-nav-links a {
+  position: relative;
+  display: inline-block;
+  color: var(--rm-header-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.4;
+  transition: color .2s;
+  white-space: nowrap;
+}
+
+.rm-nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 1.5px;
+  background: var(--rm-header-red);
+  transition: width .25s cubic-bezier(.22, 1, .36, 1);
+}
+
+.rm-nav-links a:hover { color: var(--rm-header-text-on); }
+.rm-nav-links a:hover::after { width: 100%; }
+
+.rm-nav-links a[aria-current="page"] { color: var(--rm-header-text-on); }
+.rm-nav-links a[aria-current="page"]::after { width: 100%; }
+
+/* Foco visible para navegación por teclado (accesibilidad). */
+.rm-header a:focus-visible,
+.rm-header button:focus-visible {
+  outline: 2px solid var(--rm-header-red);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+/* CTA de crédito dentro del header */
+.rm-nav-cta > a {
+  background: var(--rm-header-red);
+  color: #fff;
+  padding: 0.6rem 1.15rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 8px 20px rgba(204, 0, 0, .28);
+}
+.rm-nav-cta > a::after { display: none; }
+.rm-nav-cta > a:hover { background: #e00b0b; color: #fff; }
+
+/* ── Botón hamburguesa ── */
+.rm-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.rm-nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--rm-header-text-on);
+  border-radius: 2px;
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), opacity .25s;
+}
+
+.rm-nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.rm-nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.rm-nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Enlace "saltar al contenido" (accesibilidad). */
+.rm-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 300;
+  background: var(--rm-header-red);
+  color: #fff;
+  padding: 12px 18px;
+  font-size: .9rem;
+  text-decoration: none;
+}
+.rm-skip:focus { left: 8px; top: 8px; }
+
+/* ── Tablet ── */
+@media (max-width: 1080px) {
+  .rm-nav-links { gap: 1.25rem; }
+  .rm-nav-links a { font-size: 0.82rem; }
+  .rm-header-inner { padding: 1.25rem 1.75rem; }
+}
+
+/* ── Móvil: misma proporción, menú desplegable ── */
+@media (max-width: 900px) {
+  .rm-header-inner { padding: 1rem 1.25rem; min-height: 76px; }
+  .rm-logo img { height: 46px; width: 46px; }
+  .rm-nav-toggle { display: flex; }
+
+  .rm-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    background: rgba(10, 10, 10, .98);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rm-header-line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+  }
+
+  .rm-nav.is-open { display: block; }
+
+  .rm-nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1.25rem 1.25rem;
+  }
+
+  .rm-nav-links a {
+    display: block;
+    width: 100%;
+    padding: 14px 0;           /* target táctil ≥ 44px */
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+  .rm-nav-links a::after { display: none; }
+
+  .rm-nav-cta { margin-top: 0.9rem; }
+  .rm-nav-cta > a {
+    text-align: center;
+    border-bottom: none;
+    padding: 14px 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-header, .rm-nav-links a, .rm-nav-links a::after, .rm-nav-toggle span { transition: none; }
+}

@@ -6091,12 +6091,12 @@
     "category": "Todo terreno",
     "shortDescription": "Todo terreno · 249 cc",
     "description": "Doble propósito / adventure con orientación de viaje y ruta.",
-    "mainImage": "assets/img/motos/catalogo/carabela/routersonora-1.jpg",
+    "mainImage": "assets/img/motos/catalogo/carabela/routersonora-4.jpg",
     "gallery": [
+      "assets/img/motos/catalogo/carabela/routersonora-4.jpg",
       "assets/img/motos/catalogo/carabela/routersonora-1.jpg",
       "assets/img/motos/catalogo/carabela/routersonora-2.jpg",
-      "assets/img/motos/catalogo/carabela/routersonora-3.jpg",
-      "assets/img/motos/catalogo/carabela/routersonora-4.jpg"
+      "assets/img/motos/catalogo/carabela/routersonora-3.jpg"
     ],
     "highlights": [
       {
@@ -10310,11 +10310,11 @@
     "category": "",
     "shortDescription": "126 cc",
     "description": "",
-    "mainImage": "assets/img/motos/catalogo/cfmoto/papioxoracer-1.png",
+    "mainImage": "assets/img/motos/catalogo/cfmoto/papioxoracer-3.png",
     "gallery": [
+      "assets/img/motos/catalogo/cfmoto/papioxoracer-3.png",
       "assets/img/motos/catalogo/cfmoto/papioxoracer-1.png",
       "assets/img/motos/catalogo/cfmoto/papioxoracer-2.png",
-      "assets/img/motos/catalogo/cfmoto/papioxoracer-3.png",
       "assets/img/motos/catalogo/cfmoto/papioxoracer-4.png"
     ],
     "highlights": [
