@@ -611,43 +611,8 @@
     @keyframes cueWheel { 0%{opacity:0;transform:translate(-50%,0);} 30%{opacity:1;} 70%{opacity:1;transform:translate(-50%,12px);} 100%{opacity:0;transform:translate(-50%,14px);} }
     @media (prefers-reduced-motion: reduce) { .scroll-cue-mouse::before { animation: none; } }
 
-    /* ─── FOOTER INSTITUCIONAL ─── */
-    footer { border-top: 1px solid var(--gris3); background: #080808; }
-    .footer-main {
-      max-width: 1180px; margin: 0 auto;
-      padding: clamp(2.5rem, 5vw, 3.5rem) 2.5rem 2rem;
-      display: grid; gap: 2.5rem;
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    }
-    .footer-col h4 {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem;
-      letter-spacing: 0.22em; text-transform: uppercase; color: var(--rojo);
-      margin-bottom: 1rem; font-weight: 700;
-    }
-    .footer-brand img { height: 44px; width: auto; margin-bottom: 1rem; }
-    .footer-col p, .footer-col a { color: var(--texto); font-size: 0.85rem; line-height: 1.7; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .footer-col a { text-decoration: none; transition: color .2s; }
-    .footer-col a:hover { color: var(--blanco); }
-    .footer-social { display: flex; gap: 1rem; margin-top: 0.35rem; margin-bottom: 0.4rem; flex-wrap: wrap; }
-    .footer-social-label {
-      font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem !important;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--rojo) !important;
-      margin-top: 0.9rem; font-weight: 700;
-    }
-    .footer-bottom {
-      max-width: 1180px; margin: 0 auto;
-      padding: 1.25rem 2.5rem; border-top: 1px solid var(--gris3);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 0.75rem; font-size: 0.72rem; color: var(--gris3);
-    }
-    .footer-bottom a { color: var(--gris3); text-decoration: none; }
-    .footer-bottom a:hover { color: var(--texto); }
-    @media (max-width: 820px) {
-      .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-    }
-    @media (max-width: 480px) { .footer-main { grid-template-columns: 1fr; } }
+    /* FOOTER — ahora es el componente global .rm-footer (site-footer.css). No añadir reglas `footer` aquí. */
+
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
@@ -1177,6 +1142,7 @@
   <!-- Header global (mismo componente en todas las páginas). Va al final del
        <head> para ganar sobre el CSS propio de la página. -->
   <link rel="stylesheet" href="site-header.css">
+  <link rel="stylesheet" href="site-footer.css">
   <script src="site-header.js" defer></script>
 </head>
 <body>
@@ -1385,126 +1351,6 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 7.5 · PREGUNTAS FRECUENTES ═══
-       Capa de contenido orientada a buscadores y a motores de respuesta
-       (AEO/GEO). Cada respuesta abre resolviendo la pregunta en 1–2 frases
-       y luego amplía. Está replicada en JSON-LD (FAQPage) al final del
-       archivo: si editas una respuesta aquí, edítala también allí. -->
-  <section class="faq-section reveal" id="preguntas-frecuentes" aria-labelledby="faq-titulo">
-    <div class="faq-inner">
-      <div class="home-section-head" style="padding:0;text-align:center;">
-        <span class="home-eyebrow">Preguntas frecuentes</span>
-        <h2 class="home-h2" id="faq-titulo">Lo que más nos <em>preguntan</em></h2>
-        <p class="home-lead" style="margin-left:auto;margin-right:auto;">Dudas reales sobre comprar una moto, sacarla a crédito y encontrar tu agencia.</p>
-      </div>
-
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary>¿Dónde puedo comprar una moto a crédito en México?</summary>
-          <div class="faq-answer">
-            <p>En RiderMex puedes comprar una moto a crédito en cualquiera de nuestras <strong>5 agencias</strong> de la Ciudad de México y el Estado de México, o iniciar el trámite en línea desde esta página.</p>
-            <p>Trabajamos con aliados financieros que originan el crédito, así que el proceso se resuelve en la misma agencia: eliges tu moto, solicitas el crédito y, si se aprueba, firmas y te la llevas. Puedes <a href="motos.html#agencias">ver las direcciones de las agencias</a> o <a href="motos.html#formulario-motos">empezar tu solicitud</a>.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Qué necesito para sacar una moto a crédito?</summary>
-          <div class="faq-answer">
-            <p>Para iniciar tu solicitud en RiderMex necesitas tu <strong>INE vigente</strong>. No pedimos aval.</p>
-            <p>El proceso completo es así:</p>
-            <ol>
-              <li>Eliges el modelo en el <a href="catalogo.html">catálogo</a>.</li>
-              <li>Solicitas el crédito con tu INE.</li>
-              <li>Un asesor confirma tu plan de pago y tu enganche.</li>
-              <li>Firmas el contrato en la agencia más cercana.</li>
-              <li>Recibes tu moto.</li>
-            </ol>
-            <p>Según tu perfil y la financiera que apruebe la operación, pueden solicitarse documentos adicionales; tu asesor te lo confirma antes de firmar.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Puedo comprar una moto sin enganche?</summary>
-          <div class="faq-answer">
-            <p>Hay opciones de arranque sin enganche, pero <strong>no aplican a todos los perfiles</strong>: dependen de la evaluación de la financiera y del modelo que elijas.</p>
-            <p>Cuando el esquema sin enganche no aplica, existen planes con enganche desde $2,299 y pagos semanales desde $199. La forma más rápida de saber qué te corresponde es <a href="motos.html#formulario-motos">enviar tu solicitud</a>: la respuesta indica tu esquema real, no un supuesto.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Cuánto tarda la aprobación de un crédito para moto?</summary>
-          <div class="faq-answer">
-            <p>La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong>, solo con tu INE y sin aval.</p>
-            <p>Ese tiempo corresponde a la respuesta de la solicitud. Después viene la revisión del plan de pago con un asesor y la firma del contrato en la agencia, que suele completarse el mismo día. La aprobación depende de la evaluación de la financiera y no está garantizada.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Qué marcas de motos vende RiderMex?</summary>
-          <div class="faq-answer">
-            <p>RiderMex distribuye <strong>8 marcas con catálogo publicado en línea</strong>: Bajaj, Carabela, CF Moto, Islo, Ryder, UM Motorcycles, Vento y Zmoto. Además incorporamos marcas nuevas conforme se suman al piso de venta.</p>
-            <p>Puedes entrar a cada marca desde el <a href="catalogo.html">catálogo RiderMex</a> y ver sus modelos con fotografías, características y ficha técnica.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Qué motos puedo comprar con financiamiento?</summary>
-          <div class="faq-answer">
-            <p>El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne <strong>142 modelos publicados</strong> entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos.</p>
-            <p>El monto financiable y el plan de pagos cambian según el modelo. Abre la ficha del modelo que te interesa y pulsa «Quiero esta moto»: la solicitud llega con el modelo ya identificado para que el asesor te dé condiciones concretas.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Dónde están las agencias de RiderMex?</summary>
-          <div class="faq-answer">
-            <p>RiderMex tiene <strong>5 agencias</strong>: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en operación.</p>
-            <ul>
-              <li><strong>Naucalpan:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México.</li>
-              <li><strong>CEDA:</strong> Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</li>
-              <li><strong>Coapa:</strong> Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX.</li>
-              <li><strong>Chalco:</strong> Francisco Javier Mina 13, Chalco Centro, Chalco de Díaz Covarrubias, Edo. de México.</li>
-            </ul>
-            <p>En <a href="motos.html#agencias">la página de agencias</a> están los horarios de cada una y su enlace directo a Google Maps. La dirección de la quinta sucursal se confirma con tu asesor al 55 1000 0680.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Qué moto me conviene para moverme en la ciudad?</summary>
-          <div class="faq-answer">
-            <p>Para uso urbano, el catálogo RiderMex agrupa los modelos pensados para ciudad en las categorías <strong>Ciudad, Urban Sport, Scooter, Motoneta y Street</strong>.</p>
-            <p>La forma práctica de decidir es abrir el <a href="catalogo.html">catálogo</a>, filtrar por la marca que te interesa y comparar en cada ficha la cilindrada, la transmisión y la categoría. Si quieres una recomendación aterrizada a tu trayecto y presupuesto, un asesor puede ayudarte en cualquiera de las agencias.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Qué moto me conviene para trabajar o repartir?</summary>
-          <div class="faq-answer">
-            <p>Para trabajo y reparto, revisa en el catálogo las categorías <strong>Trabajo, Utilitaria y Motocarro</strong> (de carga, de pasajeros, compacto o con caja hidráulica), además de las urbanas de cilindrada media.</p>
-            <p>Cada ficha indica categoría, cilindrada y transmisión, que son los datos que más pesan cuando la moto es una herramienta de ingreso. Compara los modelos que te interesen y solicita información del que se ajuste a tu operación.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>¿Cómo puedo comparar marcas y modelos de motos antes de comprar?</summary>
-          <div class="faq-answer">
-            <p>El catálogo RiderMex está organizado en tres niveles para comparar sin perderte: <strong>catálogo → marca → ficha del modelo</strong>.</p>
-            <ol>
-              <li>Entra al <a href="catalogo.html">catálogo</a> y elige una marca (o busca por nombre de modelo).</li>
-              <li>Revisa el grid de modelos de esa marca con su categoría y cilindrada.</li>
-              <li>Abre la ficha del modelo: galería de fotos, características destacadas y ficha técnica completa, con la fuente oficial cuando existe.</li>
-            </ol>
-            <p>Desde cualquier ficha puedes volver a la marca o pedir información del modelo sin repetir la búsqueda.</p>
-          </div>
-        </details>
-
-      </div>
-
-      <p class="faq-foot">¿Tu duda no está aquí? <a href="contacto.html">Escríbenos</a> o llama al <a href="tel:5510000680">55 1000 0680</a>.</p>
-    </div>
-  </section>
-
   <!-- ═══ SECCIÓN 8 (bridge) · TRANSICIÓN AL RECORRIDO ═══ -->
   <div class="camino-divider reveal">
     <span class="camino-divider-kicker">El camino no termina en tu moto</span>
@@ -1641,7 +1487,7 @@
             <h2 class="journey-title">TU MOTO,<br/><em>LISTA PARA</em><br/>ARRANCAR</h2>
             <p class="journey-desc">Cerramos el proceso contigo y te acompañamos hasta que estés listo para subirte a tu nueva moto.</p>
             <div class="journey-cta-wrap">
-              <a class="journey-btn journey-btn-primary" href="https://wa.me/525599900619" target="_blank" rel="noopener">QUIERO EMPEZAR MI PROCESO →</a>
+              <a class="journey-btn journey-btn-primary" href="https://wa.me/5215510000645?text=Hola%2C%20quiero%20empezar%20mi%20proceso%20con%20RiderMex" target="_blank" rel="noopener noreferrer">QUIERO EMPEZAR MI PROCESO →</a>
             </div>
           </div>
         </div>
@@ -1690,61 +1536,231 @@
     </div>
   </section>
 
+  <!-- ═══ SECCIÓN 10 · PREGUNTAS FRECUENTES (cierre del Home) ═══
+       Capa de contenido orientada a buscadores y a motores de respuesta
+       (AEO/GEO). Va al final a propósito: cierra la narrativa resolviendo
+       objeciones justo antes del footer, después del recorrido y del
+       descubrimiento de Inversiones.
+       Cada respuesta abre resolviendo la pregunta en 1–2 frases
+       y luego amplía. Está replicada en JSON-LD (FAQPage) al final del
+       archivo: si editas una respuesta aquí, edítala también allí. -->
+  <section class="faq-section reveal" id="preguntas-frecuentes" aria-labelledby="faq-titulo">
+    <div class="faq-inner">
+      <div class="home-section-head" style="padding:0;text-align:center;">
+        <span class="home-eyebrow">Preguntas frecuentes</span>
+        <h2 class="home-h2" id="faq-titulo">Lo que más nos <em>preguntan</em></h2>
+        <p class="home-lead" style="margin-left:auto;margin-right:auto;">Dudas reales sobre comprar una moto, sacarla a crédito y encontrar tu agencia.</p>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>¿Dónde puedo comprar una moto a crédito en México?</summary>
+          <div class="faq-answer">
+            <p>En RiderMex puedes comprar una moto a crédito en cualquiera de nuestras <strong>5 agencias</strong> de la Ciudad de México y el Estado de México, o iniciar el trámite en línea desde esta página.</p>
+            <p>Trabajamos con aliados financieros que originan el crédito, así que el proceso se resuelve en la misma agencia: eliges tu moto, solicitas el crédito y, si se aprueba, firmas y te la llevas. Puedes <a href="motos.html#agencias">ver las direcciones de las agencias</a> o <a href="motos.html#formulario-motos">empezar tu solicitud</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué necesito para sacar una moto a crédito?</summary>
+          <div class="faq-answer">
+            <p>Para iniciar tu solicitud en RiderMex necesitas tu <strong>INE vigente</strong>. No pedimos aval.</p>
+            <p>El proceso completo es así:</p>
+            <ol>
+              <li>Eliges el modelo en el <a href="catalogo.html">catálogo</a>.</li>
+              <li>Solicitas el crédito con tu INE.</li>
+              <li>Un asesor confirma tu plan de pago y tu enganche.</li>
+              <li>Firmas el contrato en la agencia más cercana.</li>
+              <li>Recibes tu moto.</li>
+            </ol>
+            <p>Según tu perfil y la financiera que apruebe la operación, pueden solicitarse documentos adicionales; tu asesor te lo confirma antes de firmar.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Puedo comprar una moto sin enganche?</summary>
+          <div class="faq-answer">
+            <p>Hay opciones de arranque sin enganche, pero <strong>no aplican a todos los perfiles</strong>: dependen de la evaluación de la financiera y del modelo que elijas.</p>
+            <p>Cuando el esquema sin enganche no aplica, existen planes con enganche desde $2,299 y pagos semanales desde $199. La forma más rápida de saber qué te corresponde es <a href="motos.html#formulario-motos">enviar tu solicitud</a>: la respuesta indica tu esquema real, no un supuesto.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cuánto tarda la aprobación de un crédito para moto?</summary>
+          <div class="faq-answer">
+            <p>La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong>, solo con tu INE y sin aval.</p>
+            <p>Ese tiempo corresponde a la respuesta de la solicitud. Después viene la revisión del plan de pago con un asesor y la firma del contrato en la agencia, que suele completarse el mismo día. La aprobación depende de la evaluación de la financiera y no está garantizada.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué marcas de motos vende RiderMex?</summary>
+          <div class="faq-answer">
+            <p>RiderMex distribuye <strong>8 marcas con catálogo publicado en línea</strong>: Bajaj, Carabela, CF Moto, Islo, Ryder, UM Motorcycles, Vento y Zmoto. Además incorporamos marcas nuevas conforme se suman al piso de venta.</p>
+            <p>Puedes entrar a cada marca desde el <a href="catalogo.html">catálogo RiderMex</a> y ver sus modelos con fotografías, características y ficha técnica.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué motos puedo comprar con financiamiento?</summary>
+          <div class="faq-answer">
+            <p>El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne <strong>142 modelos publicados</strong> entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos.</p>
+            <p>El monto financiable y el plan de pagos cambian según el modelo. Abre la ficha del modelo que te interesa y pulsa «Quiero esta moto»: la solicitud llega con el modelo ya identificado para que el asesor te dé condiciones concretas.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Dónde están las agencias de RiderMex?</summary>
+          <div class="faq-answer">
+            <p>RiderMex tiene <strong>5 agencias</strong>: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en operación.</p>
+            <ul>
+              <li><strong>Naucalpan:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México.</li>
+              <li><strong>CEDA:</strong> Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</li>
+              <li><strong>Coapa:</strong> Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX.</li>
+              <li><strong>Chalco:</strong> Francisco Javier Mina 13, Chalco Centro, Chalco de Díaz Covarrubias, Edo. de México.</li>
+            </ul>
+            <p>En <a href="motos.html#agencias">la página de agencias</a> están los horarios de cada una y su enlace directo a Google Maps. La dirección de la quinta sucursal se confirma con tu asesor al 55 1000 0680.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué moto me conviene para moverme en la ciudad?</summary>
+          <div class="faq-answer">
+            <p>Para uso urbano, el catálogo RiderMex agrupa los modelos pensados para ciudad en las categorías <strong>Ciudad, Urban Sport, Scooter, Motoneta y Street</strong>.</p>
+            <p>La forma práctica de decidir es abrir el <a href="catalogo.html">catálogo</a>, filtrar por la marca que te interesa y comparar en cada ficha la cilindrada, la transmisión y la categoría. Si quieres una recomendación aterrizada a tu trayecto y presupuesto, un asesor puede ayudarte en cualquiera de las agencias.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué moto me conviene para trabajar o repartir?</summary>
+          <div class="faq-answer">
+            <p>Para trabajo y reparto, revisa en el catálogo las categorías <strong>Trabajo, Utilitaria y Motocarro</strong> (de carga, de pasajeros, compacto o con caja hidráulica), además de las urbanas de cilindrada media.</p>
+            <p>Cada ficha indica categoría, cilindrada y transmisión, que son los datos que más pesan cuando la moto es una herramienta de ingreso. Compara los modelos que te interesen y solicita información del que se ajuste a tu operación.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cómo puedo comparar marcas y modelos de motos antes de comprar?</summary>
+          <div class="faq-answer">
+            <p>El catálogo RiderMex está organizado en tres niveles para comparar sin perderte: <strong>catálogo → marca → ficha del modelo</strong>.</p>
+            <ol>
+              <li>Entra al <a href="catalogo.html">catálogo</a> y elige una marca (o busca por nombre de modelo).</li>
+              <li>Revisa el grid de modelos de esa marca con su categoría y cilindrada.</li>
+              <li>Abre la ficha del modelo: galería de fotos, características destacadas y ficha técnica completa, con la fuente oficial cuando existe.</li>
+            </ol>
+            <p>Desde cualquier ficha puedes volver a la marca o pedir información del modelo sin repetir la búsqueda.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <p class="faq-foot">¿Tu duda no está aquí? <a href="contacto.html">Escríbenos</a> o llama al <a href="tel:5510000680">55 1000 0680</a>.</p>
+    </div>
+  </section>
+
   </main><!-- /#contenido -->
 
-  <!-- FOOTER INSTITUCIONAL -->
-  <footer>
-    <div class="footer-main">
-      <div class="footer-col footer-brand">
-        <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54" loading="lazy" decoding="async">
-        <p>Motos, movilidad e inversión en un solo lugar. Financiamos tu libertad.</p>
-        <p class="footer-social-label">RiderMex</p>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
-        </div>
-        <p class="footer-social-label">RiderMex Inversiones</p>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="catalogo.html">Catálogo</a></li>
-          <li><a href="inversiones.html">Inversiones</a></li>
-          <li><a href="quienes-somos.html">Quiénes somos</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Sucursales</h4>
-        <ul>
-          <li><a href="motos.html#agencias">Naucalpan</a></li>
-          <li><a href="motos.html#agencias">Central de Abasto</a></li>
-          <li><a href="motos.html#agencias">Coapa</a></li>
-          <li><a href="motos.html#agencias">Chalco</a></li>
-          <li><a href="motos.html#agencias">Ver todas las sucursales →</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="tel:5510000680">55 1000 0680</a></li>
-          <li><a href="mailto:info@ridermex.com">info@ridermex.com</a></li>
-          <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a></li>
-        </ul>
+  <!-- ═══ FOOTER GLOBAL · componente único (site-footer.css) ═══
+     Idéntico en las 6 páginas. Los destinos (WhatsApp, redes sociales)
+     están declarados en site-config.js; scripts/verify.mjs comprueba en
+     cada build que el HTML no use ninguno que no esté ahí.
+     Solo se listan redes con URL REAL: las que faltan no se renderizan. -->
+<footer class="rm-footer">
+  <div class="rm-footer-main">
+
+    <div class="rm-footer-brand">
+      <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54" loading="lazy" decoding="async">
+      <p class="rm-footer-tagline">Venta, distribución y financiamiento de motocicletas en México. Financiamos tu libertad.</p>
+      <div class="rm-footer-contact">
+        <a href="tel:5510000680">55 1000 0680</a>
+        <a href="mailto:info@ridermex.com">info@ridermex.com</a>
+        <a href="https://wa.me/5215510000680" target="_blank" rel="noopener noreferrer">WhatsApp · Motos</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 RiderMex · Financiamos tu libertad</span>
-      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL.
-           Reemplaza href="#" por la URL del aviso de privacidad cuando esté lista. -->
-      <span><a href="#">Aviso de privacidad</a> · <a href="contacto.html">Contacto</a></span>
+
+    <div class="rm-footer-col">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="motos.html">Comprar a crédito</a></li>
+        <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <div class="rm-footer-col">
+      <h3>Agencias</h3>
+      <ul>
+        <li><a href="motos.html#agencias">Naucalpan</a></li>
+        <li><a href="motos.html#agencias">Central de Abasto</a></li>
+        <li><a href="motos.html#agencias">Coapa</a></li>
+        <li><a href="motos.html#agencias">Chalco</a></li>
+        <li><a href="motos.html#agencias">Ver todas las agencias →</a></li>
+      </ul>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Inversiones</h3>
+      <ul>
+        <li><a href="inversiones.html">Cómo funciona</a></li>
+        <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
+        <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
+        <li><a href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        <li><a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">En los medios</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Redes sociales: un grupo por ecosistema, para que se sepa de quién
+       es cada perfil. YouTube y LinkedIn (ambas marcas) y TikTok de
+       Inversiones no se muestran porque no hay URL real proporcionada. -->
+  <div class="rm-social-groups">
+
+    <div class="rm-social-group">
+      <h3>RiderMex</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06v-3.1a5.66 5.66 0 0 0-.77-.05A5.66 5.66 0 1 0 15.52 15.4V9.01a7.35 7.35 0 0 0 4.29 1.37V7.3a4.29 4.29 0 0 1-3.21-1.48Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="rm-social-group rm-social-group--inv">
+      <h3>RiderMex Inversiones</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rm-footer-bottom">
+    <span>© 2026 RiderMex · Financiamos tu libertad</span>
+    <nav aria-label="Enlaces legales y de cierre">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="contacto.html">Contacto</a>
+      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Se muestra como texto (no
+           como enlace roto). Al tener la URL, sustituir por un <a href="…">. -->
+      <span class="rm-pending" title="Pendiente de publicación">Aviso de privacidad</span>
+    </nav>
+  </div>
+</footer>
 
   <script>
     // Barra de progreso de scroll

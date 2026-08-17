@@ -408,6 +408,7 @@
   </style>
   <!-- Header global (mismo componente en todas las páginas). -->
   <link rel="stylesheet" href="site-header.css">
+  <link rel="stylesheet" href="site-footer.css">
   <script src="site-header.js" defer></script>
 </head>
 <body>
@@ -556,18 +557,106 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- ═══ FOOTER GLOBAL · componente único (site-footer.css) ═══
+     Idéntico en las 6 páginas. Los destinos (WhatsApp, redes sociales)
+     están declarados en site-config.js; scripts/verify.mjs comprueba en
+     cada build que el HTML no use ninguno que no esté ahí.
+     Solo se listan redes con URL REAL: las que faltan no se renderizan. -->
+<footer class="rm-footer">
+  <div class="rm-footer-main">
+
+    <div class="rm-footer-brand">
+      <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54" loading="lazy" decoding="async">
+      <p class="rm-footer-tagline">Venta, distribución y financiamiento de motocicletas en México. Financiamos tu libertad.</p>
+      <div class="rm-footer-contact">
+        <a href="tel:5510000680">55 1000 0680</a>
+        <a href="mailto:info@ridermex.com">info@ridermex.com</a>
+        <a href="https://wa.me/5215510000680" target="_blank" rel="noopener noreferrer">WhatsApp · Motos</a>
+      </div>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="motos.html">Comprar a crédito</a></li>
+        <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Agencias</h3>
+      <ul>
+        <li><a href="motos.html#agencias">Naucalpan</a></li>
+        <li><a href="motos.html#agencias">Central de Abasto</a></li>
+        <li><a href="motos.html#agencias">Coapa</a></li>
+        <li><a href="motos.html#agencias">Chalco</a></li>
+        <li><a href="motos.html#agencias">Ver todas las agencias →</a></li>
+      </ul>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Inversiones</h3>
+      <ul>
+        <li><a href="inversiones.html">Cómo funciona</a></li>
+        <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
+        <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
+        <li><a href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        <li><a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">En los medios</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Redes sociales: un grupo por ecosistema, para que se sepa de quién
+       es cada perfil. YouTube y LinkedIn (ambas marcas) y TikTok de
+       Inversiones no se muestran porque no hay URL real proporcionada. -->
+  <div class="rm-social-groups">
+
+    <div class="rm-social-group">
+      <h3>RiderMex</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06v-3.1a5.66 5.66 0 0 0-.77-.05A5.66 5.66 0 1 0 15.52 15.4V9.01a7.35 7.35 0 0 0 4.29 1.37V7.3a4.29 4.29 0 0 1-3.21-1.48Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="rm-social-group rm-social-group--inv">
+      <h3>RiderMex Inversiones</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rm-footer-bottom">
     <span>© 2026 RiderMex · Financiamos tu libertad</span>
-    <span>
-      <a href="catalogo.html">Catálogo</a> &nbsp;·&nbsp;
-      <a href="motos.html#agencias">Agencias</a> &nbsp;·&nbsp;
-      <a href="contacto.html">Contacto</a> &nbsp;·&nbsp;
-      <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
-      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. -->
-      <a href="#">Aviso de privacidad</a>
-    </span>
-  </footer>
+    <nav aria-label="Enlaces legales y de cierre">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="contacto.html">Contacto</a>
+      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Se muestra como texto (no
+           como enlace roto). Al tener la URL, sustituir por un <a href="…">. -->
+      <span class="rm-pending" title="Pendiente de publicación">Aviso de privacidad</span>
+    </nav>
+  </div>
+</footer>
 
   <script>
     const progressBar = document.createElement('div');

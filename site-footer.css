@@ -1,0 +1,198 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RIDERMEX · FOOTER GLOBAL (componente único)
+   ───────────────────────────────────────────────────────────────────────
+   Igual que el header, un solo componente para TODAS las páginas. Cierra
+   los dos ecosistemas —RiderMex y RiderMex Inversiones— con sus redes
+   reales separadas, para que no se confunda de quién es cada perfil.
+
+   Se carga con:  <link rel="stylesheet" href="site-footer.css">
+   Va DESPUÉS del CSS propio de cada página para ganar sobre footers viejos.
+   Los destinos (WhatsApp, redes) están declarados en site-config.js.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.rm-footer {
+  background: #060606;
+  border-top: 1px solid #2C2C2C;
+  color: #AAAAAA;
+  font-family: 'Barlow', system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: left;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.rm-footer-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 4.25rem) 2rem clamp(2rem, 4vw, 2.75rem);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
+}
+
+/* ── Columna de marca ── */
+.rm-footer-brand > img {
+  height: 54px;
+  width: 54px;
+  display: block;
+  margin-bottom: 1rem;
+}
+.rm-footer-tagline {
+  color: #9a9a9a;
+  max-width: 30ch;
+  margin-bottom: 1.5rem;
+}
+.rm-footer-contact {
+  display: grid;
+  gap: 0.1rem;
+  margin-bottom: 1.5rem;
+}
+/* padding vertical: la caja de clic llega a 24px de alto (WCAG 2.5.8)
+   sin cambiar el ritmo visual de la columna. */
+.rm-footer-contact a {
+  color: #d8d8d8;
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 0;
+}
+.rm-footer-contact a:hover { color: #CC0000; }
+
+/* ── Columnas de enlaces ── */
+.rm-footer-col h3 {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F5F5F5;
+  margin: 0 0 1rem;
+}
+.rm-footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.2rem; }
+.rm-footer-col li { margin: 0; padding: 0; }
+/* Igual que en la columna de contacto: 4px arriba y abajo llevan la caja de
+   clic a 24px de alto sin separar visualmente más los enlaces. */
+.rm-footer-col a {
+  color: #9a9a9a;
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 0;
+  transition: color .2s;
+}
+.rm-footer-col a:hover { color: #F5F5F5; }
+
+/* ── Redes sociales: dos grupos, cada uno con su identidad ── */
+.rm-social-groups {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem clamp(2rem, 4vw, 2.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem 2.5rem;
+  border-top: 1px solid #1d1d1d;
+  padding-top: clamp(1.75rem, 3vw, 2.25rem);
+}
+.rm-social-group h3 {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #F5F5F5;
+  margin: 0 0 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.rm-social-group h3::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: #CC0000;
+  flex-shrink: 0;
+}
+.rm-social-group--inv h3::before { background: #00C896; }
+
+.rm-social-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+/* Target táctil de 44×44 con el icono centrado. */
+.rm-social-list a {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #2C2C2C;
+  border-radius: 10px;
+  color: #b4b4b4;
+  background: rgba(255, 255, 255, .02);
+  transition: color .2s, border-color .2s, background .2s, transform .2s;
+}
+.rm-social-list a:hover {
+  color: #fff;
+  border-color: #CC0000;
+  background: rgba(204, 0, 0, .12);
+  transform: translateY(-2px);
+}
+.rm-social-group--inv .rm-social-list a:hover {
+  border-color: #00C896;
+  background: rgba(0, 200, 150, .12);
+}
+.rm-social-list a:focus-visible {
+  outline: 2px solid #CC0000;
+  outline-offset: 3px;
+}
+.rm-social-list svg { width: 19px; height: 19px; display: block; fill: currentColor; }
+
+/* ── Barra inferior ── */
+.rm-footer-bottom {
+  border-top: 1px solid #1d1d1d;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1.35rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: #7a7a7a;
+}
+.rm-footer-bottom nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; }
+.rm-footer-bottom a { color: #9a9a9a; text-decoration: none; display: inline-block; padding: 4px 0; }
+.rm-footer-bottom a:hover { color: #F5F5F5; }
+/* Aviso de privacidad sin URL final: se ve como texto, no como enlace roto. */
+.rm-footer-bottom .rm-pending {
+  color: #6a6a6a;
+  cursor: default;
+  display: inline-block;
+  padding: 4px 0;
+  border-bottom: 1px dotted #3a3a3a;
+}
+
+.rm-footer a:focus-visible {
+  outline: 2px solid #CC0000;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .rm-footer-main { grid-template-columns: 1fr 1fr; }
+  .rm-footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 560px) {
+  .rm-footer-main { grid-template-columns: 1fr; gap: 2rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+  .rm-social-groups, .rm-footer-bottom { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .rm-footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-social-list a { transition: none; }
+  .rm-social-list a:hover { transform: none; }
+}

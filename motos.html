@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="catalog.css">
 <!-- Header global: siempre después del CSS de la página. -->
 <link rel="stylesheet" href="site-header.css">
+<link rel="stylesheet" href="site-footer.css">
 <script src="site-header.js" defer></script>
 </head>
 <body>
@@ -213,65 +214,116 @@
   <div class="marca-panels" id="marca-panels-dyn"></div>
 </section>
 
-<!-- ===================== AGENCIAS ===================== -->
-<section id="agencias" class="reveal" style="background:#fafafa;">
-  <span class="eyebrow">Sucursales</span>
-  <h2 class="section-title">Nuestras <span>Agencias</span></h2>
-  <!-- Respuesta directa a "¿dónde están las agencias de RiderMex?" -->
-  <p class="section-subtitle">RiderMex tiene <strong>5 agencias</strong> en la Ciudad de México y el Estado de México: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en operación. En todas puedes ver motos en piso, recibir asesoría y tramitar tu crédito. Elige la más cercana a tu zona y abre su ubicación en Google Maps.</p>
+<!-- ═══ AGENCIAS ═══
+     Ubicaciones, horarios y ligas de Google Maps REALES (abren en pestaña
+     nueva). Datos confirmados para Naucalpan, CEDA, Coapa y Chalco.
+     ▸ PENDIENTE 5ª sucursal: dirección, horario y liga de Google Maps.
+       Mientras tanto la tarjeta ofrece teléfono y WhatsApp para que el
+       usuario no quede sin salida, y NO se declara en el JSON-LD.
+     ▸ TOUR 360: la estructura ya reserva el botón. Cuando exista la URL,
+       sustituye el <span class="ag-btn ag-btn--soon"> por
+       <a class="ag-btn ag-btn--ghost" href="…" target="_blank" rel="noopener noreferrer">.
+     El schema LocalBusiness de cada sucursal está al final del archivo. -->
+<section id="agencias" class="agencias-section reveal" aria-labelledby="agencias-titulo">
+  <div class="agencias-inner">
+    <span class="eyebrow">Sucursales</span>
+    <h2 class="section-title" id="agencias-titulo">Nuestras <span>agencias</span></h2>
+    <!-- Respuesta directa a "¿dónde están las agencias de RiderMex?" -->
+    <p class="section-subtitle">RiderMex tiene <strong>5 agencias</strong> en la Ciudad de México y el Estado de México: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en operación. En todas puedes ver motos en piso, recibir asesoría y tramitar tu crédito. Elige la más cercana a tu zona y abre su ubicación en Google Maps.</p>
 
-  <!-- ═══ AGENCIAS ═══ Ubicaciones reales de Google Maps (abren en nueva pestaña).
-       Direcciones y horarios confirmados para Naucalpan, CEDA, Coapa y Chalco.
-       ▸ PENDIENTE: falta la dirección / liga de Google Maps / horario de la 5ª
-         sucursal (marcada abajo como "por confirmar").
-       Estructura preparada para el tour 360: cuando exista la URL, sustituye el
-       <span> "Tour 360 · Próximamente" por un <a> con target="_blank". -->
-  <div class="grid-agencias">
+    <div class="agencias-grid">
 
-    <div class="agencia-card">
-      <h3>RiderMex Naucalpan</h3>
-      <p><strong>Dirección:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
-      <p><strong>Horario:</strong> Lun–Vie 9:30–18:30, Sáb 9:30–15:30</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>      </div>
+      <article class="ag-card">
+        <p class="ag-card-zona">Estado de México</p>
+        <h3>RiderMex Naucalpan</h3>
+        <dl class="ag-datos">
+          <div><dt>Dirección</dt><dd>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</dd></div>
+          <div><dt>Horario</dt><dd>Lun–Vie 9:30–18:30<br>Sáb 9:30–15:30</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:5510000680">55 1000 0680</a></dd></div>
+        </dl>
+        <div class="ag-acciones">
+          <a class="ag-btn ag-btn--maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Naucalpan en Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Ver en Google Maps
+          </a>
+          <span class="ag-btn ag-btn--soon">Tour 360 · Próximamente</span>
+        </div>
+      </article>
+
+      <article class="ag-card">
+        <p class="ag-card-zona">Ciudad de México · Iztapalapa</p>
+        <h3>RiderMex CEDA / Central de Abasto</h3>
+        <dl class="ag-datos">
+          <div><dt>Dirección</dt><dd>Canal de Tezontle 1500, Central de Abasto, Iztapalapa, 09040 Ciudad de México, CDMX</dd></div>
+          <div><dt>Horario</dt><dd>Lun–Dom 9:30–20:00</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:5510000680">55 1000 0680</a></dd></div>
+        </dl>
+        <div class="ag-acciones">
+          <a class="ag-btn ag-btn--maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex CEDA en Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Ver en Google Maps
+          </a>
+          <span class="ag-btn ag-btn--soon">Tour 360 · Próximamente</span>
+        </div>
+      </article>
+
+      <article class="ag-card">
+        <p class="ag-card-zona">Ciudad de México · Tlalpan</p>
+        <h3>RiderMex Coapa</h3>
+        <dl class="ag-datos">
+          <div><dt>Dirección</dt><dd>Calz. de Tlalpan 3604, Huipulco, Tlalpan, 14370 Ciudad de México, CDMX</dd></div>
+          <div><dt>Horario</dt><dd>Lun–Vie 10:00–19:00<br>Sáb 10:00–16:00 · Dom cerrado</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:5510000680">55 1000 0680</a></dd></div>
+        </dl>
+        <div class="ag-acciones">
+          <a class="ag-btn ag-btn--maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Coapa en Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Ver en Google Maps
+          </a>
+          <span class="ag-btn ag-btn--soon">Tour 360 · Próximamente</span>
+        </div>
+      </article>
+
+      <article class="ag-card">
+        <p class="ag-card-zona">Estado de México</p>
+        <h3>RiderMex Chalco</h3>
+        <dl class="ag-datos">
+          <div><dt>Dirección</dt><dd>Francisco Javier Mina 13, Chalco Centro, 56600 Chalco de Díaz Covarrubias, Méx.</dd></div>
+          <div><dt>Horario</dt><dd>Lun–Vie 10:00–19:00<br>Sáb 10:00–14:00 · Dom cerrado</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:5510000680">55 1000 0680</a></dd></div>
+        </dl>
+        <div class="ag-acciones">
+          <a class="ag-btn ag-btn--maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Chalco en Google Maps">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Ver en Google Maps
+          </a>
+          <span class="ag-btn ag-btn--soon">Tour 360 · Próximamente</span>
+        </div>
+      </article>
+
+      <!-- 5ª SUCURSAL — ya operando. PENDIENTE: dirección, horario y Maps. -->
+      <article class="ag-card ag-card--pendiente">
+        <p class="ag-card-zona">Ubicación por confirmar</p>
+        <h3>RiderMex · 5ª sucursal</h3>
+        <dl class="ag-datos">
+          <div><dt>Dirección</dt><dd class="ag-pendiente">Por confirmar. Consulta con tu asesor cuál te queda más cerca.</dd></div>
+          <div><dt>Horario</dt><dd class="ag-pendiente">Por confirmar</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:5510000680">55 1000 0680</a></dd></div>
+        </dl>
+        <div class="ag-acciones">
+          <a class="ag-btn ag-btn--ghost" href="https://wa.me/5215510000680" target="_blank" rel="noopener noreferrer" aria-label="Preguntar la ubicación de la quinta sucursal por WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+            Preguntar ubicación
+          </a>
+        </div>
+      </article>
+
     </div>
 
-    <div class="agencia-card">
-      <h3>RiderMex CEDA / Central de Abasto</h3>
-      <p><strong>Dirección:</strong> Canal de Tezontle 1500, Central de Abasto, Iztapalapa, 09040 Ciudad de México, CDMX</p>
-      <p><strong>Horario:</strong> Lun–Dom 9:30–20:00</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>      </div>
-    </div>
-
-    <div class="agencia-card">
-      <h3>RiderMex Coapa</h3>
-      <p><strong>Dirección:</strong> Calz. de Tlalpan 3604, Huipulco, Tlalpan, 14370 Ciudad de México, CDMX</p>
-      <p><strong>Horario:</strong> Lun–Vie 10:00–19:00, Sáb 10:00–16:00, Dom cerrado</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>      </div>
-    </div>
-
-    <div class="agencia-card">
-      <h3>RiderMex Chalco</h3>
-      <p><strong>Dirección:</strong> Francisco Javier Mina 13, Chalco Centro, 56600 Chalco de Díaz Covarrubias, Méx.</p>
-      <p><strong>Horario:</strong> Lun–Vie 10:00–19:00, Sáb 10:00–14:00, Dom cerrado</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>      </div>
-    </div>
-
-    <!-- 5ª SUCURSAL — ya activa. PENDIENTE: dirección, liga de Google Maps y horario. -->
-    <div class="agencia-card">
-      <h3>RiderMex · 5ª sucursal</h3>
-      <p><strong>Dirección:</strong> <em>Por confirmar</em></p>
-      <p>Consulta la ubicación más cercana con tu asesor.</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-    </div>
-
+    <p class="agencias-foot">
+      ¿Ya sabes cuál te queda más cerca? <a href="#credito">Tramita tu crédito</a> o revisa antes el
+      <a href="catalogo.html">catálogo de motos</a>.
+    </p>
   </div>
 </section>
 
@@ -301,6 +353,76 @@
         <div class="testimonial-avatar">CG</div>
         <div><strong>Carlos G.</strong><span>Agencia CEDA</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINANCIAMIENTO ═══
+     El proceso y las condiciones en bloques escaneables, antes del
+     formulario. Solo datos reales ya aprobados: INE, sin aval, aprobación
+     en aproximadamente 2 minutos, enganche desde $2,299, semanales desde
+     $199 y entrega inmediata. NO se declaran tasas, plazos, financieras
+     ni aprobación garantizada. -->
+<section id="financiamiento" class="fin-section reveal" aria-labelledby="financiamiento-titulo">
+  <div class="fin-inner">
+    <span class="eyebrow">Financiamiento</span>
+    <h2 class="section-title" id="financiamiento-titulo">Cómo compras <span>a crédito</span></h2>
+    <p class="section-subtitle">Cuatro pasos, sin aval y sin trámites eternos. La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong> y, si sale bien, firmas y te llevas tu moto el mismo día.</p>
+
+    <div class="fin-pasos">
+      <div class="fin-paso">
+        <div class="fin-paso-num">1</div>
+        <h3>Elige tu moto</h3>
+        <p>Explora el <a href="catalogo.html" style="color:#ff5d52;font-weight:600">catálogo</a>: 142 modelos de 8 marcas.</p>
+      </div>
+      <div class="fin-paso">
+        <div class="fin-paso-num">2</div>
+        <h3>Solicita con tu INE</h3>
+        <p>Llenas el formulario con tu identificación vigente. Sin aval.</p>
+      </div>
+      <div class="fin-paso">
+        <div class="fin-paso-num">3</div>
+        <h3>Recibes respuesta</h3>
+        <p>La aprobación puede realizarse en aproximadamente 2 minutos.</p>
+      </div>
+      <div class="fin-paso">
+        <div class="fin-paso-num">4</div>
+        <h3>Firmas y estrenas</h3>
+        <p>Un asesor confirma tu plan de pago en la agencia y sales rodando.</p>
+      </div>
+    </div>
+
+    <div class="fin-cards">
+      <div class="fin-card">
+        <div class="fin-card-dato">~2 <span>min</span></div>
+        <h3>Tiempo de aprobación</h3>
+        <p>Ese tiempo corresponde a la respuesta de la solicitud. La firma se completa después en la agencia.</p>
+      </div>
+      <div class="fin-card">
+        <div class="fin-card-dato">$<span>2,299</span></div>
+        <h3>Enganche desde</h3>
+        <p>El monto varía según el modelo y tu perfil. También existen esquemas sin enganche, que no aplican a todos los casos.</p>
+      </div>
+      <div class="fin-card">
+        <div class="fin-card-dato">$<span>199</span></div>
+        <h3>Pagos semanales desde</h3>
+        <p>Tu plan de pagos se confirma con un asesor antes de firmar el contrato.</p>
+      </div>
+      <div class="fin-card">
+        <div class="fin-card-dato">INE</div>
+        <h3>Lo único indispensable</h3>
+        <p>Tu identificación vigente. Según tu perfil y la financiera pueden pedirse documentos adicionales.</p>
+      </div>
+    </div>
+
+    <p class="fin-nota">
+      La aprobación depende de la evaluación de la financiera y no está garantizada.
+      ¿Dudas antes de empezar? Revisa las <a href="index.html#preguntas-frecuentes">preguntas frecuentes</a>
+      o visita una de nuestras <a href="#agencias">5 agencias</a>.
+    </p>
+
+    <div class="fin-cta-row">
+      <a href="#credito" class="hero-cta">Solicitar mi crédito →</a>
     </div>
   </div>
 </section>
@@ -347,57 +469,117 @@
     </iframe>
   </div>
 
-  <!-- Respuestas directas al bloque de compra/financiamiento: requisitos,
-       proceso, aprobación y enganche. Van junto al formulario porque es
-       donde el usuario tiene la duda. -->
-  <div class="credito-faq">
-    <h3>Requisitos, proceso y tiempos</h3>
-    <div class="credito-faq-grid">
-      <div>
-        <h4>¿Qué necesito?</h4>
-        <p>Tu <strong>INE vigente</strong>. No pedimos aval. Según tu perfil y la financiera que apruebe la operación, pueden solicitarse documentos adicionales antes de firmar.</p>
-      </div>
-      <div>
-        <h4>¿Cuánto tarda la aprobación?</h4>
-        <p>La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong>. Después revisas tu plan de pago con un asesor y firmas en la agencia, normalmente el mismo día.</p>
-      </div>
-      <div>
-        <h4>¿Necesito enganche?</h4>
-        <p>Hay planes con <strong>enganche desde $2,299</strong> y pagos semanales desde $199. También existen esquemas sin enganche, que no aplican a todos los perfiles.</p>
-      </div>
-      <div>
-        <h4>¿Sobre qué motos aplica?</h4>
-        <p>Sobre el <a href="catalogo.html">catálogo RiderMex</a>: 142 modelos de 8 marcas. El monto financiable cambia según el modelo que elijas.</p>
-      </div>
-    </div>
-    <p class="credito-faq-note">La aprobación depende de la evaluación de la financiera y no está garantizada. ¿Más dudas? Revisa las <a href="index.html#preguntas-frecuentes">preguntas frecuentes</a>.</p>
-  </div>
+  <!-- Requisitos, proceso, tiempos y enganche viven arriba, en la sección
+       #financiamiento: aquí solo se recuerda dónde están para no duplicar
+       el mismo contenido dos veces en la misma página. -->
+  <p class="credito-faq-note">
+    La aprobación depende de la evaluación de la financiera y no está garantizada.
+    ¿Quieres repasar requisitos y tiempos? Vuelve a <a href="#financiamiento">cómo compras a crédito</a>
+    o revisa las <a href="index.html#preguntas-frecuentes">preguntas frecuentes</a>.
+  </p>
 </section>
 
 </main>
 
-<footer>
-  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex" width="46" height="46" loading="lazy" decoding="async"></div>
-  <!-- Sucursales: en lugar de una sola dirección, llevamos a la sección de agencias. -->
-  <p><a href="#agencias" class="footer-sucursales-link">📍 Consulta nuestras sucursales</a></p>
-  <p style="margin-top:6px;"><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
-  <p style="margin-top:14px;"><strong>RiderMex:</strong>
-    <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener">Facebook</a> ·
-    <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
-    <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
-  </p>
-  <p style="margin-top:6px;"><strong>RiderMex Inversiones:</strong>
-    <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener">Facebook</a> ·
-    <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener">Instagram</a>
-  </p>
-  <p style="margin-top:14px;">© 2026 RiderMex — Financiamos tu libertad ·
-    <a href="index.html">Inicio</a> ·
-    <a href="catalogo.html">Catálogo</a> ·
-    <a href="quienes-somos.html">Quiénes somos</a> ·
-    <a href="contacto.html">Contacto</a> ·
-    <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. -->
-    <a href="#">Aviso de privacidad</a>
-  </p>
+<!-- ═══ FOOTER GLOBAL · componente único (site-footer.css) ═══
+     Idéntico en las 6 páginas. Los destinos (WhatsApp, redes sociales)
+     están declarados en site-config.js; scripts/verify.mjs comprueba en
+     cada build que el HTML no use ninguno que no esté ahí.
+     Solo se listan redes con URL REAL: las que faltan no se renderizan. -->
+<footer class="rm-footer">
+  <div class="rm-footer-main">
+
+    <div class="rm-footer-brand">
+      <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54" loading="lazy" decoding="async">
+      <p class="rm-footer-tagline">Venta, distribución y financiamiento de motocicletas en México. Financiamos tu libertad.</p>
+      <div class="rm-footer-contact">
+        <a href="tel:5510000680">55 1000 0680</a>
+        <a href="mailto:info@ridermex.com">info@ridermex.com</a>
+        <a href="https://wa.me/5215510000680" target="_blank" rel="noopener noreferrer">WhatsApp · Motos</a>
+      </div>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="motos.html">Comprar a crédito</a></li>
+        <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Agencias</h3>
+      <ul>
+        <li><a href="motos.html#agencias">Naucalpan</a></li>
+        <li><a href="motos.html#agencias">Central de Abasto</a></li>
+        <li><a href="motos.html#agencias">Coapa</a></li>
+        <li><a href="motos.html#agencias">Chalco</a></li>
+        <li><a href="motos.html#agencias">Ver todas las agencias →</a></li>
+      </ul>
+    </div>
+
+    <div class="rm-footer-col">
+      <h3>Inversiones</h3>
+      <ul>
+        <li><a href="inversiones.html">Cómo funciona</a></li>
+        <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
+        <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
+        <li><a href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        <li><a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">En los medios</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Redes sociales: un grupo por ecosistema, para que se sepa de quién
+       es cada perfil. YouTube y LinkedIn (ambas marcas) y TikTok de
+       Inversiones no se muestran porque no hay URL real proporcionada. -->
+  <div class="rm-social-groups">
+
+    <div class="rm-social-group">
+      <h3>RiderMex</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermexof" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/rider.mex.motos" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@ridermexoficial" target="_blank" rel="noopener noreferrer" aria-label="RiderMex en TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .77-5.06v-3.1a5.66 5.66 0 0 0-.77-.05A5.66 5.66 0 1 0 15.52 15.4V9.01a7.35 7.35 0 0 0 4.29 1.37V7.3a4.29 4.29 0 0 1-3.21-1.48Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="rm-social-group rm-social-group--inv">
+      <h3>RiderMex Inversiones</h3>
+      <div class="rm-social-list">
+        <a href="https://www.instagram.com/ridermex_inversiones" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.83-.4.4-.63.8-.83 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.83 1.3.4.4.8.63 1.3.83.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.83.4-.4.63-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.08a3.18 3.18 0 1 0 0-6.36 3.18 3.18 0 0 0 0 6.36Zm6.24-8.28a1.14 1.14 0 1 1-2.28 0 1.14 1.14 0 0 1 2.28 0Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/inversionesridermex" target="_blank" rel="noopener noreferrer" aria-label="RiderMex Inversiones en Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.93 8.44-9.94Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rm-footer-bottom">
+    <span>© 2026 RiderMex · Financiamos tu libertad</span>
+    <nav aria-label="Enlaces legales y de cierre">
+      <a href="index.html">Inicio</a>
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="contacto.html">Contacto</a>
+      <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Se muestra como texto (no
+           como enlace roto). Al tener la URL, sustituir por un <a href="…">. -->
+      <span class="rm-pending" title="Pendiente de publicación">Aviso de privacidad</span>
+    </nav>
+  </div>
 </footer>
 
 <a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">

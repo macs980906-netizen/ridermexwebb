@@ -21,7 +21,7 @@
        precio:      null,        // number | null  (no inventar)
        condiciones: '',          // texto de financiamiento si aplica
        descripcion: '',
-       cta:         { label: 'Cotizar por WhatsApp', href: 'https://wa.me/525599900619' }
+       cta:         { label: 'Cotizar por WhatsApp', href: 'https://wa.me/5215510000645'  // canal de MOTOS (ver site-config.js) }
      }
    ═══════════════════════════════════════════════════════════════════════ */
 

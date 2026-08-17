@@ -35,11 +35,13 @@ const fail = (m) => errors.push(m);
 const warn = (m) => warnings.push(m);
 
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
+// Los comentarios documentan rutas de ejemplo (href="…"): no son recursos.
+const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "");
 
 // ── 1 · recursos locales ───────────────────────────────────────────────────
 const allFiles = [...PAGES, "calculadora-inversion/index.html"];
 for (const file of allFiles) {
-  const html = read(file);
+  const html = stripComments(read(file));
   const base = dirname(file);
   for (const m of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
     const raw = m[1];
@@ -146,11 +148,79 @@ for (const page of PAGES) {
 }
 if (!read("robots.txt").includes("Sitemap:")) fail("robots.txt: falta la línea Sitemap:");
 
-// ── 7 · restos del header antiguo ──────────────────────────────────────────
+// ── 7 · restos del header/footer antiguos ──────────────────────────────────
 for (const file of PAGES) {
   const html = read(file);
   if (/class="nav-toggle"/.test(html)) fail(`${file}: queda marcado del header antiguo (.nav-toggle)`);
   if (/class="nav-wrap"/.test(html)) fail(`${file}: queda marcado del header antiguo (.nav-wrap)`);
+  const footers = (html.match(/<footer/g) || []).length;
+  if (footers !== 1) fail(`${file}: tiene ${footers} <footer> (debe tener exactamente 1)`);
+  if (!html.includes('<footer class="rm-footer">')) fail(`${file}: no usa el footer global .rm-footer`);
+  if (!html.includes('href="site-footer.css"')) fail(`${file}: no carga site-footer.css`);
+}
+
+// ── 7b · FAQPage debe coincidir con las preguntas visibles ─────────────────
+// Google exige que el schema replique lo que el usuario ve. Al mover las
+// FAQs de sitio es fácil que una quede desincronizada: aquí se detecta.
+const decode = (t) =>
+  t.replace(/<[^>]+>/g, "")
+   .replace(/&aacute;/g, "á").replace(/&eacute;/g, "é").replace(/&iacute;/g, "í")
+   .replace(/&oacute;/g, "ó").replace(/&uacute;/g, "ú").replace(/&ntilde;/g, "ñ")
+   .replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+   .replace(/\s+/g, " ").trim();
+
+for (const file of PAGES) {
+  const html = read(file);
+  const schemaQs = [...html.matchAll(/"@type":\s*"Question",\s*"name":\s*"((?:[^"\\]|\\.)*)"/g)]
+    .map((m) => m[1].replace(/\\"/g, '"'));
+  if (!schemaQs.length) continue;
+
+  const visibleQs = [
+    ...[...html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map((m) => decode(m[1])),
+  ];
+  for (const q of schemaQs) {
+    if (!visibleQs.includes(q)) {
+      fail(`${file}: la pregunta del FAQPage no está visible en la página → "${q.slice(0, 60)}"`);
+    }
+  }
+}
+
+// ── 8 · canales centralizados en site-config.js ────────────────────────────
+// Ningún HTML debe usar un WhatsApp o una red social que no esté declarada
+// en la configuración: así los canales de motos e inversiones no se cruzan
+// por accidente y no aparecen cuentas inventadas.
+const cfgSrc = read("site-config.js");
+const declaredWa = new Set(
+  [...cfgSrc.matchAll(/"(https:\/\/wa\.me\/\d+)"/g)].map((m) => m[1])
+);
+const declaredSocial = new Set(
+  [...cfgSrc.matchAll(/"(https:\/\/www\.(?:instagram|facebook|tiktok|youtube|linkedin)\.com\/[^"]+)"/g)].map((m) => m[1])
+);
+if (!declaredWa.size) fail("site-config.js: no declara ningún WhatsApp");
+if (!declaredSocial.size) fail("site-config.js: no declara ninguna red social");
+
+for (const file of PAGES) {
+  const html = stripComments(read(file));
+  for (const m of html.matchAll(/https:\/\/wa\.me\/(\d+)/g)) {
+    const base = `https://wa.me/${m[1]}`;
+    if (!declaredWa.has(base)) {
+      fail(`${file}: WhatsApp no declarado en site-config.js → ${base}`);
+    }
+  }
+  for (const m of html.matchAll(/https:\/\/www\.(?:instagram|facebook|tiktok|youtube|linkedin)\.com\/[^"']+/g)) {
+    if (!declaredSocial.has(m[0])) {
+      fail(`${file}: red social no declarada en site-config.js → ${m[0]}`);
+    }
+  }
+}
+
+// El CTA de inversión de Contacto debe abrir el WhatsApp de inversiones,
+// no la página de inversiones (requisito de negocio).
+const contacto = stripComments(read("contacto.html"));
+const invAnchor = contacto.match(/<a[^>]*contacto-card--inv[^>]*>/);
+const invHref = invAnchor && invAnchor[0].match(/href="([^"]+)"/);
+if (!invHref || !invHref[1].startsWith("https://wa.me/5215599900619")) {
+  fail(`contacto.html: "Quiero invertir" debe apuntar al WhatsApp de Inversiones, apunta a → ${invHref ? invHref[1] : "(no se encontró el enlace)"}`);
 }
 
 // ── Resultado ──────────────────────────────────────────────────────────────

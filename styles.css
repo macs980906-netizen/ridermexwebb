@@ -948,37 +948,9 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
 
 .form-confirm h3 { color: var(--rojo); margin-bottom: 10px; font-size: 24px; }
 
-/* ===== FOOTER ===== */
-footer {
-  background: var(--negro);
-  color: #888;
-  padding: 50px 24px 36px;
-  text-align: center;
-  font-size: 13px;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
+/* FOOTER — ahora es el componente global .rm-footer (site-footer.css). No añadir reglas `footer` aquí. */
 
-footer .logo img { height: 46px; margin: 0 auto 18px; }
 
-footer a { color: var(--blanco); transition: color .2s; }
-footer a:hover { color: var(--rojo); }
-
-/* Enlace "Consulta nuestras sucursales" (reemplaza la dirección única) */
-.footer-sucursales-link {
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: .3px;
-  color: #fff !important;
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 8px;
-  padding: 8px 16px;
-  transition: border-color .2s, color .2s, background .2s;
-}
-.footer-sucursales-link:hover {
-  color: #fff !important;
-  border-color: var(--rojo);
-  background: rgba(225,6,0,.12);
-}
 
 .whatsapp-float {
   position: fixed;
@@ -1579,57 +1551,287 @@ body::before {
   .ghl-form-wrap { padding: 8px; border-radius: 14px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   REQUISITOS / PROCESO / TIEMPOS — junto al formulario de crédito
-   Responde directamente las dudas de compra sin abrir otra página.
-   ═══════════════════════════════════════════════════════════════════════ */
-.credito-faq {
-  max-width: 980px;
-  margin: 46px auto 0;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255,255,255,.12);
-  text-align: left;
-}
-.credito-faq h3 {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(19px, 3vw, 24px);
-  font-weight: 700;
-  color: var(--blanco);
-  margin-bottom: 20px;
-  text-align: center;
-}
-.credito-faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px 26px;
-}
-.credito-faq-grid h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--blanco);
-  margin-bottom: 7px;
-}
-.credito-faq-grid h4::before {
-  content: '';
-  display: inline-block;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--rojo);
-  margin-right: 9px;
-  vertical-align: middle;
-}
-.credito-faq-grid p {
-  color: rgba(255,255,255,.72);
-  font-size: 14.5px;
-  line-height: 1.65;
-}
-.credito-faq-grid strong { color: var(--blanco); }
-.credito-faq-grid a, .credito-faq-note a { color: var(--rojo2, #ff5a3c); font-weight: 600; }
+/* Nota bajo el formulario de crédito. El detalle de requisitos, proceso y
+   tiempos vive en la sección #financiamiento de motos.html. */
 .credito-faq-note {
   margin-top: 22px;
   text-align: center;
   color: rgba(255,255,255,.55);
   font-size: 13.5px;
   line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   AGENCIAS · sistema alineado y homologado al Home
+   ───────────────────────────────────────────────────────────────────────
+   Antes era una sección clara (#fafafa) con tarjetas cuyos datos no
+   alineaban entre sí (las direcciones ocupan 1, 2 o 3 líneas). Ahora usa
+   el mismo tratamiento oscuro del Home y una rejilla interna que alinea
+   etiqueta y valor, con el CTA siempre al fondo de la tarjeta.
+   ═══════════════════════════════════════════════════════════════════════ */
+.agencias-section {
+  max-width: none;
+  width: 100%;
+  background: var(--negro);
+  color: var(--blanco);
+  border-top: 1px solid #2C2C2C;
+  border-bottom: 1px solid #2C2C2C;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+.agencias-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.agencias-section .eyebrow { color: var(--rojo); }
+.agencias-section .section-title { color: var(--blanco); }
+.agencias-section .section-subtitle {
+  color: #a8a8a8;
+  max-width: 720px;
+}
+.agencias-section .section-subtitle strong { color: var(--blanco); }
+
+.agencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.ag-card {
+  display: flex;
+  flex-direction: column;
+  background: #0f0f0f;
+  border: 1px solid #262626;
+  border-left: 4px solid var(--rojo);
+  border-radius: 14px;
+  padding: 26px 24px;
+  transition: transform .25s var(--ease), border-color .25s, box-shadow .25s;
+}
+.ag-card:hover {
+  transform: translateY(-4px);
+  border-color: #3a3a3a;
+  border-left-color: var(--rojo);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+}
+/* Sucursal sin dirección confirmada: se distingue sin parecer un error. */
+.ag-card--pendiente { border-left-color: #6a6a6a; }
+
+.ag-card-zona {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 8px;
+}
+.ag-card--pendiente .ag-card-zona { color: #8a8a8a; }
+
+.ag-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blanco);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  /* Dos líneas reservadas: los nombres largos (CEDA) no desalinean el resto. */
+  min-height: 2.5em;
+}
+
+/* Rejilla etiqueta/valor: alinea Dirección · Horario · Tel entre tarjetas. */
+.ag-datos { display: grid; gap: 10px; margin: 0 0 18px; }
+.ag-datos > div {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.ag-datos dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #7d7d7d;
+  padding-top: 2px;
+}
+.ag-datos dd {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #c9c9c9;
+}
+.ag-datos dd a { color: #c9c9c9; }
+.ag-datos dd a:hover { color: var(--rojo); }
+.ag-datos .ag-pendiente { color: #8a8a8a; font-style: italic; }
+
+.ag-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: auto;          /* CTA siempre al fondo → misma base visual */
+  padding-top: 16px;
+  border-top: 1px solid #212121;
+}
+.ag-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;          /* target táctil cómodo */
+  padding: 10px 15px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform .2s var(--ease), background .2s, box-shadow .2s, border-color .2s;
+}
+.ag-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+.ag-btn--maps {
+  background: var(--rojo);
+  color: var(--blanco);
+  box-shadow: 0 6px 18px rgba(225, 6, 0, .24);
+}
+.ag-btn--maps:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(225, 6, 0, .36); }
+.ag-btn--ghost {
+  background: transparent;
+  color: #d0d0d0;
+  border: 1px solid #333;
+}
+.ag-btn--ghost:hover { border-color: var(--rojo); color: var(--blanco); }
+/* Reservado para el tour 360: al tener la URL, cambiar el <span> por un <a>. */
+.ag-btn--soon {
+  background: transparent;
+  color: #6e6e6e;
+  border: 1px dashed #3a3a3a;
+  cursor: default;
+}
+.ag-btn:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
+
+.agencias-foot {
+  margin-top: 26px;
+  text-align: center;
+  color: #8f8f8f;
+  font-size: 14px;
+}
+.agencias-foot a { color: #ff5d52; font-weight: 600; }
+.agencias-foot a:hover { text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .agencias-inner { padding: 0 18px; }
+  .ag-card h3 { min-height: 0; }
+  .ag-datos > div { grid-template-columns: 66px 1fr; }
+  .ag-btn { width: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FINANCIAMIENTO · escaneable, sin paredes de texto
+   Pasos numerados + condiciones reales en tarjetas, antes del formulario.
+   ═══════════════════════════════════════════════════════════════════════ */
+.fin-section {
+  max-width: none;
+  width: 100%;
+  background: linear-gradient(180deg, #0c0c0c 0%, var(--negro) 100%);
+  color: var(--blanco);
+  border-bottom: 1px solid #2C2C2C;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+}
+.fin-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.fin-section .eyebrow { color: var(--rojo); }
+.fin-section .section-title { color: var(--blanco); }
+.fin-section .section-subtitle { color: #a8a8a8; max-width: 700px; }
+.fin-section .section-subtitle strong { color: var(--blanco); }
+
+/* Pasos con conector: el proceso se lee de un vistazo. */
+.fin-pasos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0;
+  margin-bottom: 46px;
+}
+.fin-paso { position: relative; padding: 0 16px; text-align: center; }
+.fin-paso:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 27px;
+  right: -12px;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(225, 6, 0, .7), rgba(225, 6, 0, .15));
+}
+.fin-paso-num {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blanco);
+  background: linear-gradient(135deg, var(--rojo), #ff4632);
+  box-shadow: 0 10px 24px rgba(225, 6, 0, .3);
+}
+.fin-paso h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 7px;
+}
+.fin-paso p { font-size: 13.5px; line-height: 1.6; color: #9d9d9d; }
+
+/* Condiciones reales del financiamiento. */
+.fin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 16px;
+}
+.fin-card {
+  background: #101010;
+  border: 1px solid #262626;
+  border-radius: 14px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s var(--ease), border-color .25s;
+}
+.fin-card:hover { transform: translateY(-3px); border-color: #3a3a3a; }
+.fin-card-dato {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.4vw, 32px);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--blanco);
+  margin-bottom: 8px;
+}
+.fin-card-dato span { color: var(--rojo); }
+.fin-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  color: #e6e6e6;
+  margin-bottom: 7px;
+}
+.fin-card p { font-size: 13.5px; line-height: 1.6; color: #9d9d9d; }
+.fin-nota {
+  margin-top: 24px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #8a8a8a;
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fin-nota a { color: #ff5d52; font-weight: 600; }
+.fin-cta-row { margin-top: 30px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+@media (max-width: 700px) {
+  .fin-inner { padding: 0 18px; }
+  .fin-pasos { grid-template-columns: 1fr; gap: 26px; }
+  .fin-paso { padding: 0; }
+  .fin-paso:not(:last-child)::after {
+    top: auto; right: auto; left: 50%; bottom: -15px;
+    width: 2px; height: 16px; transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(225, 6, 0, .7), rgba(225, 6, 0, .15));
+  }
 }

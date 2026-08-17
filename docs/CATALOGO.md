@@ -93,3 +93,32 @@ python3 scripts/prefer-white-background.py             # aplicar
 No descarga ni genera imágenes: sólo reordena. Los umbrales (`MIN_LUM`, `MAX_SAT`,
 `MAX_STD`) están calibrados para que una foto de calle luminosa **no** pase por
 foto de producto.
+
+## Componentes globales y configuración
+
+| Archivo | Rol |
+|---|---|
+| `site-header.css` / `site-header.js` | Header global. Mismo marcado en las 6 páginas. |
+| `site-footer.css` | Footer global, con los dos grupos de redes sociales. |
+| `site-config.js` | Fuente de verdad de WhatsApp y redes sociales. |
+| `scripts/verify.mjs` | Lo que corre `npm run build`. Falla el deploy si algo se rompe. |
+
+### Canales de WhatsApp — no se cruzan
+
+| Canal | Número | Dónde se usa |
+|---|---|---|
+| Motos · compra | 55 1000 0645 | CTAs "quiero mi moto / empezar proceso", Contacto → *Comprar una moto* |
+| Motos · general | 55 1000 0680 | Botón flotante de catálogo y motos, footer, `tel:` |
+| Inversiones | 55 9990 0619 | Toda la página de Inversiones y Contacto → *Quiero invertir* |
+
+`scripts/verify.mjs` comprueba que ningún HTML use un `wa.me` que no esté
+declarado en `site-config.js`, y que el CTA "Quiero invertir" de Contacto
+apunte al WhatsApp de Inversiones (no a `inversiones.html`).
+
+### Redes sociales
+
+Reales y publicadas: Instagram, Facebook y TikTok de RiderMex; Instagram y
+Facebook de RiderMex Inversiones. **Faltan por proporcionar:** YouTube y
+LinkedIn de ambas marcas, y TikTok de Inversiones. Están como cadena vacía
+en `site-config.js` y **no se renderizan** en el footer: no se inventan
+cuentas ni se enlaza a la home genérica de ninguna red.
