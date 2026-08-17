@@ -3,8 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RiderMex Inversiones</title>
+<title>RiderMex Inversiones | Invierte en tiendas de motos con operación real</title>
+<meta name="description" content="Participa en el crecimiento de las agencias de motos RiderMex: modelos de inversión con rendimientos estimados, sistema de plusvalía por escalones y respaldo documental. Habla con un asesor.">
+<link rel="canonical" href="https://ridermex.com/inversiones.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0A">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="RiderMex Inversiones | Invierte en tiendas de motos con operación real">
+<meta property="og:description" content="Modelos de inversión con rendimientos estimados, plusvalía por escalones y operación real de 4 agencias. Revisa tu caso con un asesor.">
+<meta property="og:url" content="https://ridermex.com/inversiones.html">
+<meta property="og:image" content="https://ridermex.com/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Barlow Condensed: misma familia de títulos del Home, para que el hero
+     de Inversiones se sienta parte del mismo sitio. -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
 
@@ -15,25 +35,61 @@
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="motos.html">Catálogo de motos</a></li>
-        <li><a href="#inversiones">Modelos</a></li>
+        <li><a href="#modelos">Modelos</a></li>
+        <li><a href="#plusvalia">Plusvalía</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
-        <li><a href="#contacto-inversion" class="btn-credito-nav">Quiero invertir</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a data-wa="inversiones" href="contacto.html" target="_blank" rel="noopener noreferrer" class="btn-credito-nav">Hablar con un asesor</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<section class="hero">
-  <span class="hero-kicker">Respaldado por operación real y estructura legal</span>
-  <h1>RiderMex <span>Inversiones</span></h1>
-  <p>Haz crecer tu capital junto con el crecimiento de una empresa con 4 agencias activas, una quinta próximamente y un modelo respaldado por contratos formales, fideicomiso y notario público.</p>
-  <a href="#contacto-inversion" class="hero-cta">Quiero invertir</a>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     1 · HERO — homologado al Home
+     Misma altura/proporción, mismo ancho de contenido y márgenes, misma
+     composición y tipografía (.rm-hero en shared.css).
+════════════════════════════════════════════════════════════════════════ -->
+<section class="rm-hero">
+  <div class="rm-hero-orb" aria-hidden="true"></div>
+  <div class="rm-hero-orb rm-hero-orb--2" aria-hidden="true"></div>
+  <div class="rm-hero-inner">
+    <p class="rm-hero-eyebrow">RiderMex Inversiones</p>
+    <h1>Invierte en tiendas<br>de motos con <em>operación real</em></h1>
+    <p class="rm-hero-sub">
+      RiderMex vende motocicletas a clientes que las usan para trabajar y moverse. Como inversionista participas en el crecimiento de tiendas físicas, con rendimientos estimados, contratos y documentación revisable.
+    </p>
+    <div class="rm-hero-actions">
+      <a class="rm-hero-btn rm-hero-btn--primary" href="#modelos">Ver los modelos</a>
+      <a class="rm-hero-btn rm-hero-btn--wa" data-wa="inversiones" href="contacto.html" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+        Hablar con un asesor
+      </a>
+    </div>
+    <div class="rm-hero-scroll">Entiende el modelo</div>
+  </div>
 </section>
 
-<!-- ===================== BARRA DE CONFIANZA ===================== -->
-<div class="trust-bar reveal">
-  <div class="trust-inner">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     2 · CINTILLO "RIDERMEX EN LOS MEDIOS"
+     Va inmediatamente después del hero pero DENTRO DEL FLUJO NORMAL del
+     documento: es un <div> de bloque con altura, padding y bordes propios
+     (.rm-media-band en shared.css). Sin position absolute ni márgenes
+     negativos, por lo que nunca se superpone con la sección siguiente.
+════════════════════════════════════════════════════════════════════════ -->
+<div class="rm-media-band">
+  <a class="rm-media-strip" href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">
+    <span class="rm-media-strip-label">RiderMex en los medios</span>
+    <span class="rm-media-strip-sep" aria-hidden="true"></span>
+    <span class="rm-media-strip-desc">Apariciones y menciones públicas de la marca</span>
+    <span class="rm-media-strip-cta">Ver apariciones <span aria-hidden="true">→</span></span>
+  </a>
+</div>
+
+<!-- ═══ 3 · INTRODUCCIÓN VISUAL BREVE — respaldo de la operación ═══ -->
+<div class="trust-bar">
+  <div class="trust-inner rm-stagger">
     <div class="trust-stat">
       <div class="num">4</div>
       <div class="label">Agencias activas · 1 próximamente</div>
@@ -53,11 +109,13 @@
   </div>
 </div>
 
-<!-- ===================== MODELOS ===================== -->
-<section id="inversiones" class="inversiones-bg reveal">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     4 · MODELOS DE INVERSIÓN
+════════════════════════════════════════════════════════════════════════ -->
+<section id="modelos" class="inversiones-bg reveal">
   <span class="eyebrow">Planes de inversión</span>
-  <h2 class="section-title">Nuestros <span>Modelos</span></h2>
-  <p class="section-subtitle" style="color:#aaa;">Elige el plan que se ajuste a tu objetivo y horizonte de inversión</p>
+  <h2 class="section-title">Elige cómo <span>entrar</span></h2>
+  <p class="section-subtitle" style="color:#aaa;">Tres formas de participar. La diferencia entre ellas es el monto de entrada y cuándo empiezas a recibir.</p>
 
   <div class="trust-badges">
     <span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/></svg>Contrato formal por escrito</span>
@@ -67,30 +125,302 @@
 
   <!-- Modelos reales — se generan desde el array INVESTMENT_MODELS (ver <script> al final
        de esta página). Para editar montos, rendimientos o meses, cambia ese array. -->
-  <div class="grid-inversion" id="grid-inversion"></div>
+  <div class="grid-inversion rm-stagger" id="grid-inversion"></div>
 
-  <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo. La información presentada es de carácter informativo.</p>
+  <p class="inversion-disclaimer">Los rendimientos mostrados son estimados y pueden variar según las condiciones operativas del modelo. La información presentada es de carácter informativo y no constituye una promesa de rendimiento.</p>
 
-  <!-- ═══ CTA · CALCULADORA DE INVERSIÓN ═══
-       El HTML de la calculadora vive en /calculadora-inversion/index.html (dentro del repo).
-       ▸ Para cambiar el destino del botón, edita el href de .calc-cta-btn. -->
-  <div class="calc-cta reveal">
-    <div class="calc-cta-inner">
-      <div class="calc-cta-text">
-        <span class="calc-cta-eyebrow">Herramienta</span>
-        <h3>Calcula el retorno de tu inversión aquí</h3>
-        <p>Usa nuestra calculadora para estimar escenarios de inversión y conocer mejor qué modelo podría hacer sentido para ti.</p>
-      </div>
-      <a class="calc-cta-btn" href="/calculadora-inversion/" target="_blank" rel="noopener noreferrer">Calcular mi retorno →</a>
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="inversiones" data-wa-msg="Hola, vi los modelos de RiderMex Inversiones y tengo dudas sobre cuál me conviene." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      ¿Tienes dudas sobre qué modelo elegir? Consúltalo con un asesor
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     5 · CÓMO FUNCIONA · EL CAMINO DEL DINERO
+     Diagrama de flujo en 5 pasos. El texto vive como HTML normal (indexable);
+     la animación solo revela los pasos de forma secuencial.
+════════════════════════════════════════════════════════════════════════ -->
+<section id="camino-del-dinero" class="camino-section reveal">
+  <span class="eyebrow">Cómo funciona</span>
+  <h2 class="section-title">El camino del <span>dinero</span></h2>
+  <p class="section-subtitle">Esto es lo que conviene tener claro antes de tomar una llamada: cómo entra tu inversión, qué hace RiderMex y de dónde sale el rendimiento estimado.</p>
+
+  <ol class="camino-flow rm-stagger">
+    <li class="camino-step">
+      <span class="camino-step-num">01</span>
+      <h3>Eliges tu modelo</h3>
+      <p>Inversión única, entrada gradual con aportaciones mensuales, o ticket de operación activa.</p>
+    </li>
+    <li class="camino-step">
+      <span class="camino-step-num">02</span>
+      <h3>Se revisa lo legal</h3>
+      <p>Contrato, documentación, tiempos, riesgos y condiciones del modelo que elegiste.</p>
+    </li>
+    <li class="camino-step">
+      <span class="camino-step-num">03</span>
+      <h3>RiderMex opera</h3>
+      <p>Tiendas, inventario, vendedores, financieras aliadas, publicidad y reportes.</p>
+    </li>
+    <li class="camino-step">
+      <span class="camino-step-num">04</span>
+      <h3>Se venden motos</h3>
+      <p>Los clientes compran motos para trabajar, moverse o generar ingresos.</p>
+    </li>
+    <li class="camino-step">
+      <span class="camino-step-num">05</span>
+      <h3>Se distribuye el rendimiento</h3>
+      <p>La utilidad de la operación sostiene el rendimiento estimado de tu participación.</p>
+    </li>
+  </ol>
+
+  <p class="camino-note">
+    El rendimiento proviene de la <strong>operación comercial</strong>: utilidad por moto, rotación de inventario y estructura de pagos. Es una estimación basada en la operación, no un rendimiento fijo ni garantizado.
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     6 · ¿QUIERES REVISAR SI ESTE MODELO TE CONVIENE?
+     Va INMEDIATAMENTE DESPUÉS de "El camino del dinero": el usuario ya
+     entendió cómo funciona el dinero y el modelo, así que aquí lo
+     invitamos a conversar con un asesor.
+════════════════════════════════════════════════════════════════════════ -->
+<section class="conviene-section reveal" aria-labelledby="conviene-title">
+  <div class="conviene-card">
+    <h2 id="conviene-title">¿Quieres revisar si este modelo <span>te conviene?</span></h2>
+    <p>Agenda una llamada por WhatsApp. Revisamos tu presupuesto, el modelo que hace sentido para ti, la disponibilidad, el calendario de flujos y los documentos necesarios para avanzar.</p>
+    <div class="conviene-actions">
+      <a class="conviene-btn conviene-btn--ghost" href="#modelos">Comparar modelos</a>
+      <a class="conviene-btn conviene-btn--wa" data-wa="inversiones" data-wa-msg="Hola, quiero revisar si el modelo de RiderMex Inversiones me conviene y agendar una llamada." href="contacto.html" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+        Hablar con un asesor
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== FORMULARIO INVERSIÓN ===================== -->
+<!-- ═══════════════════════════════════════════════════════════════════════
+     7 · INFORMACIÓN Y RESPALDO
+════════════════════════════════════════════════════════════════════════ -->
+<section id="respaldo" class="respaldo-section reveal">
+  <span class="eyebrow">Respaldo</span>
+  <h2 class="section-title">Qué puedes <span>revisar</span> antes de decidir</h2>
+  <p class="section-subtitle">Nada de esto se firma a ciegas. Antes de participar tienes acceso a la documentación del modelo.</p>
+
+  <div class="respaldo-grid rm-stagger">
+    <div class="respaldo-card">
+      <h3>Contrato formal</h3>
+      <p>Tu participación queda por escrito, con las condiciones del modelo que elegiste.</p>
+    </div>
+    <div class="respaldo-card">
+      <h3>Estructura legal</h3>
+      <p>El modelo se apoya en contratos formales, fideicomiso y notario público.</p>
+    </div>
+    <div class="respaldo-card">
+      <h3>Reportes mensuales</h3>
+      <p>Seguimiento del rendimiento de la operación mientras tienes tu participación.</p>
+    </div>
+    <div class="respaldo-card">
+      <h3>Operación verificable</h3>
+      <p>4 agencias activas, 9 marcas distribuidas e inventario real que puedes visitar.</p>
+    </div>
+  </div>
+
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="inversiones" data-wa-msg="Hola, quiero revisar la documentación y el contrato de RiderMex Inversiones." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      ¿Quieres revisar la documentación? Pídela por WhatsApp
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     8 · CÓMO FUNCIONA LA PLUSVALÍA
+     ▸ CONTENIDO APROBADO — NO alterar cifras:
+       · Emisión máxima: 300 tickets
+       · +5% de incremento cada 30 tickets → 10 escalones máximos
+       · Escalones de referencia: +30, +60, +90 tickets
+       · Venta elegible 18 meses después de liquidar totalmente el ticket
+       · La plusvalía solo se materializa con una venta efectiva
+       · Modelo de referencia de operación activa: $120,000
+════════════════════════════════════════════════════════════════════════ -->
+<section id="plusvalia" class="plusvalia-section reveal">
+  <span class="eyebrow">Plusvalía</span>
+  <h2 class="section-title">Cómo funciona la <span>plusvalía</span></h2>
+  <p class="section-subtitle">En RiderMex hay dos conversaciones distintas: lo que puede producir la operación mientras tienes el ticket, y el valor que puede tener ese ticket si después lo vendes.</p>
+
+  <div class="motores-grid rm-stagger">
+    <div class="motor-card">
+      <span class="motor-num">01 · Operación</span>
+      <h3>Rendimiento estimado</h3>
+      <p>Lo que genera la venta de motos mientras mantienes tu participación.</p>
+    </div>
+    <div class="motor-card motor-card--alt">
+      <span class="motor-num">02 · Plusvalía</span>
+      <h3>Valor potencial de salida</h3>
+      <p>El valor de referencia del ticket, que puede subir conforme avanza la emisión.</p>
+    </div>
+  </div>
+
+  <!-- Sistema de escalones -->
+  <div class="escalones-box rm-in">
+    <div class="escalones-head">
+      <h3>El sistema de escalones</h3>
+      <p>El precio de referencia de una nueva participación sube <strong>5% cada 30 tickets colocados</strong>. Con un tope de emisión de <strong>300 tickets</strong>, eso son <strong>10 escalones máximos</strong>.</p>
+    </div>
+
+    <div class="escalones-formula">
+      <strong>10 escalones</strong>
+      <span>300 tickets máximos ÷ 30 tickets por escalón</span>
+    </div>
+
+    <p class="escalones-label">Ruta de precio por escalón</p>
+    <ul class="escalera">
+      <li class="escalon">
+        <span class="escalon-tickets">Entrada</span>
+        <span class="rm-bar" style="--rm-bar-w:22%"><i></i></span>
+        <span class="escalon-valor">Precio base</span>
+      </li>
+      <li class="escalon">
+        <span class="escalon-tickets">+30 tickets</span>
+        <span class="rm-bar" style="--rm-bar-w:42%"><i></i></span>
+        <span class="escalon-valor">+5%</span>
+      </li>
+      <li class="escalon">
+        <span class="escalon-tickets">+60 tickets</span>
+        <span class="rm-bar" style="--rm-bar-w:62%"><i></i></span>
+        <span class="escalon-valor">+5% sobre el escalón anterior</span>
+      </li>
+      <li class="escalon">
+        <span class="escalon-tickets">+90 tickets</span>
+        <span class="rm-bar" style="--rm-bar-w:82%"><i></i></span>
+        <span class="escalon-valor">+5% sobre el escalón anterior</span>
+      </li>
+      <li class="escalon escalon--tope">
+        <span class="escalon-tickets">300 tickets</span>
+        <span class="rm-bar" style="--rm-bar-w:100%"><i></i></span>
+        <span class="escalon-valor">Tope de emisión · 10.º escalón</span>
+      </li>
+    </ul>
+
+    <p class="escalones-nota">
+      Cada incremento de 5% se aplica sobre el precio vigente del escalón anterior. Después del ticket 300 no se agregan más escalones ni se asume crecimiento adicional por este mecanismo.
+    </p>
+  </div>
+
+  <!-- Cuándo puedes vender -->
+  <div class="venta-grid rm-stagger">
+    <div class="venta-card">
+      <span class="venta-num">18</span>
+      <h3>Meses para poder vender</h3>
+      <p>La posibilidad de vender tu participación se considera 18 meses después de haberla liquidado totalmente, conforme al proceso aplicable.</p>
+    </div>
+    <div class="venta-card">
+      <span class="venta-num">$120,000</span>
+      <h3>Modelo de operación activa</h3>
+      <p>Ticket de una tienda ya operando, puesto a la venta por un inversionista, con rendimiento estimado desde el primer mes.</p>
+    </div>
+    <div class="venta-card">
+      <span class="venta-num">1</span>
+      <h3>Comunidad de inversionistas</h3>
+      <p>La venta ocurre dentro de la comunidad de inversionistas de RiderMex, que es donde existe la demanda por estos tickets.</p>
+    </div>
+  </div>
+
+  <p class="plusvalia-aviso">
+    <strong>Importante:</strong> la plusvalía no es una ganancia automática ni un rendimiento adicional garantizado. Es un valor potencial que <strong>solo se materializa si posteriormente existe una venta efectiva</strong> de la participación. Depende de la colocación de tickets y de que haya un comprador.
+  </p>
+
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="inversiones" data-wa-msg="Hola, quiero entender cómo funciona la plusvalía y los escalones en RiderMex Inversiones." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      Resuelve tus dudas sobre plusvalía por WhatsApp
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     9 · MERCADO SECUNDARIO / SALIDA
+════════════════════════════════════════════════════════════════════════ -->
+<section id="salida" class="salida-section reveal">
+  <span class="eyebrow">Mercado secundario</span>
+  <h2 class="section-title">Cómo funciona la <span>salida</span></h2>
+  <p class="section-subtitle">Vender tu participación es un proceso, no un botón. Estos son los pasos.</p>
+
+  <ol class="salida-steps rm-stagger">
+    <li class="salida-step">
+      <span class="salida-step-num">01</span>
+      <h3>Liquidas tu ticket</h3>
+      <p>Tu participación queda totalmente cubierta según el modelo que elegiste.</p>
+    </li>
+    <li class="salida-step">
+      <span class="salida-step-num">02</span>
+      <h3>Esperas 18 meses</h3>
+      <p>A partir de la liquidación total corre el plazo que te vuelve elegible para vender.</p>
+    </li>
+    <li class="salida-step">
+      <span class="salida-step-num">03</span>
+      <h3>Ofreces la participación</h3>
+      <p>El ticket se ofrece dentro de la comunidad de inversionistas de RiderMex.</p>
+    </li>
+    <li class="salida-step">
+      <span class="salida-step-num">04</span>
+      <h3>Se concreta la venta</h3>
+      <p>Solo con una venta efectiva se materializa la plusvalía; sin comprador, no hay salida.</p>
+    </li>
+  </ol>
+
+  <p class="camino-note">
+    Un ticket de operación activa —como el modelo de $120,000— es precisamente eso: una participación que otro inversionista puso a la venta y que llega ya operando.
+  </p>
+
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="inversiones" data-wa-msg="Hola, quiero entender cómo funciona la salida y el mercado secundario en RiderMex Inversiones." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      ¿Quieres revisar tu caso? Habla con un asesor RiderMex
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     10 · CTA AL SIMULADOR
+     El simulador YA NO se embebe dentro del flujo (ocupaba media página).
+     Queda como un módulo compacto que lo abre en su propia ruta y en una
+     pestaña nueva. La calculadora no se modificó.
+       · Simulador patrimonial (escalones / plusvalía): /simulador/
+       · Calculadora de retorno anterior: /calculadora-inversion/ (sigue viva)
+════════════════════════════════════════════════════════════════════════ -->
+<div class="calc-cta reveal">
+  <div class="calc-cta-inner">
+    <div class="calc-cta-text">
+      <span class="calc-cta-eyebrow">Herramienta</span>
+      <h3>Calcula tu escenario de inversión</h3>
+      <p>Explora distintos escenarios con nuestro simulador: rendimiento estimado por operación y plusvalía potencial según los escalones de precio.</p>
+    </div>
+    <a class="calc-cta-btn" href="simulador/" target="_blank" rel="noopener noreferrer">Abrir simulador →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     11 · CONVERSACIÓN CON UN ASESOR (objetivo comercial de la página)
+════════════════════════════════════════════════════════════════════════ -->
 <section id="contacto-inversion" class="credito-bg reveal">
-  <span class="eyebrow">Contacto</span>
-  <h2 class="section-title">Quiero <span>invertir</span></h2>
-  <p class="section-subtitle">Un asesor de RiderMex Inversiones te contactará</p>
+  <span class="eyebrow">Siguiente paso</span>
+  <h2 class="section-title">Hablemos de <span>tu caso</span></h2>
+  <p class="section-subtitle">Déjanos tus datos y un asesor de RiderMex Inversiones te contacta. Si prefieres, escríbenos directo por WhatsApp.</p>
+
+  <div class="rm-mini-cta-wrap" style="margin-bottom:34px;">
+    <a class="rm-mini-cta" data-wa="inversiones" href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      Prefiero escribir por WhatsApp ahora
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
 
   <!-- ═══ FORMULARIO DE INVERSIONISTAS (GoHighLevel · link.ridermex.com) ═══
        Flujo EXCLUSIVO de inversionistas — NO mezclar con los leads de motos.
@@ -102,6 +432,7 @@
     <iframe
       src="https://link.ridermex.com/widget/form/lnNhaDJjELG2qlHVrXkC"
       class="ghl-form"
+      loading="lazy"
       style="width:100%;height:624px;min-height:624px;border:none;border-radius:8px;"
       id="inline-lnNhaDJjELG2qlHVrXkC"
       data-layout="{'id':'INLINE'}"
@@ -120,15 +451,152 @@
   </div>
 </section>
 
-<footer>
-  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
-  <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
-  <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
-  <p style="margin-top:14px;">© 2026 RiderMex Inversiones · <a href="index.html">Volver al inicio</a></p>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     12 · PREGUNTAS FRECUENTES — cierre de objeciones antes del footer
+════════════════════════════════════════════════════════════════════════ -->
+<section class="rm-faq" id="preguntas-frecuentes" aria-labelledby="faq-inv-title">
+  <div class="rm-faq-inner rm-in">
+    <span class="rm-faq-eyebrow">Preguntas frecuentes</span>
+    <h2 id="faq-inv-title">Lo que conviene <span>tener claro</span></h2>
+    <p class="rm-faq-sub">Las dudas que más nos plantean antes de invertir. Si la tuya no está aquí, pregúntala por WhatsApp.</p>
+
+    <div class="rm-faq-list">
+
+      <details class="rm-faq-item">
+        <summary>¿Qué es exactamente RiderMex Inversiones?</summary>
+        <div class="rm-faq-answer">
+          <p>Es participar financieramente en el crecimiento de las tiendas de motos RiderMex. No compras una moto individual ni operas una agencia: participas con un ticket definido y un calendario de flujos estimado, mientras RiderMex opera tiendas, inventario, vendedores, financieras y reportes.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cuánto necesito para empezar?</summary>
+        <div class="rm-faq-answer">
+          <p>Depende del modelo. Hay una inversión única de $75,000 MXN, una entrada gradual desde $10,000 MXN con aportaciones mensuales de $5,400 MXN, y un ticket de operación activa de $120,000 MXN. Cada uno tiene un momento distinto para empezar a recibir.</p>
+          <p><a href="#modelos">Comparar los tres modelos →</a></p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿El rendimiento está garantizado?</summary>
+        <div class="rm-faq-answer">
+          <p>No. Los rendimientos publicados son <strong>estimados</strong> y pueden variar según las condiciones operativas del modelo. Provienen de la operación comercial —utilidad por moto, rotación de inventario y estructura de pagos— y no de una tasa fija. Toda inversión implica riesgo.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cuándo empiezo a recibir rendimientos?</summary>
+        <div class="rm-faq-answer">
+          <p>Con el modelo de inversión única de $75,000, a partir del sexto mes. Con la entrada gradual de $10,000 más aportaciones, a partir del mes 18. Con el ticket de operación activa de $120,000, desde el primer mes.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cómo funciona la plusvalía?</summary>
+        <div class="rm-faq-answer">
+          <p>El precio de referencia de una nueva participación sube 5% cada 30 tickets colocados. Con un tope de emisión de 300 tickets, son 10 escalones máximos. Cada incremento se aplica sobre el precio vigente del escalón anterior.</p>
+          <p>La plusvalía <strong>no es una ganancia automática</strong>: solo se materializa si posteriormente existe una venta efectiva de la participación.</p>
+          <p><a href="#plusvalia">Ver el sistema de escalones →</a></p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cuándo puedo vender mi participación?</summary>
+        <div class="rm-faq-answer">
+          <p>La posibilidad de vender se considera 18 meses después de haber liquidado totalmente tu participación, conforme al proceso aplicable. La venta ocurre dentro de la comunidad de inversionistas de RiderMex y requiere que exista un comprador.</p>
+          <p><a href="#salida">Ver cómo funciona la salida →</a></p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Qué respaldo legal tiene?</summary>
+        <div class="rm-faq-answer">
+          <p>El modelo se apoya en contratos formales por escrito, fideicomiso y notario público, además de reportes mensuales de rendimiento y respaldo en inventario y activos. Toda la documentación se revisa antes de participar.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Qué pasa si los clientes compran a crédito?</summary>
+        <div class="rm-faq-answer">
+          <p>La mayoría de las motos se venden a crédito a través de financieras externas (Maxikash, Galgo y Atrato). La financiera asume el crédito del cliente, por lo que la operación no depende de que cada comprador pague puntualmente a RiderMex.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cómo empiezo la conversación?</summary>
+        <div class="rm-faq-answer">
+          <p>Escríbenos por WhatsApp o deja tus datos en el formulario y un asesor de RiderMex Inversiones revisa tu caso contigo: presupuesto, modelo adecuado, disponibilidad, calendario de flujos y documentos.</p>
+          <p><a href="#contacto-inversion">Ir al formulario →</a></p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER INSTITUCIONAL + REDES DE AMBOS ECOSISTEMAS -->
+<footer class="rm-footer">
+  <div class="rm-footer-inner">
+
+    <div class="rm-footer-top">
+
+      <div class="rm-footer-brand">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="160" height="40" loading="lazy" decoding="async">
+        <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+        <p><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
+      </div>
+
+      <nav class="rm-footer-col" aria-label="Navegación del sitio">
+        <p class="rm-footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="motos.html#catalogo">Catálogo de motos</a></li>
+          <li><a href="motos.html#agencias">Agencias</a></li>
+          <li><a href="motos.html#financiamiento">Financiamiento</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <nav class="rm-footer-col" aria-label="RiderMex Inversiones">
+        <p class="rm-footer-col-title">Inversiones</p>
+        <ul>
+          <li><a href="#modelos">Modelos de inversión</a></li>
+          <li><a href="#camino-del-dinero">El camino del dinero</a></li>
+          <li><a href="#plusvalia">Plusvalía</a></li>
+          <li><a href="#salida">Mercado secundario</a></li>
+          <li><a href="simulador/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        </ul>
+      </nav>
+
+      <div class="rm-footer-social" data-social-footer></div>
+
+    </div>
+
+    <div class="rm-footer-bottom">
+      <span>© <span data-year>2026</span> RiderMex Inversiones</span>
+      <span class="rm-footer-legal">
+        <a href="index.html">Volver al inicio</a>
+        <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">RiderMex en los medios</a>
+        <!-- Aviso de privacidad: sin URL final todavía. Cuando exista,
+             sustituye este <span> por un <a href="…">. -->
+        <span class="is-pending" title="Disponible próximamente">Aviso de privacidad · próximamente</span>
+      </span>
+    </div>
+
+    <p class="rm-footer-disclaimer">
+      Los rendimientos presentados son estimados, no garantizados, y pueden variar según las condiciones operativas del modelo.
+      La plusvalía descrita es un valor potencial que solo se materializa si existe una venta efectiva de la participación.
+      Toda inversión implica riesgo: revisa el contrato y la documentación vigente antes de tomar una decisión.
+    </p>
+
+  </div>
 </footer>
 
-<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+<!-- WhatsApp persistente · canal de INVERSIONES (destino desde site-config.js) -->
+<a class="rm-wa-float" data-wa="inversiones" href="contacto.html" target="_blank" rel="noopener noreferrer" aria-label="Habla con un asesor de RiderMex Inversiones por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+  <span>Asesor</span>
 </a>
 
 <!-- ═══ MODELOS DE INVERSIÓN (fuente única de datos, editable) ═══
@@ -192,10 +660,115 @@
   })();
 </script>
 
+<script src="site-config.js"></script>
+<script src="shared.js"></script>
 <script src="script.js"></script>
 
 <!-- Script del formulario GoHighLevel de inversionistas (link.ridermex.com).
      Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->
-<script src="https://link.ridermex.com/js/form_embed.js"></script>
+<script src="https://link.ridermex.com/js/form_embed.js" defer></script>
+
+<!-- ═══ DATOS ESTRUCTURADOS ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://ridermex.com/inversiones.html#webpage",
+      "url": "https://ridermex.com/inversiones.html",
+      "name": "RiderMex Inversiones",
+      "inLanguage": "es-MX",
+      "description": "Modelos de inversión en tiendas de motos RiderMex, con rendimientos estimados, sistema de plusvalía por escalones y respaldo documental.",
+      "isPartOf": { "@type": "WebSite", "url": "https://ridermex.com/", "name": "RiderMex" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ridermex.com/" },
+        { "@type": "ListItem", "position": 2, "name": "RiderMex Inversiones", "item": "https://ridermex.com/inversiones.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ridermex.com/inversiones.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es exactamente RiderMex Inversiones?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es participar financieramente en el crecimiento de las tiendas de motos RiderMex. No compras una moto individual ni operas una agencia: participas con un ticket definido y un calendario de flujos estimado, mientras RiderMex opera tiendas, inventario, vendedores, financieras y reportes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto necesito para empezar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del modelo. Hay una inversión única de $75,000 MXN, una entrada gradual desde $10,000 MXN con aportaciones mensuales de $5,400 MXN, y un ticket de operación activa de $120,000 MXN. Cada uno tiene un momento distinto para empezar a recibir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El rendimiento está garantizado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Los rendimientos publicados son estimados y pueden variar según las condiciones operativas del modelo. Provienen de la operación comercial —utilidad por moto, rotación de inventario y estructura de pagos— y no de una tasa fija. Toda inversión implica riesgo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuándo empiezo a recibir rendimientos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con el modelo de inversión única de $75,000, a partir del sexto mes. Con la entrada gradual de $10,000 más aportaciones, a partir del mes 18. Con el ticket de operación activa de $120,000, desde el primer mes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo funciona la plusvalía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El precio de referencia de una nueva participación sube 5% cada 30 tickets colocados. Con un tope de emisión de 300 tickets, son 10 escalones máximos. Cada incremento se aplica sobre el precio vigente del escalón anterior. La plusvalía no es una ganancia automática: solo se materializa si posteriormente existe una venta efectiva de la participación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuándo puedo vender mi participación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La posibilidad de vender se considera 18 meses después de haber liquidado totalmente tu participación, conforme al proceso aplicable. La venta ocurre dentro de la comunidad de inversionistas de RiderMex y requiere que exista un comprador."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué respaldo legal tiene?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El modelo se apoya en contratos formales por escrito, fideicomiso y notario público, además de reportes mensuales de rendimiento y respaldo en inventario y activos. Toda la documentación se revisa antes de participar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si los clientes compran a crédito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La mayoría de las motos se venden a crédito a través de financieras externas (Maxikash, Galgo y Atrato). La financiera asume el crédito del cliente, por lo que la operación no depende de que cada comprador pague puntualmente a RiderMex."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo empiezo la conversación?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escríbenos por WhatsApp o deja tus datos en el formulario y un asesor de RiderMex Inversiones revisa tu caso contigo: presupuesto, modelo adecuado, disponibilidad, calendario de flujos y documentos."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </body>
 </html>

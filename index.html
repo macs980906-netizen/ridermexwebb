@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RiderMex – Financiamos tu libertad</title>
+  <title>RiderMex – Motos, financiamiento e inversión en México</title>
+  <meta name="description" content="RiderMex distribuye 9 marcas de motos con crédito aprobado en 2 minutos y 4 agencias en CDMX y Edo. de México. Conoce el catálogo, el financiamiento y RiderMex Inversiones." />
+  <link rel="canonical" href="https://ridermex.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0A0A0A" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RiderMex" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:title" content="RiderMex – Motos, financiamiento e inversión en México" />
+  <meta property="og:description" content="9 marcas, +100 modelos y crédito aprobado en 2 minutos. Compra tu moto o conoce los modelos de RiderMex Inversiones." />
+  <meta property="og:url" content="https://ridermex.com/" />
+  <meta property="og:image" content="https://ridermex.com/assets/img/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -525,23 +542,27 @@
     .marca:hover { color: var(--blanco); }
     .marca:hover::after { width: 70%; }
 
-    /* ─── FOOTER ─── */
-    footer {
-      padding: 2rem 2.5rem;
-      border-top: 1px solid var(--gris3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.75rem;
-      color: var(--gris3);
+    /* ─── FOOTER + FAQ ───
+       La maquetación vive en shared.css (.rm-footer / .rm-faq) para que sea
+       idéntica en todo el sitio. Aquí solo se homologa la tipografía de
+       títulos con el resto del Home (Barlow Condensed). */
+    .rm-faq h2,
+    .rm-faq-item summary,
+    .rm-footer-col-title,
+    .social-group-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: .02em;
     }
 
-    footer a {
-      color: var(--gris3);
-      text-decoration: none;
+    .rm-faq h2 {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: clamp(2.1rem, 5vw, 3.25rem);
+      line-height: .98;
     }
 
-    footer a:hover { color: var(--texto); }
+    .rm-faq-item summary { font-size: 1.15rem; letter-spacing: .01em; }
+    .rm-footer-col-title, .social-group-title { letter-spacing: .18em; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
@@ -582,8 +603,6 @@
       .hub-desc { display: none; }
       .hub-cta { padding: 0.6rem 1rem; font-size: 0.75rem; gap: 0.4rem; }
       .hub-divider { display: none; }
-
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
     }
 
     @media (max-width: 420px) {
@@ -843,7 +862,7 @@
       <li><a href="motos.html#agencias">Agencias</a></li>
       <li><a href="inversiones.html">Inversiones</a></li>
       <li><a href="quienes-somos.html">Quiénes somos</a></li>
-      <li><a href="https://wa.me/525599900619" target="_blank" rel="noopener">Contacto</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </nav>
@@ -1062,7 +1081,7 @@
             <h2 class="journey-title">TU MOTO,<br/><em>LISTA PARA</em><br/>ARRANCAR</h2>
             <p class="journey-desc">Cerramos el proceso contigo y te acompañamos hasta que estés listo para subirte a tu nueva moto.</p>
             <div class="journey-cta-wrap">
-              <a class="journey-btn journey-btn-primary" href="https://wa.me/525599900619" target="_blank" rel="noopener">QUIERO EMPEZAR MI PROCESO →</a>
+              <a class="journey-btn journey-btn-primary" data-wa="motos" data-wa-msg="Hola, quiero empezar mi proceso para comprar una moto con RiderMex." href="contacto.html" target="_blank" rel="noopener noreferrer">QUIERO EMPEZAR MI PROCESO →</a>
             </div>
           </div>
         </div>
@@ -1093,14 +1112,144 @@
     </div><!-- /journey-sticky -->
   </section><!-- /journey-outer -->
 
-  <!-- FOOTER -->
-  <footer>
-    <span>© 2026 RiderMex · Financiamos tu libertad</span>
-    <span>
-      <a href="https://wa.me/525599900619" target="_blank" rel="noopener">WhatsApp</a> &nbsp;·&nbsp;
-      <a href="#">Aviso de privacidad</a>
-    </span>
+  <!-- ═══════════════════════════════════════════════════════════════════
+       PREGUNTAS FRECUENTES — CIERRE DEL HOME
+       Narrativa: contenido comercial → Tu camino/recorrido → descubrimiento
+       de RiderMex Inversiones (paso 05 del recorrido) → resolución de
+       objeciones (este bloque) → footer.
+       Las respuestas viven como texto HTML plano dentro de <details>, así
+       que son indexables y accesibles aunque el acordeón esté cerrado.
+       El schema FAQPage correspondiente está al final del <body>.
+  ════════════════════════════════════════════════════════════════════ -->
+  <section class="rm-faq" id="preguntas-frecuentes" aria-labelledby="faq-home-title">
+    <div class="rm-faq-inner rm-in">
+      <span class="rm-faq-eyebrow">Preguntas frecuentes</span>
+      <h2 id="faq-home-title">Resolvemos tus <span>dudas</span></h2>
+      <p class="rm-faq-sub">Lo que más nos preguntan antes de comprar una moto o de invertir con RiderMex.</p>
+
+      <div class="rm-faq-list">
+
+        <details class="rm-faq-item">
+          <summary>¿Qué necesito para comprar una moto a crédito en RiderMex?</summary>
+          <div class="rm-faq-answer">
+            <p>Para iniciar tu trámite basta con tu INE. Trabajamos con financieras externas —Maxikash, Galgo y Atrato— que resuelven la preaprobación en aproximadamente 2 minutos, sin aval. Los requisitos finales dependen de la financiera que te apruebe y te los confirma tu asesor.</p>
+            <p><a href="motos.html#financiamiento">Ver cómo funciona el financiamiento →</a></p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Cuánto tarda la aprobación del crédito?</summary>
+          <div class="rm-faq-answer">
+            <p>La preaprobación se resuelve en aproximadamente 2 minutos con las financieras aliadas. Es una preaprobación: la autorización final y las condiciones exactas (enganche, plazo y pago) dependen de la financiera y del modelo que elijas.</p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Dónde están las agencias de RiderMex?</summary>
+          <div class="rm-faq-answer">
+            <p>Tenemos 4 agencias activas: Naucalpan, CEDA / Central de Abasto, Coapa y Chalco, además de una quinta agencia próxima a abrir. Puedes ver la ubicación exacta de cada una en Google Maps.</p>
+            <p><a href="motos.html#agencias">Ver todas las agencias →</a></p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Qué marcas de motos maneja RiderMex?</summary>
+          <div class="rm-faq-answer">
+            <p>Distribuimos 9 marcas con más de 100 modelos: Vento, Bajaj, Islo, Carabela, Zmoto, Ryder, TVS, CF Moto y UM Motorcycles. La disponibilidad y el precio por modelo se confirman en tu agencia.</p>
+            <p><a href="motos.html#catalogo">Ver el catálogo completo →</a></p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Qué es RiderMex Inversiones y en qué se diferencia de comprar una moto?</summary>
+          <div class="rm-faq-answer">
+            <p>Son dos caminos distintos. Comprar una moto es una operación de compra o crédito para ti. RiderMex Inversiones es participar financieramente en el crecimiento de las tiendas de motos: no compras una moto ni operas una agencia, participas con un ticket definido y un calendario de flujos estimado.</p>
+            <p><a href="inversiones.html">Conocer RiderMex Inversiones →</a></p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Los rendimientos de RiderMex Inversiones están garantizados?</summary>
+          <div class="rm-faq-answer">
+            <p>No. Los rendimientos que publicamos son <strong>estimados</strong> y pueden variar según las condiciones operativas del modelo. Toda inversión implica riesgo. Antes de decidir se revisan contrato, documentación y condiciones del modelo que elijas.</p>
+          </div>
+        </details>
+
+        <details class="rm-faq-item">
+          <summary>¿Cómo hablo con un asesor de RiderMex?</summary>
+          <div class="rm-faq-answer">
+            <p>Desde la página de contacto eliges tu intención y te llevamos directo al canal correcto: un asesor de motos si quieres comprar, o un asesor de RiderMex Inversiones si quieres invertir.</p>
+            <p><a href="contacto.html">Ir a contacto →</a></p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER INSTITUCIONAL + REDES DE AMBOS ECOSISTEMAS -->
+  <footer class="rm-footer">
+    <div class="rm-footer-inner">
+
+      <div class="rm-footer-top">
+
+        <div class="rm-footer-brand">
+          <img src="assets/img/logo-white.png" alt="RiderMex" width="160" height="40" loading="lazy" decoding="async">
+          <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+          <p><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
+        </div>
+
+        <nav class="rm-footer-col" aria-label="Navegación del sitio">
+          <p class="rm-footer-col-title">Navegación</p>
+          <ul>
+            <li><a href="motos.html#catalogo">Catálogo de motos</a></li>
+            <li><a href="motos.html#agencias">Agencias</a></li>
+            <li><a href="motos.html#financiamiento">Financiamiento</a></li>
+            <li><a href="inversiones.html">RiderMex Inversiones</a></li>
+            <li><a href="quienes-somos.html">Quiénes somos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <nav class="rm-footer-col" aria-label="Sucursales">
+          <p class="rm-footer-col-title">Sucursales</p>
+          <ul>
+            <li><a href="motos.html#agencias">Naucalpan</a></li>
+            <li><a href="motos.html#agencias">CEDA / Central de Abasto</a></li>
+            <li><a href="motos.html#agencias">Coapa</a></li>
+            <li><a href="motos.html#agencias">Chalco</a></li>
+            <li><span class="is-pending">5ª agencia · próximamente</span></li>
+          </ul>
+        </nav>
+
+        <!-- Redes de RiderMex y de RiderMex Inversiones, identificadas por
+             ecosistema. Se pintan desde site-config.js: solo aparecen las
+             cuentas con URL real. -->
+        <div class="rm-footer-social" data-social-footer></div>
+
+      </div>
+
+      <div class="rm-footer-bottom">
+        <span>© <span data-year>2026</span> RiderMex · Financiamos tu libertad</span>
+        <span class="rm-footer-legal">
+          <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">RiderMex en los medios</a>
+          <!-- Aviso de privacidad: sin URL final todavía. Cuando exista,
+               sustituye este <span> por un <a href="…">. -->
+          <span class="is-pending" title="Disponible próximamente">Aviso de privacidad · próximamente</span>
+        </span>
+      </div>
+
+      <p class="rm-footer-disclaimer">
+        El financiamiento de motocicletas es otorgado por financieras externas (Maxikash, Galgo y Atrato), sujeto a su aprobación y condiciones vigentes.
+        Los rendimientos de RiderMex Inversiones son estimados, no garantizados, y pueden variar según las condiciones operativas del modelo.
+      </p>
+
+    </div>
   </footer>
+
+  <!-- Configuración central (WhatsApp, redes, agencias). Debe cargar ANTES
+       del script de la página porque journeySteps toma de aquí el destino. -->
+  <script src="site-config.js"></script>
 
   <script>
     // Barra de progreso de scroll
@@ -1198,8 +1347,14 @@
         eyebrow: 'LISTO PARA ARRANCAR',
         title: 'TU MOTO,<br/><em>LISTA PARA</em><br/>ARRANCAR',
         description: 'Cerramos el proceso contigo y te acompañamos hasta que estés listo para subirte a tu nueva moto.',
-        // CTA COMPRA — cambia el href por tu WhatsApp o formulario:
-        cta: { label: 'QUIERO EMPEZAR MI PROCESO', href: 'https://wa.me/525599900619?text=Hola%2C%20quiero%20empezar%20mi%20proceso%20con%20RiderMex' }
+        // CTA COMPRA — canal de MOTOS (se toma de site-config.js; no escribir
+        // el número a mano para no cruzarlo con el de Inversiones):
+        cta: {
+          label: 'QUIERO EMPEZAR MI PROCESO',
+          href: (window.RIDERMEX_CONFIG
+            ? window.RIDERMEX_CONFIG.waUrl('motos', 'Hola, quiero empezar mi proceso para comprar una moto con RiderMex.')
+            : 'contacto.html')
+        }
       },
       {
         id: 'investment-path', step: 'PASO 05 / 05', environment: 'Ruta inversión',
@@ -1363,6 +1518,115 @@
     } else if (rutasMoto.includes(ref)) {
       window.location.replace('motos.html' + window.location.search);
     }
+  </script>
+
+  <!-- Comportamiento compartido: redes del footer, WhatsApp centralizado,
+       año dinámico y animaciones de entrada. -->
+  <script src="shared.js"></script>
+
+  <!-- ═══ DATOS ESTRUCTURADOS ═══
+       Organization + WebSite para la marca, y FAQPage para las preguntas
+       frecuentes del cierre del Home. Las respuestas coinciden literalmente
+       con el texto visible de la sección. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ridermex.com/#organization",
+        "name": "RiderMex",
+        "url": "https://ridermex.com/",
+        "logo": "https://ridermex.com/assets/img/logo.png",
+        "email": "info@ridermex.com",
+        "telephone": "+52-55-1000-0680",
+        "slogan": "Financiamos tu libertad",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Dr. Gustavo Baz 98, Col. Alce Blanco",
+          "addressLocality": "Naucalpan de Juárez",
+          "addressRegion": "Estado de México",
+          "postalCode": "53370",
+          "addressCountry": "MX"
+        },
+        "sameAs": [
+          "https://instagram.com/ridermexof",
+          "https://facebook.com/ridermexof",
+          "https://tiktok.com/@ridermexoficial"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ridermex.com/#website",
+        "url": "https://ridermex.com/",
+        "name": "RiderMex",
+        "inLanguage": "es-MX",
+        "publisher": { "@id": "https://ridermex.com/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ridermex.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué necesito para comprar una moto a crédito en RiderMex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para iniciar tu trámite basta con tu INE. Trabajamos con financieras externas —Maxikash, Galgo y Atrato— que resuelven la preaprobación en aproximadamente 2 minutos, sin aval. Los requisitos finales dependen de la financiera que te apruebe y te los confirma tu asesor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto tarda la aprobación del crédito?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La preaprobación se resuelve en aproximadamente 2 minutos con las financieras aliadas. Es una preaprobación: la autorización final y las condiciones exactas (enganche, plazo y pago) dependen de la financiera y del modelo que elijas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Dónde están las agencias de RiderMex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tenemos 4 agencias activas: Naucalpan, CEDA / Central de Abasto, Coapa y Chalco, además de una quinta agencia próxima a abrir. Puedes ver la ubicación exacta de cada una en Google Maps."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué marcas de motos maneja RiderMex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Distribuimos 9 marcas con más de 100 modelos: Vento, Bajaj, Islo, Carabela, Zmoto, Ryder, TVS, CF Moto y UM Motorcycles. La disponibilidad y el precio por modelo se confirman en tu agencia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué es RiderMex Inversiones y en qué se diferencia de comprar una moto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Son dos caminos distintos. Comprar una moto es una operación de compra o crédito para ti. RiderMex Inversiones es participar financieramente en el crecimiento de las tiendas de motos: no compras una moto ni operas una agencia, participas con un ticket definido y un calendario de flujos estimado."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Los rendimientos de RiderMex Inversiones están garantizados?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Los rendimientos que publicamos son estimados y pueden variar según las condiciones operativas del modelo. Toda inversión implica riesgo. Antes de decidir se revisan contrato, documentación y condiciones del modelo que elijas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo hablo con un asesor de RiderMex?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Desde la página de contacto eliges tu intención y te llevamos directo al canal correcto: un asesor de motos si quieres comprar, o un asesor de RiderMex Inversiones si quieres invertir."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
 </body>

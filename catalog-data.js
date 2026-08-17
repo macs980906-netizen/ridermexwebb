@@ -21,7 +21,9 @@
        precio:      null,        // number | null  (no inventar)
        condiciones: '',          // texto de financiamiento si aplica
        descripcion: '',
-       cta:         { label: 'Cotizar por WhatsApp', href: 'https://wa.me/525599900619' }
+       // El destino de WhatsApp NO se escribe a mano: se toma del canal de
+       // MOTOS definido en site-config.js (RIDERMEX_CONFIG.MOTOS_WHATSAPP_URL).
+       cta:         { label: 'Cotizar por WhatsApp', href: window.RIDERMEX_CONFIG.MOTOS_WHATSAPP_URL }
      }
    ═══════════════════════════════════════════════════════════════════════ */
 

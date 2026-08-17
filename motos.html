@@ -3,8 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RiderMex — Catálogo de Motos</title>
+<title>Agencias RiderMex y financiamiento de motos | Catálogo 9 marcas</title>
+<meta name="description" content="Agencias RiderMex en Naucalpan, CEDA, Coapa y Chalco. Compra tu moto a crédito con aprobación en aproximadamente 2 minutos, sin aval y con 9 marcas disponibles.">
+<link rel="canonical" href="https://ridermex.com/motos.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="geo.region" content="MX-MEX">
+<meta name="geo.placename" content="Naucalpan de Juárez, Ciudad de México">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Agencias RiderMex y financiamiento de motos">
+<meta property="og:description" content="4 agencias en CDMX y Edo. de México, 9 marcas y crédito para moto aprobado en aproximadamente 2 minutos con financieras aliadas.">
+<meta property="og:url" content="https://ridermex.com/motos.html">
+<meta property="og:image" content="https://ridermex.com/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
 
@@ -16,9 +35,10 @@
         <li><a href="index.html">Inicio</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#agencias">Agencias</a></li>
+        <li><a href="#financiamiento">Financiamiento</a></li>
         <li><a href="inversiones.html">Inversiones</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
-        <li><a href="tel:5510000680">55 1000 0680</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
         <li><a href="#credito" class="btn-credito-nav">Tramita tu crédito</a></li>
       </ul>
     </nav>
@@ -368,10 +388,10 @@
 </section>
 
 <!-- ===================== AGENCIAS ===================== -->
-<section id="agencias" class="reveal" style="background:#fafafa;">
+<section id="agencias" class="agencias-section reveal">
   <span class="eyebrow">Sucursales</span>
   <h2 class="section-title">Nuestras <span>Agencias</span></h2>
-  <p class="section-subtitle">Visítanos en cualquiera de nuestras sucursales</p>
+  <p class="section-subtitle">4 agencias activas en CDMX y Estado de México — y una quinta en camino. Visítanos, prueba la moto y sal con tu crédito resuelto.</p>
 
   <!-- ═══ AGENCIAS ═══ Ubicaciones reales de Google Maps (abren en nueva pestaña).
        Estructura preparada para el tour 360: cuando exista la URL, sustituye el
@@ -384,54 +404,216 @@
            { name: "Coapa",                  googleMapsUrl: "https://maps.app.goo.gl/jmXYJPeA9UENghr6A", tour360Url: "" },
            { name: "Chalco",                 googleMapsUrl: "https://maps.app.goo.gl/oTFbM1T9N3GxbDin8", tour360Url: "" },
          ] -->
-  <div class="grid-agencias">
+  <!-- ═══ AGENCIAS ═══
+       Ubicaciones REALES de Google Maps (abren en nueva pestaña).
+       · Cada card es un flex column con .agencia-body en flex:1, de modo que
+         los botones quedan alineados sobre la misma base visual sin importar
+         cuánto texto tenga cada agencia.
+       · Estructura lista para el tour 360: cuando exista la URL, sustituye el
+         <span class="agencia-btn-360 is-soon"> por
+         <a class="agencia-btn agencia-btn-360" href="URL" target="_blank" rel="noopener noreferrer">Ver tienda en 360</a>
+         y rellena `tour360` en site-config.js. Prioridad visual futura:
+         1) Ver tienda en 360 · 2) Abrir Google Maps.
+       · Los datos también viven en site-config.js (AGENCIAS) para el
+         structured data y el footer. -->
+  <div class="grid-agencias rm-stagger">
 
     <div class="agencia-card">
-      <h3>RiderMex Naucalpan</h3>
-      <p><strong>Dirección:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
-      <p><strong>Horario:</strong> Lun–Vie 9:30–18:30, Sáb 9:30–15:30</p>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
+      <div class="agencia-body">
+        <h3>RiderMex Naucalpan</h3>
+        <p class="agencia-zona">Naucalpan de Juárez · Estado de México</p>
+        <dl class="agencia-datos">
+          <dt>Dirección</dt>
+          <dd>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</dd>
+          <dt>Horario</dt>
+          <dd>Lun–Vie 9:30–18:30 · Sáb 9:30–15:30</dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:5510000680">55 1000 0680</a></dd>
+        </dl>
+      </div>
       <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Naucalpan en Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Ver en Google Maps
+        </a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
       </div>
     </div>
 
     <div class="agencia-card">
-      <h3>RiderMex CEDA / Central de Abasto</h3>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-body">
+        <h3>RiderMex CEDA / Central de Abasto</h3>
+        <p class="agencia-zona">Central de Abasto · Ciudad de México</p>
+        <dl class="agencia-datos">
+          <dt>Ubicación</dt>
+          <dd>Consulta la ubicación exacta en Google Maps.</dd>
+          <dt>Horario</dt>
+          <dd>Confírmalo con tu asesor.</dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:5510000680">55 1000 0680</a></dd>
+        </dl>
+      </div>
       <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex CEDA / Central de Abasto en Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Ver en Google Maps
+        </a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
       </div>
     </div>
 
     <div class="agencia-card">
-      <h3>RiderMex Coapa</h3>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-body">
+        <h3>RiderMex Coapa</h3>
+        <p class="agencia-zona">Coapa · Ciudad de México</p>
+        <dl class="agencia-datos">
+          <dt>Ubicación</dt>
+          <dd>Consulta la ubicación exacta en Google Maps.</dd>
+          <dt>Horario</dt>
+          <dd>Confírmalo con tu asesor.</dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:5510000680">55 1000 0680</a></dd>
+        </dl>
+      </div>
       <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Coapa en Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Ver en Google Maps
+        </a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
       </div>
     </div>
 
     <div class="agencia-card">
-      <h3>RiderMex Chalco</h3>
-      <p><strong>Tel:</strong> 55 1000 0680</p>
-      <p>Confirma dirección y horario con tu asesor.</p>
+      <div class="agencia-body">
+        <h3>RiderMex Chalco</h3>
+        <p class="agencia-zona">Chalco · Estado de México</p>
+        <dl class="agencia-datos">
+          <dt>Ubicación</dt>
+          <dd>Consulta la ubicación exacta en Google Maps.</dd>
+          <dt>Horario</dt>
+          <dd>Confírmalo con tu asesor.</dd>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:5510000680">55 1000 0680</a></dd>
+        </dl>
+      </div>
       <div class="agencia-actions">
-        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">📍 Ver en Google Maps</a>
+        <a class="agencia-btn agencia-btn-maps" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer" aria-label="Ver RiderMex Chalco en Google Maps">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Ver en Google Maps
+        </a>
         <span class="agencia-btn agencia-btn-360 is-soon" aria-disabled="true">Tour 360 · Próximamente</span>
       </div>
     </div>
 
     <div class="agencia-card proxima">
-      <h3>5ª agencia <span class="badge-proxima">Próxima apertura</span></h3>
-      <p>Próximamente anunciaremos la ubicación de nuestra quinta agencia.</p>
+      <div class="agencia-body">
+        <h3>5ª agencia <span class="badge-proxima">Próxima apertura</span></h3>
+        <p class="agencia-zona">Ubicación por anunciar</p>
+        <p class="agencia-nota">Estamos por abrir nuestra quinta agencia. Pregunta a tu asesor por la fecha y la zona.</p>
+      </div>
+      <div class="agencia-actions">
+        <a class="agencia-btn agencia-btn-maps" data-wa="motos" data-wa-msg="Hola, quiero saber dónde abrirá la quinta agencia de RiderMex." href="contacto.html" target="_blank" rel="noopener noreferrer">Preguntar por la apertura</a>
+      </div>
     </div>
 
+  </div>
+
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="motos" data-wa-msg="Hola, quiero saber cuál agencia de RiderMex me queda más cerca y qué motos tienen disponibles." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      ¿Cuál agencia te queda más cerca? Pregúntalo por WhatsApp
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FINANCIAMIENTO
+     Bloques cortos y escaneables (pasos numerados, cards de requisitos y
+     financieras aliadas) en lugar de párrafos largos.
+     ▸ Solo datos REALES ya aprobados: financieras Maxikash, Galgo y Atrato;
+       aprobación en aproximadamente 2 minutos; sin aval; sin enganche con
+       Atrato; enganche desde $2,299; pagos semanales desde $199.
+     ▸ NO agregar tasas, plazos, CAT ni requisitos que no estén confirmados.
+════════════════════════════════════════════════════════════════════════ -->
+<section id="financiamiento" class="financiamiento-section reveal">
+  <span class="eyebrow">Financiamiento</span>
+  <h2 class="section-title">Tu moto <span>a crédito</span></h2>
+  <p class="section-subtitle">Trabajamos con financieras externas que resuelven tu preaprobación en aproximadamente 2 minutos. Así funciona el proceso, paso a paso.</p>
+
+  <!-- Pasos del proceso -->
+  <ol class="fin-steps rm-stagger">
+    <li class="fin-step">
+      <span class="fin-step-num">01</span>
+      <h3>Llevas tu INE</h3>
+      <p>Con tu identificación oficial iniciamos la solicitud. Sin aval y sin carpetas de documentos.</p>
+    </li>
+    <li class="fin-step">
+      <span class="fin-step-num">02</span>
+      <h3>Preaprobación en ~2 min</h3>
+      <p>Enviamos tu solicitud a las financieras aliadas y te decimos si estás preaprobado en el momento.</p>
+    </li>
+    <li class="fin-step">
+      <span class="fin-step-num">03</span>
+      <h3>Eliges moto y plan</h3>
+      <p>Con tu monto autorizado revisas modelos, enganche y pago semanal hasta que las cuentas te cierren.</p>
+    </li>
+    <li class="fin-step">
+      <span class="fin-step-num">04</span>
+      <h3>Firmas y te la llevas</h3>
+      <p>Firmas tu contrato en la agencia y sales rodando con entrega inmediata.</p>
+    </li>
+  </ol>
+
+  <!-- Financieras aliadas -->
+  <h3 class="fin-subtitle">Financieras con las que trabajamos</h3>
+  <div class="fin-partners rm-stagger">
+    <div class="fin-partner">
+      <span class="fin-partner-name">Maxikash</span>
+      <p>Financiera aliada para crédito de motocicleta.</p>
+    </div>
+    <div class="fin-partner">
+      <span class="fin-partner-name">Galgo</span>
+      <p>Financiera aliada para crédito de motocicleta.</p>
+    </div>
+    <div class="fin-partner is-highlight">
+      <span class="fin-partner-name">Atrato</span>
+      <p>Única opción con la que puedes estrenar <strong>sin enganche</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Condiciones y requisitos reales -->
+  <div class="fin-facts rm-stagger">
+    <div class="fin-fact">
+      <strong>Desde $2,299</strong>
+      <span>Enganche de referencia</span>
+    </div>
+    <div class="fin-fact">
+      <strong>Desde $199</strong>
+      <span>Pago semanal de referencia</span>
+    </div>
+    <div class="fin-fact">
+      <strong>~2 min</strong>
+      <span>Tiempo de preaprobación</span>
+    </div>
+    <div class="fin-fact">
+      <strong>Sin aval</strong>
+      <span>Solo con tu INE</span>
+    </div>
+  </div>
+
+  <p class="fin-note">
+    Enganche y pago semanal son montos de referencia: el monto exacto depende del modelo, del enganche y del plazo, y la autorización final corresponde a la financiera.
+    RiderMex no otorga el crédito: te conecta con financieras externas y te acompaña durante el trámite.
+  </p>
+
+  <div class="rm-mini-cta-wrap">
+    <a class="rm-mini-cta" data-wa="motos" data-wa-msg="Hola, quiero saber si califico para un crédito de moto con RiderMex." href="contacto.html" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+      ¿Quieres saber si calificas? Consúltalo con un asesor
+      <span class="rm-mini-cta-arrow" aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
@@ -500,22 +682,139 @@
   </div>
 </section>
 
-<footer>
-  <div class="logo"><img src="assets/img/logo-white.png" alt="RiderMex"></div>
-  <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
-  <p style="margin-top:6px;">info@ridermex.com · 55 1000 0680</p>
-  <p style="margin-top:14px;">
-    <a href="https://facebook.com/ridermexof" target="_blank" rel="noopener">Facebook</a> ·
-    <a href="https://instagram.com/ridermexof" target="_blank" rel="noopener">Instagram</a> ·
-    <a href="https://tiktok.com/@ridermexoficial" target="_blank" rel="noopener">TikTok</a>
-  </p>
-  <p style="margin-top:14px;">© 2026 RiderMex — Financiamos tu libertad · <a href="index.html">Volver al inicio</a></p>
+<!-- ═══ PREGUNTAS FRECUENTES · AGENCIAS Y FINANCIAMIENTO ═══
+     Cierre de objeciones antes del footer. Respuestas en HTML plano
+     (indexables) y con schema FAQPage al final del <body>. -->
+<section class="rm-faq" id="preguntas-frecuentes" aria-labelledby="faq-motos-title">
+  <div class="rm-faq-inner rm-in">
+    <span class="rm-faq-eyebrow">Preguntas frecuentes</span>
+    <h2 id="faq-motos-title">Agencias y <span>financiamiento</span></h2>
+    <p class="rm-faq-sub">Lo que más nos preguntan sobre dónde comprar y cómo funciona el crédito.</p>
+
+    <div class="rm-faq-list">
+
+      <details class="rm-faq-item">
+        <summary>¿Dónde hay agencias RiderMex?</summary>
+        <div class="rm-faq-answer">
+          <p>RiderMex tiene 4 agencias activas: <strong>Naucalpan</strong> (Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Estado de México), <strong>CEDA / Central de Abasto</strong> y <strong>Coapa</strong> en Ciudad de México, y <strong>Chalco</strong> en el Estado de México. Una quinta agencia está próxima a abrir.</p>
+          <p><a href="#agencias">Ver ubicaciones en Google Maps →</a></p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Dónde puedo comprar una moto en CDMX o Estado de México?</summary>
+        <div class="rm-faq-answer">
+          <p>En cualquiera de nuestras agencias de Naucalpan, CEDA / Central de Abasto, Coapa y Chalco. En todas puedes ver los modelos disponibles, iniciar tu crédito y salir con la moto el mismo día que firmas.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cómo comprar una moto a crédito en RiderMex?</summary>
+        <div class="rm-faq-answer">
+          <p>El proceso tiene cuatro pasos: llevas tu INE, recibes la preaprobación en aproximadamente 2 minutos, eliges la moto y el plan que te acomoda, y firmas en la agencia para llevártela con entrega inmediata.</p>
+          <p><a href="#financiamiento">Ver el proceso completo →</a></p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Cuánto tarda la aprobación del crédito para moto?</summary>
+        <div class="rm-faq-answer">
+          <p>La preaprobación se resuelve en aproximadamente 2 minutos. Es una preaprobación: la autorización final y las condiciones exactas dependen de la financiera y del modelo que elijas.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Qué opciones de financiamiento de motos existen?</summary>
+        <div class="rm-faq-answer">
+          <p>Trabajamos con tres financieras externas: <strong>Maxikash</strong>, <strong>Galgo</strong> y <strong>Atrato</strong>. Con Atrato puedes estrenar sin enganche. En las demás, el enganche de referencia arranca desde $2,299 y el pago semanal desde $199, según modelo y plazo.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Necesito aval o comprobante de ingresos?</summary>
+        <div class="rm-faq-answer">
+          <p>El trámite inicia sin aval y solo con tu INE. Los requisitos finales los define la financiera que te apruebe, y tu asesor te los confirma antes de firmar.</p>
+        </div>
+      </details>
+
+      <details class="rm-faq-item">
+        <summary>¿Qué marcas y modelos de motos maneja RiderMex?</summary>
+        <div class="rm-faq-answer">
+          <p>Distribuimos 9 marcas con más de 100 modelos: Vento, Bajaj, Islo, Carabela, Zmoto, Ryder, TVS, CF Moto y UM Motorcycles, en categorías de ciudad, trabajo, doble propósito, naked, sport y cuatrimotos.</p>
+          <p><a href="#catalogo">Ver el catálogo por marca →</a></p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER INSTITUCIONAL + REDES DE AMBOS ECOSISTEMAS -->
+<footer class="rm-footer">
+  <div class="rm-footer-inner">
+
+    <div class="rm-footer-top">
+
+      <div class="rm-footer-brand">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="160" height="40" loading="lazy" decoding="async">
+        <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+        <p><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
+      </div>
+
+      <nav class="rm-footer-col" aria-label="Navegación del sitio">
+        <p class="rm-footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="#catalogo">Catálogo de motos</a></li>
+          <li><a href="#agencias">Agencias</a></li>
+          <li><a href="#financiamiento">Financiamiento</a></li>
+          <li><a href="inversiones.html">RiderMex Inversiones</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <nav class="rm-footer-col" aria-label="Sucursales">
+        <p class="rm-footer-col-title">Sucursales</p>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">Naucalpan</a></li>
+          <li><a href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">CEDA / Central de Abasto</a></li>
+          <li><a href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">Coapa</a></li>
+          <li><a href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">Chalco</a></li>
+          <li><span class="is-pending">5ª agencia · próximamente</span></li>
+        </ul>
+      </nav>
+
+      <div class="rm-footer-social" data-social-footer></div>
+
+    </div>
+
+    <div class="rm-footer-bottom">
+      <span>© <span data-year>2026</span> RiderMex · Financiamos tu libertad</span>
+      <span class="rm-footer-legal">
+        <a href="index.html">Volver al inicio</a>
+        <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">RiderMex en los medios</a>
+        <!-- Aviso de privacidad: sin URL final todavía. Cuando exista,
+             sustituye este <span> por un <a href="…">. -->
+        <span class="is-pending" title="Disponible próximamente">Aviso de privacidad · próximamente</span>
+      </span>
+    </div>
+
+    <p class="rm-footer-disclaimer">
+      El financiamiento de motocicletas es otorgado por financieras externas (Maxikash, Galgo y Atrato), sujeto a su aprobación y condiciones vigentes.
+      Enganche y pago semanal publicados son montos de referencia y varían según modelo, enganche y plazo.
+    </p>
+
+  </div>
 </footer>
 
-<a href="https://wa.me/5215510000680" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+<!-- WhatsApp persistente · canal de MOTOS (destino desde site-config.js) -->
+<a class="rm-wa-float" data-wa="motos" href="contacto.html" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp para comprar tu moto">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.5.12-.12.27-.31.41-.46.14-.16.18-.27.27-.45.09-.18.05-.33-.02-.45-.08-.12-.61-1.47-.84-2-.22-.53-.45-.46-.62-.47-.15-.01-.33-.01-.5-.01-.17 0-.45.06-.69.31-.24.25-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.83 2.79 4.43 3.8 2.6 1.02 2.6.68 3.07.64.46-.04 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.16-.48-.28z"/></svg>
+  <span>WhatsApp</span>
 </a>
 
+<script src="site-config.js"></script>
+<script src="shared.js"></script>
 <script src="script.js"></script>
 
 <!-- Catálogo: estructura de datos preparada para crecer (marcas → modelos → moto individual).
@@ -525,5 +824,168 @@
 <!-- Script del formulario GoHighLevel de compradores de moto (link.ia.marketing).
      Ajusta la altura del iframe automáticamente. Se carga una sola vez por página. -->
 <script src="https://link.ia.marketing/js/form_embed.js"></script>
+
+<!-- ═══ DATOS ESTRUCTURADOS · SEO LOCAL ═══
+     AutomotiveBusiness (subtipo de LocalBusiness) por cada agencia REAL.
+     Solo se declara información verificada: nombre, zona y enlace a su ficha
+     de Google Maps. NO se publican horarios, teléfonos alternos, coordenadas
+     ni reviews/ratings que no estén confirmados.
+     · Naucalpan es la única con dirección y horario completos publicados.
+     · Cuando existan dirección/horario de CEDA, Coapa y Chalco, añade
+       "address" y "openingHoursSpecification" a su bloque.
+     Se añade también FAQPage con las preguntas visibles de esta página. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AutomotiveBusiness",
+      "@id": "https://ridermex.com/motos.html#agencia-naucalpan",
+      "name": "RiderMex Naucalpan",
+      "parentOrganization": { "@type": "Organization", "name": "RiderMex", "url": "https://ridermex.com/" },
+      "url": "https://ridermex.com/motos.html#agencias",
+      "telephone": "+52-55-1000-0680",
+      "email": "info@ridermex.com",
+      "hasMap": "https://maps.app.goo.gl/8JzPoomq7miDJgpb6",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Dr. Gustavo Baz 98, Col. Alce Blanco",
+        "addressLocality": "Naucalpan de Juárez",
+        "addressRegion": "Estado de México",
+        "postalCode": "53370",
+        "addressCountry": "MX"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:30",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:30",
+          "closes": "15:30"
+        }
+      ]
+    },
+    {
+      "@type": "AutomotiveBusiness",
+      "@id": "https://ridermex.com/motos.html#agencia-ceda",
+      "name": "RiderMex CEDA / Central de Abasto",
+      "parentOrganization": { "@type": "Organization", "name": "RiderMex", "url": "https://ridermex.com/" },
+      "url": "https://ridermex.com/motos.html#agencias",
+      "telephone": "+52-55-1000-0680",
+      "hasMap": "https://maps.app.goo.gl/184gp5qYb4c3xvca6",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ciudad de México",
+        "addressRegion": "Ciudad de México",
+        "addressCountry": "MX"
+      }
+    },
+    {
+      "@type": "AutomotiveBusiness",
+      "@id": "https://ridermex.com/motos.html#agencia-coapa",
+      "name": "RiderMex Coapa",
+      "parentOrganization": { "@type": "Organization", "name": "RiderMex", "url": "https://ridermex.com/" },
+      "url": "https://ridermex.com/motos.html#agencias",
+      "telephone": "+52-55-1000-0680",
+      "hasMap": "https://maps.app.goo.gl/jmXYJPeA9UENghr6A",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ciudad de México",
+        "addressRegion": "Ciudad de México",
+        "addressCountry": "MX"
+      }
+    },
+    {
+      "@type": "AutomotiveBusiness",
+      "@id": "https://ridermex.com/motos.html#agencia-chalco",
+      "name": "RiderMex Chalco",
+      "parentOrganization": { "@type": "Organization", "name": "RiderMex", "url": "https://ridermex.com/" },
+      "url": "https://ridermex.com/motos.html#agencias",
+      "telephone": "+52-55-1000-0680",
+      "hasMap": "https://maps.app.goo.gl/oTFbM1T9N3GxbDin8",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chalco",
+        "addressRegion": "Estado de México",
+        "addressCountry": "MX"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://ridermex.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Agencias y financiamiento", "item": "https://ridermex.com/motos.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://ridermex.com/motos.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Dónde hay agencias RiderMex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RiderMex tiene 4 agencias activas: Naucalpan (Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Estado de México), CEDA / Central de Abasto y Coapa en Ciudad de México, y Chalco en el Estado de México. Una quinta agencia está próxima a abrir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Dónde puedo comprar una moto en CDMX o Estado de México?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En cualquiera de nuestras agencias de Naucalpan, CEDA / Central de Abasto, Coapa y Chalco. En todas puedes ver los modelos disponibles, iniciar tu crédito y salir con la moto el mismo día que firmas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo comprar una moto a crédito en RiderMex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El proceso tiene cuatro pasos: llevas tu INE, recibes la preaprobación en aproximadamente 2 minutos, eliges la moto y el plan que te acomoda, y firmas en la agencia para llevártela con entrega inmediata."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda la aprobación del crédito para moto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La preaprobación se resuelve en aproximadamente 2 minutos. Es una preaprobación: la autorización final y las condiciones exactas dependen de la financiera y del modelo que elijas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué opciones de financiamiento de motos existen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos con tres financieras externas: Maxikash, Galgo y Atrato. Con Atrato puedes estrenar sin enganche. En las demás, el enganche de referencia arranca desde $2,299 y el pago semanal desde $199, según modelo y plazo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito aval o comprobante de ingresos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El trámite inicia sin aval y solo con tu INE. Los requisitos finales los define la financiera que te apruebe, y tu asesor te los confirma antes de firmar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué marcas y modelos de motos maneja RiderMex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Distribuimos 9 marcas con más de 100 modelos: Vento, Bajaj, Islo, Carabela, Zmoto, Ryder, TVS, CF Moto y UM Motorcycles, en categorías de ciudad, trabajo, doble propósito, naked, sport y cuatrimotos."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </body>
 </html>

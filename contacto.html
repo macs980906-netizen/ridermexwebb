@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto RiderMex | Habla con un asesor de motos o de inversiones</title>
+<meta name="description" content="Elige tu intención y te conectamos con el canal correcto: un asesor para comprar tu moto a crédito, o un asesor de RiderMex Inversiones por WhatsApp.">
+<link rel="canonical" href="https://ridermex.com/contacto.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0A">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Contacto RiderMex | Habla con un asesor">
+<meta property="og:description" content="Comprar una moto o invertir con RiderMex: elige tu camino y habla directo con el asesor correcto.">
+<meta property="og:url" content="https://ridermex.com/contacto.html">
+<meta property="og:image" content="https://ridermex.com/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="RiderMex"></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="motos.html#catalogo">Catálogo</a></li>
+        <li><a href="motos.html#agencias">Agencias</a></li>
+        <li><a href="inversiones.html">Inversiones</a></li>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO homologado al Home -->
+<section class="rm-hero">
+  <div class="rm-hero-orb" aria-hidden="true"></div>
+  <div class="rm-hero-orb rm-hero-orb--2" aria-hidden="true"></div>
+  <div class="rm-hero-inner">
+    <p class="rm-hero-eyebrow">Contacto</p>
+    <h1>¿Ya decidiste<br>qué <em>necesitas</em>?</h1>
+    <p class="rm-hero-sub">
+      Elige tu camino y te llevamos directo con la persona correcta. Sin formularios largos ni rebotes entre áreas.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     DOS INTENCIONES · DOS CANALES SEPARADOS
+     ▸ COMPRAR UNA MOTO  → canal de MOTOS      (WhatsApp 55 1000 0680)
+     ▸ QUIERO INVERTIR   → canal de INVERSIONES (WhatsApp 55 9990 0619)
+     Los destinos NO se escriben a mano: se inyectan desde site-config.js
+     mediante data-wa, para que nunca se crucen los dos canales.
+     El CTA de inversiones abre DIRECTAMENTE el WhatsApp de Inversiones:
+     no lleva a /inversiones ni hace scroll a una sección.
+     El href estático es solo el respaldo si el JS no cargara.
+════════════════════════════════════════════════════════════════════════ -->
+<section class="intenciones-section" aria-labelledby="intenciones-title">
+  <h2 class="section-title" id="intenciones-title">Elige tu <span>camino</span></h2>
+  <p class="section-subtitle">Cada opción abre una conversación directa con un asesor especializado.</p>
+
+  <div class="intenciones-grid rm-stagger">
+
+    <!-- 1 · COMPRAR UNA MOTO -->
+    <article class="intencion-card intencion-card--moto">
+      <div class="intencion-body">
+        <span class="intencion-kicker">Para compradores</span>
+        <h3>Comprar una moto</h3>
+        <p>Quieres estrenar moto, conocer modelos disponibles o saber si calificas para un crédito. Un asesor de motos revisa tu caso.</p>
+        <ul class="intencion-list">
+          <li>Preaprobación en aproximadamente 2 minutos</li>
+          <li>Solo con tu INE y sin aval</li>
+          <li>9 marcas y más de 100 modelos</li>
+          <li>4 agencias en CDMX y Estado de México</li>
+        </ul>
+      </div>
+      <div class="intencion-actions">
+        <a class="intencion-btn intencion-btn--wa"
+           data-wa="motos"
+           data-wa-msg="Hola, quiero información para comprar una moto con RiderMex."
+           href="https://wa.me/5215510000680"
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+          Hablar con un asesor de motos
+        </a>
+        <a class="intencion-link" href="motos.html#credito">O llena la solicitud de crédito →</a>
+      </div>
+    </article>
+
+    <!-- 2 · QUIERO INVERTIR → WhatsApp de Inversiones, directo -->
+    <article class="intencion-card intencion-card--inv">
+      <div class="intencion-body">
+        <span class="intencion-kicker">Para inversionistas</span>
+        <h3>Quiero invertir</h3>
+        <p>Quieres entender los modelos, la plusvalía o revisar si tu presupuesto encaja. Te abrimos el WhatsApp de RiderMex Inversiones para que hables directo con un asesor.</p>
+        <ul class="intencion-list">
+          <li>Modelos desde $10,000 MXN de entrada</li>
+          <li>Rendimientos estimados según el modelo</li>
+          <li>Contrato, fideicomiso y notario público</li>
+          <li>Respaldo en operación real de 4 agencias</li>
+        </ul>
+      </div>
+      <div class="intencion-actions">
+        <a class="intencion-btn intencion-btn--wa"
+           data-wa="inversiones"
+           href="https://wa.me/5215599900619"
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.46 1.29 4.91L2 22l5.31-1.39a9.84 9.84 0 0 0 4.73 1.2c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.07c-1.49 0-2.94-.4-4.2-1.15l-.3-.18-3.15.83.84-3.07-.2-.32a8.18 8.18 0 0 1-1.25-4.27c0-4.54 3.7-8.24 8.27-8.24 4.56 0 8.26 3.7 8.26 8.24 0 4.55-3.7 8.16-8.27 8.16Z"/></svg>
+          Hablar con un asesor de inversiones
+        </a>
+        <a class="intencion-link" href="inversiones.html">O primero conoce el modelo →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══ OTROS CANALES ═══ -->
+<section class="canales-section">
+  <span class="eyebrow">Otros canales</span>
+  <h2 class="section-title">También puedes <span>encontrarnos</span> así</h2>
+
+  <div class="canales-grid rm-stagger">
+    <div class="canal-card">
+      <h3>Teléfono</h3>
+      <p><a href="tel:5510000680">55 1000 0680</a></p>
+      <span>Atención de las agencias</span>
+    </div>
+    <div class="canal-card">
+      <h3>Correo</h3>
+      <p><a href="mailto:info@ridermex.com">info@ridermex.com</a></p>
+      <span>Para temas administrativos</span>
+    </div>
+    <div class="canal-card">
+      <h3>Visítanos</h3>
+      <p><a href="motos.html#agencias">Ver las 4 agencias</a></p>
+      <span>Naucalpan · CEDA · Coapa · Chalco</span>
+    </div>
+    <div class="canal-card">
+      <h3>Oficina</h3>
+      <p><a href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">Naucalpan de Juárez</a></p>
+      <span>Av. Dr. Gustavo Baz 98, Col. Alce Blanco</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER INSTITUCIONAL + REDES DE AMBOS ECOSISTEMAS -->
+<footer class="rm-footer">
+  <div class="rm-footer-inner">
+
+    <div class="rm-footer-top">
+
+      <div class="rm-footer-brand">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="160" height="40" loading="lazy" decoding="async">
+        <p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México 53370</p>
+        <p><a href="mailto:info@ridermex.com">info@ridermex.com</a> · <a href="tel:5510000680">55 1000 0680</a></p>
+      </div>
+
+      <nav class="rm-footer-col" aria-label="Navegación del sitio">
+        <p class="rm-footer-col-title">Navegación</p>
+        <ul>
+          <li><a href="motos.html#catalogo">Catálogo de motos</a></li>
+          <li><a href="motos.html#agencias">Agencias</a></li>
+          <li><a href="motos.html#financiamiento">Financiamiento</a></li>
+          <li><a href="inversiones.html">RiderMex Inversiones</a></li>
+          <li><a href="quienes-somos.html">Quiénes somos</a></li>
+          <li><a href="index.html">Inicio</a></li>
+        </ul>
+      </nav>
+
+      <nav class="rm-footer-col" aria-label="Sucursales">
+        <p class="rm-footer-col-title">Sucursales</p>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener noreferrer">Naucalpan</a></li>
+          <li><a href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener noreferrer">CEDA / Central de Abasto</a></li>
+          <li><a href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener noreferrer">Coapa</a></li>
+          <li><a href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener noreferrer">Chalco</a></li>
+          <li><span class="is-pending">5ª agencia · próximamente</span></li>
+        </ul>
+      </nav>
+
+      <div class="rm-footer-social" data-social-footer></div>
+
+    </div>
+
+    <div class="rm-footer-bottom">
+      <span>© <span data-year>2026</span> RiderMex · Financiamos tu libertad</span>
+      <span class="rm-footer-legal">
+        <a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">RiderMex en los medios</a>
+        <!-- Aviso de privacidad: sin URL final todavía. Cuando exista,
+             sustituye este <span> por un <a href="…">. -->
+        <span class="is-pending" title="Disponible próximamente">Aviso de privacidad · próximamente</span>
+      </span>
+    </div>
+
+  </div>
+</footer>
+
+<script src="site-config.js"></script>
+<script src="shared.js"></script>
+<script src="script.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "url": "https://ridermex.com/contacto.html",
+  "name": "Contacto RiderMex",
+  "inLanguage": "es-MX",
+  "about": {
+    "@type": "Organization",
+    "name": "RiderMex",
+    "url": "https://ridermex.com/",
+    "email": "info@ridermex.com",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+52-55-1000-0680",
+        "contactType": "sales",
+        "name": "Compra de motocicletas",
+        "areaServed": "MX",
+        "availableLanguage": "Spanish"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+52-55-9990-0619",
+        "contactType": "sales",
+        "name": "RiderMex Inversiones",
+        "areaServed": "MX",
+        "availableLanguage": "Spanish"
+      }
+    ]
+  }
+}
+</script>
+</body>
+</html>
