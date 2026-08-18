@@ -10,10 +10,15 @@ Allow: /
 
 # Archivos fuente y de trabajo: no son páginas, no aportan a la búsqueda.
 Disallow: /assets/CATALOGO/
-Disallow: /assets/RiderMex_Simulador_Inversion_V3_META_300.html
 Disallow: /assets/index%20(3).html
 Disallow: /scripts/
 Disallow: /docs/
+
+# Versiones anteriores del simulador. Se conservan en disco por historial,
+# pero ninguna navegación pública apunta a ellas. El simulador oficial es
+# /simulador-inversion (V4).
+Disallow: /assets/RiderMex_Simulador_Inversion_V3_META_300.html
+Disallow: /calculadora-inversion/
 
 # Parámetros de campaña: evitan que se indexen variantes duplicadas del Home.
 Disallow: /*?ref=

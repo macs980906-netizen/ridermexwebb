@@ -122,3 +122,47 @@ Facebook de RiderMex Inversiones. **Faltan por proporcionar:** YouTube y
 LinkedIn de ambas marcas, y TikTok de Inversiones. Están como cadena vacía
 en `site-config.js` y **no se renderizan** en el footer: no se inventan
 cuentas ni se enlaza a la home genérica de ninguna red.
+
+## Simulador de inversión
+
+| | |
+|---|---|
+| Archivo oficial | `RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html` (raíz) |
+| Ruta pública | `/simulador-inversion` (reescritura en `vercel.json`) |
+| Cómo se abre | CTA compacto en `inversiones.html#simulador`, en pestaña nueva |
+| Evento | `simulator_click` (ver `site-ui.js`; solo se envía si hay GA4) |
+
+**Nunca se muestra embebido.** Las versiones anteriores
+(`calculadora-inversion/` y `assets/RiderMex_Simulador_Inversion_V3_META_300.html`)
+se conservan en disco por historial, pero **ninguna navegación pública apunta
+a ellas** y están en `Disallow` del `robots.txt`.
+
+La ruta limpia funciona en Vercel; con un servidor estático local plano hay
+que abrir el archivo directamente (mismo caso que `/catalogo`).
+
+## Marcas nuevas: TVS, CF Lite y Honda
+
+Fichas publicadas con datos técnicos reales y **fotografías pendientes**: la
+ficha muestra el placeholder del catálogo, no una imagen inventada. Para
+cargarlas, sigue el `LEEME.md` de cada carpeta en
+`assets/img/motos/catalogo/{tvs,cflite,honda}/`.
+
+Campos marcados como "depende de la versión" (no se afirman como definitivos):
+
+- **TVS Apache RTR 160 4V FI**: freno trasero y llanta trasera.
+- **TVS Apache RTR 200 4V FI**: modos de manejo.
+- **CF Lite 250SR**: embrague antirrebote (slipper) y pantalla TFT.
+- **CF Lite 250DUAL**: ABS de doble canal, versiones por mercado, y no se
+  declara SOHC/DOHC.
+- **Honda NAVI**: sin potencia, torque, velocidad, rendimiento, año ni
+  precio. La transmisión queda "por confirmar".
+
+## Analítica y Search Console
+
+- **GA4: no instalado.** No hay ningún Measurement ID `G-…` en el proyecto y
+  no se inventó. `site-ui.js` ya emite `simulator_click` y `share` vía
+  `gtag`/`dataLayer`: en cuanto se pegue el snippet de GA4, los eventos
+  empiezan a llegar sin tocar más código.
+- **Search Console: sin verificar.** No hay meta de verificación ni archivo
+  HTML de Google. Lo técnico ya está listo (sitemap, robots, canonicals,
+  metadata); falta pegar el token de verificación del dominio final.

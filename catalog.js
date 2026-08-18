@@ -31,6 +31,9 @@
     ryder: "Modelos Ryder disponibles en RiderMex, incluyendo motocarros de carga y de pasajeros.",
     um: "Modelos UM Motorcycles disponibles en RiderMex, con la gama Renegade, DSR y Xtreet.",
     vento: "Modelos Vento disponibles en RiderMex: motonetas, scooters, urbanas y doble propósito.",
+    tvs: "Modelos TVS disponibles en RiderMex, con la urbana Stryker y la gama deportiva Apache RTR.",
+    cflite: "Modelos CF Lite disponibles en RiderMex: naked 250NK, deportiva 250SR y doble propósito 250DUAL.",
+    honda: "Modelos Honda disponibles en RiderMex, encabezados por la urbana compacta NAVI.",
     zmoto: "Modelos Zmoto disponibles en RiderMex, con opciones urbanas, scooters y todo terreno."
   };
 
@@ -231,6 +234,8 @@
       '<div class="cat-toolbar">' +
         '<a class="btn-cat btn-cat-ghost" href="#/">‹ Volver al catálogo</a>' +
         '<span class="cat-count">' + models.length + (models.length === 1 ? " modelo" : " modelos") + "</span>" +
+        shareButton("Motos " + brand.name + " | RiderMex",
+                    CATALOG_URL + "#/marca/" + brand.slug) +
       "</div>";
 
     var body;
@@ -247,6 +252,7 @@
 
     root.innerHTML = bc + head + body;
     bindGlow();
+    bindShare();
   }
 
   function modelCard(m) {
@@ -376,6 +382,8 @@
         '<div class="detail-actions">' +
           '<a class="btn-cat btn-cat-primary" href="' + esc(formUrl(m)) + '">Quiero esta moto</a>' +
           '<a class="btn-cat btn-cat-ghost" href="#/marca/' + esc(m.brandSlug) + '">Volver al catálogo</a>' +
+          shareButton(m.brand + " " + m.model + " | RiderMex",
+                      CATALOG_URL + "#/moto/" + m.slug) +
         "</div>" +
       "</div>";
 
@@ -459,9 +467,23 @@
 
     bindGallery();
     bindGlow();
+    bindShare();
   }
 
   // ── componentes compartidos ──────────────────────────────────────────
+  // Compartir: usa Web Share API en móvil y copia el enlace como respaldo.
+  // El comportamiento vive en site-ui.js (data-share).
+  function shareButton(title, url) {
+    return '<button type="button" class="btn-share" data-share' +
+      ' data-share-title="' + esc(title) + '"' +
+      ' data-share-url="' + esc(url) + '"' +
+      ' aria-label="Compartir ' + esc(title) + '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
+      '<path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>' +
+      '<span class="share-label">Compartir</span></button>';
+  }
+
   function searchBox(placeholder, value) {
     return '<div class="cat-search">' +
       '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>' +
@@ -497,6 +519,37 @@
   }
 
   // efecto glow que sigue al cursor (coherente con el resto del sitio)
+  // site-ui.js enlaza los [data-share] presentes al cargar la página; el
+  // catálogo los crea después de cada render, así que se enlazan aquí.
+  function bindShare() {
+    root.querySelectorAll("[data-share]").forEach(function (btn) {
+      if (btn.dataset.shareBound) return;
+      btn.dataset.shareBound = "1";
+      btn.addEventListener("click", async function () {
+        var url = btn.getAttribute("data-share-url") || location.href;
+        var title = btn.getAttribute("data-share-title") || document.title;
+        var label = btn.querySelector(".share-label");
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: title, url: url });
+            if (window.rmTrack) window.rmTrack("share", { method: "web_share", item: title });
+            return;
+          } catch (e) { if (e && e.name === "AbortError") return; }
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          if (label) {
+            var prev = label.textContent;
+            label.textContent = "¡Enlace copiado!";
+            btn.classList.add("is-copied");
+            setTimeout(function () { label.textContent = prev; btn.classList.remove("is-copied"); }, 2000);
+          }
+          if (window.rmTrack) window.rmTrack("share", { method: "copy_link", item: title });
+        } catch (e) { window.prompt("Copia el enlace:", url); }
+      });
+    });
+  }
+
   function bindGlow() {
     root.querySelectorAll(".brand-card, .model-card").forEach(function (card) {
       card.addEventListener("mousemove", function (e) {

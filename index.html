@@ -1088,6 +1088,49 @@
       .exp-collage { aspect-ratio: 1.4/1; }
     }
 
+    /* ── SECCIÓN · DOS CAMINOS (CTA final antes del FAQ) ──
+       Cierra el Home dejando que el usuario elija su intención. OJO: esto
+       NO cambia contacto.html, donde "Quiero invertir" sigue abriendo
+       directamente el WhatsApp de Inversiones. */
+    .caminos { background: #060606; border-top: 1px solid var(--gris3); }
+    .caminos-inner { max-width: 1240px; margin: 0 auto; padding: clamp(3.5rem,7vw,5.5rem) 2rem; }
+    .caminos-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .camino-card {
+      position: relative; overflow: hidden; isolation: isolate;
+      display: flex; flex-direction: column;
+      border: 1px solid var(--gris3); border-radius: 16px;
+      padding: clamp(1.75rem,3vw,2.5rem); text-decoration: none;
+      background: var(--gris1);
+      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .camino-card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(0,0,0,.5); }
+    .camino-card--moto:hover { border-color: var(--rojo); }
+    .camino-card--inv:hover { border-color: var(--verde); }
+    .camino-card::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; opacity: .5;
+      background: radial-gradient(120% 90% at 15% 0%, rgba(204,0,0,.20), transparent 60%);
+    }
+    .camino-card--inv::before { background: radial-gradient(120% 90% at 15% 0%, rgba(0,200,150,.18), transparent 60%); }
+    .camino-tag {
+      font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; font-size:.72rem; color: var(--rojo); margin-bottom:.9rem;
+    }
+    .camino-card--inv .camino-tag { color: var(--verde); }
+    .camino-card h3 {
+      font-family:'Barlow Condensed',sans-serif; font-weight:900; text-transform:uppercase;
+      font-size: clamp(1.7rem,3.2vw,2.4rem); line-height:1; color:#fff; margin-bottom:.85rem;
+    }
+    .camino-card p { color: var(--texto); font-size:.98rem; line-height:1.65; margin-bottom:1.8rem; }
+    .camino-go {
+      margin-top:auto; display:inline-flex; align-items:center; gap:.5rem;
+      font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; font-size:.92rem; color:#fff;
+    }
+    .camino-card--moto .camino-go { color: var(--rojo2); }
+    .camino-card--inv .camino-go { color: var(--verde); }
+    .camino-card:focus-visible { outline:2px solid var(--rojo); outline-offset:4px; }
+    @media (max-width: 760px) { .caminos-grid { grid-template-columns: 1fr; } }
+
     /* ── SECCIÓN · PREGUNTAS FRECUENTES (AEO/GEO) ──
        Cada respuesta abre con la respuesta directa en 1–2 frases y luego
        amplía contexto; el contenido es visible en la página (no oculto),
@@ -1144,6 +1187,7 @@
   <link rel="stylesheet" href="site-header.css">
   <link rel="stylesheet" href="site-footer.css">
   <script src="site-header.js" defer></script>
+<script src="site-ui.js" defer></script>
 </head>
 <body>
 
@@ -1212,80 +1256,9 @@
     </div>
   </div>
 
-  <!-- ═══ SECCIÓN 3 · MARCAS PROTAGONISTAS ═══ -->
-  <section class="home-section reveal" id="marcas">
-    <div class="home-section-head">
-      <span class="home-eyebrow">Nuestras marcas</span>
-      <h2 class="home-h2">Explora por <em>marca</em></h2>
-      <p class="home-lead">Distribuimos las marcas más buscadas del mercado. Haz clic en una marca para ver su catálogo completo.</p>
-    </div>
-    <div class="brand-grid">
-      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/vento">
-        <span class="brand-tag">Destacada</span>
-        <div class="brand-card-media"><img src="assets/img/motos/vento-crossmax-300-rally.jpg" alt="Vento" loading="lazy" decoding="async"></div>
-        <div class="brand-card-body"><div class="brand-card-name">Vento</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
-      </a>
-      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/bajaj">
-        <span class="brand-tag">Destacada</span>
-        <div class="brand-card-media"><img src="assets/img/motos/bajaj-dominar-400.webp" alt="Bajaj" loading="lazy" decoding="async"></div>
-        <div class="brand-card-body"><div class="brand-card-name">Bajaj</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
-      </a>
-      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/cfmoto">
-        <span class="brand-tag">Destacada</span>
-        <div class="brand-card-media"><img src="assets/img/motos/catalogo/cfmoto/nk250fun-1.png" alt="CF Moto" loading="lazy" decoding="async"></div>
-        <div class="brand-card-body"><div class="brand-card-name">CF Moto</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
-      </a>
-    </div>
-    <!-- Resto de marcas (clicables → su catálogo; próximas sin ruta aún). -->
-    <div class="brand-mini">
-      <a class="brand-chip" href="catalogo.html#/marca/zmoto">Zmoto</a>
-      <a class="brand-chip" href="catalogo.html#/marca/ryder">Ryder</a>
-      <a class="brand-chip" href="catalogo.html#/marca/carabela">Carabela</a>
-      <a class="brand-chip" href="catalogo.html#/marca/islo">Islo</a>
-      <a class="brand-chip" href="catalogo.html#/marca/um">UM Motorcycles</a>
-      <a class="brand-chip is-soon" href="catalogo.html">TVS <span class="soon">Próx.</span></a>
-      <a class="brand-chip is-soon" href="catalogo.html">CF Lite <span class="soon">Próx.</span></a>
-      <a class="brand-chip is-soon" href="catalogo.html">Honda <span class="soon">Próx.</span></a>
-    </div>
-  </section>
-
-  <!-- ═══ SECCIÓN 4 · MOTOS DESTACADAS ═══ -->
-  <section class="home-section home-section--alt reveal">
-    <div class="home-section-head">
-      <span class="home-eyebrow">Modelos disponibles</span>
-      <h2 class="home-h2">Motos <em>destacadas</em></h2>
-      <p class="home-lead">Una selección de los modelos más buscados. Abre la ficha para ver especificaciones y solicitarla.</p>
-    </div>
-    <div class="featured-grid">
-      <a class="moto-card" href="catalogo.html#/marca/vento">
-        <div class="moto-card-media"><img src="assets/img/motos/vento-crossmax-300-rally.jpg" alt="Vento Crossmax Rally" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">Vento</span><span class="moto-card-name">Crossmax Rally</span><span class="moto-card-cat">Doble propósito</span><span class="moto-card-foot">Ver modelos →</span></div>
-      </a>
-      <a class="moto-card" href="catalogo.html#/moto/bajaj-dominar-400-ug">
-        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/7gOgd7IxhELCRVvsDNi4Lh/918f6a7325dc74b0f7b15b82b206ad65/imagen_principal.jpg?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Dominar 400 UG" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Dominar 400 UG</span><span class="moto-card-cat">Naked sport</span><span class="moto-card-foot">Ver modelo →</span></div>
-      </a>
-      <a class="moto-card" href="catalogo.html#/moto/bajaj-pulsar-n-160">
-        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/Bnojn2wxWVc2qWx96qWLm/630f174fadac572ee64707af3ee69d05/Moto_Bajaj_Pulsar_N_160_Galgo_M%C3%A9xico.png?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Pulsar N 160" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Pulsar N 160</span><span class="moto-card-cat">Naked</span><span class="moto-card-foot">Ver modelo →</span></div>
-      </a>
-      <a class="moto-card" href="catalogo.html#/moto/cfmoto-nk300">
-        <div class="moto-card-media"><img src="assets/img/motos/catalogo/cfmoto/nk300-2.png" alt="CF Moto NK300" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">CF Moto</span><span class="moto-card-name">NK300</span><span class="moto-card-cat">Naked</span><span class="moto-card-foot">Ver modelo →</span></div>
-      </a>
-      <a class="moto-card" href="catalogo.html#/moto/cfmoto-230-dual">
-        <div class="moto-card-media"><img src="assets/img/motos/catalogo/cfmoto/230dual-1.jpg" alt="CF Moto 230 DUAL" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">CF Moto</span><span class="moto-card-name">230 DUAL</span><span class="moto-card-cat">Doble propósito</span><span class="moto-card-foot">Ver modelo →</span></div>
-      </a>
-      <a class="moto-card" href="catalogo.html#/moto/bajaj-avenger-cruise-220">
-        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/1lOhw7NHuiwmebq9a9Ihnc/73fc85f769ea62664f50ba64c1b08fb0/Bajaj_Avenger_220_Cruise_Galgo_M_xico.png?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Avenger Cruise 220" loading="lazy" decoding="async"></div>
-        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Avenger Cruise 220</span><span class="moto-card-cat">Cruiser</span><span class="moto-card-foot">Ver modelo →</span></div>
-      </a>
-    </div>
-    <div class="home-cta-row"><a href="catalogo.html" class="btn-r btn-r--primary">Ver todo el catálogo →</a></div>
-  </section>
-
-  <!-- ═══ SECCIÓN 5 · CÓMO COMPRAR TU MOTO ═══ -->
+  <!-- ═══ SECCIÓN 3 · PROCESO RIDERMEX · CÓMO COMPRAS TU MOTO ═══
+       Va justo después del respaldo/métricas: responde de inmediato
+       "¿cómo compro una moto en RiderMex?" antes de cualquier otra cosa. -->
   <section class="home-section reveal" id="como-comprar">
     <div class="home-section-head">
       <span class="home-eyebrow">Proceso RiderMex</span>
@@ -1293,7 +1266,7 @@
       <p class="home-lead">Un proceso simple y rápido: de elegir tu moto a salir rodando, sin vueltas ni papeleos eternos.</p>
     </div>
     <div class="proceso-grid" style="grid-template-columns:repeat(5,1fr);">
-      <div class="proceso-step"><div class="proceso-num">01</div><h3>Elige tu moto</h3><p>Explora el catálogo con +100 modelos de más de 10 marcas.</p></div>
+      <div class="proceso-step"><div class="proceso-num">01</div><h3>Elige tu moto</h3><p>Explora el catálogo: 149 modelos de 11 marcas.</p></div>
       <div class="proceso-step"><div class="proceso-num">02</div><h3>Aprobación con tu INE</h3><p>Solicita tu crédito: aprobación en 2 minutos y sin aval.</p></div>
       <div class="proceso-step"><div class="proceso-num">03</div><h3>Revisamos tus opciones</h3><p>Un asesor confirma tu plan de pago y enganche.</p></div>
       <div class="proceso-step"><div class="proceso-num">04</div><h3>Firma tu contrato</h3><p>Formalizamos el proceso en la agencia más cercana.</p></div>
@@ -1302,56 +1275,7 @@
     <div class="home-cta-row"><a href="motos.html#formulario-motos" class="btn-r btn-r--primary">Tramita tu crédito →</a></div>
   </section>
 
-  <!-- ═══ SECCIÓN 6 · BENEFICIOS ═══ -->
-  <section class="home-section home-section--alt reveal">
-    <div class="home-section-head">
-      <span class="home-eyebrow">Por qué RiderMex</span>
-      <h2 class="home-h2">Ventajas que te <em>hacen avanzar</em></h2>
-    </div>
-    <div class="benef-grid">
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Aprobación en 2 minutos</h3><p>Solo con tu INE. Sin aval y sin trámites eternos.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div><h3>Financiamiento a tu medida</h3><p>Pagos semanales accesibles ajustados a tu bolsillo.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13"/></svg></span><div><h3>Más de 10 marcas</h3><p>+100 modelos disponibles para elegir la moto ideal.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Entrega inmediata</h3><p>Firmas y te la llevas el mismo día que apruebas.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8Z"/></svg></span><div><h3>5 agencias físicas</h3><p>Naucalpan, CEDA, Coapa, Chalco y nuestra 5ª sucursal.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Sin enganche cuando aplica</h3><p>Opciones de arranque flexibles según tu perfil.</p></div></div>
-    </div>
-  </section>
-
-  <!-- ═══ SECCIÓN 6.5 · EXPERIENCIA RIDERMEX (fotos reales de showroom) ═══ -->
-  <section class="exp-band reveal">
-    <div class="exp-inner">
-      <div class="exp-copy">
-        <span class="home-eyebrow">Experiencia RiderMex</span>
-        <h2>Motos reales, <em>tiendas reales</em></h2>
-        <p>Cientos de riders ya estrenaron su moto con nosotros. Visítanos en cualquiera de nuestras 5 agencias: catálogo en piso, asesoría directa y entrega el mismo día.</p>
-        <a href="#agencias-home" class="btn-r btn-r--primary">Ver agencias →</a>
-      </div>
-      <div class="exp-collage">
-        <img class="tall" src="assets/img/showroom/showroom-1.jpg" alt="Showroom RiderMex" loading="lazy" decoding="async">
-        <img src="assets/img/showroom/showroom-3.jpg" alt="Cliente RiderMex con su moto" loading="lazy" decoding="async">
-        <img src="assets/img/showroom/showroom-2.jpg" alt="Piso de ventas RiderMex" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SECCIÓN 7 · AGENCIAS ═══ -->
-  <section class="home-section reveal" id="agencias-home">
-    <div class="home-section-head">
-      <span class="home-eyebrow">Dónde encontrarnos</span>
-      <h2 class="home-h2">Nuestras <em>agencias</em></h2>
-      <p class="home-lead">5 sucursales para atenderte de cerca. Consulta ubicación y horarios en cada una.</p>
-    </div>
-    <div class="home-agencias-grid">
-      <div class="home-ag-card"><h3>Naucalpan</h3><p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan, Edo. Méx.</p><a class="ag-map" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
-      <div class="home-ag-card"><h3>CEDA</h3><p>Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
-      <div class="home-ag-card"><h3>Coapa</h3><p>Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
-      <div class="home-ag-card"><h3>Chalco</h3><p>Francisco Javier Mina 13, Chalco Centro, Chalco, Edo. Méx.</p><a class="ag-map" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
-      <div class="home-ag-card"><h3>5ª sucursal</h3><p>Ya operando. Consulta la ubicación más cercana con tu asesor.</p><a class="ag-map" href="motos.html#agencias">Ver todas →</a></div>
-    </div>
-  </section>
-
-  <!-- ═══ SECCIÓN 8 (bridge) · TRANSICIÓN AL RECORRIDO ═══ -->
+  <!-- ═══ SECCIÓN 4 (bridge) · TRANSICIÓN AL RECORRIDO ═══ -->
   <div class="camino-divider reveal">
     <span class="camino-divider-kicker">El camino no termina en tu moto</span>
     <span class="camino-divider-label">Tu <em>camino</em></span>
@@ -1518,7 +1442,7 @@
     </div><!-- /journey-sticky -->
   </section><!-- /journey-outer -->
 
-  <!-- ═══ SECCIÓN 9 · DESCUBRE RIDERMEX INVERSIONES ═══
+  <!-- ═══ SECCIÓN 5 · DESCUBRE RIDERMEX INVERSIONES ═══
        Primera aparición fuerte de inversión: después del recorrido, como
        segunda ruta del ecosistema. El CTA lleva a la experiencia de inversiones. -->
   <section class="inv-discover reveal" id="inversiones-descubre">
@@ -1536,7 +1460,164 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 10 · PREGUNTAS FRECUENTES (cierre del Home) ═══
+  <!-- ═══ SECCIÓN 6 · MARCAS PROTAGONISTAS ═══ -->
+  <section class="home-section reveal" id="marcas">
+    <div class="home-section-head">
+      <span class="home-eyebrow">Nuestras marcas</span>
+      <h2 class="home-h2">Explora por <em>marca</em></h2>
+      <p class="home-lead">Distribuimos las marcas más buscadas del mercado. Haz clic en una marca para ver su catálogo completo.</p>
+    </div>
+    <div class="brand-grid">
+      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/vento">
+        <span class="brand-tag">Destacada</span>
+        <div class="brand-card-media"><img src="assets/img/motos/vento-crossmax-300-rally.jpg" alt="Vento" loading="lazy" decoding="async"></div>
+        <div class="brand-card-body"><div class="brand-card-name">Vento</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
+      </a>
+      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/ryder">
+        <span class="brand-tag">Destacada</span>
+        <div class="brand-card-media"><img src="assets/img/motos/ryder-rd3-300.jpg" alt="Motocicletas Ryder disponibles en RiderMex" loading="lazy" decoding="async"></div>
+        <div class="brand-card-body"><div class="brand-card-name">Ryder</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
+      </a>
+      <a class="brand-card brand-card--feature" href="catalogo.html#/marca/carabela">
+        <span class="brand-tag">Destacada</span>
+        <div class="brand-card-media"><img src="assets/img/motos/catalogo/carabela/routersonora-4.jpg" alt="Motocicletas Carabela disponibles en RiderMex" loading="lazy" decoding="async"></div>
+        <div class="brand-card-body"><div class="brand-card-name">Carabela</div><div class="brand-card-meta"><span class="go">Ver catálogo →</span></div></div>
+      </a>
+    </div>
+    <!-- Resto de marcas. TVS, CF Lite y Honda ya tienen catálogo avanzado
+         con fichas propias, así que dejaron de estar como "Próximamente". -->
+    <div class="brand-mini">
+      <a class="brand-chip" href="catalogo.html#/marca/bajaj">Bajaj</a>
+      <a class="brand-chip" href="catalogo.html#/marca/cfmoto">CF Moto</a>
+      <a class="brand-chip" href="catalogo.html#/marca/zmoto">Zmoto</a>
+      <a class="brand-chip" href="catalogo.html#/marca/islo">Islo</a>
+      <a class="brand-chip" href="catalogo.html#/marca/um">UM Motorcycles</a>
+      <a class="brand-chip" href="catalogo.html#/marca/tvs">TVS</a>
+      <a class="brand-chip" href="catalogo.html#/marca/cflite">CF Lite</a>
+      <a class="brand-chip" href="catalogo.html#/marca/honda">Honda</a>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 7 · MOTOS DESTACADAS ═══ -->
+  <section class="home-section home-section--alt reveal">
+    <div class="home-section-head">
+      <span class="home-eyebrow">Modelos disponibles</span>
+      <h2 class="home-h2">Motos <em>destacadas</em></h2>
+      <p class="home-lead">Una selección de los modelos más buscados. Abre la ficha para ver especificaciones y solicitarla.</p>
+    </div>
+    <div class="featured-grid">
+      <a class="moto-card" href="catalogo.html#/marca/vento">
+        <div class="moto-card-media"><img src="assets/img/motos/vento-crossmax-300-rally.jpg" alt="Vento Crossmax Rally" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">Vento</span><span class="moto-card-name">Crossmax Rally</span><span class="moto-card-cat">Doble propósito</span><span class="moto-card-foot">Ver modelos →</span></div>
+      </a>
+      <a class="moto-card" href="catalogo.html#/moto/bajaj-dominar-400-ug">
+        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/7gOgd7IxhELCRVvsDNi4Lh/918f6a7325dc74b0f7b15b82b206ad65/imagen_principal.jpg?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Dominar 400 UG" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Dominar 400 UG</span><span class="moto-card-cat">Naked sport</span><span class="moto-card-foot">Ver modelo →</span></div>
+      </a>
+      <a class="moto-card" href="catalogo.html#/moto/bajaj-pulsar-n-160">
+        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/Bnojn2wxWVc2qWx96qWLm/630f174fadac572ee64707af3ee69d05/Moto_Bajaj_Pulsar_N_160_Galgo_M%C3%A9xico.png?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Pulsar N 160" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Pulsar N 160</span><span class="moto-card-cat">Naked</span><span class="moto-card-foot">Ver modelo →</span></div>
+      </a>
+      <a class="moto-card" href="catalogo.html#/moto/cfmoto-nk300">
+        <div class="moto-card-media"><img src="assets/img/motos/catalogo/cfmoto/nk300-2.png" alt="CF Moto NK300" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">CF Moto</span><span class="moto-card-name">NK300</span><span class="moto-card-cat">Naked</span><span class="moto-card-foot">Ver modelo →</span></div>
+      </a>
+      <a class="moto-card" href="catalogo.html#/moto/cfmoto-230-dual">
+        <div class="moto-card-media"><img src="assets/img/motos/catalogo/cfmoto/230dual-1.jpg" alt="CF Moto 230 DUAL" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">CF Moto</span><span class="moto-card-name">230 DUAL</span><span class="moto-card-cat">Doble propósito</span><span class="moto-card-foot">Ver modelo →</span></div>
+      </a>
+      <a class="moto-card" href="catalogo.html#/moto/bajaj-avenger-cruise-220">
+        <div class="moto-card-media"><img src="https://images.ctfassets.net/8zlbnewncp6f/1lOhw7NHuiwmebq9a9Ihnc/73fc85f769ea62664f50ba64c1b08fb0/Bajaj_Avenger_220_Cruise_Galgo_M_xico.png?fit=pad&amp;fm=webp&amp;h=1200&amp;q=95&amp;w=1600" alt="Bajaj Avenger Cruise 220" loading="lazy" decoding="async"></div>
+        <div class="moto-card-body"><span class="moto-card-brand">Bajaj</span><span class="moto-card-name">Avenger Cruise 220</span><span class="moto-card-cat">Cruiser</span><span class="moto-card-foot">Ver modelo →</span></div>
+      </a>
+    </div>
+    <div class="home-cta-row"><a href="catalogo.html" class="btn-r btn-r--primary">Ver todo el catálogo →</a></div>
+  </section>
+
+  <!-- ═══ SECCIÓN 8 · BENEFICIOS ═══ -->
+  <section class="home-section home-section--alt reveal">
+    <div class="home-section-head">
+      <span class="home-eyebrow">Por qué RiderMex</span>
+      <h2 class="home-h2">Ventajas que te <em>hacen avanzar</em></h2>
+    </div>
+    <div class="benef-grid">
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Aprobación en 2 minutos</h3><p>Solo con tu INE. Sin aval y sin trámites eternos.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div><h3>Financiamiento a tu medida</h3><p>Pagos semanales accesibles ajustados a tu bolsillo.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13"/></svg></span><div><h3>Más de 10 marcas</h3><p>+100 modelos disponibles para elegir la moto ideal.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Entrega inmediata</h3><p>Firmas y te la llevas el mismo día que apruebas.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8Z"/></svg></span><div><h3>5 agencias físicas</h3><p>Naucalpan, CEDA, Coapa, Chalco y nuestra 5ª sucursal.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Sin enganche cuando aplica</h3><p>Opciones de arranque flexibles según tu perfil.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 9 · EXPERIENCIA RIDERMEX (fotos reales de showroom) ═══ -->
+  <section class="exp-band reveal">
+    <div class="exp-inner">
+      <div class="exp-copy">
+        <span class="home-eyebrow">Experiencia RiderMex</span>
+        <h2>Motos reales, <em>tiendas reales</em></h2>
+        <p>Cientos de riders ya estrenaron su moto con nosotros. Visítanos en cualquiera de nuestras 5 agencias: catálogo en piso, asesoría directa y entrega el mismo día.</p>
+        <a href="#agencias-home" class="btn-r btn-r--primary">Ver agencias →</a>
+      </div>
+      <div class="exp-collage">
+        <img class="tall" src="assets/img/showroom/showroom-1.jpg" alt="Showroom RiderMex" loading="lazy" decoding="async">
+        <img src="assets/img/showroom/showroom-3.jpg" alt="Cliente RiderMex con su moto" loading="lazy" decoding="async">
+        <img src="assets/img/showroom/showroom-2.jpg" alt="Piso de ventas RiderMex" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 10 · AGENCIAS ═══ -->
+  <section class="home-section reveal" id="agencias-home">
+    <div class="home-section-head">
+      <span class="home-eyebrow">Dónde encontrarnos</span>
+      <h2 class="home-h2">Nuestras <em>agencias</em></h2>
+      <p class="home-lead">5 sucursales para atenderte de cerca. Consulta ubicación y horarios en cada una.</p>
+    </div>
+    <div class="home-agencias-grid">
+      <div class="home-ag-card"><h3>Naucalpan</h3><p>Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan, Edo. Méx.</p><a class="ag-map" href="https://maps.app.goo.gl/8JzPoomq7miDJgpb6" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
+      <div class="home-ag-card"><h3>CEDA</h3><p>Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
+      <div class="home-ag-card"><h3>Coapa</h3><p>Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
+      <div class="home-ag-card"><h3>Chalco</h3><p>Francisco Javier Mina 13, Chalco Centro, Chalco, Edo. Méx.</p><a class="ag-map" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
+      <div class="home-ag-card"><h3>5ª sucursal</h3><p>Ya operando. Consulta la ubicación más cercana con tu asesor.</p><a class="ag-map" href="motos.html#agencias">Ver todas →</a></div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 11 · DOS CAMINOS (CTA final) ═══
+       Cierre comercial del Home: el usuario elige intención antes de las
+       preguntas frecuentes.
+       ▸ "Comprar una moto" → catálogo avanzado (Marca → Modelos → Ficha).
+       ▸ "RiderMex Inversiones" → la experiencia de inversiones.
+       Esto NO afecta a contacto.html, donde "Quiero invertir" abre
+       directamente el WhatsApp de Inversiones. -->
+  <section class="caminos reveal" aria-labelledby="caminos-titulo">
+    <div class="caminos-inner">
+      <div class="home-section-head" style="padding:0;text-align:center;">
+        <span class="home-eyebrow">Elige tu camino</span>
+        <h2 class="home-h2" id="caminos-titulo">¿Qué te trae <em>a RiderMex?</em></h2>
+        <p class="home-lead" style="margin-left:auto;margin-right:auto;">Dos formas de avanzar con nosotros. Elige la que va contigo.</p>
+      </div>
+      <div class="caminos-grid">
+
+        <a class="camino-card camino-card--moto" href="catalogo.html">
+          <span class="camino-tag">Quiero rodar</span>
+          <h3>Comprar una moto</h3>
+          <p>Explora el catálogo completo: 149 modelos de 11 marcas con fotografías, ficha técnica y opciones de financiamiento con aprobación en aproximadamente 2 minutos.</p>
+          <span class="camino-go">Ver catálogo →</span>
+        </a>
+
+        <a class="camino-card camino-card--inv" href="inversiones.html">
+          <span class="camino-tag">Quiero invertir</span>
+          <h3>RiderMex Inversiones</h3>
+          <p>Conoce el modelo de participación en tiendas de motos con operación real: los tres esquemas, la plusvalía por escalones y la documentación que puedes revisar antes de decidir.</p>
+          <span class="camino-go">Conocer el modelo →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 12 · PREGUNTAS FRECUENTES (cierre del Home) ═══
        Capa de contenido orientada a buscadores y a motores de respuesta
        (AEO/GEO). Va al final a propósito: cierra la narrativa resolviendo
        objeciones justo antes del footer, después del recorrido y del
@@ -1708,7 +1789,7 @@
         <li><a href="inversiones.html">Cómo funciona</a></li>
         <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
         <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
-        <li><a href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        <li><a href="/simulador-inversion" target="_blank" rel="noopener noreferrer">Simulador</a></li>
         <li><a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">En los medios</a></li>
       </ul>
     </div>

@@ -39,6 +39,20 @@ const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const stripComments = (html) => html.replace(/<!--[\s\S]*?-->/g, "");
 
 // ── 1 · recursos locales ───────────────────────────────────────────────────
+// Las rutas limpias (p. ej. /simulador-inversion) no son archivos: las sirve
+// una reescritura de vercel.json. Se resuelven contra esa configuración para
+// comprobar que el destino real sí existe en disco.
+const vercel = JSON.parse(read("vercel.json"));
+const rewrites = new Map(
+  (vercel.rewrites || []).map((r) => [r.source.replace(/\/$/, ""), r.destination])
+);
+for (const [source, dest] of rewrites) {
+  const target = dest.replace(/^\//, "");
+  if (!existsSync(join(ROOT, target))) {
+    fail(`vercel.json: la reescritura ${source} apunta a un archivo inexistente → ${dest}`);
+  }
+}
+
 const allFiles = [...PAGES, "calculadora-inversion/index.html"];
 for (const file of allFiles) {
   const html = stripComments(read(file));
@@ -48,6 +62,8 @@ for (const file of allFiles) {
     if (/^(https?:|mailto:|tel:|data:|#|\/\/)/.test(raw)) continue;
     const clean = decodeURIComponent(raw.split("?")[0].split("#")[0]);
     if (!clean) continue;
+    // ¿Es una ruta limpia declarada en vercel.json?
+    if (rewrites.has(clean.replace(/\/$/, ""))) continue;
     const path = normalize(join(base === "." ? "" : base, clean));
     if (!existsSync(join(ROOT, path))) fail(`${file}: recurso inexistente → ${raw}`);
   }
@@ -113,6 +129,50 @@ for (const file of PAGES) {
   if (!html.includes('href="site-header.css"')) fail(`${file}: no carga site-header.css`);
   if (!html.includes('src="site-header.js"')) fail(`${file}: no carga site-header.js`);
   if (!html.includes('id="contenido"')) fail(`${file}: falta el ancla #contenido del enlace "saltar al contenido"`);
+}
+
+// ── 4b · estructura HTML balanceada ────────────────────────────────────────
+// Un generador que duplicaba contenido dejó etiquetas sin cerrar sin que
+// nada lo detectara. Este chequeo lo hace imposible de pasar por alto.
+const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input",
+  "link", "meta", "param", "source", "track", "wbr"]);
+// Quita bloques <script> y <style> en ORDEN DE APARICIÓN. Hacerlo con dos
+// replace() encadenados falla: un comentario CSS del Home contiene el texto
+// "<script>", y al filtrar scripts primero se comía el </style> siguiente.
+function stripCode(html) {
+  let out = "";
+  let i = 0;
+  while (i < html.length) {
+    const s = html.toLowerCase().indexOf("<script", i);
+    const t = html.toLowerCase().indexOf("<style", i);
+    const first = (s === -1) ? t : (t === -1) ? s : Math.min(s, t);
+    if (first === -1) { out += html.slice(i); break; }
+    const tag = (first === s) ? "</script>" : "</style>";
+    const close = html.toLowerCase().indexOf(tag, first);
+    out += html.slice(i, first);
+    if (close === -1) { i = html.length; break; }
+    i = close + tag.length;
+  }
+  return out;
+}
+
+for (const file of PAGES) {
+  const html = stripCode(stripComments(read(file)));
+  const stack = [];
+  let broken = null;
+  for (const m of html.matchAll(/<(\/?)([a-zA-Z][a-zA-Z0-9]*)\b[^>]*?(\/?)>/g)) {
+    const [, closing, tagRaw, selfClose] = m;
+    const tag = tagRaw.toLowerCase();
+    if (VOID.has(tag) || selfClose === "/" || tag === "!doctype") continue;
+    if (!closing) { stack.push(tag); continue; }
+    if (stack[stack.length - 1] === tag) { stack.pop(); continue; }
+    const at = stack.lastIndexOf(tag);
+    if (at === -1) { broken = broken || `</${tag}> sin apertura`; continue; }
+    broken = broken || `<${stack[stack.length - 1]}> sin cerrar antes de </${tag}>`;
+    stack.length = at;
+  }
+  if (broken) fail(`${file}: HTML mal anidado — ${broken}`);
+  else if (stack.length) fail(`${file}: HTML mal anidado — <${stack[stack.length - 1]}> sin cerrar`);
 }
 
 // ── 5 · índice estático del catálogo sincronizado ──────────────────────────

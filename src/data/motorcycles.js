@@ -10785,6 +10785,696 @@
     ],
     "source": "https://ummotosmexico.mx/",
     "available": true
+  },
+  {
+    "id": "tvs-stryker-3v",
+    "slug": "tvs-stryker-3v",
+    "brand": "TVS",
+    "brandSlug": "tvs",
+    "model": "Stryker 3V",
+    "category": "Ciudad",
+    "shortDescription": "Ciudad · 124.76 cc",
+    "description": "Motocicleta urbana de 124.76 cc con motor monocilíndrico de 3 válvulas y refrigeración por aire y aceite. Combina transmisión de 5 velocidades, freno de disco delantero de 240 mm e iluminación LED delantera y trasera en un conjunto de 120 kg pensado para el día a día en ciudad.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "124.76 cc"
+      },
+      {
+        "label": "Potencia",
+        "value": "12.73 HP @ 8,000 rpm"
+      },
+      {
+        "label": "Torque",
+        "value": "11.5 Nm @ 6,500 rpm"
+      },
+      {
+        "label": "Transmisión",
+        "value": "5 velocidades"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "120 kg"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, SI, refrigerado por aire/aceite"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "124.76 cc"
+      },
+      {
+        "label": "Potencia máxima",
+        "value": "12.73 HP @ 8,000 rpm"
+      },
+      {
+        "label": "Torque máximo",
+        "value": "11.5 Nm @ 6,500 rpm"
+      },
+      {
+        "label": "Alimentación",
+        "value": "Carburador"
+      },
+      {
+        "label": "Arranque",
+        "value": "Eléctrico"
+      },
+      {
+        "label": "Transmisión",
+        "value": "5 velocidades"
+      },
+      {
+        "label": "Suspensión delantera",
+        "value": "Horquilla telescópica"
+      },
+      {
+        "label": "Suspensión trasera",
+        "value": "Monoamortiguador"
+      },
+      {
+        "label": "Freno delantero",
+        "value": "Disco 240 mm"
+      },
+      {
+        "label": "Freno trasero",
+        "value": "Tambor 130 mm SBT"
+      },
+      {
+        "label": "Llanta delantera",
+        "value": "80/100-17 tubeless"
+      },
+      {
+        "label": "Llanta trasera",
+        "value": "100/90-17 tubeless"
+      },
+      {
+        "label": "Distancia al suelo",
+        "value": "181 mm"
+      },
+      {
+        "label": "Distancia entre ejes",
+        "value": "1,326 mm"
+      },
+      {
+        "label": "Largo",
+        "value": "2,080 mm"
+      },
+      {
+        "label": "Ancho",
+        "value": "767 mm"
+      },
+      {
+        "label": "Alto",
+        "value": "1,028 mm"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "120 kg"
+      },
+      {
+        "label": "Capacidad de tanque",
+        "value": "10 L"
+      },
+      {
+        "label": "Faro delantero",
+        "value": "LED"
+      },
+      {
+        "label": "Faro trasero",
+        "value": "LED"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "tvs-apache-rtr-160-4v-fi",
+    "slug": "tvs-apache-rtr-160-4v-fi",
+    "brand": "TVS",
+    "brandSlug": "tvs",
+    "model": "Apache RTR 160 4V FI",
+    "category": "Urban Sport",
+    "shortDescription": "Urban Sport · 159.7 cc",
+    "description": "Deportiva urbana de 159.7 cc con motor de 4 válvulas refrigerado por aceite e inyección electrónica. Incorpora tres modos de conducción —Urbano, Deportivo y Lluvia— junto a freno de disco tipo pétalo de 270 mm al frente e iluminación principal LED.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "159.7 cc"
+      },
+      {
+        "label": "Potencia",
+        "value": "16.3 HP @ 8,000 rpm"
+      },
+      {
+        "label": "Torque",
+        "value": "14.8 Nm @ 6,500 rpm"
+      },
+      {
+        "label": "Modos de conducción",
+        "value": "Urbano, Deportivo y Lluvia"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "145 kg"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, 4 tiempos, 4 válvulas, refrigerado por aceite"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "159.7 cc"
+      },
+      {
+        "label": "Alimentación",
+        "value": "Inyección electrónica"
+      },
+      {
+        "label": "Potencia máxima",
+        "value": "16.3 HP @ 8,000 rpm"
+      },
+      {
+        "label": "Torque máximo",
+        "value": "14.8 Nm @ 6,500 rpm"
+      },
+      {
+        "label": "Transmisión",
+        "value": "5 velocidades"
+      },
+      {
+        "label": "Modos de conducción",
+        "value": "Urbano, Deportivo y Lluvia"
+      },
+      {
+        "label": "Suspensión delantera",
+        "value": "Horquilla telescópica"
+      },
+      {
+        "label": "Suspensión trasera",
+        "value": "Monoamortiguador"
+      },
+      {
+        "label": "Freno delantero",
+        "value": "Disco tipo pétalo 270 mm"
+      },
+      {
+        "label": "Freno trasero",
+        "value": "Depende de la versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Llanta delantera",
+        "value": "90/90-17 tubeless"
+      },
+      {
+        "label": "Llanta trasera",
+        "value": "Depende de la versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Altura del asiento",
+        "value": "800 mm"
+      },
+      {
+        "label": "Distancia al suelo",
+        "value": "180 mm"
+      },
+      {
+        "label": "Distancia entre ejes",
+        "value": "1,357 mm"
+      },
+      {
+        "label": "Largo",
+        "value": "2,050 mm"
+      },
+      {
+        "label": "Ancho",
+        "value": "790 mm"
+      },
+      {
+        "label": "Alto",
+        "value": "1,050 mm"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "145 kg"
+      },
+      {
+        "label": "Capacidad de tanque",
+        "value": "12 L"
+      },
+      {
+        "label": "Iluminación principal",
+        "value": "LED"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "tvs-apache-rtr-200-4v-fi",
+    "slug": "tvs-apache-rtr-200-4v-fi",
+    "brand": "TVS",
+    "brandSlug": "tvs",
+    "model": "Apache RTR 200 4V FI",
+    "category": "Urban Sport",
+    "shortDescription": "Urban Sport · 197.75 cc",
+    "description": "Deportiva urbana de 197.75 cc con motor de 4 válvulas refrigerado por aceite e inyección electrónica. Monta frenos de disco en ambos ejes —270 mm al frente y 240 mm atrás—, llanta trasera 130/70 R17 e iluminación LED completa.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "197.75 cc"
+      },
+      {
+        "label": "Potencia (modo Sport)",
+        "value": "≈20.8 PS @ 9,000 rpm"
+      },
+      {
+        "label": "Torque (modo Sport)",
+        "value": "17.25 Nm @ 7,250 rpm"
+      },
+      {
+        "label": "Frenos",
+        "value": "Disco delantero y trasero"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "152 kg"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, 4 tiempos, 4 válvulas"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "197.75 cc"
+      },
+      {
+        "label": "Refrigeración",
+        "value": "Por aceite"
+      },
+      {
+        "label": "Alimentación",
+        "value": "Inyección electrónica"
+      },
+      {
+        "label": "Potencia máxima (modo Sport)",
+        "value": "≈20.8 PS @ 9,000 rpm"
+      },
+      {
+        "label": "Torque máximo (modo Sport)",
+        "value": "17.25 Nm @ 7,250 rpm"
+      },
+      {
+        "label": "Modos de manejo",
+        "value": "Disponibles según versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Arranque",
+        "value": "Eléctrico"
+      },
+      {
+        "label": "Suspensión delantera",
+        "value": "Horquilla telescópica"
+      },
+      {
+        "label": "Suspensión trasera",
+        "value": "Monoamortiguador"
+      },
+      {
+        "label": "Freno delantero",
+        "value": "Disco 270 mm"
+      },
+      {
+        "label": "Freno trasero",
+        "value": "Disco 240 mm"
+      },
+      {
+        "label": "Llanta delantera",
+        "value": "90/90-17 tubeless"
+      },
+      {
+        "label": "Llanta trasera",
+        "value": "130/70 R17 tubeless"
+      },
+      {
+        "label": "Altura del asiento",
+        "value": "800 mm"
+      },
+      {
+        "label": "Distancia al suelo",
+        "value": "180 mm"
+      },
+      {
+        "label": "Distancia entre ejes",
+        "value": "1,353 mm"
+      },
+      {
+        "label": "Largo",
+        "value": "2,020 mm"
+      },
+      {
+        "label": "Ancho",
+        "value": "790 mm"
+      },
+      {
+        "label": "Alto",
+        "value": "1,105 mm"
+      },
+      {
+        "label": "Peso en orden de marcha",
+        "value": "152 kg"
+      },
+      {
+        "label": "Capacidad de tanque",
+        "value": "12 L"
+      },
+      {
+        "label": "Faro delantero",
+        "value": "LED"
+      },
+      {
+        "label": "Faro trasero",
+        "value": "LED"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "cflite-250nk",
+    "slug": "cflite-250nk",
+    "brand": "CF Lite",
+    "brandSlug": "cflite",
+    "model": "250NK",
+    "category": "Urban Sport",
+    "shortDescription": "Urban Sport · 249 cc",
+    "description": "Naked de 249 cc con motor monocilíndrico DOHC de 4 válvulas y refrigeración líquida. Entrega 27.5 HP a 9,750 rpm, monta caja de 6 velocidades con alimentación EFI y ofrece modos de manejo Sport y Eco.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Potencia",
+        "value": "27.5 HP @ 9,750 rpm"
+      },
+      {
+        "label": "Torque",
+        "value": "22 Nm @ 7,500 rpm"
+      },
+      {
+        "label": "Transmisión",
+        "value": "6 velocidades"
+      },
+      {
+        "label": "Peso",
+        "value": "151 kg"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, 4 tiempos, DOHC, 4 válvulas"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Refrigeración",
+        "value": "Líquida"
+      },
+      {
+        "label": "Potencia máxima",
+        "value": "27.5 HP @ 9,750 rpm"
+      },
+      {
+        "label": "Torque máximo",
+        "value": "22 Nm @ 7,500 rpm"
+      },
+      {
+        "label": "Alimentación",
+        "value": "EFI"
+      },
+      {
+        "label": "Transmisión",
+        "value": "6 velocidades"
+      },
+      {
+        "label": "Modos de manejo",
+        "value": "Sport / Eco"
+      },
+      {
+        "label": "Peso",
+        "value": "151 kg"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "cflite-250sr",
+    "slug": "cflite-250sr",
+    "brand": "CF Lite",
+    "brandSlug": "cflite",
+    "model": "250SR",
+    "category": "Urban Sport",
+    "shortDescription": "Urban Sport · 249 cc",
+    "description": "Deportiva de 249 cc con motor monocilíndrico DOHC refrigerado por líquido y embrague húmedo multidisco. Monta un disco delantero de 300 mm con ABS.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Potencia",
+        "value": "≈21.5 kW @ 9,750 rpm"
+      },
+      {
+        "label": "Torque",
+        "value": "22.5 Nm @ 7,250 rpm"
+      },
+      {
+        "label": "Freno delantero",
+        "value": "Disco 300 mm con ABS"
+      },
+      {
+        "label": "Peso",
+        "value": "≈155 kg"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, DOHC"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Refrigeración",
+        "value": "Líquida"
+      },
+      {
+        "label": "Potencia máxima",
+        "value": "≈21.5 kW @ 9,750 rpm"
+      },
+      {
+        "label": "Torque máximo",
+        "value": "22.5 Nm @ 7,250 rpm"
+      },
+      {
+        "label": "Embrague",
+        "value": "Húmedo multidisco"
+      },
+      {
+        "label": "Embrague antirrebote (slipper)",
+        "value": "Según versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Freno delantero",
+        "value": "Disco único 300 mm"
+      },
+      {
+        "label": "ABS",
+        "value": "Sí"
+      },
+      {
+        "label": "Pantalla TFT",
+        "value": "Según versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Peso",
+        "value": "≈155 kg"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "cflite-250dual",
+    "slug": "cflite-250dual",
+    "brand": "CF Lite",
+    "brandSlug": "cflite",
+    "model": "250DUAL",
+    "category": "Doble Propósito",
+    "shortDescription": "Doble propósito · 249 cc",
+    "description": "Doble propósito de 249 cc con motor monocilíndrico refrigerado por líquido e inyección electrónica. Monta horquilla delantera invertida, iluminación LED, tanque de 13 litros y una altura de asiento de 840 mm.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Potencia",
+        "value": "18 kW @ 8,000 rpm"
+      },
+      {
+        "label": "Torque",
+        "value": "22.5 Nm @ 7,000 rpm"
+      },
+      {
+        "label": "Altura del asiento",
+        "value": "840 mm"
+      },
+      {
+        "label": "Capacidad de tanque",
+        "value": "13 L"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Motor",
+        "value": "Monocilíndrico, 4 tiempos"
+      },
+      {
+        "label": "Cilindrada",
+        "value": "249 cc"
+      },
+      {
+        "label": "Refrigeración",
+        "value": "Líquida"
+      },
+      {
+        "label": "Potencia máxima",
+        "value": "18 kW @ 8,000 rpm"
+      },
+      {
+        "label": "Torque máximo",
+        "value": "22.5 Nm @ 7,000 rpm"
+      },
+      {
+        "label": "Alimentación",
+        "value": "Inyección electrónica"
+      },
+      {
+        "label": "Capacidad de tanque",
+        "value": "13 L"
+      },
+      {
+        "label": "Altura del asiento",
+        "value": "840 mm"
+      },
+      {
+        "label": "Suspensión delantera",
+        "value": "Horquilla invertida"
+      },
+      {
+        "label": "ABS",
+        "value": "De doble canal según versión — confírmalo con tu asesor"
+      },
+      {
+        "label": "Iluminación",
+        "value": "LED"
+      },
+      {
+        "label": "Versiones",
+        "value": "Disponibles según mercado — confírmalo con tu asesor"
+      }
+    ],
+    "source": "",
+    "available": true
+  },
+  {
+    "id": "honda-navi",
+    "slug": "honda-navi",
+    "brand": "Honda",
+    "brandSlug": "honda",
+    "model": "NAVI",
+    "category": "Ciudad",
+    "shortDescription": "Ciudad · arquitectura crossover",
+    "description": "Modelo urbano compacto de Honda con una arquitectura tipo crossover entre scooter y motocicleta. Cuenta con tecnología Honda Eco Technology y doble sistema de encendido: arranque eléctrico y pedal de arranque.",
+    "mainImage": "",
+    "gallery": [],
+    "highlights": [
+      {
+        "label": "Tipo",
+        "value": "Urbana compacta"
+      },
+      {
+        "label": "Arquitectura",
+        "value": "Crossover entre scooter y motocicleta"
+      },
+      {
+        "label": "Tecnología",
+        "value": "Honda Eco Technology"
+      },
+      {
+        "label": "Arranque",
+        "value": "Eléctrico y pedal"
+      }
+    ],
+    "specs": [
+      {
+        "label": "Tecnología",
+        "value": "Honda Eco Technology"
+      },
+      {
+        "label": "Arranque",
+        "value": "Eléctrico"
+      },
+      {
+        "label": "Arranque alterno",
+        "value": "Pedal de arranque"
+      },
+      {
+        "label": "Diseño",
+        "value": "Compacto"
+      },
+      {
+        "label": "Arquitectura",
+        "value": "Tipo crossover entre scooter y motocicleta"
+      },
+      {
+        "label": "Transmisión",
+        "value": "Por confirmar para la unidad comercializada por RiderMex"
+      },
+      {
+        "label": "Ficha técnica completa",
+        "value": "En preparación — consulta especificaciones con tu asesor"
+      }
+    ],
+    "source": "",
+    "available": true
   }
 ];
 

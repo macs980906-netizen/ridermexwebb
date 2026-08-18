@@ -2,12 +2,29 @@
 <!--
   RIDERMEX · SITEMAP
   ─────────────────────────────────────────────────────────────────────────
-  Solo páginas públicas reales. NO se incluyen:
+  Solo páginas públicas reales e indexables. NO se incluyen:
+
     · assets, Excel del catálogo ni HTML fuente de assets/
-    · rutas con hash (#/marca/…, #/moto/…): el hash no llega al servidor,
-      no son URLs distintas para el buscador. El contenido de esas vistas
-      se descubre desde el índice estático de catalogo.html.
-    · calculadora-inversion/ (herramienta embebida en inversiones.html)
+
+    · Rutas con hash (#/marca/…, #/moto/…). IMPORTANTE: el catálogo es una
+      SPA con hash routing y el hash NO llega al servidor, así que las 11
+      marcas y los 149 modelos —incluidos TVS (Stryker 3V, Apache RTR 160,
+      Apache RTR 200), CF Lite (250NK, 250SR, 250DUAL) y Honda (NAVI)— no
+      son URLs distintas para un buscador. Meterlas aquí sería declarar
+      URLs duplicadas de catalogo.html.
+      Se descubren por el índice estático que catalogo.html sirve en el
+      HTML (sección #indice-catalogo), con enlace y texto de cada modelo.
+      Para que cada modelo tenga su propia URL indexable haría falta
+      migrar el catálogo a rutas reales (/catalogo/marca/modelo), que es
+      un cambio de arquitectura fuera del alcance de esta ronda.
+
+    · El simulador (/simulador-inversion): es una herramienta auxiliar, no
+      una landing con intención de búsqueda propia. No se fuerza su
+      indexación.
+
+    · Versiones anteriores del simulador (calculadora-inversion/ y
+      assets/RiderMex_Simulador_Inversion_V3_META_300.html).
+
   DOMINIO: si el dominio final no es www.ridermex.com, hay que reemplazarlo
   aquí y en los canonical / og:url de cada .html.
 -->

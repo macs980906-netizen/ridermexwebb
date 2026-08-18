@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+<!-- Las animaciones de entrada solo ocultan contenido si el JS corre:
+     sin esta clase, todo se ve. Así un fallo de script nunca deja
+     una sección en blanco/negro. -->
+<script>document.documentElement.className+=" js-anim";</script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -229,7 +233,7 @@ details[open] summary::after{content:"–"}
 .disclaimer{max-width:var(--max);margin:0 auto;padding:0 22px 44px}
 .disclaimer p{border:1px solid var(--border);background:rgba(255,255,255,.028);border-radius:18px;padding:18px 20px;color:var(--muted2);font-size:12px;line-height:1.7}
 /* FOOTER — ahora es el componente global .rm-footer (site-footer.css). No añadir reglas `footer` aquí. */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.js-anim .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
 
 /* ═══════════════════════════════════════════════════════════════════════
    ANIMACIONES DE ENTRADA
@@ -237,34 +241,34 @@ details[open] summary::after{content:"–"}
    stagger con --i, en vez de un retraso global por índice de documento.
    Todo se apaga con prefers-reduced-motion (ver más abajo).
    ═══════════════════════════════════════════════════════════════════════ */
-[data-stagger] > *{
+.js-anim [data-stagger] > *{
   opacity:0;transform:translateY(18px);
   transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);
   transition-delay:calc(var(--i,0) * 70ms);
 }
-[data-stagger].is-in > *{opacity:1;transform:none}
+.js-anim [data-stagger].is-in > *{opacity:1;transform:none}
 
 /* Peldaños de plusvalía: crecen desde la base al entrar en pantalla. */
-.stairs[data-stagger] .stair-bar{
+.js-anim .stairs[data-stagger] .stair-bar{
   transform:scaleY(.04);transform-origin:bottom center;
   transition:transform .7s cubic-bezier(.22,1,.36,1);
   transition-delay:calc(var(--i,0) * 110ms);
 }
-.stairs[data-stagger].is-in .stair-bar{transform:scaleY(1)}
-.stairs[data-stagger] .stair-foot{
+.js-anim .stairs[data-stagger].is-in .stair-bar{transform:scaleY(1)}
+.js-anim .stairs[data-stagger] .stair-foot{
   opacity:0;transition:opacity .5s ease;
   transition-delay:calc(var(--i,0) * 110ms + 260ms);
 }
-.stairs[data-stagger].is-in .stair-foot{opacity:1}
+.js-anim .stairs[data-stagger].is-in .stair-foot{opacity:1}
 
 /* Conectores de los diagramas: se dibujan tras aparecer los nodos. */
-[data-stagger].dflow .dnode:not(:last-child)::after,
-[data-stagger].dchain .dchain-op{
+.js-anim [data-stagger].dflow .dnode:not(:last-child)::after,
+.js-anim [data-stagger].dchain .dchain-op{
   opacity:0;transition:opacity .5s ease;transition-delay:.45s;
 }
-[data-stagger].dflow.is-in .dnode:not(:last-child)::after,
-[data-stagger].dchain.is-in .dchain-op{opacity:1}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.js-anim [data-stagger].dflow.is-in .dnode:not(:last-child)::after,
+.js-anim [data-stagger].dchain.is-in .dchain-op{opacity:1}
+.js-anim .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ═══════════════════════════════════════════════════════════════════════
    SIMULADOR · módulo compacto (antes era un iframe de media página)
@@ -505,14 +509,16 @@ details[open] summary::after{content:"–"}
 .section-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block}
 .with-photo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:26px;align-items:center;margin-top:26px}
 
+/* Con menos movimiento no se anima nada: se muestra todo de una vez.
+   Los selectores llevan .js-anim para ganar a las reglas que ocultan. */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
-  [data-stagger] > *{opacity:1;transform:none}
-  .stairs[data-stagger] .stair-bar{transform:scaleY(1)}
-  .stairs[data-stagger] .stair-foot{opacity:1}
-  [data-stagger].dflow .dnode:not(:last-child)::after,
-  [data-stagger].dchain .dchain-op{opacity:1}
+  .js-anim .reveal{opacity:1;transform:none}
+  .js-anim [data-stagger] > *{opacity:1;transform:none}
+  .js-anim .stairs[data-stagger] .stair-bar{transform:scaleY(1)}
+  .js-anim .stairs[data-stagger] .stair-foot{opacity:1}
+  .js-anim [data-stagger].dflow .dnode:not(:last-child)::after,
+  .js-anim [data-stagger].dchain .dchain-op{opacity:1}
 }
 @media (max-width:1080px){
   .metrics,.card-grid,.trust-grid,.money-card,.risk-grid{grid-template-columns:1fr 1fr}
@@ -566,6 +572,7 @@ details[open] summary::after{content:"–"}
 <link rel="stylesheet" href="site-header.css">
 <link rel="stylesheet" href="site-footer.css">
 <script src="site-header.js" defer></script>
+<script src="site-ui.js" defer></script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -936,10 +943,13 @@ details[open] summary::after{content:"–"}
 </section>
 
 <!-- ═══ SIMULADOR ═══
-     Antes el iframe de la calculadora se mostraba desplegado y ocupaba media
-     página dentro del flujo. Ahora es un módulo compacto que abre la
-     calculadora existente (calculadora-inversion/) en una pestaña nueva.
-     La calculadora NO se modificó ni se eliminó. -->
+     El simulador oficial es RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html
+     (en la raíz del proyecto), servido con la ruta limpia /simulador-inversion
+     (reescritura en vercel.json). Nunca se muestra embebido: este módulo
+     compacto lo abre en una pestaña nueva.
+     Las versiones anteriores (assets/RiderMex_Simulador_Inversion_V3_META_300.html
+     y calculadora-inversion/) se conservan en disco pero YA NO están enlazadas
+     desde ninguna navegación pública. -->
 <section class="section" id="simulador">
   <div class="sim-panel reveal">
     <div class="sim-copy">
@@ -949,7 +959,7 @@ details[open] summary::after{content:"–"}
       <p class="sim-nota">Es una herramienta ilustrativa. Los resultados son estimados y deben revisarse contra el contrato y el escenario real.</p>
     </div>
     <div class="sim-actions">
-      <a class="btn btn-primary" href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Abrir simulador
+      <a class="btn btn-primary" href="/simulador-inversion" data-sim-cta target="_blank" rel="noopener noreferrer">Abrir simulador
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="mini-cta" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener noreferrer">¿Prefieres que lo revisemos juntos? Habla con un asesor →</a>
@@ -1143,7 +1153,7 @@ details[open] summary::after{content:"–"}
         <li><a href="inversiones.html">Cómo funciona</a></li>
         <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
         <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
-        <li><a href="calculadora-inversion/" target="_blank" rel="noopener noreferrer">Simulador</a></li>
+        <li><a href="/simulador-inversion" target="_blank" rel="noopener noreferrer">Simulador</a></li>
         <li><a href="https://medios-ridermex.netlify.app/" target="_blank" rel="noopener noreferrer">En los medios</a></li>
       </ul>
     </div>
@@ -1227,9 +1237,12 @@ if (reduceMotion) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add(
-        entry.target.hasAttribute("data-stagger") ? "is-in" : "visible"
-      );
+      // Un elemento puede ser .reveal Y contenedor [data-stagger] a la vez
+      // (p. ej. la tabla de "Elige cómo entrar"). Si solo se le añadiera una
+      // de las dos clases, la otra regla lo dejaría en opacity:0 para
+      // siempre y la sección quedaría en negro. Se añaden las dos.
+      if (entry.target.hasAttribute("data-stagger")) entry.target.classList.add("is-in");
+      if (entry.target.classList.contains("reveal")) entry.target.classList.add("visible");
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });

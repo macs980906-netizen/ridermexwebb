@@ -9,6 +9,14 @@
     {
       "source": "/catalogo",
       "destination": "/catalogo.html"
+    },
+    {
+      "source": "/simulador-inversion",
+      "destination": "/RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html"
+    },
+    {
+      "source": "/simulador-inversion/",
+      "destination": "/RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html"
     }
   ],
   "headers": [

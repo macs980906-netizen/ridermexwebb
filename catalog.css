@@ -480,3 +480,62 @@
 .cat-index-brand li a { color: #cfcfcf; text-decoration: none; }
 .cat-index-brand li a:hover { color: var(--rojo); text-decoration: underline; }
 .cat-index-meta { color: #6f6f6f; font-size: 12px; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COMPARTIR · fichas de modelo y páginas de marca
+   Web Share API donde exista; si no, copia el enlace (ver site-ui.js).
+   ═══════════════════════════════════════════════════════════════════════ */
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .04);
+  color: #d6d6d6;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.btn-share:hover { border-color: var(--rojo); color: #fff; background: rgba(225, 6, 0, .1); }
+.btn-share:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
+.btn-share svg { width: 16px; height: 16px; flex-shrink: 0; }
+.btn-share.is-copied { border-color: #00C896; color: #00C896; background: rgba(0, 200, 150, .1); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CTA FIJO DE LLAMADA · solo móvil
+   Teléfono real y publicado de RiderMex (55 1000 0680). Se coloca abajo a
+   la IZQUIERDA para no competir con el botón flotante de WhatsApp, que
+   vive a la derecha.
+   ═══════════════════════════════════════════════════════════════════════ */
+.rm-call-fab { display: none; }
+
+@media (max-width: 640px) {
+  .rm-call-fab {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 110;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(18, 18, 18, .94);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, .5);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+  }
+  .rm-call-fab:hover, .rm-call-fab:focus-visible { border-color: var(--rojo); }
+  .rm-call-fab:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .rm-call-fab svg { width: 21px; height: 21px; }
+}

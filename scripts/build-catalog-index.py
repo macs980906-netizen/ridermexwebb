@@ -22,8 +22,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "src", "data", "motorcycles.js")
 PAGE = os.path.join(ROOT, "catalogo.html")
 
-START = '<div id="cat-index-content">'
-END = "</div>"
+# Delimitadores explícitos. NO usar "</div>" como fin: al regenerar sobre un
+# índice ya lleno, el primer </div> es el de la primera marca y el resto del
+# contenido anterior sobrevive (el índice se duplicaba en cada ejecución).
+START = "<!-- CAT-INDEX:START -->"
+END = "<!-- CAT-INDEX:END -->"
 
 # Texto introductorio por marca. Corto, útil e indexable: contexto real de lo
 # que hay en el catálogo, sin afirmaciones técnicas que la data no respalde.
@@ -36,6 +39,9 @@ BRAND_INTRO = {
     "um": "Modelos UM Motorcycles disponibles en RiderMex, con la gama Renegade, DSR y Xtreet.",
     "vento": "Modelos Vento disponibles en RiderMex: motonetas, scooters, urbanas y doble propósito.",
     "zmoto": "Modelos Zmoto disponibles en RiderMex, con opciones urbanas, scooters y todo terreno.",
+    "tvs": "Modelos TVS disponibles en RiderMex, con la urbana Stryker y la gama deportiva Apache RTR.",
+    "cflite": "Modelos CF Lite disponibles en RiderMex: naked 250NK, deportiva 250SR y doble propósito 250DUAL.",
+    "honda": "Modelos Honda disponibles en RiderMex, encabezados por la urbana compacta NAVI.",
 }
 
 
@@ -86,9 +92,13 @@ def main():
 
     block = "\n      ".join(out)
     page = open(PAGE, encoding="utf-8").read()
+    if START not in page or END not in page:
+        raise SystemExit(
+            "catalogo.html no tiene los delimitadores %s / %s. "
+            "Restaura el bloque #cat-index-content antes de regenerar." % (START, END))
     i = page.index(START) + len(START)
     j = page.index(END, i)
-    new = page[:i] + "\n      " + block + "\n    " + page[j:]
+    new = page[:i] + "\n      " + block + "\n      " + page[j:]
     open(PAGE, "w", encoding="utf-8").write(new)
 
     print("Índice generado: %d marcas, %d modelos" % (len(brands), len(motos)))

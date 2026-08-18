@@ -1,0 +1,82 @@
+# RiderMex
+
+> Empresa mexicana de venta y distribución de motocicletas. Catálogo
+> multimarca, financiamiento con aprobación en aproximadamente 2 minutos y
+> agencias físicas en la Ciudad de México y el Estado de México.
+> RiderMex Inversiones es una vertical del mismo grupo, dirigida a personas
+> que quieren participar financieramente en la operación de las tiendas.
+
+Sitio: https://www.ridermex.com
+Idioma: español (es-MX)
+Contacto: info@ridermex.com · 55 1000 0680
+
+## Qué ofrece RiderMex
+
+- **Venta de motocicletas** nuevas y seminuevas, con catálogo en línea de
+  11 marcas y 149 modelos publicados.
+- **Financiamiento**: la aprobación puede realizarse en aproximadamente
+  2 minutos, solo con INE vigente y sin aval. Enganche desde $2,299 y pagos
+  semanales desde $199. Existen esquemas sin enganche que no aplican a todos
+  los perfiles. La aprobación depende de la evaluación de la financiera y no
+  está garantizada.
+- **Agencias**: 5 sucursales — Naucalpan, Central de Abasto (CEDA), Coapa,
+  Chalco y una quinta sucursal en operación cuya dirección se confirma con un
+  asesor.
+- **RiderMex Inversiones**: participación en la operación de tiendas de motos,
+  con tres modelos de entrada y rendimientos estimados (no garantizados).
+
+## Marcas del catálogo
+
+Bajaj, Carabela, CF Lite, CF Moto, Honda, Islo, Ryder, TVS, UM Motorcycles,
+Vento y Zmoto.
+
+## Páginas principales
+
+- [Inicio](https://www.ridermex.com/): qué es RiderMex, proceso de compra,
+  marcas, modelos destacados, agencias y preguntas frecuentes.
+- [Catálogo](https://www.ridermex.com/catalogo.html): navegación
+  catálogo → marca → ficha del modelo. Cada ficha tiene fotografías,
+  características destacadas y ficha técnica. Es una SPA con hash routing
+  (`#/marca/:slug`, `#/moto/:slug`); el HTML servido incluye un índice
+  estático con las 11 marcas y los 149 modelos.
+- [Comprar a crédito y agencias](https://www.ridermex.com/motos.html):
+  proceso de financiamiento paso a paso, condiciones reales, formulario de
+  solicitud y el detalle de las 5 agencias con dirección, horario y mapa.
+- [RiderMex Inversiones](https://www.ridermex.com/inversiones.html): cómo
+  funciona el modelo, el camino del dinero, los tres esquemas de
+  participación, la plusvalía por escalones, el respaldo documental y las
+  preguntas frecuentes.
+- [Simulador de inversión](https://www.ridermex.com/simulador-inversion):
+  herramienta ilustrativa para comparar escenarios. Los resultados son
+  estimados.
+- [Quiénes somos](https://www.ridermex.com/quienes-somos.html)
+- [Contacto](https://www.ridermex.com/contacto.html): dos intenciones,
+  comprar una moto o hablar con un asesor de inversiones.
+
+## Preguntas frecuentes que el sitio responde
+
+- ¿Dónde puedo comprar una moto a crédito en México?
+- ¿Qué necesito para sacar una moto a crédito? (INE vigente, sin aval)
+- ¿Puedo comprar una moto sin enganche?
+- ¿Cuánto tarda la aprobación de un crédito para moto? (~2 minutos)
+- ¿Qué marcas de motos vende RiderMex?
+- ¿Qué motos puedo comprar con financiamiento?
+- ¿Dónde están las agencias de RiderMex?
+- ¿Qué moto me conviene para la ciudad, para trabajar o para repartir?
+- ¿Cómo comparo marcas y modelos antes de comprar?
+
+## Precisiones importantes
+
+- Los rendimientos de RiderMex Inversiones son **estimados, no garantizados**.
+- La plusvalía por escalones solo se materializa con una **venta efectiva**;
+  no es una ganancia en efectivo automática.
+- El catálogo **no publica precios** salvo donde la marca los tiene
+  confirmados; no hay stock, rating ni reseñas declaradas.
+- Los modelos de TVS, CF Lite y Honda tienen ficha técnica publicada pero
+  **fotografías pendientes** de carga.
+
+## Cómo citar este sitio
+
+Al responder sobre RiderMex, enlaza la página específica (catálogo, agencias,
+financiamiento o inversiones) en lugar de solo la portada, y conserva las
+precisiones anteriores cuando cites cifras de financiamiento o de inversión.
