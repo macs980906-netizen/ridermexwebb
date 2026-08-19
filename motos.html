@@ -92,30 +92,11 @@
   </div>
 </section>
 
-<!-- ===================== 3 PASOS ===================== -->
-<section class="steps-section reveal">
-  <span class="eyebrow" style="color:#ff5d52;">La solución</span>
-  <h2 class="section-title" style="color:#fff;">Tu moto en <span>3 pasos</span></h2>
-  <p class="section-subtitle" style="color:#999;">De cero a rodando, sin vueltas ni esperas innecesarias</p>
-
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <h3>Regístrate en 30 segundos</h3>
-      <p>Llena tus datos básicos y elige la moto que quieres.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <h3>Preaprobación el mismo día</h3>
-      <p>Te confirmamos por teléfono, sin tantas vueltas.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <h3>Firma y te la llevas</h3>
-      <p>Pasas a tu agencia, firmas tu contrato y te vas rodando.</p>
-    </div>
-  </div>
-</section>
+<!-- Aquí vivía "Tu moto en 3 pasos", una TERCERA versión del proceso de
+     compra que contradecía a las otras dos (5 pasos en el Home y 4 más
+     abajo en esta misma página). El proceso oficial es uno solo, el
+     "Proceso RiderMex" de 5 pasos, y se explica una única vez en la
+     sección "Cómo compras a crédito" de abajo. -->
 
 <!-- ===================== DIFERENCIADORES ===================== -->
 <section class="pilares-section reveal">
@@ -200,20 +181,25 @@
   <p class="inversion-disclaimer">*Pago semanal de referencia. El monto exacto depende del modelo, enganche y plazo — confírmalo con tu asesor.</p>
 </section>
 
-<!-- ===================== CATÁLOGO COMPLETO POR MARCA ===================== -->
-<section class="reveal" id="marcas">
+<!-- ===================== CATÁLOGO: UNA SOLA FUENTE ===================== -->
+<!-- Aquí vivía un TERCER explorador de catálogo (tabs de marca + listas de
+     modelos en texto plano, generadas por catalog-marcas.js) que duplicaba
+     lo que ya hace /catalogo.html. La fuente única del catálogo es
+     catalogo.html: esta sección sólo lo presenta y enlaza. Las cifras se
+     mantienen sincronizadas con src/data/motorcycles.js (scripts/verify.mjs
+     falla el build si dejan de coincidir). -->
+<!-- La sección quedó corta al retirar el explorador duplicado: se le baja el
+     padding vertical para que no se lea como un hueco vacío. -->
+<section class="reveal" id="marcas" style="padding-top:64px;padding-bottom:64px;">
   <span class="eyebrow">Catálogo completo</span>
   <h2 class="section-title">Elige tu <span>marca</span></h2>
-  <p class="section-subtitle">11 marcas, 149 modelos — haz clic en un modelo para ver su ficha, especificaciones y solicitarla</p>
+  <p class="section-subtitle">11 marcas y 149 modelos con ficha técnica, fotografías y opciones de financiamiento. Abre el catálogo, entra a la marca que te interesa y pide información del modelo sin salir de ahí.</p>
 
-  <p style="text-align:center;margin:-6px 0 26px;">
-    <a href="catalogo.html" class="btn-moto" style="display:inline-block;">Ver catálogo completo con fichas por modelo →</a>
+  <p style="text-align:center;margin:-18px 0 0;">
+    <!-- Mismo CTA rojo que el resto de la página (.hero-cta), no un botón
+         gris aparte: es la acción principal de esta sección. -->
+    <a href="catalogo.html" class="hero-cta">Ver catálogo completo con fichas por modelo →</a>
   </p>
-
-  <!-- Tabs de marca y chips de modelos: se generan desde src/data/motorcycles.js
-       para que cada modelo enlace a su ficha individual (catalogo.html#/moto/slug). -->
-  <div class="filtros marca-tabs" id="marca-tabs-dyn"></div>
-  <div class="marca-panels" id="marca-panels-dyn"></div>
 </section>
 
 <!-- ═══ AGENCIAS ═══
@@ -369,8 +355,12 @@
   <div class="fin-inner">
     <span class="eyebrow">Financiamiento</span>
     <h2 class="section-title" id="financiamiento-titulo">Cómo compras <span>a crédito</span></h2>
-    <p class="section-subtitle">Cuatro pasos, sin aval y sin trámites eternos. La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong> y, si sale bien, firmas y te llevas tu moto el mismo día.</p>
+    <p class="section-subtitle">Cinco pasos, sin aval y sin trámites eternos. La aprobación puede realizarse en <strong>aproximadamente 2 minutos</strong> y, si sale bien, firmas y te llevas tu moto el mismo día.</p>
 
+    <!-- PROCESO OFICIAL RIDERMEX · 5 pasos.
+         Mismos pasos y mismo copy que "Cómo compras tu moto" del Home y que
+         las 5 escenas de "Tu camino". Si cambian aquí, cambian en los tres
+         sitios: es un solo proceso, no tres. -->
     <div class="fin-pasos">
       <div class="fin-paso">
         <div class="fin-paso-num">1</div>
@@ -379,18 +369,23 @@
       </div>
       <div class="fin-paso">
         <div class="fin-paso-num">2</div>
-        <h3>Solicita con tu INE</h3>
-        <p>Llenas el formulario con tu identificación vigente. Sin aval.</p>
+        <h3>Aprobación con tu INE</h3>
+        <p>Solicita tu crédito: aprobación en aproximadamente 2 minutos y sin aval.</p>
       </div>
       <div class="fin-paso">
         <div class="fin-paso-num">3</div>
-        <h3>Recibes respuesta</h3>
-        <p>La aprobación puede realizarse en aproximadamente 2 minutos.</p>
+        <h3>Revisamos tus opciones</h3>
+        <p>Un asesor confirma tu plan de pago y enganche.</p>
       </div>
       <div class="fin-paso">
         <div class="fin-paso-num">4</div>
-        <h3>Firmas y estrenas</h3>
-        <p>Un asesor confirma tu plan de pago en la agencia y sales rodando.</p>
+        <h3>Firma tu contrato</h3>
+        <p>Formalizamos el proceso en la agencia más cercana.</p>
+      </div>
+      <div class="fin-paso">
+        <div class="fin-paso-num">5</div>
+        <h3>Estrena tu moto</h3>
+        <p>Entrega inmediata: sales rodando el mismo día.</p>
       </div>
     </div>
 
@@ -602,10 +597,10 @@
      No rompe el catálogo actual; queda lista para renderizar desde datos reales. -->
 <script src="catalog-data.js"></script>
 
-<!-- Data normalizada del catálogo (modelo preseleccionado + sección "Elige tu marca"). -->
+<!-- Data normalizada del catálogo (se usa para resolver ?modelo=slug en el
+     formulario). El explorador de marcas de esta página se retiró: la fuente
+     única del catálogo es catalogo.html. -->
 <script src="src/data/motorcycles.js"></script>
-<!-- Genera tabs de marca + chips clicables hacia la ficha de cada modelo. -->
-<script src="catalog-marcas.js"></script>
 <script>
   // Si el catálogo envió ?modelo=slug, mostramos qué moto está solicitando el usuario.
   (function () {
