@@ -1206,6 +1206,8 @@
       .home-wrap, .home-section-head { padding-left:1.25rem; padding-right:1.25rem; }
     }
   </style>
+  <!-- Cintillo "RiderMex en los medios": mismo componente que en inversiones.html. -->
+  <link rel="stylesheet" href="site-medios.css">
   <!-- Header global (mismo componente en todas las páginas). Va al final del
        <head> para ganar sobre el CSS propio de la página. -->
   <link rel="stylesheet" href="site-header.css">
@@ -1419,16 +1421,20 @@
     <div class="journey-sticky">
 
       <!-- ═══ ESCENAS / ECOSISTEMAS (fondo + elementos con parallax) ═══
-           FONDOS ROTADOS una posición: cada escena usa el fondo de la
-           siguiente y la última toma el de la primera (1←2, 2←3, 3←4,
-           4←5, 5←1). Solo cambió el src de .journey-scene-bg: los
-           elementos decorativos, textos, carretera, moto y scroll siguen
-           exactamente igual. -->
+           ORDEN DE FONDOS definido por el cliente. Asignación vigente:
+             escena 1 (forest) → 1_Bosque/fondo_bosque.jpeg
+             escena 2 (city)   → 5_RutaInversion/Fondo_RutaInversion.jpeg
+             escena 3 (desert) → 2_Ciudad/Fondo.jpeg
+             escena 4 (night)  → 3_Desierto/Fondo_Desierto.png
+             escena 5 (invest) → 4_ViajeNoche/fondo_viajenoche.jpeg
+           Cada fondo se usa una sola vez. Solo cambia el src de
+           .journey-scene-bg: elementos decorativos, textos, carretera,
+           moto y scroll siguen exactamente igual. -->
       <div class="journey-scenes" id="jScenes" aria-hidden="true">
 
         <!-- 1 · BOSQUE -->
         <div class="journey-scene" data-scene="forest">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Fondo.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/fondo_bosque.jpeg" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/arbol_3.png"   alt="" loading="lazy" decoding="async" style="left:19%; bottom:15%; width:8vw;">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/arbol_2.png"   alt="" loading="lazy" decoding="async" style="left:29%; bottom:11%; width:7vw;">
@@ -1441,7 +1447,7 @@
 
         <!-- 2 · CIUDAD -->
         <div class="journey-scene" data-scene="city">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/Fondo_Desierto.png" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/5_RutaInversion/Fondo_RutaInversion.jpeg" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel jel-cloud" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Nubes_1.png" alt="" loading="lazy" decoding="async" style="top:12%; left:10%; width:16vw;">
             <img class="jel jel-cloud jel-cloud--slow" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/nubes_2.png" alt="" loading="lazy" decoding="async" style="top:20%; left:62%; width:13vw;">
@@ -1455,7 +1461,7 @@
 
         <!-- 3 · DESIERTO -->
         <div class="journey-scene" data-scene="desert">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/4_ViajeNoche/fondo_viajenoche.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Fondo.jpeg" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/cactus_1.png" alt="" loading="lazy" decoding="async" style="left:9%;  bottom:6%; width:7vw;">
             <img class="jel jel-opt" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/cactus_2.png" alt="" loading="lazy" decoding="async" style="left:23%; bottom:5%; width:6vw;">
@@ -1468,12 +1474,12 @@
 
         <!-- 4 · VIAJE NOCHE (solo fondo, según indicación) -->
         <div class="journey-scene" data-scene="night">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/5_RutaInversion/Fondo_RutaInversion.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/Fondo_Desierto.png" alt="" loading="lazy" decoding="async">
         </div>
 
         <!-- 5 · RUTA INVERSIÓN (solo fondo, según indicación) -->
         <div class="journey-scene" data-scene="invest">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/fondo_bosque.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/4_ViajeNoche/fondo_viajenoche.jpeg" alt="" loading="lazy" decoding="async">
         </div>
 
       </div><!-- /journey-scenes -->

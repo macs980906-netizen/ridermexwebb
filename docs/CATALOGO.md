@@ -173,21 +173,22 @@ El recorrido tiene **5 escenas** (no 6): Bosque, Ciudad, Desierto, Viaje Noche
 y Ruta Inversión, con un fondo cada una en
 `assets/RIDERMEX_CAMINO_ELEMENTSPNG/`.
 
-Los fondos están **rotados una posición**: cada escena usa el fondo de la
-siguiente y la última toma el de la primera.
+El **orden de los fondos lo define el cliente** y no sigue el orden de las
+carpetas. Cada fondo se usa exactamente una vez. Asignación vigente:
 
 | Escena | Etiqueta | Fondo que usa |
 |---|---|---|
-| 1 | Bosque | `2_Ciudad/Fondo.jpeg` |
-| 2 | Ciudad | `3_Desierto/Fondo_Desierto.png` |
-| 3 | Desierto | `4_ViajeNoche/fondo_viajenoche.jpeg` |
-| 4 | Viaje Noche | `5_RutaInversion/Fondo_RutaInversion.jpeg` |
-| 5 | Ruta Inversión | `1_Bosque/fondo_bosque.jpeg` |
+| 1 | Bosque | `1_Bosque/fondo_bosque.jpeg` |
+| 2 | Ciudad | `5_RutaInversion/Fondo_RutaInversion.jpeg` |
+| 3 | Desierto | `2_Ciudad/Fondo.jpeg` |
+| 4 | Viaje Noche | `3_Desierto/Fondo_Desierto.png` |
+| 5 | Ruta Inversión | `4_ViajeNoche/fondo_viajenoche.jpeg` |
 
-Sólo cambió el `src` de `.journey-scene-bg`. Los elementos decorativos
+Sólo cambia el `src` de `.journey-scene-bg`. Los elementos decorativos
 (`.jel`), textos, carretera, moto, scroll y CTAs siguen igual, así que las
-etiquetas de estado (BOSQUE, CIUDAD…) ya no coinciden con el paisaje del
-fondo: es intencional según la instrucción de rotar únicamente los fondos.
+etiquetas de estado (BOSQUE, CIUDAD…) no siempre coinciden con el paisaje
+del fondo: es intencional según la instrucción de reordenar únicamente los
+fondos.
 
 Como la escena 1 pasó a un cielo claro, el panel de texto
 (`.journey-card`) se opacó de `.82/.6` a `.94/.86` y el chip
