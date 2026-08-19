@@ -161,6 +161,41 @@
   overflow: hidden;
 }
 .brand-card-media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── Placeholder "Imagen en preparación" ──────────────────────────────
+   Tratamiento ÚNICO para todo el catálogo: tarjetas de marca, tarjetas de
+   modelo, imagen principal de la ficha y miniaturas.
+
+   Va pintado de FONDO en el contenedor, no sólo como src de respaldo. Así
+   se ve desde el primer fotograma, sin esperar a que falle la petición de
+   una foto alojada en un dominio de terceros (ese fallo tarda ~20 s en
+   producirse, y durante ese tiempo la tarjeta se veía como un recuadro
+   negro vacío). La foto real, cuando carga, la tapa por completo.
+   La variable --cat-placeholder la publica catalog.js. */
+.brand-card-media,
+.model-card-media,
+.gallery-main,
+.gallery-thumb {
+  background-image: var(--cat-placeholder);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Cuando el placeholder es la propia imagen (modelo sin foto asignada, o
+   foto que ya falló) se muestra completo: la ilustración es 4:3 y los
+   contenedores no siempre lo son, así que con cover se recortaba la moto
+   y su leyenda "Imagen en preparación".
+   La clase .is-placeholder la pone catalog.js en ambos casos. */
+.brand-card-media img.is-placeholder,
+.model-card-media img.is-placeholder,
+.gallery-main img.is-placeholder,
+.gallery-thumb img.is-placeholder {
+  object-fit: contain;
+  transform: none;                 /* sin el zoom de hover de las fotos */
+}
+.model-card:hover .model-card-media img.is-placeholder { transform: none; }
+
 .brand-card-body { padding: 18px 18px 20px; }
 .brand-card-name {
   font-family: 'Poppins', sans-serif;
@@ -195,7 +230,7 @@
 }
 .model-card-media {
   aspect-ratio: 4 / 3;
-  background: #0b0b0b;
+  background-color: #0b0b0b;
   overflow: hidden;
 }
 .model-card-media img {
@@ -249,7 +284,7 @@
   aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #0b0b0b;
+  background-color: #0b0b0b;
   border: 1px solid var(--gris-borde);
 }
 .gallery-main img { width: 100%; height: 100%; object-fit: cover; }

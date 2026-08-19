@@ -16,6 +16,21 @@
   var PLACEHOLDER = CAT.PLACEHOLDER_IMAGE;
   var FORM_TARGET = CAT.MOTORCYCLE_FORM_TARGET;
 
+  // La ilustración "Imagen en preparación" se publica también como variable
+  // CSS para poder pintarla DE FONDO en los contenedores de imagen.
+  //
+  // Por qué: 59 de los 149 modelos apuntan a fotos alojadas en dominios de
+  // terceros. Cuando uno de esos dominios no responde, el navegador tarda
+  // ~20 s en dar la petición por fallida, y sólo entonces salta el onerror
+  // que pone el placeholder. Durante esos 20 s la tarjeta se ve como un
+  // recuadro negro vacío (y en el panel de red la petición aparece
+  // "pendiente", no fallida, por eso no se detecta como error 404).
+  // Con el placeholder de fondo la ilustración se ve desde el primer
+  // fotograma y la foto real simplemente la tapa cuando llega.
+  document.documentElement.style.setProperty(
+    "--cat-placeholder", 'url("' + PLACEHOLDER + '")'
+  );
+
   // Dominio canónico del sitio (usado en los datos estructurados).
   var SITE = "https://www.ridermex.com";
   var CATALOG_URL = SITE + "/catalogo.html";
@@ -44,12 +59,22 @@
       .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
   // atributo src seguro (evita romper el placeholder onerror en bucle)
+  //
+  // La ilustración "Imagen en preparación" es 4:3, pero los contenedores no
+  // lo son (las tarjetas de marca son 16:10) y todos usan object-fit:cover:
+  // recortaban la ilustración y su leyenda, y la tarjeta se veía como un
+  // recuadro negro vacío. Por eso el placeholder se marca con la clase
+  // .is-placeholder, que en catalog.css lo muestra completo (contain).
+  // Se marca en los dos caminos posibles: cuando no hay foto asignada y
+  // cuando la foto existe pero no carga (onerror).
   function imgTag(src, alt, extraClass, eager) {
     var s = src || PLACEHOLDER;
+    var cls = (extraClass ? extraClass + " " : "") + (src ? "" : "is-placeholder");
     return '<img src="' + esc(s) + '" alt="' + esc(alt) + '"' +
-      (extraClass ? ' class="' + extraClass + '"' : "") +
+      (cls.trim() ? ' class="' + cls.trim() + '"' : "") +
       (eager ? ' fetchpriority="high" decoding="async"' : ' loading="lazy" decoding="async"') +
-      ' onerror="this.onerror=null;this.src=window.RIDERMEX_CATALOG.PLACEHOLDER_IMAGE">';
+      ' onerror="this.onerror=null;this.classList.add(\'is-placeholder\');' +
+      'this.src=window.RIDERMEX_CATALOG.PLACEHOLDER_IMAGE">';
   }
   // Alt descriptivo y único por imagen (evita "imagen1" / "moto").
   function altFor(m, i) {

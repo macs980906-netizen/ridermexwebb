@@ -7,6 +7,8 @@
      1. track()          — envía eventos a GA4 SOLO si ya está instalado.
      2. simulator_click  — evento del CTA del simulador.
      3. Botón compartir  — Web Share API con copia de enlace como respaldo.
+     4. Anclas de la misma página — hacen scroll aunque la URL ya tenga ese
+        ancla (si no, el enlace parece muerto).
 
    Se carga con:  <script src="site-ui.js" defer></script>
    ═══════════════════════════════════════════════════════════════════════ */
@@ -78,9 +80,48 @@
     });
   }
 
+  /* ── 4 · Anclas de la misma página ───────────────────────────────────
+     "Ver todas las agencias →" apunta a motos.html#agencias. Si ya estás
+     en motos.html#agencias, el navegador no hace nada: la URL no cambia y
+     la página no se mueve, así que el enlace parece roto. Aquí se fuerza
+     el scroll cuando el destino está en esta misma página. */
+  function sameHref(a) {
+    var href = a.getAttribute("href") || "";
+    if (!href || href.indexOf("://") !== -1) return null;
+    var parts = href.split("#");
+    var file = parts[0].split("?")[0];
+    var hash = parts[1];
+    if (!hash) return null;
+    var here = location.pathname.split("/").pop() || "index.html";
+    // Sin archivo ("#agencias") o con el archivo de esta misma página.
+    if (file && file !== here) return null;
+    return hash;
+  }
+
+  function initAnchorScroll() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || a.hasAttribute("download") || a.target === "_blank") return;
+      var hash = sameHref(a);
+      if (!hash) return;
+      var el = document.getElementById(hash);
+      if (!el) return;              // sin destino real: no interceptar nada
+      e.preventDefault();
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Mantener la URL y el historial coherentes con lo que se ve.
+      if (location.hash !== "#" + hash) {
+        history.pushState(null, "", "#" + hash);
+      }
+      // Que el foco siga al contenido (accesibilidad por teclado).
+      if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+      el.focus({ preventScroll: true });
+    });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", function () { init(); initAnchorScroll(); });
   } else {
     init();
+    initAnchorScroll();
   }
 })();
