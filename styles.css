@@ -228,8 +228,13 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
 
 .showcase-visual-inner {
   position: sticky;
-  top: 90px;
-  height: 70vh;
+  top: calc(var(--rm-header-h, 116px) + 14px);
+  /* Marco apaisado (4:3) en vez de un alto fijo en vh: las fotos de moto
+     son horizontales, así que este encuadre las muestra completas y a
+     buen tamaño en lugar de dejar franjas vacías arriba y abajo. */
+  aspect-ratio: 4 / 3;
+  height: auto;
+  max-height: 74vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,11 +244,18 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
   overflow: hidden;
 }
 
+/* Las fotos del showcase vienen con proporciones muy distintas (1:1 de
+   estudio, 1.43, y panorámicas de 2.67 como la TVS RTR 200). Con
+   object-fit:cover las más anchas se recortaban y quedaban ruedas fuera
+   del encuadre, así que se muestran completas y el panel hace de marco. */
 .showcase-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  /* El hueco inferior deja libre la banda donde van el nombre del modelo y
+     la marca: antes se encimaban sobre las fotos de fondo blanco. */
+  padding: 20px 20px 62px;
   transition: transform .6s var(--ease), opacity .6s var(--ease);
 }
 
@@ -325,9 +337,19 @@ section { padding: 90px 24px; max-width: 1240px; margin: 0 auto; }
 }
 
 @media (max-width: 900px) {
-  .showcase-inner { grid-template-columns: 1fr; gap: 20px; }
-  .showcase-visual-inner { position: relative; top: 0; height: 40vh; }
+  .showcase-inner { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  /* Sin min-width:0 las columnas del grid crecen hasta el contenido más
+     ancho (min-width:auto) y la sección se salía del viewport en móvil. */
+  .showcase-visual, .showcase-frames { min-width: 0; }
+  .showcase-visual-inner {
+    position: relative;
+    top: 0;
+    height: auto;          /* el marco 4:3 manda también en móvil */
+    max-height: 46vh;
+  }
+  .showcase-img { padding: 14px 14px 52px; }
   .showcase-frame { min-height: auto; padding: 40px 0; }
+  .showcase-frame p { max-width: none; }
   .showcase-frames { padding: 4vh 0; }
 }
 

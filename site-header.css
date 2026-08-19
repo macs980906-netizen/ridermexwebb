@@ -3,8 +3,10 @@
    ───────────────────────────────────────────────────────────────────────
    Un solo componente para TODAS las páginas del sitio. La referencia
    maestra son las proporciones del Home:
-     · logo 54px de alto
-     · padding 1.25rem 2.5rem
+     · logo 84px de alto (se amplió desde 54px: la marca tenía muy poca
+       presencia; el padding vertical bajó a 1rem para que el header no
+       crezca en la misma proporción)
+     · padding 1rem 2.5rem
      · navegación 0.875rem / 500 / letter-spacing .04em
    Se carga con:  <link rel="stylesheet" href="site-header.css">
    y se acompaña de site-header.js (menú móvil + estado is-scrolled).
@@ -14,13 +16,18 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --rm-header-h: 86px;          /* 54px logo + 2 × 1.25rem padding */
+  --rm-header-h: 116px;         /* 84px logo + 2 × 1rem padding */
   --rm-header-bg: rgba(10, 10, 10, 0.92);
   --rm-header-line: #2C2C2C;
   --rm-header-red: #CC0000;
   --rm-header-text: #AAAAAA;
   --rm-header-text-on: #F5F5F5;
+  --rm-header-verde: #00C896;   /* acento de RiderMex Inversiones */
 }
+
+/* Con el header fijo y más alto, los saltos a ancla (#credito, #agencias,
+   #formulario-motos…) quedaban por debajo de la barra. */
+[id] { scroll-margin-top: calc(var(--rm-header-h) + 16px); }
 
 .rm-header {
   position: sticky;
@@ -48,7 +55,7 @@
 .rm-header-inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,8 +73,8 @@
 }
 
 .rm-logo img {
-  height: 54px;
-  width: 54px;          /* el logo es cuadrado (2084×2084): evita CLS */
+  height: 84px;
+  width: 84px;          /* el logo es cuadrado (2084×2084): evita CLS */
   max-width: none;
   display: block;
   object-fit: contain;
@@ -127,7 +134,9 @@
   border-radius: 3px;
 }
 
-/* CTA de crédito dentro del header */
+/* CTAs dentro del header. Son dos y no se cruzan: el rojo lleva al crédito
+   de motos y el verde a RiderMex Inversiones (misma separación de canales
+   que en el resto del sitio). */
 .rm-nav-cta > a {
   background: var(--rm-header-red);
   color: #fff;
@@ -139,6 +148,25 @@
 }
 .rm-nav-cta > a::after { display: none; }
 .rm-nav-cta > a:hover { background: #e00b0b; color: #fff; }
+
+/* Variante Inversiones: contorno verde para que no compita con el CTA
+   principal de crédito pero quede a su mismo nivel de lectura. */
+.rm-nav-cta--inv > a {
+  background: transparent;
+  color: var(--rm-header-verde);
+  border: 1px solid rgba(0, 200, 150, .55);
+  box-shadow: none;
+}
+.rm-nav-cta--inv > a:hover {
+  background: rgba(0, 200, 150, .12);
+  border-color: var(--rm-header-verde);
+  color: var(--rm-header-verde);
+}
+.rm-nav-cta--inv > a:focus-visible { outline-color: var(--rm-header-verde); }
+
+/* Los dos CTAs viajan juntos y con menos aire que los enlaces de texto. */
+.rm-nav-cta { margin-left: 0; }
+.rm-nav-links .rm-nav-cta + .rm-nav-cta { margin-left: -1rem; }
 
 /* ── Botón hamburguesa ── */
 .rm-nav-toggle {
@@ -197,16 +225,29 @@
 }
 
 /* ── Tablet ── */
+/* Con dos CTAs la barra necesita apretar antes: primero el aire entre
+   enlaces, luego el tamaño del logo. */
+@media (max-width: 1320px) {
+  .rm-nav-links { gap: 1.15rem; }
+  .rm-nav-links a { font-size: 0.83rem; }
+  .rm-nav-cta > a { padding: 0.55rem 0.9rem; }
+  .rm-header-inner { padding: 1rem 1.75rem; gap: 1rem; }
+}
+
+@media (max-width: 1180px) {
+  .rm-logo img { height: 68px; width: 68px; }
+  .rm-nav-links { gap: 0.9rem; }
+  .rm-nav-links a { font-size: 0.78rem; }
+}
+
 @media (max-width: 1080px) {
-  .rm-nav-links { gap: 1.25rem; }
-  .rm-nav-links a { font-size: 0.82rem; }
-  .rm-header-inner { padding: 1.25rem 1.75rem; }
+  .rm-header-inner { padding: 1rem 1.25rem; }
 }
 
 /* ── Móvil: misma proporción, menú desplegable ── */
-@media (max-width: 900px) {
-  .rm-header-inner { padding: 1rem 1.25rem; min-height: 76px; }
-  .rm-logo img { height: 46px; width: 46px; }
+@media (max-width: 1024px) {
+  .rm-header-inner { padding: 0.75rem 1.25rem; min-height: 88px; }
+  .rm-logo img { height: 64px; width: 64px; }
   .rm-nav-toggle { display: flex; }
 
   .rm-nav {
@@ -246,6 +287,13 @@
     border-bottom: none;
     padding: 14px 1.15rem;
   }
+  /* En el menú desplegable los dos CTAs se apilan uno bajo otro. */
+  .rm-nav-links .rm-nav-cta + .rm-nav-cta { margin-left: 0; margin-top: 0.6rem; }
+}
+
+/* La altura del header en móvil también alimenta el scroll-margin. */
+@media (max-width: 1024px) {
+  :root { --rm-header-h: 88px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
