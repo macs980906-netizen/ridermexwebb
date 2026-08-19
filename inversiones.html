@@ -326,30 +326,74 @@ details[open] summary::after{content:"–"}
   .wa-float .wa-float-text{display:none}
 }
 
+/* El cintillo "RiderMex en los medios" es un componente compartido:
+   site-medios.css (se usa también en el Home). */
+
 /* ═══════════════════════════════════════════════════════════════════════
-   CINTILLO "RIDERMEX EN LOS MEDIOS" (debajo del hero)
+   CONTEXTO DE INDUSTRIA · el mercado mexicano de motocicletas
+   ───────────────────────────────────────────────────────────────────────
+   Va justo bajo el hero para que quien llega desde fuera entienda por qué
+   hablamos de motocicletas como industria. Es CONTEXTO DE MERCADO, no una
+   promesa de rendimiento: las cifras son de terceros (AMFIM y AMDA) y así
+   se declara en la propia pieza.
+   El dato existe como HTML real, no dentro de una imagen.
    ═══════════════════════════════════════════════════════════════════════ */
-/* Va en el flujo normal del documento, con su propia altura y separación:
-   nada de position:absolute ni márgenes negativos que provoquen overlap. */
-.medios-cintillo{
-  display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;
-  position:relative;
-  max-width:var(--max);margin:34px auto 40px;padding:18px 26px;min-height:64px;
-  border:1px solid var(--border2);border-radius:999px;
-  background:linear-gradient(90deg,rgba(230,25,25,.10),rgba(255,255,255,.045) 45%,rgba(230,25,25,.10));
-  text-decoration:none;transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease;
+.industria{max-width:var(--max);margin:0 auto;padding:8px 22px 0}
+.industria-panel{
+  border:1px solid var(--border);border-radius:26px;padding:34px 32px;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  box-shadow:var(--shadow);
 }
-.medios-cintillo:hover{border-color:rgba(230,25,25,.55);transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
-.medios-cintillo:focus-visible{outline:2px solid var(--red);outline-offset:4px}
-.mc-label{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--white)}
-.mc-sep{width:1px;height:18px;background:var(--border2)}
-.mc-text{color:var(--muted);font-size:14px;font-weight:300}
-.mc-cta{
-  display:inline-flex;align-items:center;gap:7px;color:var(--red2);
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+.industria-head{max-width:760px;margin-bottom:28px}
+.industria-head h2{font-size:clamp(28px,3.6vw,46px);line-height:.98;margin-bottom:12px}
+.industria-head p{color:var(--muted);font-size:15.5px;line-height:1.75;font-weight:300}
+
+/* Comparativa: dos barras proporcionales a las cifras reales. */
+.industria-bars{display:grid;gap:18px;margin-bottom:22px}
+.ind-row{display:grid;grid-template-columns:168px minmax(0,1fr);gap:18px;align-items:center}
+.ind-cifra{
+  font-family:"Bebas Neue",sans-serif;font-size:clamp(34px,4.6vw,52px);line-height:1;
+  letter-spacing:1px;color:var(--white);white-space:nowrap;
 }
-.mc-cta svg{width:15px;height:15px;transition:transform .25s ease}
-.medios-cintillo:hover .mc-cta svg{transform:translateX(4px)}
+.ind-row--motos .ind-cifra{color:var(--red2)}
+.ind-track{position:relative;height:52px;border-radius:12px;background:rgba(255,255,255,.045);overflow:hidden}
+.ind-fill{
+  position:absolute;inset:0 auto 0 0;border-radius:12px;
+  width:var(--w);transform-origin:left center;
+  background:linear-gradient(90deg,rgba(255,255,255,.14),rgba(255,255,255,.06));
+}
+.ind-row--motos .ind-fill{background:linear-gradient(90deg,#d81818,#f12b2b)}
+.ind-label{
+  position:absolute;left:16px;top:50%;transform:translateY(-50%);
+  font-family:"Barlow Condensed",sans-serif;font-size:12.5px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;color:#fff;white-space:nowrap;
+  text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+.industria-nota{color:var(--muted);font-size:14px;line-height:1.7;font-weight:300;max-width:70ch}
+.industria-fuente{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
+  color:var(--muted2);font-size:12px;line-height:1.6;
+}
+
+/* Las barras crecen al entrar en pantalla. Se engancha al mismo mecanismo
+   .reveal/.visible que ya usa la página: solo transform, sin librerías. */
+.js-anim .industria-panel:not(.visible) .ind-fill{transform:scaleX(.02)}
+.industria-panel .ind-fill{transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.industria-panel.visible .ind-fill{transform:scaleX(1)}
+
+@media (max-width:700px){
+  .industria{padding:6px 18px 0}
+  .industria-panel{padding:24px 20px;border-radius:20px}
+  .ind-row{grid-template-columns:1fr;gap:8px}
+  /* La etiqueta iba en absoluto y se recortaba dentro de la barra: en móvil
+     pasa al flujo y la barra crece a su alto. */
+  .ind-track{height:auto;min-height:44px;display:flex;align-items:center}
+  /* relative + z-index: la barra va en absoluto y tapaba la etiqueta. */
+  .ind-label{position:relative;z-index:1;transform:none;white-space:normal;padding:11px 14px;font-size:11px;line-height:1.35;letter-spacing:1.4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .js-anim .industria-panel:not(.visible) .ind-fill{transform:none}
+}
 .medios-wrap{max-width:var(--max);margin:0 auto;padding:26px 22px 0}
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -563,12 +607,11 @@ details[open] summary::after{content:"–"}
   .sim-actions{align-items:stretch;width:100%}
   .sim-actions .btn{width:100%}
   .mini-cta{font-size:14px}
-  .medios-cintillo{border-radius:22px;padding:16px 18px;gap:10px;text-align:center;justify-content:center}
-  .mc-sep{display:none}
   .tl-step{padding-left:48px}
 }
 </style>
 <!-- Header global: siempre después del CSS de la página. -->
+<link rel="stylesheet" href="site-medios.css">
 <link rel="stylesheet" href="site-header.css">
 <link rel="stylesheet" href="site-footer.css">
 <script src="site-header.js" defer></script>
@@ -658,6 +701,46 @@ details[open] summary::after{content:"–"}
   <span class="mc-text">Apariciones y menciones públicas de la marca</span>
   <span class="mc-cta">Ver apariciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
 </a>
+
+<!-- ═══ CONTEXTO DE INDUSTRIA ═══
+     Inmediatamente debajo del hero, con el mismo ancho y tratamiento que el
+     resto de la página. Las cifras son de AMFIM y AMDA (cierre 2025) y se
+     presentan como contexto del mercado, NO como garantía de rendimiento. -->
+<section class="industria" aria-labelledby="industria-titulo">
+  <div class="industria-panel reveal">
+    <div class="industria-head">
+      <p class="kicker">El mercado</p>
+      <h2 id="industria-titulo">El mercado de motocicletas en México</h2>
+      <p>México ya compra más motocicletas que vehículos ligeros nuevos. Durante 2025 se vendieron alrededor de <strong>2 millones de motocicletas</strong> en el país, frente a aproximadamente <strong>1.63 millones de vehículos ligeros nuevos</strong>.</p>
+    </div>
+
+    <div class="industria-bars">
+      <div class="ind-row ind-row--motos">
+        <span class="ind-cifra">2.0 M</span>
+        <div class="ind-track">
+          <div class="ind-fill" style="--w:100%"></div>
+          <span class="ind-label">Motocicletas vendidas en México · 2025</span>
+        </div>
+      </div>
+      <div class="ind-row">
+        <span class="ind-cifra">1.63 M</span>
+        <div class="ind-track">
+          <div class="ind-fill" style="--w:81.5%"></div>
+          <span class="ind-label">Vehículos ligeros nuevos · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="industria-nota">La motocicleta dejó de ser un mercado de nicho. Hoy forma parte de la movilidad, el trabajo y el consumo cotidiano de millones de personas en México.</p>
+
+    <p class="industria-fuente">
+      Fuentes de mercado: AMFIM y AMDA, cierre 2025. Cifras del sector, presentadas
+      como contexto de la industria. El comportamiento del mercado no garantiza
+      resultados de RiderMex ni asegura rendimientos: los modelos de inversión
+      manejan <strong>rendimientos estimados</strong>, no garantizados.
+    </p>
+  </div>
+</section>
 
 <section class="metrics" aria-label="Resumen rápido">
   <div class="metric reveal"><strong>$70K</strong><p>Ticket desde</p></div>

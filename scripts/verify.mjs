@@ -192,6 +192,29 @@ for (const b of brandsInData) {
   if (!brandsIndexed.has(b)) fail(`catalogo.html: la marca "${b}" no está en el índice estático`);
 }
 
+// ── 5b · cifras del catálogo citadas en el copy ────────────────────────────
+// Al crecer el catálogo se quedaron frases como "8 marcas y 142 modelos" en
+// metadata, hero y FAQ. Aquí se detecta cualquier número de marcas/modelos
+// que ya no coincida con la data real.
+const brandCount = brandsInData.size;
+const modelCount = motos.length;
+for (const file of PAGES) {
+  const text = stripCode(stripComments(read(file))).replace(/<[^>]+>/g, " ");
+  for (const m of text.matchAll(/(\d{1,4})\s*(?:\+\s*)?marcas/gi)) {
+    const n = Number(m[1]);
+    if (n > 1 && n !== brandCount) {
+      fail(`${file}: dice "${m[0].trim()}" pero el catálogo tiene ${brandCount} marcas`);
+    }
+  }
+  for (const m of text.matchAll(/(\d{1,4})\s*modelos/gi)) {
+    const n = Number(m[1]);
+    // Se ignoran los conteos por marca (todos menores que el total).
+    if (n > 50 && n !== modelCount) {
+      fail(`${file}: dice "${m[0].trim()}" pero el catálogo tiene ${modelCount} modelos`);
+    }
+  }
+}
+
 // ── 6 · sitemap ────────────────────────────────────────────────────────────
 const sitemap = read("sitemap.xml");
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);

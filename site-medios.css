@@ -1,0 +1,99 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RIDERMEX · CINTILLO "EN LOS MEDIOS" (componente compartido)
+   ───────────────────────────────────────────────────────────────────────
+   Un único componente usado en dos sitios:
+     · inversiones.html — justo debajo del hero
+     · index.html       — justo antes de la tira de métricas
+   Antes vivía sólo en el CSS inline de inversiones.html; se extrajo aquí
+   para no duplicar estilos ni lógica al reutilizarlo en el Home.
+
+   Se carga con:  <link rel="stylesheet" href="site-medios.css">
+   Destino: https://medios-ridermex.netlify.app/ (ver site-config.js).
+
+   Los colores se toman de variables propias con respaldo, porque cada
+   página define su paleta con nombres distintos (--red / --rojo).
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.medios-cintillo {
+  /* En el flujo normal del documento: con su propia altura y separación.
+     Nada de position:absolute ni márgenes negativos que causen overlap. */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 1160px;
+  margin: 34px auto 40px;
+  padding: 18px 26px;
+  min-height: 64px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+              rgba(230, 25, 25, .10),
+              rgba(255, 255, 255, .045) 45%,
+              rgba(230, 25, 25, .10));
+  text-decoration: none;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.medios-cintillo:hover {
+  border-color: rgba(230, 25, 25, .55);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+}
+
+.medios-cintillo:focus-visible {
+  outline: 2px solid #e61919;
+  outline-offset: 4px;
+}
+
+.mc-label {
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #f5f5f7;
+}
+
+.mc-sep { width: 1px; height: 18px; background: rgba(255, 255, 255, .16); }
+
+.mc-text { color: #a5a5ae; font-size: 14px; font-weight: 300; }
+
+.mc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #ff3535;
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mc-cta svg { width: 15px; height: 15px; transition: transform .25s ease; }
+.medios-cintillo:hover .mc-cta svg { transform: translateX(4px); }
+
+/* Variante para el Home: el mismo componente con el ancho del contenido
+   del Home y algo más de aire antes de la tira de métricas. */
+.medios-cintillo--home { max-width: 1240px; margin: clamp(2rem, 4vw, 3rem) auto; }
+
+@media (max-width: 700px) {
+  .medios-cintillo {
+    border-radius: 22px;
+    padding: 16px 18px;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+  }
+  .mc-sep { display: none; }
+  .medios-cintillo--home { margin-left: 1.25rem; margin-right: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medios-cintillo, .mc-cta svg { transition: none; }
+  .medios-cintillo:hover { transform: none; }
+  .medios-cintillo:hover .mc-cta svg { transform: none; }
+}

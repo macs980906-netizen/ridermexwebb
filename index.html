@@ -10,7 +10,7 @@
        reemplazarlo en: canonical + og:url de cada .html, sitemap.xml,
        robots.txt y los bloques JSON-LD. -->
   <title>RiderMex | Motos, financiamiento y agencias en México</title>
-  <meta name="description" content="Compra tu moto en RiderMex: catálogo con más de 100 modelos de 8 marcas, crédito con aprobación en 2 minutos solo con tu INE y 5 agencias en CDMX y Estado de México." />
+  <meta name="description" content="Compra tu moto en RiderMex: catálogo con 149 modelos de 11 marcas, crédito con aprobación en 2 minutos solo con tu INE y 5 agencias en CDMX y Estado de México." />
   <link rel="canonical" href="https://www.ridermex.com/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#0A0A0A" />
@@ -775,8 +775,11 @@
       transition: opacity .55s var(--ease) .12s, transform .55s var(--ease) .12s, filter .55s var(--ease) .12s;
     }
     .journey-card {
-      background: linear-gradient(160deg, rgba(12,12,14,.82), rgba(12,12,14,.6));
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      /* Opacidad alta a propósito: tras rotar los fondos, la escena 1 usa
+         un cielo claro y con .82/.6 el texto perdía contraste. Este overlay
+         funciona igual sobre fondos claros y oscuros. */
+      background: linear-gradient(160deg, rgba(10,10,12,.94), rgba(10,10,12,.86));
+      backdrop-filter: blur(14px) saturate(120%); -webkit-backdrop-filter: blur(14px) saturate(120%);
       border: 1px solid rgba(204,0,0,.28);
       border-radius: 14px;
       padding: 2.4rem 2.4rem 2.6rem;
@@ -795,8 +798,8 @@
       display: inline-block;
       font-family: 'Barlow Condensed', sans-serif;
       font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--rojo); background: rgba(204,0,0,.1);
-      border: 1px solid rgba(204,0,0,.32); border-radius: 2px;
+      color: #ff6a52; background: rgba(204,0,0,.22);
+      border: 1px solid rgba(204,0,0,.55); border-radius: 2px;
       padding: .25rem .75rem; margin-bottom: 1.1rem; width: fit-content;
     }
 
@@ -1129,6 +1132,27 @@
     .camino-card--moto .camino-go { color: var(--rojo2); }
     .camino-card--inv .camino-go { color: var(--verde); }
     .camino-card:focus-visible { outline:2px solid var(--rojo); outline-offset:4px; }
+    /* Microsecuencia de 3 pasos que explica Inversiones sin tecnicismos. */
+    .camino-pasos { list-style:none; display:grid; gap:.6rem; margin:0 0 1.8rem; padding:0; }
+    .camino-pasos li {
+      position:relative; display:flex; align-items:center; gap:.85rem;
+      padding:.7rem .9rem; border-radius:10px;
+      border:1px solid rgba(0,200,150,.18); background:rgba(0,200,150,.05);
+    }
+    /* Flecha de continuidad entre pasos. */
+    .camino-pasos li:not(:last-child)::after {
+      content:''; position:absolute; left:1.85rem; bottom:-.62rem; width:1px; height:.6rem;
+      background:linear-gradient(180deg, rgba(0,200,150,.6), rgba(0,200,150,.1));
+    }
+    .cp-ico {
+      flex-shrink:0; width:32px; height:32px; border-radius:8px; display:grid; place-items:center;
+      background:rgba(0,200,150,.12); color:var(--verde);
+    }
+    .cp-ico svg { width:17px; height:17px; }
+    .camino-pasos--moto li { border-color: rgba(204,0,0,.20); background: rgba(204,0,0,.05); }
+    .camino-pasos--moto li:not(:last-child)::after { background: linear-gradient(180deg, rgba(204,0,0,.6), rgba(204,0,0,.1)); }
+    .camino-pasos--moto .cp-ico { background: rgba(204,0,0,.14); color: var(--rojo2); }
+    .cp-txt { font-size:.88rem; line-height:1.45; color:#d2d2d2; }
     @media (max-width: 760px) { .caminos-grid { grid-template-columns: 1fr; } }
 
     /* ── SECCIÓN · PREGUNTAS FRECUENTES (AEO/GEO) ──
@@ -1238,7 +1262,7 @@
       </div>
       <ul class="moto-hero-facts reveal">
         <li class="fh" style="display:block">De un vistazo</li>
-        <li><b>8 marcas</b> con catálogo en línea y 142 modelos publicados</li>
+        <li><b>11 marcas</b> con catálogo en línea y 149 modelos publicados</li>
         <li><b>Aprobación en ~2 minutos</b> solo con tu INE y sin aval</li>
         <li><b>5 agencias</b> en CDMX y Estado de México</li>
       </ul>
@@ -1246,17 +1270,114 @@
     <span class="moto-hero-credit">Agencia RiderMex · fotografía real de piso de ventas</span>
   </section>
 
-  <!-- ═══ SECCIÓN 2 · RESPALDO / MÉTRICAS ═══ -->
+  <!-- ═══ SECCIÓN 2 · ¿QUÉ TE TRAE A RIDERMEX? ═══
+       Va inmediatamente después del Hero: en cuanto el usuario entra,
+       entiende que hay dos caminos.
+       ▸ "Comprar una moto" → catálogo avanzado (Marca → Modelos → Ficha).
+         Sigue siendo el objetivo principal del sitio.
+       ▸ "RiderMex Inversiones" → explicado desde cero, sin dar por
+         supuesto que la persona sabe qué es.
+       Esto NO afecta a contacto.html, donde "Quiero invertir" abre
+       directamente el WhatsApp de Inversiones. -->
+  <section class="caminos reveal" aria-labelledby="caminos-titulo">
+    <div class="caminos-inner">
+      <div class="home-section-head" style="padding:0;text-align:center;">
+        <span class="home-eyebrow">Elige tu camino</span>
+        <h2 class="home-h2" id="caminos-titulo">¿Qué te trae <em>a RiderMex?</em></h2>
+        <p class="home-lead" style="margin-left:auto;margin-right:auto;">Dos formas de avanzar con nosotros: comprar tu moto o participar en el crecimiento de la empresa. Elige la que va contigo.</p>
+      </div>
+      <div class="caminos-grid">
+
+        <a class="camino-card camino-card--moto" href="catalogo.html">
+          <span class="camino-tag">Quiero rodar</span>
+          <h3>Comprar una moto</h3>
+          <p>Explora el catálogo completo: 149 modelos de 11 marcas con fotografías, ficha técnica y opciones de financiamiento con aprobación en aproximadamente 2 minutos.</p>
+
+          <!-- Mismos pasos aprobados de "Proceso RiderMex", resumidos a tres. -->
+          <ol class="camino-pasos camino-pasos--moto" aria-label="Cómo compras tu moto, en tres pasos">
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </span>
+              <span class="cp-txt">Eliges tu moto en el catálogo</span>
+            </li>
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>
+              </span>
+              <span class="cp-txt">Solicitas tu crédito solo con tu INE</span>
+            </li>
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M15 17H9l-2-5h5l2 5 2-6h3"/></svg>
+              </span>
+              <span class="cp-txt">Firmas en tu agencia y sales rodando</span>
+            </li>
+          </ol>
+
+          <span class="camino-go">Ver catálogo →</span>
+        </a>
+
+        <!-- Explicado desde cero: nada de tickets, plusvalía, escalones ni
+             mercado secundario antes de decir qué significa participar. -->
+        <a class="camino-card camino-card--inv" href="inversiones.html">
+          <span class="camino-tag">Quiero invertir</span>
+          <h3>También puedes formar parte del crecimiento de RiderMex</h3>
+          <p>RiderMex no sólo vende motocicletas. También puedes participar en el crecimiento de nuestra operación a través de modelos de inversión vinculados al desarrollo de nuestras agencias. Eliges el modelo que se adapte a tu perfil y, según sus condiciones, puedes acceder a <strong>rendimientos estimados</strong>.</p>
+
+          <!-- Microsecuencia: la idea completa en tres pasos, sin tecnicismos. -->
+          <ol class="camino-pasos" aria-label="Cómo funciona en tres pasos">
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              </span>
+              <span class="cp-txt">Eliges un modelo de inversión RiderMex</span>
+            </li>
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+              </span>
+              <span class="cp-txt">Tu capital se integra a la operación de las agencias</span>
+            </li>
+            <li>
+              <span class="cp-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg>
+              </span>
+              <span class="cp-txt">Accedes a rendimientos estimados según el modelo</span>
+            </li>
+          </ol>
+
+          <span class="camino-go">Conocer RiderMex Inversiones →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SECCIÓN 3 · RIDERMEX EN LOS MEDIOS ═══
+       Mismo componente que en inversiones.html (site-medios.css) y mismo
+       destino real. No se duplica ni el estilo ni la URL. -->
+  <a class="medios-cintillo medios-cintillo--home reveal"
+     href="https://medios-ridermex.netlify.app/"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="RiderMex en los medios — ver apariciones (se abre en una pestaña nueva)">
+    <span class="mc-label">RiderMex en los medios</span>
+    <span class="mc-sep" aria-hidden="true"></span>
+    <span class="mc-text">Apariciones y menciones públicas de la marca</span>
+    <span class="mc-cta">Ver apariciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  </a>
+
+  <!-- ═══ SECCIÓN 4 · RESPALDO / MÉTRICAS ═══ -->
   <div class="home-metrics reveal">
     <div class="home-metrics-grid">
-      <div class="home-metric"><div class="m-num"><span>8</span></div><div class="m-label">Marcas con catálogo en línea</div></div>
-      <div class="home-metric"><div class="m-num"><span>142</span></div><div class="m-label">Modelos publicados</div></div>
+      <div class="home-metric"><div class="m-num"><span>11</span></div><div class="m-label">Marcas con catálogo en línea</div></div>
+      <div class="home-metric"><div class="m-num"><span>149</span></div><div class="m-label">Modelos publicados</div></div>
       <div class="home-metric"><div class="m-num">2<span>&nbsp;min</span></div><div class="m-label">Aprobación de crédito</div></div>
       <div class="home-metric"><div class="m-num">5</div><div class="m-label">Agencias activas</div></div>
     </div>
   </div>
 
-  <!-- ═══ SECCIÓN 3 · PROCESO RIDERMEX · CÓMO COMPRAS TU MOTO ═══
+  <!-- ═══ SECCIÓN 5 · PROCESO RIDERMEX · CÓMO COMPRAS TU MOTO ═══
        Va justo después del respaldo/métricas: responde de inmediato
        "¿cómo compro una moto en RiderMex?" antes de cualquier otra cosa. -->
   <section class="home-section reveal" id="como-comprar">
@@ -1275,7 +1396,7 @@
     <div class="home-cta-row"><a href="motos.html#formulario-motos" class="btn-r btn-r--primary">Tramita tu crédito →</a></div>
   </section>
 
-  <!-- ═══ SECCIÓN 4 (bridge) · TRANSICIÓN AL RECORRIDO ═══ -->
+  <!-- ═══ SECCIÓN 6 (bridge) · TRANSICIÓN AL RECORRIDO ═══ -->
   <div class="camino-divider reveal">
     <span class="camino-divider-kicker">El camino no termina en tu moto</span>
     <span class="camino-divider-label">Tu <em>camino</em></span>
@@ -1297,12 +1418,17 @@
   <section class="journey-outer" id="proceso" aria-label="Proceso RiderMex">
     <div class="journey-sticky">
 
-      <!-- ═══ ESCENAS / ECOSISTEMAS (fondo + elementos con parallax) ═══ -->
+      <!-- ═══ ESCENAS / ECOSISTEMAS (fondo + elementos con parallax) ═══
+           FONDOS ROTADOS una posición: cada escena usa el fondo de la
+           siguiente y la última toma el de la primera (1←2, 2←3, 3←4,
+           4←5, 5←1). Solo cambió el src de .journey-scene-bg: los
+           elementos decorativos, textos, carretera, moto y scroll siguen
+           exactamente igual. -->
       <div class="journey-scenes" id="jScenes" aria-hidden="true">
 
         <!-- 1 · BOSQUE -->
         <div class="journey-scene" data-scene="forest">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/fondo_bosque.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Fondo.jpeg" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/arbol_3.png"   alt="" loading="lazy" decoding="async" style="left:19%; bottom:15%; width:8vw;">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/arbol_2.png"   alt="" loading="lazy" decoding="async" style="left:29%; bottom:11%; width:7vw;">
@@ -1315,7 +1441,7 @@
 
         <!-- 2 · CIUDAD -->
         <div class="journey-scene" data-scene="city">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Fondo.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/Fondo_Desierto.png" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel jel-cloud" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/Nubes_1.png" alt="" loading="lazy" decoding="async" style="top:12%; left:10%; width:16vw;">
             <img class="jel jel-cloud jel-cloud--slow" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/2_Ciudad/nubes_2.png" alt="" loading="lazy" decoding="async" style="top:20%; left:62%; width:13vw;">
@@ -1329,7 +1455,7 @@
 
         <!-- 3 · DESIERTO -->
         <div class="journey-scene" data-scene="desert">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/Fondo_Desierto.png" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/4_ViajeNoche/fondo_viajenoche.jpeg" alt="" loading="lazy" decoding="async">
           <div class="journey-scene-fg">
             <img class="jel" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/cactus_1.png" alt="" loading="lazy" decoding="async" style="left:9%;  bottom:6%; width:7vw;">
             <img class="jel jel-opt" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/3_Desierto/cactus_2.png" alt="" loading="lazy" decoding="async" style="left:23%; bottom:5%; width:6vw;">
@@ -1342,12 +1468,12 @@
 
         <!-- 4 · VIAJE NOCHE (solo fondo, según indicación) -->
         <div class="journey-scene" data-scene="night">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/4_ViajeNoche/fondo_viajenoche.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/5_RutaInversion/Fondo_RutaInversion.jpeg" alt="" loading="lazy" decoding="async">
         </div>
 
         <!-- 5 · RUTA INVERSIÓN (solo fondo, según indicación) -->
         <div class="journey-scene" data-scene="invest">
-          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/5_RutaInversion/Fondo_RutaInversion.jpeg" alt="" loading="lazy" decoding="async">
+          <img class="journey-scene-bg" src="assets/RIDERMEX_CAMINO_ELEMENTSPNG/1_Bosque/fondo_bosque.jpeg" alt="" loading="lazy" decoding="async">
         </div>
 
       </div><!-- /journey-scenes -->
@@ -1442,7 +1568,7 @@
     </div><!-- /journey-sticky -->
   </section><!-- /journey-outer -->
 
-  <!-- ═══ SECCIÓN 5 · DESCUBRE RIDERMEX INVERSIONES ═══
+  <!-- ═══ SECCIÓN 7 · DESCUBRE RIDERMEX INVERSIONES ═══
        Primera aparición fuerte de inversión: después del recorrido, como
        segunda ruta del ecosistema. El CTA lleva a la experiencia de inversiones. -->
   <section class="inv-discover reveal" id="inversiones-descubre">
@@ -1460,7 +1586,7 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 6 · MARCAS PROTAGONISTAS ═══ -->
+  <!-- ═══ SECCIÓN 8 · MARCAS PROTAGONISTAS ═══ -->
   <section class="home-section reveal" id="marcas">
     <div class="home-section-head">
       <span class="home-eyebrow">Nuestras marcas</span>
@@ -1498,7 +1624,7 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 7 · MOTOS DESTACADAS ═══ -->
+  <!-- ═══ SECCIÓN 9 · MOTOS DESTACADAS ═══ -->
   <section class="home-section home-section--alt reveal">
     <div class="home-section-head">
       <span class="home-eyebrow">Modelos disponibles</span>
@@ -1534,7 +1660,7 @@
     <div class="home-cta-row"><a href="catalogo.html" class="btn-r btn-r--primary">Ver todo el catálogo →</a></div>
   </section>
 
-  <!-- ═══ SECCIÓN 8 · BENEFICIOS ═══ -->
+  <!-- ═══ SECCIÓN 10 · BENEFICIOS ═══ -->
   <section class="home-section home-section--alt reveal">
     <div class="home-section-head">
       <span class="home-eyebrow">Por qué RiderMex</span>
@@ -1543,14 +1669,14 @@
     <div class="benef-grid">
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Aprobación en 2 minutos</h3><p>Solo con tu INE. Sin aval y sin trámites eternos.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div><h3>Financiamiento a tu medida</h3><p>Pagos semanales accesibles ajustados a tu bolsillo.</p></div></div>
-      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13"/></svg></span><div><h3>Más de 10 marcas</h3><p>+100 modelos disponibles para elegir la moto ideal.</p></div></div>
+      <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2M5 7l1 13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-13"/></svg></span><div><h3>11 marcas en catálogo</h3><p>149 modelos disponibles para elegir la moto ideal.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></span><div><h3>Entrega inmediata</h3><p>Firmas y te la llevas el mismo día que apruebas.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8Z"/></svg></span><div><h3>5 agencias físicas</h3><p>Naucalpan, CEDA, Coapa, Chalco y nuestra 5ª sucursal.</p></div></div>
       <div class="benef-card"><span class="benef-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><h3>Sin enganche cuando aplica</h3><p>Opciones de arranque flexibles según tu perfil.</p></div></div>
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 9 · EXPERIENCIA RIDERMEX (fotos reales de showroom) ═══ -->
+  <!-- ═══ SECCIÓN 11 · EXPERIENCIA RIDERMEX (fotos reales de showroom) ═══ -->
   <section class="exp-band reveal">
     <div class="exp-inner">
       <div class="exp-copy">
@@ -1567,7 +1693,7 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 10 · AGENCIAS ═══ -->
+  <!-- ═══ SECCIÓN 12 · AGENCIAS ═══ -->
   <section class="home-section reveal" id="agencias-home">
     <div class="home-section-head">
       <span class="home-eyebrow">Dónde encontrarnos</span>
@@ -1583,41 +1709,7 @@
     </div>
   </section>
 
-  <!-- ═══ SECCIÓN 11 · DOS CAMINOS (CTA final) ═══
-       Cierre comercial del Home: el usuario elige intención antes de las
-       preguntas frecuentes.
-       ▸ "Comprar una moto" → catálogo avanzado (Marca → Modelos → Ficha).
-       ▸ "RiderMex Inversiones" → la experiencia de inversiones.
-       Esto NO afecta a contacto.html, donde "Quiero invertir" abre
-       directamente el WhatsApp de Inversiones. -->
-  <section class="caminos reveal" aria-labelledby="caminos-titulo">
-    <div class="caminos-inner">
-      <div class="home-section-head" style="padding:0;text-align:center;">
-        <span class="home-eyebrow">Elige tu camino</span>
-        <h2 class="home-h2" id="caminos-titulo">¿Qué te trae <em>a RiderMex?</em></h2>
-        <p class="home-lead" style="margin-left:auto;margin-right:auto;">Dos formas de avanzar con nosotros. Elige la que va contigo.</p>
-      </div>
-      <div class="caminos-grid">
-
-        <a class="camino-card camino-card--moto" href="catalogo.html">
-          <span class="camino-tag">Quiero rodar</span>
-          <h3>Comprar una moto</h3>
-          <p>Explora el catálogo completo: 149 modelos de 11 marcas con fotografías, ficha técnica y opciones de financiamiento con aprobación en aproximadamente 2 minutos.</p>
-          <span class="camino-go">Ver catálogo →</span>
-        </a>
-
-        <a class="camino-card camino-card--inv" href="inversiones.html">
-          <span class="camino-tag">Quiero invertir</span>
-          <h3>RiderMex Inversiones</h3>
-          <p>Conoce el modelo de participación en tiendas de motos con operación real: los tres esquemas, la plusvalía por escalones y la documentación que puedes revisar antes de decidir.</p>
-          <span class="camino-go">Conocer el modelo →</span>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SECCIÓN 12 · PREGUNTAS FRECUENTES (cierre del Home) ═══
+  <!-- ═══ SECCIÓN 13 · PREGUNTAS FRECUENTES (cierre del Home) ═══
        Capa de contenido orientada a buscadores y a motores de respuesta
        (AEO/GEO). Va al final a propósito: cierra la narrativa resolviendo
        objeciones justo antes del footer, después del recorrido y del
@@ -1678,7 +1770,7 @@
         <details class="faq-item">
           <summary>¿Qué marcas de motos vende RiderMex?</summary>
           <div class="faq-answer">
-            <p>RiderMex distribuye <strong>8 marcas con catálogo publicado en línea</strong>: Bajaj, Carabela, CF Moto, Islo, Ryder, UM Motorcycles, Vento y Zmoto. Además incorporamos marcas nuevas conforme se suman al piso de venta.</p>
+            <p>RiderMex distribuye <strong>11 marcas con catálogo publicado en línea</strong>: Bajaj, CF Lite, CF Moto, Carabela, Honda, Islo, Ryder, TVS, UM, Vento y Zmoto. Además incorporamos marcas nuevas conforme se suman al piso de venta.</p>
             <p>Puedes entrar a cada marca desde el <a href="catalogo.html">catálogo RiderMex</a> y ver sus modelos con fotografías, características y ficha técnica.</p>
           </div>
         </details>
@@ -1686,7 +1778,7 @@
         <details class="faq-item">
           <summary>¿Qué motos puedo comprar con financiamiento?</summary>
           <div class="faq-answer">
-            <p>El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne <strong>142 modelos publicados</strong> entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos.</p>
+            <p>El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne <strong>149 modelos publicados</strong> entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos.</p>
             <p>El monto financiable y el plan de pagos cambian según el modelo. Abre la ficha del modelo que te interesa y pulsa «Quiero esta moto»: la solicitud llega con el modelo ya identificado para que el asesor te dé condiciones concretas.</p>
           </div>
         </details>
@@ -2172,12 +2264,12 @@
           {
             "@type": "Question",
             "name": "¿Qué marcas de motos vende RiderMex?",
-            "acceptedAnswer": { "@type": "Answer", "text": "RiderMex distribuye 8 marcas con catálogo publicado en línea: Bajaj, Carabela, CF Moto, Islo, Ryder, UM Motorcycles, Vento y Zmoto. Además incorpora marcas nuevas conforme se suman al piso de venta." }
+            "acceptedAnswer": { "@type": "Answer", "text": "RiderMex distribuye 11 marcas con catálogo publicado en línea: Bajaj, CF Lite, CF Moto, Carabela, Honda, Islo, Ryder, TVS, UM, Vento y Zmoto. Además incorpora marcas nuevas conforme se suman al piso de venta." }
           },
           {
             "@type": "Question",
             "name": "¿Qué motos puedo comprar con financiamiento?",
-            "acceptedAnswer": { "@type": "Answer", "text": "El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne 142 modelos publicados entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos. El monto financiable y el plan de pagos cambian según el modelo." }
+            "acceptedAnswer": { "@type": "Answer", "text": "El financiamiento aplica sobre el catálogo RiderMex, que hoy reúne 149 modelos publicados entre motonetas, scooters, motos urbanas, doble propósito, custom, motocarros y cuatrimotos. El monto financiable y el plan de pagos cambian según el modelo." }
           },
           {
             "@type": "Question",

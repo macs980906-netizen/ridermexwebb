@@ -64,7 +64,7 @@ Google no ve `#/marca/...` ni `#/moto/...` como URLs distintas. Lo que se hizo:
 - **Canonical único:** todas las vistas canonizan a `catalogo.html`. No se meten
   rutas con hash en `sitemap.xml`.
 - **Índice estático:** `catalogo.html` incluye un bloque `#indice-catalogo` con las
-  8 marcas y los 142 modelos como texto y enlaces reales dentro del HTML servido.
+  11 marcas y los 149 modelos como texto y enlaces reales dentro del HTML servido.
   Es lo que lee un rastreador que no ejecuta JS.
   Se genera con `python3 scripts/build-catalog-index.py`.
   **Hay que regenerarlo cada vez que cambie `src/data/motorcycles.js`.**
@@ -166,3 +166,36 @@ Campos marcados como "depende de la versión" (no se afirman como definitivos):
 - **Search Console: sin verificar.** No hay meta de verificación ni archivo
   HTML de Google. Lo técnico ya está listo (sitemap, robots, canonicals,
   metadata); falta pegar el token de verificación del dominio final.
+
+## Animación "Tu camino" · fondos
+
+El recorrido tiene **5 escenas** (no 6): Bosque, Ciudad, Desierto, Viaje Noche
+y Ruta Inversión, con un fondo cada una en
+`assets/RIDERMEX_CAMINO_ELEMENTSPNG/`.
+
+Los fondos están **rotados una posición**: cada escena usa el fondo de la
+siguiente y la última toma el de la primera.
+
+| Escena | Etiqueta | Fondo que usa |
+|---|---|---|
+| 1 | Bosque | `2_Ciudad/Fondo.jpeg` |
+| 2 | Ciudad | `3_Desierto/Fondo_Desierto.png` |
+| 3 | Desierto | `4_ViajeNoche/fondo_viajenoche.jpeg` |
+| 4 | Viaje Noche | `5_RutaInversion/Fondo_RutaInversion.jpeg` |
+| 5 | Ruta Inversión | `1_Bosque/fondo_bosque.jpeg` |
+
+Sólo cambió el `src` de `.journey-scene-bg`. Los elementos decorativos
+(`.jel`), textos, carretera, moto, scroll y CTAs siguen igual, así que las
+etiquetas de estado (BOSQUE, CIUDAD…) ya no coinciden con el paisaje del
+fondo: es intencional según la instrucción de rotar únicamente los fondos.
+
+Como la escena 1 pasó a un cielo claro, el panel de texto
+(`.journey-card`) se opacó de `.82/.6` a `.94/.86` y el chip
+`.journey-eyebrow` ganó contraste. Es el único ajuste de legibilidad.
+
+## Contexto de industria (Inversiones)
+
+Bloque `#industria-titulo`, justo debajo del hero. Cifras: ~2.0 M de
+motocicletas vendidas en México en 2025 (AMFIM) frente a ~1.63 M de
+vehículos ligeros nuevos (AMDA). Las fuentes y el disclaimer están en la
+propia pieza. El dato vive como **HTML real**, no dentro de una imagen.
