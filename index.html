@@ -1063,6 +1063,14 @@
     .home-ag-card p { color: var(--texto); font-size:0.85rem; line-height:1.5; margin-bottom:0.9rem; }
     .home-ag-card .ag-map { margin-top:auto; display:inline-flex; align-items:center; gap:0.4rem; color:var(--rojo); font-weight:700; font-size:0.82rem; text-decoration:none; }
     .home-ag-card .ag-map:hover { text-decoration:underline; }
+    /* 5ª sucursal: MISMO tratamiento que su tarjeta en motos.html
+       (.ag-card--pendiente). Es el mismo componente duplicado en dos
+       páginas: si cambia una, cambia la otra. */
+    .home-ag-card--pendiente { border-left-color:#6a6a6a; }
+    .home-ag-card--pendiente h3 { color:#d6d6d6; }
+    .home-ag-badge { align-self:flex-start; margin-bottom:0.55rem; padding:0.2rem 0.6rem; border:1px solid #4a4a4a; border-radius:999px;
+      font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; font-size:0.68rem; color:#8a8a8a; }
+    .home-ag-card--pendiente .ag-map { color:#9a9a9a; }
 
     /* ── SECCIÓN 9 · DESCUBRE INVERSIONES (después del recorrido) ── */
     .inv-discover { position:relative; overflow:hidden; isolation:isolate; border-top:1px solid var(--gris3);
@@ -1224,7 +1232,7 @@
   <header class="rm-header">
     <div class="rm-header-inner">
       <a class="rm-logo" href="index.html" aria-label="RiderMex — Inicio">
-        <img src="assets/img/logo-white.png" alt="RiderMex" width="54" height="54">
+        <img src="assets/img/logo-white.png" alt="RiderMex" width="84" height="84">
       </a>
       <nav class="rm-nav" aria-label="Navegación principal">
         <ul class="rm-nav-links">
@@ -1719,7 +1727,7 @@
       <div class="home-ag-card"><h3>CEDA</h3><p>Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/184gp5qYb4c3xvca6" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
       <div class="home-ag-card"><h3>Coapa</h3><p>Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX.</p><a class="ag-map" href="https://maps.app.goo.gl/jmXYJPeA9UENghr6A" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
       <div class="home-ag-card"><h3>Chalco</h3><p>Francisco Javier Mina 13, Chalco Centro, Chalco, Edo. Méx.</p><a class="ag-map" href="https://maps.app.goo.gl/oTFbM1T9N3GxbDin8" target="_blank" rel="noopener">📍 Ver en Maps</a></div>
-      <div class="home-ag-card"><h3>5ª sucursal</h3><p>Ya operando. Consulta la ubicación más cercana con tu asesor.</p><a class="ag-map" href="motos.html#agencias">Ver todas →</a></div>
+      <div class="home-ag-card home-ag-card--pendiente"><span class="home-ag-badge">Ubicación por confirmar</span><h3>5ª sucursal</h3><p>En preparación. Consulta con tu asesor cuál te queda más cerca.</p><a class="ag-map" href="motos.html#agencias">Ver todas →</a></div>
     </div>
   </section>
 
@@ -1800,7 +1808,7 @@
         <details class="faq-item">
           <summary>¿Dónde están las agencias de RiderMex?</summary>
           <div class="faq-answer">
-            <p>RiderMex tiene <strong>5 agencias</strong>: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en operación.</p>
+            <p>RiderMex tiene <strong>5 agencias</strong>: Naucalpan, Central de Abasto (CEDA), Coapa, Chalco y una quinta sucursal en preparación.</p>
             <ul>
               <li><strong>Naucalpan:</strong> Av. Dr. Gustavo Baz 98, Col. Alce Blanco, Naucalpan de Juárez, Edo. de México.</li>
               <li><strong>CEDA:</strong> Canal de Tezontle 1500, Central de Abasto, Iztapalapa, CDMX.</li>
@@ -2288,7 +2296,7 @@
           {
             "@type": "Question",
             "name": "¿Dónde están las agencias de RiderMex?",
-            "acceptedAnswer": { "@type": "Answer", "text": "RiderMex tiene 5 agencias: Naucalpan (Av. Dr. Gustavo Baz 98, Col. Alce Blanco), Central de Abasto o CEDA (Canal de Tezontle 1500, Iztapalapa, CDMX), Coapa (Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX), Chalco (Francisco Javier Mina 13, Chalco Centro) y una quinta sucursal en operación cuya ubicación se confirma con un asesor al 55 1000 0680." }
+            "acceptedAnswer": { "@type": "Answer", "text": "RiderMex tiene 5 agencias: Naucalpan (Av. Dr. Gustavo Baz 98, Col. Alce Blanco), Central de Abasto o CEDA (Canal de Tezontle 1500, Iztapalapa, CDMX), Coapa (Calz. de Tlalpan 3604, Huipulco, Tlalpan, CDMX), Chalco (Francisco Javier Mina 13, Chalco Centro) y una quinta sucursal en preparación cuya ubicación se confirma con un asesor al 55 1000 0680." }
           },
           {
             "@type": "Question",

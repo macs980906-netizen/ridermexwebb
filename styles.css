@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+/* Las fuentes NO se cargan con @import.
+   Un @import a un dominio externo deja la hoja en estado "pendiente", y
+   mientras una hoja está pendiente el navegador no ejecuta los <script>
+   que vengan después: se retrasa DOMContentLoaded y con él TODO el JS de
+   la página (menú, salto a #anclas, animaciones). Ahora cada página las
+   pide con <link rel=preconnect> + <link rel=stylesheet> en su <head>. */
 
 :root {
-  --rojo: #E10600;
-  --rojo-oscuro: #B30500;
+  /* Rojo de marca ÚNICO en todo el sitio: el mismo que usan el header
+     global (site-header.css) y el Home. Antes esta hoja usaba #E10600, que
+     al lado del #CC0000 del header se leía anaranjado. */
+  --rojo: #CC0000;
+  --rojo-oscuro: #A30000;
   --negro: #0A0A0A;
   --negro2: #141414;
   --gris: #1c1c1c;
@@ -1291,20 +1299,15 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Texto en degradado para títulos clave */
+/* Acento de los títulos clave: rojo de marca SÓLIDO.
+   Antes llevaban un degradado animado que pasaba por #ff7a52; a media
+   animación "a crédito" o "te den vueltas" se leían anaranjados y no
+   coincidían con el rojo del resto del sitio. Un solo tono, sin
+   degradado ni animación. */
 .hero h1 span,
 .section-title span,
 .gateway-title span {
-  background: linear-gradient(100deg, var(--rojo) 0%, #ff7a52 50%, var(--rojo) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% auto;
-  animation: shimmerText 6s linear infinite;
-}
-
-@keyframes shimmerText {
-  to { background-position: 200% center; }
+  color: var(--rojo);
 }
 
 /* Orbes de luz flotantes en fondos oscuros */
@@ -1857,3 +1860,66 @@ body::before {
     background: linear-gradient(180deg, rgba(225, 6, 0, .7), rgba(225, 6, 0, .15));
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TEMA OSCURO DE PÁGINA (.dark-page)
+   ───────────────────────────────────────────────────────────────────────
+   motos.html era un mosaico: hero, showcase, agencias y financiamiento en
+   oscuro, pero "¿Cansado de que te den vueltas?", "Por qué RiderMex",
+   "Elige tu marca", los testimonios y el formulario en blanco. Ese salto
+   de fondo blanco en medio de un sitio oscuro era el quiebre de identidad
+   más visible de la revisión de diseño.
+
+   Aquí van SOLO las variantes oscuras de los componentes claros. No se
+   cambia ni un tamaño, ni un espaciado, ni la estructura: únicamente el
+   color de fondo, el borde y el color de texto.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.dark-page { color: var(--blanco); }
+
+/* Títulos y subtítulos de sección heredaban el negro del body. */
+.dark-page .section-title { color: var(--blanco); }
+.dark-page .section-subtitle { color: #a8a8a8; }
+.dark-page .section-subtitle strong { color: var(--blanco); }
+
+/* Tarjetas "Trámites eternos / Mil documentos / Rechazos sin razón":
+   de gris claro a tarjeta oscura con borde rojo, como el resto del sitio. */
+.dark-page .pain-card {
+  background: linear-gradient(180deg, #161616, #0d0d0d);
+  border: 1px solid var(--gris-borde);
+  border-left: 4px solid var(--rojo);
+}
+.dark-page .pain-card:hover { box-shadow: var(--shadow-lg); border-color: rgba(204, 0, 0, .55); }
+.dark-page .pain-card h3 { color: var(--blanco); }
+.dark-page .pain-card p { color: #a8a8a8; }
+.dark-page .pain-icon { background: rgba(204, 0, 0, .16); }
+
+/* Tarjetas "Por qué RiderMex". */
+.dark-page .pilar-card {
+  background: linear-gradient(180deg, #161616, #0d0d0d);
+  border-color: var(--gris-borde);
+}
+.dark-page .pilar-card:hover { border-color: var(--rojo); box-shadow: var(--shadow-lg); }
+.dark-page .pilar-card h3 { color: var(--blanco); }
+.dark-page .pilar-card p { color: #a8a8a8; }
+
+/* Testimonios. */
+.dark-page .social-section { background: #0d0d0d; border: 1px solid var(--gris-borde); }
+.dark-page .testimonial-card {
+  background: linear-gradient(180deg, #161616, #0d0d0d);
+  border-color: var(--gris-borde);
+}
+.dark-page .testimonial-card:hover { border-color: rgba(204, 0, 0, .55); box-shadow: var(--shadow-lg); }
+.dark-page .testimonial-card p { color: #c8c8c8; }
+.dark-page .testimonial-author strong { color: var(--blanco); }
+.dark-page .testimonial-author span { color: #8f8f8f; }
+
+/* Sección del formulario de crédito. */
+.dark-page .credito-bg { background: #0d0d0d; }
+.dark-page .credito-faq-note { color: #a8a8a8; }
+.dark-page .ghl-form-wrap { background: var(--blanco); border-radius: 12px; overflow: hidden; }
+
+/* Notas y textos sueltos que quedaban en gris de tema claro. */
+.dark-page .inversion-disclaimer,
+.dark-page .fin-nota,
+.dark-page .ag-card-zona { color: #9a9a9a; }

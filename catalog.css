@@ -288,6 +288,10 @@
   border: 1px solid var(--gris-borde);
 }
 .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+/* display:flex gana al [hidden] del navegador, así que hay que declararlo:
+   catalog.js oculta la tira cuando ninguna de las fotos llegó a cargar. */
+.gallery-thumbs[hidden] { display: none; }
+
 .gallery-thumbs {
   display: flex;
   gap: 10px;

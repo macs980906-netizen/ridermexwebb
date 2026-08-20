@@ -118,10 +118,55 @@
     });
   }
 
+  /* ── 5 · Llegada a una página CON ancla ──────────────────────────────
+     Al entrar desde otra página a motos.html#agencias, el navegador hace
+     el salto inicial con scroll-behavior:smooth. Si mientras dura esa
+     animación cambia la altura del documento (fotos sin dimensiones,
+     fuentes que terminan de cargar), Chrome cancela el desplazamiento y
+     la página se queda arriba: el enlace parece no hacer nada. Pasa de
+     forma intermitente, y en conexiones lentas casi siempre.
+
+     Aquí se repite el salto una vez que la página ya se asentó, de forma
+     instantánea (sin animación que se pueda cancelar). Si la persona ya
+     movió el scroll por su cuenta, no se le mueve la página. */
+  function initHashLanding() {
+    var hash = (location.hash || "").replace("#", "");
+    if (!hash) return;
+    if (!document.getElementById(hash)) return;   // p. ej. rutas #/marca/... del catálogo
+
+    var userMoved = false;
+    var markMoved = function () { userMoved = true; };
+    ["wheel", "touchstart", "keydown"].forEach(function (ev) {
+      window.addEventListener(ev, markMoved, { passive: true, once: true });
+    });
+
+    function land() {
+      if (userMoved) return;
+      var el = document.getElementById(hash);
+      if (!el) return;
+      var target = el.getBoundingClientRect().top + window.scrollY -
+        (parseFloat(getComputedStyle(el).scrollMarginTop) || 0);
+      if (Math.abs(window.scrollY - target) < 4) return;   // ya está en su sitio
+      window.scrollTo({ top: target, behavior: "auto" });
+    }
+
+    // OJO: no se puede esperar al evento `load`. Esta página incrusta un
+    // formulario y fotos de dominios de terceros; si uno de ellos no
+    // responde, `load` no llega hasta que la petición vence (~20 s) y para
+    // entonces la persona ya se fue. Se reintenta por tiempo, que sí ocurre
+    // pase lo que pase con la red.
+    land();
+    [60, 250, 600, 1200, 2500].forEach(function (ms) { setTimeout(land, ms); });
+    window.addEventListener("load", land);
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () { init(); initAnchorScroll(); });
+    document.addEventListener("DOMContentLoaded", function () {
+      init(); initAnchorScroll(); initHashLanding();
+    });
   } else {
     init();
     initAnchorScroll();
+    initHashLanding();
   }
 })();

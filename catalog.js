@@ -359,7 +359,10 @@
       { label: m.model }
     ]);
 
-    // Galería
+    // Galería. Si ninguna de las fotos llega a cargar, la tira de miniaturas
+    // queda como varias copias idénticas del dibujo "Imagen en preparación"
+    // y hace ver la ficha como rota: en ese caso se oculta entera (lo hace
+    // hideDeadThumbs, más abajo, porque sólo se sabe al intentar cargarlas).
     var thumbs = images.length > 1
       ? '<div class="gallery-thumbs">' + images.map(function (src, i) {
           return '<div class="gallery-thumb' + (i === 0 ? " is-active" : "") + '" data-src="' + esc(src) +
@@ -529,6 +532,33 @@
       "</div>";
   }
 
+  // Si TODAS las fotos de la galería acabaron mostrando el dibujo de
+  // "Imagen en preparación", la tira de miniaturas son varias copias del
+  // mismo dibujo: no ofrece nada que elegir y hace ver la ficha como rota.
+  // En ese caso se retira. Sólo puede saberse una vez que cada imagen
+  // terminó de intentar cargar, de ahí los reintentos.
+  function hideDeadThumbs() {
+    var strip = root.querySelector(".gallery-thumbs");
+    if (!strip) return;
+    var imgs = strip.querySelectorAll("img");
+    if (!imgs.length) return;
+
+    function check() {
+      if (!strip.isConnected) return;
+      var vivas = 0;
+      imgs.forEach(function (im) {
+        if (!im.classList.contains("is-placeholder") && im.naturalWidth > 0) vivas++;
+      });
+      strip.hidden = vivas === 0;
+    }
+    imgs.forEach(function (im) {
+      im.addEventListener("load", check);
+      im.addEventListener("error", check);
+    });
+    check();
+    [1500, 5000, 21000].forEach(function (ms) { setTimeout(check, ms); });
+  }
+
   function bindGallery() {
     var main = root.querySelector(".gallery-main img");
     var thumbs = root.querySelectorAll(".gallery-thumb");
@@ -541,6 +571,7 @@
         t.classList.add("is-active");
       });
     });
+    hideDeadThumbs();
   }
 
   // efecto glow que sigue al cursor (coherente con el resto del sitio)
