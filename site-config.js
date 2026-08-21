@@ -23,8 +23,12 @@
   var WHATSAPP_MOTOS_MSG = WHATSAPP_MOTOS +
     "?text=Hola%2C%20quiero%20comprar%20una%20moto%20con%20RiderMex";
 
-  // MOTOS · 55 1000 0680 — línea general publicada (botón flotante y tel:).
-  var WHATSAPP_MOTOS_GENERAL = "https://wa.me/5215510000680";
+  // Línea general publicada (botón flotante, tel: y footer).
+  // El 55 1000 0680 que se usaba aquí NO EXISTE: confirmado por el cliente.
+  // Se reemplazó por el 55 1000 0645, el mismo de los CTAs de compra. Se
+  // conserva la constante aparte por si en el futuro vuelve a haber una
+  // línea general distinta a la de ventas.
+  var WHATSAPP_MOTOS_GENERAL = WHATSAPP_MOTOS;
 
   // INVERSIONES · 55 9990 0619 — asesor de inversión. Mensaje precargado
   // ya existente en el proyecto; se reutiliza tal cual.
@@ -56,7 +60,7 @@
 
   // ── Otros destinos ───────────────────────────────────────────────────
   var MEDIOS_URL = "https://medios-ridermex.netlify.app/";
-  var TELEFONO = "5510000680";
+  var TELEFONO = "5510000645";   // el 0680 no existe (ver arriba)
   var EMAIL = "info@ridermex.com";
   // AVISO DE PRIVACIDAD — FALTA URL FINAL. Mientras esté vacío, el enlace
   // del footer se mantiene como marcador y no apunta a ninguna parte.

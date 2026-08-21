@@ -43,9 +43,34 @@
 
     /* ── 3 · Botón compartir ──
        Web Share API donde exista (móvil sobre todo); si no, copia el enlace
-       al portapapeles y lo confirma en el propio botón. */
-    document.querySelectorAll("[data-share]").forEach(function (btn) {
-      var original = btn.querySelector(".share-label");
+       al portapapeles. En AMBOS casos se confirma en el propio botón: antes,
+       cuando el navegador sí tenía navigator.share (Chrome de escritorio
+       también lo tiene) se compartía sin que apareciera ningún aviso y el
+       botón parecía no hacer nada. */
+    bindShare(document);
+  }
+
+  function bindShare(scope) {
+    (scope || document).querySelectorAll("[data-share]").forEach(function (btn) {
+      if (btn.dataset.shareBound) return;
+      btn.dataset.shareBound = "1";
+
+      // El aviso se anuncia también a lectores de pantalla.
+      if (!btn.hasAttribute("aria-live")) btn.setAttribute("aria-live", "polite");
+
+      function confirmar(texto) {
+        var label = btn.querySelector(".share-label");
+        if (!label) return;
+        if (btn.dataset.shareRestore) return;      // ya hay un aviso en curso
+        btn.dataset.shareRestore = label.textContent;
+        label.textContent = texto;
+        btn.classList.add("is-copied");
+        setTimeout(function () {
+          label.textContent = btn.dataset.shareRestore || "Compartir";
+          delete btn.dataset.shareRestore;
+          btn.classList.remove("is-copied");
+        }, 2000);
+      }
 
       btn.addEventListener("click", async function () {
         var url = btn.getAttribute("data-share-url") || location.href;
@@ -54,24 +79,18 @@
         if (navigator.share) {
           try {
             await navigator.share({ title: title, url: url });
+            confirmar("¡Enlace compartido!");
             track("share", { method: "web_share", item: title });
             return;
           } catch (e) {
             if (e && e.name === "AbortError") return;  // el usuario canceló
+            // cualquier otro fallo cae al portapapeles, abajo
           }
         }
 
         try {
           await navigator.clipboard.writeText(url);
-          if (original) {
-            var prev = original.textContent;
-            original.textContent = "¡Enlace copiado!";
-            btn.classList.add("is-copied");
-            setTimeout(function () {
-              original.textContent = prev;
-              btn.classList.remove("is-copied");
-            }, 2000);
-          }
+          confirmar("¡Enlace copiado!");
           track("share", { method: "copy_link", item: title });
         } catch (e) {
           window.prompt("Copia el enlace:", url);
@@ -79,6 +98,8 @@
       });
     });
   }
+  // El catálogo crea sus botones después de cada render y los enlaza con esto.
+  window.rmBindShare = bindShare;
 
   /* ── 4 · Anclas de la misma página ───────────────────────────────────
      "Ver todas las agencias →" apunta a motos.html#agencias. Si ya estás
@@ -160,13 +181,41 @@
     window.addEventListener("load", land);
   }
 
+  /* ── 6 · Botón flotante de WhatsApp ──────────────────────────────────
+     En Inversiones el botón fijo "Hablar con un asesor" acababa encimado
+     sobre los CTA verdes de la propia página (p. ej. "Hablar por WhatsApp"
+     de la sección final): dos botones idénticos, uno sobre otro. Mientras
+     haya uno de esos CTA a la vista, el flotante se aparta. */
+  function initFloatingWa() {
+    var float = document.querySelector(".wa-float");
+    if (!float || !("IntersectionObserver" in window)) return;
+    var ctas = document.querySelectorAll(".btn-whatsapp");
+    if (!ctas.length) return;
+
+    // Se guarda QUÉ botones están a la vista, no cuántos: el observer
+    // reporta también los que NO intersecan (incluido el primer disparo),
+    // así que llevar un contador daba resultados falsos.
+    var aLaVista = [];
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var i = aLaVista.indexOf(e.target);
+        if (e.isIntersecting && i === -1) aLaVista.push(e.target);
+        else if (!e.isIntersecting && i !== -1) aLaVista.splice(i, 1);
+      });
+      float.classList.toggle("is-tucked", aLaVista.length > 0);
+    }, { rootMargin: "-10% 0px -10% 0px" });
+
+    ctas.forEach(function (c) { io.observe(c); });
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
-      init(); initAnchorScroll(); initHashLanding();
+      init(); initAnchorScroll(); initHashLanding(); initFloatingWa();
     });
   } else {
     init();
     initAnchorScroll();
     initHashLanding();
+    initFloatingWa();
   }
 })();

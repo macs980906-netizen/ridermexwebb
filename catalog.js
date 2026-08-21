@@ -487,7 +487,7 @@
       'identificado, para que un asesor te confirme disponibilidad, condiciones y opciones ' +
       'de financiamiento. También puedes verlo en persona en cualquiera de las ' +
       '<a href="motos.html#agencias">5 agencias RiderMex</a> o llamar al ' +
-      '<a href="tel:5510000680">55 1000 0680</a>.</p></div>';
+      '<a href="tel:5510000645">55 1000 0645</a>.</p></div>';
 
     root.innerHTML = bc +
       '<div class="detail-layout">' + gallery + info + "</div>" +
@@ -574,36 +574,11 @@
     hideDeadThumbs();
   }
 
-  // efecto glow que sigue al cursor (coherente con el resto del sitio)
-  // site-ui.js enlaza los [data-share] presentes al cargar la página; el
-  // catálogo los crea después de cada render, así que se enlazan aquí.
+  // Botón compartir: el comportamiento vive en site-ui.js (una sola copia).
+  // El catálogo crea sus botones después de cada render, así que aquí sólo
+  // se le pide que enlace los nuevos.
   function bindShare() {
-    root.querySelectorAll("[data-share]").forEach(function (btn) {
-      if (btn.dataset.shareBound) return;
-      btn.dataset.shareBound = "1";
-      btn.addEventListener("click", async function () {
-        var url = btn.getAttribute("data-share-url") || location.href;
-        var title = btn.getAttribute("data-share-title") || document.title;
-        var label = btn.querySelector(".share-label");
-        if (navigator.share) {
-          try {
-            await navigator.share({ title: title, url: url });
-            if (window.rmTrack) window.rmTrack("share", { method: "web_share", item: title });
-            return;
-          } catch (e) { if (e && e.name === "AbortError") return; }
-        }
-        try {
-          await navigator.clipboard.writeText(url);
-          if (label) {
-            var prev = label.textContent;
-            label.textContent = "¡Enlace copiado!";
-            btn.classList.add("is-copied");
-            setTimeout(function () { label.textContent = prev; btn.classList.remove("is-copied"); }, 2000);
-          }
-          if (window.rmTrack) window.rmTrack("share", { method: "copy_link", item: title });
-        } catch (e) { window.prompt("Copia el enlace:", url); }
-      });
-    });
+    if (typeof window.rmBindShare === "function") window.rmBindShare(root);
   }
 
   function bindGlow() {
