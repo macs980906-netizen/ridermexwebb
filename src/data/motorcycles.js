@@ -31,8 +31,14 @@
     "category": "Adventure",
     "shortDescription": "Adventure · 300 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-01.jpg",
+      "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-02.jpg",
+      "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-03.jpg",
+      "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-04.jpg",
+      "assets/img/motos/vento/vento-alpina-300/vento-alpina-300-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -81,8 +87,13 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · 170 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-atom-2-0-170/vento-atom-2-0-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-atom-2-0-170/vento-atom-2-0-170-01.jpg",
+      "assets/img/motos/vento/vento-atom-2-0-170/vento-atom-2-0-170-02.jpg",
+      "assets/img/motos/vento/vento-atom-2-0-170/vento-atom-2-0-170-03.jpg",
+      "assets/img/motos/vento/vento-atom-2-0-170/vento-atom-2-0-170-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -131,8 +142,14 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · 170 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-axus-170/vento-axus-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-axus-170/vento-axus-170-01.jpg",
+      "assets/img/motos/vento/vento-axus-170/vento-axus-170-02.jpg",
+      "assets/img/motos/vento/vento-axus-170/vento-axus-170-03.jpg",
+      "assets/img/motos/vento/vento-axus-170/vento-axus-170-04.jpg",
+      "assets/img/motos/vento/vento-axus-170/vento-axus-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -181,8 +198,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · 125 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-blast-125/vento-blast-125-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-blast-125/vento-blast-125-01.jpg",
+      "assets/img/motos/vento/vento-blast-125/vento-blast-125-02.jpg",
+      "assets/img/motos/vento/vento-blast-125/vento-blast-125-03.jpg",
+      "assets/img/motos/vento/vento-blast-125/vento-blast-125-04.jpg",
+      "assets/img/motos/vento/vento-blast-125/vento-blast-125-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -331,8 +354,14 @@
     "category": "Rebeldes / Custom",
     "shortDescription": "Rebeldes / Custom · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-01.jpg",
+      "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-02.webp",
+      "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-03.webp",
+      "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-04.webp",
+      "assets/img/motos/vento/vento-cougar-250/vento-cougar-250-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -381,8 +410,14 @@
     "category": "Trabajo",
     "shortDescription": "Trabajo · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-01.webp",
+      "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-02.webp",
+      "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-03.webp",
+      "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-04.webp",
+      "assets/img/motos/vento/vento-corsel-300/vento-corsel-300-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -431,8 +466,13 @@
     "category": "Rebeldes / Custom",
     "shortDescription": "Rebeldes / Custom · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-colt-300/vento-colt-300-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-colt-300/vento-colt-300-01.jpg",
+      "assets/img/motos/vento/vento-colt-300/vento-colt-300-02.jpg",
+      "assets/img/motos/vento/vento-colt-300/vento-colt-300-03.jpg",
+      "assets/img/motos/vento/vento-colt-300/vento-colt-300-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -481,8 +521,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-01.jpg",
+      "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-02.jpg",
+      "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-03.jpg",
+      "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-04.jpg",
+      "assets/img/motos/vento/vento-crossmax-170/vento-crossmax-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -531,8 +577,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · 220 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-01.webp",
+      "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-02.jpg",
+      "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-03.jpg",
+      "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-04.jpg",
+      "assets/img/motos/vento/vento-crossmax-220/vento-crossmax-220-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -573,8 +625,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · 250 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-01.jpg",
+      "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-02.jpg",
+      "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-03.jpg",
+      "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-04.jpg",
+      "assets/img/motos/vento/vento-crossmax-250/vento-crossmax-250-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -615,8 +673,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · 330 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-01.webp",
+      "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-02.webp",
+      "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-03.webp",
+      "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-04.webp",
+      "assets/img/motos/vento/vento-crossmax-330rally/vento-crossmax-330rally-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -657,8 +721,13 @@
     "category": "Urban Sport",
     "shortDescription": "Urban Sport · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-cyclone-210/vento-cyclone-210-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-cyclone-210/vento-cyclone-210-01.jpg",
+      "assets/img/motos/vento/vento-cyclone-210/vento-cyclone-210-02.jpg",
+      "assets/img/motos/vento/vento-cyclone-210/vento-cyclone-210-03.jpg",
+      "assets/img/motos/vento/vento-cyclone-210/vento-cyclone-210-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -707,8 +776,14 @@
     "category": "Adventure",
     "shortDescription": "Adventure · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-01.webp",
+      "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-02.webp",
+      "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-03.webp",
+      "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-04.webp",
+      "assets/img/motos/vento/vento-dakar-300/vento-dakar-300-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -757,8 +832,14 @@
     "category": "Adventure",
     "shortDescription": "Adventure · 330 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-01.webp",
+      "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-02.webp",
+      "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-03.webp",
+      "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-04.webp",
+      "assets/img/motos/vento/vento-dakar-330/vento-dakar-330-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -807,8 +888,14 @@
     "category": "Urban Sport",
     "shortDescription": "Urban Sport · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-01.jpg",
+      "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-02.jpg",
+      "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-03.jpg",
+      "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-04.jpg",
+      "assets/img/motos/vento/vento-falkon-250z3/vento-falkon-250z3-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -857,8 +944,14 @@
     "category": "Cuatrimoto",
     "shortDescription": "Cuatrimoto · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-01.jpg",
+      "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-02.jpg",
+      "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-03.jpg",
+      "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-04.jpg",
+      "assets/img/motos/vento/vento-gladiator-200-2-0/vento-gladiator-200-2-0-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -907,8 +1000,14 @@
     "category": "Adventure",
     "shortDescription": "Adventure · 300 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-01.jpg",
+      "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-02.jpg",
+      "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-03.jpg",
+      "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-04.jpg",
+      "assets/img/motos/vento/vento-gtspro-300/vento-gtspro-300-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -957,8 +1056,14 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · 170 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-01.jpg",
+      "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-02.jpg",
+      "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-03.jpg",
+      "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-04.jpg",
+      "assets/img/motos/vento/vento-hipster-170/vento-hipster-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -999,8 +1104,10 @@
     "category": "Urban Sport",
     "shortDescription": "Urban Sport · 310 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-hyper-310/vento-hyper-310-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-hyper-310/vento-hyper-310-01.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1041,8 +1148,13 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-intrepidsx-125/vento-intrepidsx-125-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-intrepidsx-125/vento-intrepidsx-125-01.jpg",
+      "assets/img/motos/vento/vento-intrepidsx-125/vento-intrepidsx-125-02.jpg",
+      "assets/img/motos/vento/vento-intrepidsx-125/vento-intrepidsx-125-03.jpg",
+      "assets/img/motos/vento/vento-intrepidsx-125/vento-intrepidsx-125-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1091,8 +1203,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-01.jpg",
+      "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-02.jpg",
+      "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-03.jpg",
+      "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-04.jpg",
+      "assets/img/motos/vento/vento-lithium-190/vento-lithium-190-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1141,8 +1259,10 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · 200 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-m1-200/vento-m1-200-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-m1-200/vento-m1-200-01.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1267,8 +1387,14 @@
     "category": "Urban Sport",
     "shortDescription": "Urban Sport · 330 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-01.webp",
+      "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-02.webp",
+      "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-03.webp",
+      "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-04.webp",
+      "assets/img/motos/vento/vento-nitrox-330/vento-nitrox-330-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1309,8 +1435,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-01.jpg",
+      "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-02.jpg",
+      "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-03.jpg",
+      "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-04.jpg",
+      "assets/img/motos/vento/vento-ovni-170/vento-ovni-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1359,8 +1491,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-01.webp",
+      "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-02.jpg",
+      "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-03.jpg",
+      "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-04.jpg",
+      "assets/img/motos/vento/vento-ovnitrack-170/vento-ovnitrack-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1409,8 +1547,14 @@
     "category": "Urban Sport",
     "shortDescription": "Urban Sport · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-01.webp",
+      "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-02.webp",
+      "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-03.webp",
+      "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-04.webp",
+      "assets/img/motos/vento/vento-onyx-250/vento-onyx-250-05.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1459,8 +1603,14 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · 170 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-01.jpg",
+      "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-02.jpg",
+      "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-03.jpg",
+      "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-04.jpg",
+      "assets/img/motos/vento/vento-phantom-170s/vento-phantom-170s-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1501,8 +1651,14 @@
     "category": "Doble Propósito",
     "shortDescription": "Doble Propósito · 125 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-01.jpg",
+      "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-02.jpg",
+      "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-03.jpg",
+      "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-04.jpg",
+      "assets/img/motos/vento/vento-rambler-125/vento-rambler-125-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1543,8 +1699,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · 125 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-01.jpg",
+      "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-02.jpg",
+      "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-03.jpg",
+      "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-04.jpg",
+      "assets/img/motos/vento/vento-rapid-125rt/vento-rapid-125rt-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1585,8 +1747,14 @@
     "category": "Cuatrimoto",
     "shortDescription": "Cuatrimoto · 200 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-01.jpg",
+      "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-02.jpg",
+      "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-03.jpg",
+      "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-04.jpg",
+      "assets/img/motos/vento/vento-reptile-200xt/vento-reptile-200xt-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1635,8 +1803,13 @@
     "category": "Cuatrimoto",
     "shortDescription": "Cuatrimoto · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-rex-350/vento-rex-350-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-rex-350/vento-rex-350-01.jpg",
+      "assets/img/motos/vento/vento-rex-350/vento-rex-350-02.jpg",
+      "assets/img/motos/vento/vento-rex-350/vento-rex-350-03.jpg",
+      "assets/img/motos/vento/vento-rex-350/vento-rex-350-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1685,8 +1858,13 @@
     "category": "Cuatrimoto",
     "shortDescription": "Cuatrimoto · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-rex-550/vento-rex-550-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-rex-550/vento-rex-550-01.jpg",
+      "assets/img/motos/vento/vento-rex-550/vento-rex-550-02.jpg",
+      "assets/img/motos/vento/vento-rex-550/vento-rex-550-03.jpg",
+      "assets/img/motos/vento/vento-rex-550/vento-rex-550-04.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1785,8 +1963,10 @@
     "category": "Rebeldes / Custom",
     "shortDescription": "Rebeldes / Custom · 300 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-rocketman-300pl/vento-rocketman-300pl-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-rocketman-300pl/vento-rocketman-300pl-01.webp"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1835,8 +2015,14 @@
     "category": "Motoneta",
     "shortDescription": "Motoneta · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-01.jpg",
+      "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-02.jpg",
+      "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-03.jpg",
+      "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-04.jpg",
+      "assets/img/motos/vento/vento-ruda-f4-170/vento-ruda-f4-170-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1885,8 +2071,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-01.jpg",
+      "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-02.jpg",
+      "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-03.jpg",
+      "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-04.jpg",
+      "assets/img/motos/vento/vento-ryder-190/vento-ryder-190-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1935,8 +2127,14 @@
     "category": "Rebeldes / Custom",
     "shortDescription": "Rebeldes / Custom · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-01.jpg",
+      "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-02.jpg",
+      "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-03.jpg",
+      "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-04.jpg",
+      "assets/img/motos/vento/vento-screamer-300/vento-screamer-300-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -1985,8 +2183,14 @@
     "category": "Rebeldes / Custom",
     "shortDescription": "Rebeldes / Custom · Consultar página oficial",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-01.webp",
+    "gallery": [
+      "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-01.webp",
+      "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-02.jpg",
+      "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-03.jpg",
+      "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-04.jpg",
+      "assets/img/motos/vento/vento-screamer-sportivo-300/vento-screamer-sportivo-300-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",
@@ -2035,8 +2239,14 @@
     "category": "Ciudad",
     "shortDescription": "Ciudad · 125 c.c.",
     "description": "",
-    "mainImage": "",
-    "gallery": [],
+    "mainImage": "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-01.jpg",
+    "gallery": [
+      "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-01.jpg",
+      "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-02.jpg",
+      "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-03.jpg",
+      "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-04.jpg",
+      "assets/img/motos/vento/vento-spectra-125/vento-spectra-125-05.jpg"
+    ],
     "highlights": [
       {
         "label": "Categoría",

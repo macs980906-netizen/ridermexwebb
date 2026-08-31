@@ -7,7 +7,7 @@ fotos conseguir primero**. Actualízalo cuando cambien los datos.
 
 | Marca | Modelos | Foto propia | Foto externa | Sin foto |
 |---|---:|---:|---:|---:|
-| Vento | 43 | 0 | 0 | **43** |
+| Vento | 43 | **38** | 0 | 5 |
 | Bajaj | 20 | 0 | **20** | 0 |
 | Ryder | 19 | 1 | **17** | 1 |
 | Zmoto | 17 | 1 | **16** | 0 |
@@ -18,23 +18,64 @@ fotos conseguir primero**. Actualízalo cuando cambien los datos.
 | TVS | 3 | 0 | 0 | **3** |
 | CF Lite | 3 | 0 | 0 | **3** |
 | Honda | 1 | 0 | 0 | **1** |
-| **TOTAL** | **149** | **39** | **59** | **51** |
+| **TOTAL** | **149** | **77** | **59** | **13** |
 
-Sólo **39 de 149 modelos (26 %)** tienen una fotografía alojada en el
-propio sitio.
+**77 de 149 modelos (52 %)** ya tienen fotografía propia alojada en el
+sitio, frente a 39 (26 %) antes de cargar las de Vento.
 
-## Hay dos problemas distintos, no uno
+## Vento: 38 de 43 modelos con foto
 
-### 1. Sin foto — 51 modelos
+Las fotos originales que entregó el cliente están íntegras en
+`assets/originales-vento/<MODELO>/` (51 carpetas, ~1 300 archivos, 204 MB).
+De cada carpeta se seleccionó la foto de producto y hasta cuatro de
+galería, y se copiaron ya renombradas a
+`assets/img/motos/vento/<slug>/<slug>-01…05.<ext>`.
 
-No tienen ninguna imagen asignada. Muestran la ilustración "RiderMex ·
-Imagen en preparación". Es un pendiente puro de contenido.
+**Cómo se eligieron.** La numeración de los archivos (`SPEC01`, `SPC-01`,
+`SP-01`…) NO indica cuál es la vista principal: mezcla la moto completa
+con primeros planos de freno, asiento o tablero, y con anuncios de la
+alarma VenTec donde la moto sale desenfocada al fondo. Sí resultaron
+fiables los archivos con `MAIN` en el nombre y los `GAL-` /
+`FOTOGALERIA` / `LIFESTYLE`, que siempre muestran la moto entera. Cada
+imagen elegida se revisó a ojo en una hoja de contactos antes de
+publicarla.
 
-Vento concentra 43 de los 51.
+### Los 5 modelos Vento que siguen sin foto
 
-### 2. Foto prestada de otro dominio — 59 modelos
+| Modelo | Motivo |
+|---|---|
+| N 400 | No hay carpeta con ese nombre |
+| NITROX 250T3 | No hay carpeta (sólo llegó NITROX 330) |
+| NITROX 300T3 | No hay carpeta (sólo llegó NITROX 330) |
+| ROCKETMAN 300 | No hay carpeta (sólo llegó ROCKETMAN 300PL) |
+| R 300 | La carpeta `R_300` sólo contiene imágenes de la **DAKAR 300** |
 
-Sí tienen foto, pero apunta al servidor de otra empresa:
+En `R_300` se dejó a propósito la ilustración de respaldo: publicar una
+Dakar 300 como si fuera la R 300 sería mostrar un producto que no es.
+
+### 12 carpetas de fotos sin modelo en el catálogo
+
+Llegaron fotos de 12 modelos Vento que **no existen** en
+`src/data/motorcycles.js`, así que no se muestran en ninguna parte:
+
+SPIRIT 170 · STORM 2.0 300 · STREETROD 170 · TERRADS 170 · THRILLER 250 ·
+THUNDER 300S · TORNADO 300 · WORKMAN 190 · WORKMAN 250 · XPLOR 190 ·
+XPRESS 170 · YUMA 250
+
+Para publicarlos hacen falta sus datos (categoría, cilindrada, precio de
+referencia). Las fotos ya están listas en `assets/originales-vento/`.
+
+### Nota sobre el peso del repositorio
+
+`assets/originales-vento/` ocupa 204 MB y sólo se usan 34 MB. Se conservó
+íntegro para no perder material del cliente, pero puede podarse en
+cualquier momento: las fotos publicadas ya están copiadas aparte en
+`assets/img/motos/vento/` y no dependen de esa carpeta.
+
+## Sigue pendiente: 59 fotos prestadas de otros dominios
+
+Bajaj (20), Ryder (17), Zmoto (16) e Islo (6) siguen apuntando al servidor
+de otra empresa:
 
 | Dominio | Modelos |
 |---|---:|
@@ -45,31 +86,18 @@ Sí tienen foto, pero apunta al servidor de otra empresa:
 | `www.motocool.net` | 2 |
 | `zoommotos.mx` | 1 |
 
-**Este es el origen de los "recuadros negros vacíos"** que se reportaron
-en la revisión de diseño. Cuando uno de esos dominios no responde, el
-navegador tarda unos 20 segundos en dar la petición por fallida; hasta
-entonces no salta la ilustración de respaldo. En el panel de red la
-petición aparece *pendiente*, no fallida — por eso la revisión no
-encontró ningún error 404 y concluyó que faltaba contenido.
+Esas fotos pueden dejar de cargar en cualquier momento porque no son
+nuestras; cuando eso pasa se ve la ilustración de respaldo. Conviene
+además revisar con quien corresponda si el sitio tiene derecho a usarlas.
 
-Ya se mitigó en el código (la ilustración se pinta de fondo y se ve desde
-el primer fotograma, ver `catalog.css`), pero la dependencia sigue: esas
-fotos pueden desaparecer o bloquearse en cualquier momento porque no son
-nuestras. Conviene además revisar con quién corresponda si el sitio tiene
-derecho a usarlas.
+**Prioridad ahora que Vento está resuelto:**
 
-## Prioridad sugerida
-
-1. **Bajaj Pulsar — 15 modelos.** Es la familia más vendida de la marca y
-   los 15 dependen del mismo dominio externo (Contentful). Si ese dominio
-   falla, la línea más vendida del catálogo se queda sin una sola foto.
-2. **Resto de Bajaj — 5 modelos** (Avenger, Boxer, Dominar). Misma
-   dependencia.
-3. **Vento — 43 modelos.** Es el hueco más grande en número, pero hoy se
-   ve resuelto con la ilustración de respaldo, así que molesta menos que
-   una marca que aparenta tener fotos y a veces no las muestra.
-4. **Ryder (17) y Zmoto (16)** — sustituir las prestadas por propias.
-5. **Islo (6), TVS (3), CF Lite (3), Honda NAVI (1).**
+1. **Bajaj Pulsar — 15 modelos.** La familia más vendida de la marca, y
+   las 15 dependen del mismo dominio externo.
+2. **Resto de Bajaj — 5 modelos** (Avenger, Boxer, Dominar).
+3. **Ryder (17) y Zmoto (16)** — sustituir las prestadas por propias.
+4. **Islo (6), TVS (3), CF Lite (3), Honda NAVI (1)** y los 5 Vento de
+   arriba.
 
 ## Cómo se asigna una foto
 
