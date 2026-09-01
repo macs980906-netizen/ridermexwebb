@@ -62,9 +62,10 @@
   var MEDIOS_URL = "https://medios-ridermex.netlify.app/";
   var TELEFONO = "5510000645";   // el 0680 no existe (ver arriba)
   var EMAIL = "info@ridermex.com";
-  // AVISO DE PRIVACIDAD — FALTA URL FINAL. Mientras esté vacío, el enlace
-  // del footer se mantiene como marcador y no apunta a ninguna parte.
-  var AVISO_PRIVACIDAD = "";
+  // AVISO DE PRIVACIDAD — publicado. La ruta limpia /aviso-de-privacidad
+  // es la que declara el propio documento legal en su sección 10; el
+  // rewrite a aviso-privacidad.html vive en vercel.json.
+  var AVISO_PRIVACIDAD = "/aviso-de-privacidad";
 
   global.RIDERMEX_CONFIG = {
     WHATSAPP_MOTOS: WHATSAPP_MOTOS,

@@ -66,4 +66,12 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Aviso de privacidad. URL limpia (rewrite en vercel.json): es la que
+       el propio documento legal declara como sección de privacidad. -->
+  <url>
+    <loc>https://www.ridermex.com/aviso-de-privacidad</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>

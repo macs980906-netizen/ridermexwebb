@@ -3,34 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ═══ AVISO DE PRIVACIDAD INTEGRAL ═══
+     Texto legal VERBATIM del documento oficial entregado por RiderMex
+     (RIDERNATION MEXICO S.A.P.I. DE C.V., 23 de agosto de 2026).
+     NO editar la redacción sin pasar por revisión legal: es el documento
+     que ampara el tratamiento de datos del formulario de crédito.
+     La URL pública es /aviso-de-privacidad (rewrite en vercel.json), que
+     es la que el propio documento declara en su sección 10. -->
 <title>Aviso de privacidad | RiderMex</title>
-<meta name="description" content="Aviso de privacidad de RiderMex: qué datos personales recabamos, para qué los usamos y cómo ejercer tus derechos ARCO.">
-<!-- BORRADOR · NO PUBLICADO ==============================================
-     Esta página todavía NO está enlazada desde el footer ni incluida en
-     sitemap.xml, y lleva noindex a propósito.
-
-     Faltan CUATRO datos que sólo puede aportar RiderMex. Están marcados
-     abajo como [[ POR CONFIRMAR ]]:
-       1. Razón social completa del responsable.
-       2. Domicilio fiscal del responsable.
-       3. Correo electrónico para solicitudes ARCO.
-       4. Fecha de última actualización del aviso.
-
-     Cuando estén, y tras revisión legal:
-       · sustituye los cuatro marcadores,
-       · quita el <meta name="robots" content="noindex">,
-       · en site-footer / las 6 páginas cambia
-           <span class="rm-pending" ...>Aviso de privacidad</span>
-         por
-           <a href="aviso-privacidad.html">Aviso de privacidad</a>,
-       · añade la URL a sitemap.xml y a PAGES en scripts/verify.mjs.
-
-     El texto sigue la estructura que pide la LFPDPPP (arts. 15-16) pero
-     NO sustituye la revisión de un abogado.
-     ==================================================================== -->
-<meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://www.ridermex.com/aviso-privacidad.html">
+<meta name="description" content="Aviso de privacidad integral de RiderMex (RiderNation Mexico S.A.P.I. de C.V.): qué datos personales recabamos, para qué los usamos, con quién se comparten y cómo ejercer tus derechos ARCO.">
+<link rel="canonical" href="https://www.ridermex.com/aviso-de-privacidad">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0A0A0A">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RiderMex">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="Aviso de privacidad | RiderMex">
+<meta property="og:description" content="Cómo trata RiderMex tus datos personales y cómo ejercer tus derechos ARCO.">
+<meta property="og:url" content="https://www.ridermex.com/aviso-de-privacidad">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
@@ -40,25 +32,46 @@
 <script src="site-header.js" defer></script>
 <script src="site-ui.js" defer></script>
 <style>
-  .legal { max-width: 820px; margin: 0 auto; padding: 64px 24px 80px; }
-  .legal h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 10px; color: #fff; }
-  .legal .legal-fecha { color: #8f8f8f; font-size: .9rem; margin-bottom: 40px; }
-  .legal h2 { font-size: 1.25rem; margin: 38px 0 12px; color: #fff; }
-  .legal p, .legal li { color: #c2c2c2; font-size: 1rem; line-height: 1.75; }
-  .legal ul { margin: 0 0 0 1.2rem; }
-  .legal li { margin-bottom: 8px; }
-  .legal a { color: #ff5a3c; font-weight: 600; }
-  .legal .pendiente {
-    background: rgba(204,0,0,.12); border: 1px dashed rgba(204,0,0,.55);
-    border-radius: 4px; padding: 1px 8px; color: #ff8a70; font-weight: 700;
-    font-size: .92em; white-space: nowrap;
-  }
-  .legal-aviso {
+  .legal { max-width: 860px; margin: 0 auto; padding: 56px 24px 84px; }
+  .legal-kicker { color: var(--rojo); font-weight: 700; font-size: 12.5px;
+    letter-spacing: 1.6px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+  .legal h1 { font-size: clamp(1.9rem, 5vw, 2.7rem); line-height: 1.15; color: #fff; margin-bottom: 12px; }
+  .legal-meta { color: #8f8f8f; font-size: .9rem; margin-bottom: 34px; line-height: 1.7; }
+  .legal-meta strong { color: #c8c8c8; }
+  .legal h2 { font-size: 1.18rem; color: #fff; margin: 40px 0 12px; padding-top: 22px;
+    border-top: 1px solid var(--gris-borde); }
+  .legal h3 { font-size: 1rem; color: #e6e6e6; margin: 24px 0 8px; }
+  .legal p, .legal li { color: #c2c2c2; font-size: 1rem; line-height: 1.78; }
+  .legal p { margin-bottom: 14px; }
+  .legal ul, .legal ol { margin: 0 0 16px 1.25rem; }
+  .legal li { margin-bottom: 9px; }
+  .legal li strong, .legal p strong { color: #f0f0f0; }
+  .legal a { color: #ff6a52; font-weight: 600; }
+  .legal a:hover { text-decoration: underline; }
+  /* Nota de adecuación y cierre: se distinguen del articulado. */
+  .legal-nota {
     background: #0d0d0d; border: 1px solid var(--gris-borde);
     border-left: 4px solid var(--rojo); border-radius: 12px;
-    padding: 20px 22px; margin-bottom: 36px;
+    padding: 18px 20px; margin-bottom: 30px;
   }
-  .legal-aviso p { margin: 0; color: #a8a8a8; font-size: .93rem; }
+  .legal-nota p { margin: 0; font-size: .93rem; color: #a8a8a8; }
+  /* Bloque destacado del mecanismo de negativa (opt-out). */
+  .legal-destacado {
+    background: rgba(204,0,0,.08); border: 1px solid rgba(204,0,0,.35);
+    border-radius: 12px; padding: 18px 20px; margin: 18px 0 8px;
+  }
+  .legal-destacado h3 { margin-top: 0; color: #ff8a70; }
+  .legal-destacado p:last-child { margin-bottom: 0; }
+  /* Datos de contacto del departamento. */
+  .legal-datos { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 10px; }
+  .legal-datos li { display: grid; grid-template-columns: 190px 1fr; gap: 12px;
+    padding: 12px 16px; background: #0d0d0d; border: 1px solid var(--gris-borde);
+    border-radius: 10px; margin: 0; }
+  .legal-datos dt, .legal-datos .k { color: #8f8f8f; font-size: .85rem;
+    text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+  @media (max-width: 640px) {
+    .legal-datos li { grid-template-columns: 1fr; gap: 4px; }
+  }
 </style>
 </head>
 <body class="dark-page">
@@ -86,50 +99,109 @@
   </header>
 <main id="contenido">
   <article class="legal">
-    <h1>Aviso de privacidad</h1>
-    <p class="legal-fecha">Última actualización: <span class="pendiente">[[ POR CONFIRMAR: fecha ]]</span></p>
+    <span class="legal-kicker">Legal</span>
+    <h1>Aviso de privacidad integral</h1>
+    <p class="legal-meta">
+      <strong>RIDERNATION MEXICO S.A.P.I. DE C.V.</strong><br>
+      Última actualización: 23 de agosto de 2026
+    </p>
 
-    <div class="legal-aviso">
-      <p><strong>Documento en preparación.</strong> Este aviso está pendiente de completar y de revisión legal. Mientras tanto, si quieres saber qué hacemos con tus datos o pedir que los eliminemos, escríbenos por WhatsApp al 55 1000 0645.</p>
+    <div class="legal-nota">
+      <p><strong>Nota de adecuación legal:</strong> El presente documento constituye la versión oficial adaptada para su despliegue y consulta integral en el sitio web oficial de RiderMex. Cumple cabalmente con los requisitos estipulados por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos del Aviso de Privacidad aplicables en la República Mexicana.</p>
     </div>
 
-    <h2>1. Quién es responsable de tus datos</h2>
-    <p>El responsable del tratamiento de tus datos personales es <span class="pendiente">[[ POR CONFIRMAR: razón social ]]</span> (&laquo;RiderMex&raquo;), con domicilio en <span class="pendiente">[[ POR CONFIRMAR: domicilio fiscal ]]</span>.</p>
+    <h2>1. Identidad y domicilio del responsable</h2>
+    <p><strong>RIDERNATION MEXICO S.A.P.I. DE C.V.</strong>, operando bajo las marcas comerciales y nombres de dominio &laquo;RiderMex&raquo; y &laquo;RiderMex Inversiones&raquo; (en lo sucesivo, &laquo;el Responsable&raquo; o &laquo;RiderMex&raquo;), con domicilio ubicado en Bosque de Radiatas 50, Piso 3, Colonia Cuajimalpa, Alcaldía Cuajimalpa de Morelos, C.P. 05120, Ciudad de México, es el responsable del tratamiento, uso y protección de sus datos personales, conforme a lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y demás disposiciones aplicables.</p>
 
-    <h2>2. Qué datos recabamos</h2>
-    <p>Recabamos únicamente los datos que tú nos proporcionas al llenar el formulario de solicitud de crédito o al contactarnos:</p>
+    <h2>2. Datos personales recabados</h2>
+    <p>Para llevar a cabo las finalidades descritas en el presente Aviso de Privacidad, RiderMex podrá recabar sus datos personales de forma directa (presencialmente en agencia, vía telefónica, mensajería instantánea como WhatsApp, o mediante formularios digitales interactivos en nuestro sitio web) o indirecta:</p>
     <ul>
-      <li>Nombre completo.</li>
-      <li>Número de teléfono.</li>
-      <li>Correo electrónico.</li>
-      <li>El modelo de motocicleta que te interesa, cuando llegas desde el catálogo.</li>
+      <li><strong>Datos de identificación y contacto:</strong> Nombre completo, identificación oficial vigente (INE/Pasaporte), Clave Única de Registro de Población (CURP), Registro Federal de Contribuyentes (RFC), teléfono fijo/móvil y correo electrónico.</li>
+      <li><strong>Datos patrimoniales y financieros para trámite de crédito:</strong> Comprobantes de ingresos (recibos de nómina o estados de cuenta bancarios), comprobante de domicilio, historial crediticio, referencias personales y comerciales, y demás documentación requerida por instituciones financieras o aliados de financiamiento.</li>
+      <li><strong>Datos de preferencia e interés:</strong> Agencia de preferencia, modelos de motocicletas de interés, modalidad de pago, plazo o plan de financiamiento solicitado.</li>
+      <li><strong>Datos de navegación e información técnica:</strong> Dirección IP, tipo de navegador, sistema operativo, páginas visitadas e interacción en el sitio web a través de cookies y tecnologías de rastreo (ver Sección 8).</li>
+      <li><strong>Datos Personales Sensibles:</strong> RiderMex no solicita ni recaba, de forma intencional, datos personales sensibles (tales como origen étnico, estado de salud, información genética, creencias religiosas, filosóficas o morales, afiliación sindical, opiniones políticas o preferencia sexual).</li>
     </ul>
-    <p>No recabamos datos personales sensibles ni datos financieros a través de este sitio.</p>
 
-    <h2>3. Para qué los usamos</h2>
-    <p>Tus datos se utilizan para las siguientes finalidades, todas necesarias para atender tu solicitud:</p>
+    <h2>3. Finalidades del tratamiento de datos</h2>
+    <p>Los datos personales recabados serán utilizados para las siguientes finalidades:</p>
+
+    <h3>A) Finalidades primarias (necesarias para la prestación del servicio solicitado)</h3>
     <ul>
-      <li>Contactarte para dar seguimiento a tu solicitud de crédito o de información.</li>
-      <li>Canalizar tu solicitud con la institución financiera que origina el crédito.</li>
-      <li>Agendar tu visita a una de nuestras agencias.</li>
+      <li>Gestionar, evaluar y dar trámite a su solicitud de crédito o financiamiento para la adquisición de motocicletas.</li>
+      <li>Validar su identidad, verificar la autenticidad de los documentos proporcionados y evaluar su perfil crediticio ante las instituciones financieras o aliados comerciales correspondientes.</li>
+      <li>Contactarle por teléfono, WhatsApp, correo electrónico o medios digitales para dar seguimiento a cotizaciones, solicitudes o procesos de compra.</li>
+      <li>Elaborar, formalizar y ejecutar los contratos de compraventa, arrendamiento o financiamiento, así como gestionar la entrega del vehículo.</li>
+      <li>Proporcionar servicios postventa, atención a garantías, soporte técnico y atención de solicitudes de servicio.</li>
+      <li>Atender y procesar solicitudes formales de información sobre el programa RiderMex Inversiones, cuando sea solicitado expresamente por el titular.</li>
     </ul>
-    <p>No usamos tus datos con fines publicitarios ni de prospección comercial distintos a los anteriores sin tu consentimiento.</p>
 
-    <h2>4. Con quién los compartimos</h2>
-    <p>Compartimos tus datos con las instituciones financieras aliadas que evalúan y originan el crédito, exclusivamente para procesar la solicitud que tú iniciaste. No vendemos ni rentamos tus datos personales a terceros.</p>
+    <h3>B) Finalidades secundarias (no necesarias para el servicio principal, pero que nos permiten brindarle una mejor atención)</h3>
+    <ul>
+      <li>Enviarle información publicitaria, boletines, promociones, ofertas exclusivas y novedades sobre nuevos modelos o servicios de RiderMex.</li>
+      <li>Realizar encuestas de satisfacción, evaluaciones de calidad en el servicio e investigaciones de mercado.</li>
+      <li>Enviar información sobre oportunidades de financiamiento o inversión relativas a RiderMex Inversiones (en caso de no haber sido solicitadas expresamente).</li>
+    </ul>
 
-    <h2>5. Tus derechos ARCO</h2>
-    <p>Tienes derecho a <strong>acceder</strong> a tus datos, <strong>rectificarlos</strong> si son inexactos, <strong>cancelarlos</strong> cuando consideres que no se requieren para alguna de las finalidades señaladas, y <strong>oponerte</strong> a su tratamiento.</p>
-    <p>Para ejercerlos, envía tu solicitud a <span class="pendiente">[[ POR CONFIRMAR: correo para solicitudes ARCO ]]</span> indicando tu nombre, un medio de contacto y qué derecho deseas ejercer. También puedes solicitarlo por WhatsApp al 55 1000 0645.</p>
+    <div class="legal-destacado">
+      <h3>Mecanismo de negativa y express opt-out</h3>
+      <p>Si no desea que sus datos personales sean tratados para las finalidades secundarias antes descritas, usted puede manifestar su negativa en cualquier momento marcando las casillas de opt-out disponibles en nuestros formularios impresos o digitales en la plataforma web, o bien enviando un correo electrónico manifestando su negativa a: <a href="mailto:info@ridermex.com">info@ridermex.com</a></p>
+      <p>La negativa para el uso de sus datos personales para finalidades secundarias no podrá ser motivo para negarle los servicios o productos que solicita o contrata con nosotros.</p>
+    </div>
 
-    <h2>6. Revocación del consentimiento</h2>
-    <p>Puedes revocar en cualquier momento el consentimiento que nos otorgaste, por los mismos medios señalados en el punto anterior. La revocación no tiene efectos retroactivos sobre tratamientos ya realizados.</p>
+    <h2>4. Transferencia de datos personales</h2>
+    <p>Sus datos personales podrán ser compartidos dentro y fuera del país con los siguientes terceros, para el cumplimiento de las finalidades descritas:</p>
+    <ul>
+      <li><strong>Instituciones Financieras y Aliados de Financiamiento:</strong> Con el fin de evaluar, procesar y, en su caso, otorgar el crédito o financiamiento solicitado. Esta transferencia es estrictamente necesaria para la prestación del servicio.</li>
+      <li><strong>Sociedades de Información Crediticia (Buró / Círculo de Crédito):</strong> Para la evaluación de su historial crediticio. Dichas consultas y transferencias se realizarán siempre previa autorización expresa e independiente emitida por usted conforme a las leyes aplicables.</li>
+      <li><strong>Proveedores de Servicios y Encargados:</strong> Empresas de mensajería, plataformas de gestión de clientes (CRM), proveedores de almacenamiento en la nube y servicios informáticos, quienes tratan los datos por cuenta de RiderMex bajo estrictas cláusulas de confidencialidad y protección de datos.</li>
+      <li><strong>Autoridades Competentes:</strong> Para dar cumplimiento a obligaciones legales o requerimientos judiciales fundados y motivados.</li>
+    </ul>
+    <p>RiderMex no vende, renta ni comercializa sus datos personales a terceros con fines mercadotécnicos o publicitarios ajenos a la operación de la empresa.</p>
 
-    <h2>7. Formularios alojados por terceros</h2>
-    <p>El formulario de solicitud de crédito de este sitio está alojado por un proveedor externo de gestión de contactos. Al enviarlo, tus datos se transmiten a ese proveedor, que los trata por cuenta de RiderMex y bajo las finalidades descritas en este aviso.</p>
+    <h2>5. Ejercicio de derechos ARCO (acceso, rectificación, cancelación y oposición)</h2>
+    <p>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (<strong>Acceso</strong>); solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (<strong>Rectificación</strong>); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (<strong>Cancelación</strong>); así como oponerse al uso de sus datos personales para fines específicos (<strong>Oposición</strong>).</p>
+    <p>Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud correspondiente ante nuestro Departamento de Protección de Datos Personales enviando un correo electrónico a <a href="mailto:info@ridermex.com">info@ridermex.com</a>.</p>
+    <p>La solicitud deberá contener y acompañar lo siguiente:</p>
+    <ol>
+      <li>Nombre completo del titular y correo electrónico u otro medio para comunicarle la respuesta a su solicitud.</li>
+      <li>Copia simple de los documentos que acrediten la identidad del titular (INE / Pasaporte) o, en su caso, la representación legal correspondiente.</li>
+      <li>Descripción clara y precisa de los datos personales respecto de los que busca ejercer alguno de los derechos ARCO, así como el derecho específico que desea ejercer.</li>
+      <li>Cualquier otro elemento o documento que facilite la localización de sus datos personales.</li>
+    </ol>
+    <p><strong>Plazos de atención y resolución:</strong> RiderMex le comunicará la determinación adoptada en un plazo máximo de 20 (veinte) días hábiles contados desde la fecha en que se recibió la solicitud. Si la solicitud resulta procedente, se hará efectiva dentro de los 15 (quince) días hábiles siguientes a la fecha en que se le comunique la respuesta. Los plazos antes referidos podrán ser ampliados una sola vez por un periodo igual, siempre que así lo justifiquen las circunstancias del caso.</p>
 
-    <h2>8. Cambios a este aviso</h2>
-    <p>Cualquier modificación a este aviso de privacidad se publicará en esta misma página, indicando la fecha de la última actualización.</p>
+    <h2>6. Revocación del consentimiento y limitación del uso o divulgación</h2>
+    <p>Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales, o bien limitar el uso y divulgación de su información. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal o contractual requiramos seguir tratando sus datos personales.</p>
+    <p>Para revocar su consentimiento o limitar el uso y divulgación de su información, deberá enviar su solicitud al correo electrónico <a href="mailto:privacidad@ridermex.com">privacidad@ridermex.com</a>. Asimismo, usted podrá inscribirse en el Registro Público para Evitar Publicidad (REPEP) de la Procuraduría Federal del Consumidor (PROFECO) si no desea recibir publicidad comercial de nuestra parte.</p>
+
+    <h2>7. Departamento especializado de datos personales</h2>
+    <p>Para cualquier duda, aclaración, trámite o seguimiento relacionado con la protección y tratamiento de sus datos personales, puede ponerse en contacto con nuestro Departamento Especializado de Datos Personales:</p>
+    <ul class="legal-datos">
+      <li><span class="k">Responsable</span><span>Departamento de Protección de Datos Personales de RiderMex</span></li>
+      <li><span class="k">Correo electrónico</span><span><a href="mailto:info@ridermex.com">info@ridermex.com</a></span></li>
+      <li><span class="k">Teléfono de atención</span><span><a href="tel:5510000645">55 1000 0645</a></span></li>
+      <li><span class="k">Domicilio</span><span>Bosque de Radiatas 50, Piso 3, Col. Cuajimalpa, C.P. 05120, Ciudad de México.</span></li>
+      <li><span class="k">Horario de atención</span><span>Lunes a viernes de 9:00 a 18:00 hrs.</span></li>
+    </ul>
+
+    <h2>8. Uso de cookies y tecnologías de rastreo</h2>
+    <p>Nuestro sitio web utiliza cookies, web beacons y otras tecnologías de rastreo a través de las cuales es posible monitorear su comportamiento como usuario de internet, brindarle un mejor servicio y experiencia al navegar en nuestra página, así como ofrecerle nuevos productos y servicios basados en sus preferencias.</p>
+    <p>Los datos personales que obtenemos de estas tecnologías de rastreo incluyen: identificadores, tipo de navegador, sistema operativo, fecha y hora del inicio y fin de una sesión de usuario, y páginas web visitadas. Estas tecnologías pueden ser deshabilitadas directamente en la configuración de opciones de su navegador de internet.</p>
+
+    <h2>9. Protección de menores de edad</h2>
+    <p>Nuestros servicios y productos están dirigidos exclusivamente a personas mayores de edad con capacidad legal para contratar. RiderMex no recaba intencionalmente datos de menores de edad. En caso de que un padre, madre o tutor legal identifique que un menor ha proporcionado datos sin su consentimiento, podrá solicitar su cancelación y eliminación inmediata contactando a <a href="mailto:info@ridermex.com">info@ridermex.com</a>.</p>
+
+    <h2>10. Modificaciones al aviso de privacidad</h2>
+    <p>El presente Aviso de Privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales, de nuestras propias necesidades por los productos o servicios que ofrecemos, de nuestras prácticas de privacidad o de cambios en nuestro modelo de negocio.</p>
+    <p>RiderMex se compromete a mantenerlo informado sobre los cambios que pueda sufrir el presente aviso a través de nuestra página web oficial en la sección de privacidad: <a href="https://www.ridermex.com/aviso-de-privacidad">https://www.ridermex.com/aviso-de-privacidad</a></p>
+
+    <h2>11. Consentimiento</h2>
+    <p>Al proporcionar sus datos personales de manera presencial, digital o electrónica (a través del marcado de casillas de aceptación en el sitio web), usted manifiesta que ha leído, entendido y aceptado los términos del presente Aviso de Privacidad, otorgando su consentimiento expreso para el tratamiento de sus datos personales conforme a lo aquí dispuesto.</p>
+
+    <div class="legal-nota" style="margin-top:32px">
+      <p>Este documento cumple con los estándares exigidos por el INAI y la LFPDPPP para su publicación y validez en plataformas digitales e impresas.</p>
+    </div>
   </article>
 </main>
 
@@ -229,7 +301,7 @@
       <a href="contacto.html">Contacto</a>
       <!-- AVISO DE PRIVACIDAD — FALTA URL FINAL. Se muestra como texto (no
            como enlace roto). Al tener la URL, sustituir por un <a href="…">. -->
-      <span class="rm-pending" title="Pendiente de publicación">Aviso de privacidad</span>
+      <a href="/aviso-de-privacidad" aria-current="page">Aviso de privacidad</a>
     </nav>
   </div>
 </footer>

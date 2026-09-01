@@ -27,6 +27,7 @@ const PAGES = [
   "inversiones.html",
   "quienes-somos.html",
   "contacto.html",
+  "aviso-privacidad.html",
 ];
 
 const errors = [];
@@ -222,10 +223,16 @@ if (!locs.length) fail("sitemap.xml: no contiene ninguna <loc>");
 const origin = locs[0].match(/^https?:\/\/[^/]+/)?.[0];
 for (const loc of locs) {
   if (!loc.startsWith(origin)) fail(`sitemap.xml: dominio inconsistente en ${loc}`);
-  const path = loc.slice(origin.length).replace(/^\//, "") || "index.html";
+  // Una URL del sitemap puede ser una ruta limpia servida por un rewrite
+  // de vercel.json (p. ej. /aviso-de-privacidad), no un archivo en disco.
+  const clean = loc.slice(origin.length) || "/";
+  const dest = rewrites.get(clean.replace(/\/$/, ""));
+  const path = (dest || clean).replace(/^\//, "") || "index.html";
   if (!existsSync(join(ROOT, path))) fail(`sitemap.xml: URL sin archivo → ${loc}`);
 }
 for (const page of PAGES) {
+  // El aviso de privacidad se publica en /aviso-de-privacidad (rewrite).
+  if (page === "aviso-privacidad.html") continue;
   const expected = page === "index.html" ? `${origin}/` : `${origin}/${page}`;
   if (!locs.includes(expected)) warn(`sitemap.xml: falta ${expected}`);
 }

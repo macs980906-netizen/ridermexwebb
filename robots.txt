@@ -14,6 +14,11 @@ Disallow: /assets/index%20(3).html
 Disallow: /scripts/
 Disallow: /docs/
 
+# Fotografías originales que entregó el cliente (~1300 archivos). Las que
+# el sitio publica están en /assets/img/motos/, ya seleccionadas y
+# renombradas; esta carpeta es material de origen, no contenido público.
+Disallow: /assets/originales-vento/
+
 # Versiones anteriores del simulador. Se conservan en disco por historial,
 # pero ninguna navegación pública apunta a ellas. El simulador oficial es
 # /simulador-inversion (V4).
