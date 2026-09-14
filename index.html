@@ -1041,7 +1041,10 @@
     .home-cta-row { text-align:center; margin-top: 2.4rem; }
 
     /* ── SECCIÓN 5 · CÓMO COMPRAR ── */
-    .proceso-grid { max-width:1240px; margin:0 auto; padding:0 2rem; display:grid; gap:1.1rem; grid-template-columns: repeat(4,1fr); }
+    /* Son 5 pasos: el número de columnas se declara AQUÍ, no en un style
+       inline del HTML. Un inline gana a cualquier media query y dejaba las
+       5 tarjetas comprimidas (y el texto cortado) en móvil. */
+    .proceso-grid { max-width:1240px; margin:0 auto; padding:0 2rem; display:grid; gap:1.1rem; grid-template-columns: repeat(5,1fr); }
     .proceso-step { position:relative; padding: 2rem 1.4rem 1.6rem; border-radius:14px; background:#0d0d0d; border:1px solid var(--gris3); overflow:hidden; }
     .proceso-step::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--rojo),var(--rojo2)); opacity:.55; }
     .proceso-num { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:2.4rem; line-height:1; color: rgba(204,0,0,.85); margin-bottom:0.8rem; }
@@ -1194,6 +1197,11 @@
     .faq-foot a { color: var(--rojo2); font-weight:600; }
 
     /* ── RESPONSIVE HOME ── */
+    /* Tablet: 5 columnas ya no caben legibles. Se bajan a 3 antes de los
+       breakpoints generales de abajo. */
+    @media (max-width: 1080px) {
+      .proceso-grid { grid-template-columns: repeat(3,1fr); }
+    }
     @media (max-width: 900px) {
       /* Móvil: la foto pasa a ser fondo a pantalla completa con el texto
          encima; se reencuadra a la moto protagonista de la derecha. */
@@ -1212,6 +1220,40 @@
       .brand-grid, .featured-grid, .proceso-grid, .benef-grid { grid-template-columns: 1fr; }
       .moto-hero-title { font-size: clamp(2.6rem,11vw,3.6rem); }
       .home-wrap, .home-section-head { padding-left:1.25rem; padding-right:1.25rem; }
+    }
+
+    /* ── PROCESO RIDERMEX EN MÓVIL ──
+       En una sola columna, cinco tarjetas verticales obligan a un scroll
+       larguísimo. En teléfono cada paso pasa a ser una fila compacta:
+       número a la izquierda, título y descripción a la derecha. Se lee de
+       corrido, como una lista numerada, y ocupa la mitad de alto. */
+    @media (max-width: 620px) {
+      .proceso-grid { grid-template-columns: 1fr; gap: 0.75rem; padding: 0 1.25rem; }
+      .proceso-step {
+        display: grid;
+        grid-template-columns: 2.6rem 1fr;
+        grid-template-areas: "num titulo" "num texto";
+        column-gap: 0.95rem;
+        align-items: start;
+        padding: 1.15rem 1.15rem 1.2rem 1.1rem;
+      }
+      /* El acento pasa de barra superior a barra lateral: acompaña a la
+         fila completa en vez de cortarla por arriba. */
+      .proceso-step::before {
+        top: 0; bottom: 0; left: 0; right: auto;
+        width: 3px; height: auto;
+        background: linear-gradient(180deg, var(--rojo), var(--rojo2));
+      }
+      .proceso-num {
+        grid-area: num;
+        font-size: 2rem;
+        margin-bottom: 0;
+        text-align: center;
+        /* alinea ópticamente el número con la primera línea del título */
+        padding-top: 0.1rem;
+      }
+      .proceso-step h3 { grid-area: titulo; font-size: 1.1rem; margin-bottom: 0.3rem; }
+      .proceso-step p  { grid-area: texto; font-size: 0.92rem; }
     }
   </style>
   <!-- Cintillo "RiderMex en los medios": mismo componente que en inversiones.html. -->
@@ -1407,7 +1449,7 @@
       <h2 class="home-h2">Cómo compras <em>tu moto</em></h2>
       <p class="home-lead">Un proceso simple y rápido: de elegir tu moto a salir rodando, sin vueltas ni papeleos eternos.</p>
     </div>
-    <div class="proceso-grid" style="grid-template-columns:repeat(5,1fr);">
+    <div class="proceso-grid">
       <div class="proceso-step"><div class="proceso-num">01</div><h3>Elige tu moto</h3><p>Explora el catálogo: 149 modelos de 11 marcas.</p></div>
       <div class="proceso-step"><div class="proceso-num">02</div><h3>Aprobación con tu INE</h3><p>Solicita tu crédito: aprobación en 2 minutos y sin aval.</p></div>
       <div class="proceso-step"><div class="proceso-num">03</div><h3>Revisamos tus opciones</h3><p>Un asesor confirma tu plan de pago y enganche.</p></div>

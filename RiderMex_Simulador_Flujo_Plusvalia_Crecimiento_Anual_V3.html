@@ -1262,6 +1262,95 @@ a{color:inherit}
   .maturityGrid,.resultGrid{grid-template-columns:1fr}
   .bridgeBars{grid-template-columns:repeat(2,1fr);min-height:360px}
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ESCALA TIPOGRÁFICA EN MÓVIL  ·  añadido por RiderMex
+   ───────────────────────────────────────────────────────────────────────
+   El diseño original fija las etiquetas y las notas al pie de cada tarjeta
+   entre 6 y 10 px. En escritorio se lee; en un teléfono de 390 px queda por
+   debajo del mínimo legible. Este bloque —y solo este— sube ese texto
+   secundario a 11.5–14 px en pantallas de 700 px o menos. No cambia
+   estructura, ni colores, ni la tipografía de las cifras grandes: solo el
+   tamaño del texto pequeño. Si se quiere volver al original, basta con
+   borrar el bloque completo.
+   ═══════════════════════════════════════════════════════════════════════ */
+@media(max-width:700px){
+  .growthMetric span{font-size:11.5px}
+  .growthYear span{font-size:11.5px}
+  .ladderStep span{font-size:11.5px}
+  .mini span{font-size:11.5px}
+  .result span{font-size:11.5px}
+  .summaryCard span{font-size:11.5px}
+  .bridgeLabel{font-size:11.5px}
+  .maturityCard span{font-size:11.5px}
+  .growthMetric small{font-size:11.5px}
+  .result small{font-size:11.5px}
+  .summaryCard small{font-size:11.5px}
+  .maturityCard small{font-size:11.5px}
+  .bridgeLegend{font-size:11.5px}
+  .engineCard .caption{font-size:11.5px}
+  .field label{font-size:11.5px}
+  .growthYear b{font-size:11.5px}
+  .heroCard span{font-size:11.5px}
+  .ladderResult .label{font-size:11.5px}
+  .ladderStep b{font-size:11.5px}
+  .milestone span{font-size:11.5px}
+  .modelBtn .kicker{font-size:11.5px}
+  .sliderReadout span{font-size:11.5px}
+  .updated{font-size:11.5px}
+  .disclaimer{font-size:11.5px}
+  .bridgeTop p{font-size:11.5px}
+  .bridgeValue{font-size:11.5px}
+  .cta .tag{font-size:11.5px}
+  .growthYearValue{font-size:11.5px}
+  .horizon button{font-size:11.5px}
+  .resultsTop p{font-size:11.5px}
+  .bridgeFoot{font-size:11.55px}
+  .timelineHead p{font-size:11.7px}
+  .brandcopy span{font-size:12.0px}
+  .cta a,.cta button{font-size:12.0px}
+  .explainCard .n{font-size:12.0px}
+  .explainCard p{font-size:12.0px}
+  .field label b{font-size:12.0px}
+  .footer{font-size:12.0px}
+  .growthRateBadge{font-size:12.0px}
+  .growthTop p{font-size:12.0px}
+  .heroCard small{font-size:12.0px}
+  .ladderResult p{font-size:12.0px}
+  .modelBtn p{font-size:12.0px}
+  .notAdd{font-size:12.0px}
+  .panel>p{font-size:12.0px}
+  .sectionLabel{font-size:12.0px}
+  .sliderPanel p{font-size:12.0px}
+  .tag{font-size:12.0px}
+  .toast{font-size:12.0px}
+  .topcta{font-size:12.0px}
+  .yieldBadge{font-size:12.0px}
+  .activeInfo{font-size:12.75px}
+  .engineCard p{font-size:12.75px}
+  .summary p{font-size:13.05px}
+  .cta p{font-size:13.5px}
+  .dot{font-size:13.5px}
+  .engineCard .number{font-size:13.5px}
+  .eyebrow{font-size:13.5px}
+  .field input[type=number], .field select{font-size:13.5px}
+  .milestone b{font-size:13.5px}
+  .statement p{font-size:13.5px}
+  .timelineTotal{font-size:13.5px}
+  .simHead p, .sectionHead p{font-size:14.0px}
+  .activeInfo b{font-size:14.0px}
+  .brandcopy b{font-size:14.0px}
+  .mini b{font-size:14.0px}
+  .modelBtn .check{font-size:14.0px}
+
+  /* Objetivos táctiles: los selectores de horizonte y el contador de
+     tickets quedaban por debajo del alto cómodo para el pulgar. */
+  .horizon button{padding:11px 15px}
+  .counter{grid-template-columns:52px 1fr 52px}
+  .counter button,.counter strong{height:46px}
+  .field input[type=range]{height:30px}
+}
 </style>
 </head>
 <body>

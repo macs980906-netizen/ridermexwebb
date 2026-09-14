@@ -22,8 +22,9 @@
       una landing con intención de búsqueda propia. No se fuerza su
       indexación.
 
-    · Versiones anteriores del simulador (calculadora-inversion/ y
-      assets/RiderMex_Simulador_Inversion_V3_META_300.html).
+    · Versiones anteriores del simulador (calculadora-inversion/,
+      assets/RiderMex_Simulador_Inversion_V3_META_300.html y
+      RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html).
 
   DOMINIO: si el dominio final no es www.ridermex.com, hay que reemplazarlo
   aquí y en los canonical / og:url de cada .html.

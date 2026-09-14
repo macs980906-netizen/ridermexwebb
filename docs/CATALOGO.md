@@ -127,15 +127,21 @@ cuentas ni se enlaza a la home genérica de ninguna red.
 
 | | |
 |---|---|
-| Archivo oficial | `RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html` (raíz) |
+| Archivo oficial | `RiderMex_Simulador_Flujo_Plusvalia_Crecimiento_Anual_V3.html` (raíz) |
 | Ruta pública | `/simulador-inversion` (reescritura en `vercel.json`) |
 | Cómo se abre | CTA compacto en `inversiones.html#simulador`, en pestaña nueva |
 | Evento | `simulator_click` (ver `site-ui.js`; solo se envía si hay GA4) |
 
 **Nunca se muestra embebido.** Las versiones anteriores
-(`calculadora-inversion/` y `assets/RiderMex_Simulador_Inversion_V3_META_300.html`)
+(`RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html`,
+`calculadora-inversion/` y `assets/RiderMex_Simulador_Inversion_V3_META_300.html`)
 se conservan en disco por historial, pero **ninguna navegación pública apunta
 a ellas** y están en `Disallow` del `robots.txt`.
+
+El simulador vigente trae un bloque final en su `<style>`
+(«ESCALA TIPOGRÁFICA EN MÓVIL») que sube a 11.5–14 px el texto secundario en
+pantallas ≤ 700 px y agranda los controles táctiles. Es lo único que se le
+tocó al archivo entregado; borrarlo devuelve el diseño original.
 
 La ruta limpia funciona en Vercel; con un servidor estático local plano hay
 que abrir el archivo directamente (mismo caso que `/catalogo`).

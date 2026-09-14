@@ -1741,7 +1741,12 @@ body::before {
 @media (max-width: 560px) {
   .agencias-inner { padding: 0 18px; }
   .ag-card h3 { min-height: 0; }
-  .ag-datos > div { grid-template-columns: 66px 1fr; }
+  /* 66px no daban para "DIRECCIÓN" ni "TELÉFONO" con el letter-spacing de
+     la etiqueta: la última letra se cortaba. En pantallas estrechas la
+     etiqueta pasa encima del dato, que además deja más ancho a la
+     dirección. */
+  .ag-datos > div { grid-template-columns: 1fr; gap: 2px; }
+  .ag-datos dt { padding-top: 0; }
   .ag-btn { width: 100%; }
 }
 

@@ -256,7 +256,9 @@
     left: 0;
     right: 0;
     display: none;
-    background: rgba(10, 10, 10, .98);
+    /* Opaco del todo: con .98 el titular del hero se transparentaba
+       levemente detrás de los enlaces del menú. */
+    background: #0A0A0A;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--rm-header-line);

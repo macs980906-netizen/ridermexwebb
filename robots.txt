@@ -21,7 +21,8 @@ Disallow: /assets/originales-vento/
 
 # Versiones anteriores del simulador. Se conservan en disco por historial,
 # pero ninguna navegación pública apunta a ellas. El simulador oficial es
-# /simulador-inversion (V4).
+# /simulador-inversion (Flujo + Plusvalía · Crecimiento anual V3).
+Disallow: /RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html
 Disallow: /assets/RiderMex_Simulador_Inversion_V3_META_300.html
 Disallow: /calculadora-inversion/
 
