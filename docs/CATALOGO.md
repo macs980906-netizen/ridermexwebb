@@ -123,6 +123,31 @@ LinkedIn de ambas marcas, y TikTok de Inversiones. Están como cadena vacía
 en `site-config.js` y **no se renderizan** en el footer: no se inventan
 cuentas ni se enlaza a la home genérica de ninguna red.
 
+## En los medios (press room)
+
+| | |
+|---|---|
+| Archivo | `medios.html` (raíz) |
+| Ruta pública | `/medios` (reescritura en `vercel.json`) |
+| Desde dónde se llega | Cintillo del Home y de `inversiones.html`, sección `#medios` de Inversiones y el pie de las 7 páginas |
+| Destino declarado en | `site-config.js` → `MEDIOS_URL` |
+
+Antes este contenido vivía en un dominio aparte
+(`medios-ridermex.netlify.app`) y todos los enlaces salían del sitio en una
+pestaña nueva. Ahora es una página del propio sitio: los enlaces son
+internos, abren en la misma pestaña y la URL está en el `sitemap.xml`.
+
+La página conserva su diseño propio (claro, tipo *press room*) y no usa el
+header ni el footer globales, igual que el simulador. Al integrarla se le
+añadieron tres cosas, todas marcadas con comentarios en el archivo:
+canonical y Open Graph, una salida visible hacia el resto del sitio también
+en móvil (bloque «INTEGRACIÓN EN RIDERMEX.COM») y la normalización de
+acentos en el buscador —antes «excelsior» sin acento no encontraba nada—.
+
+Los logotipos de cada medio se piden a `google.com/s2/favicons`. Si ese
+servicio falla, cada tarjeta cae a las iniciales del medio (`onerror` en el
+`<img>`): no se rompe el diseño.
+
 ## Simulador de inversión
 
 | | |

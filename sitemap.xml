@@ -67,6 +67,15 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- En los medios. Antes era un dominio aparte y no formaba parte del
+       sitio; ahora es medios.html, publicado en la URL limpia /medios
+       (rewrite en vercel.json). -->
+  <url>
+    <loc>https://www.ridermex.com/medios</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Aviso de privacidad. URL limpia (rewrite en vercel.json): es la que
        el propio documento legal declara como sección de privacidad. -->
   <url>

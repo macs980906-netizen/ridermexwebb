@@ -49,6 +49,10 @@ Vento y Zmoto.
 - [Simulador de inversión](https://www.ridermex.com/simulador-inversion):
   herramienta ilustrativa para comparar escenarios. Los resultados son
   estimados.
+- [RiderMex en los medios](https://www.ridermex.com/medios): recopilación de
+  cobertura, menciones y publicaciones externas sobre RiderMex, con enlace a
+  la fuente original de cada nota. Es material de terceros: no es una
+  auditoría ni una recomendación de inversión.
 - [Quiénes somos](https://www.ridermex.com/quienes-somos.html)
 - [Contacto](https://www.ridermex.com/contacto.html): dos intenciones,
   comprar una moto o hablar con un asesor de inversiones.

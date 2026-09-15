@@ -8,7 +8,8 @@
    para no duplicar estilos ni lógica al reutilizarlo en el Home.
 
    Se carga con:  <link rel="stylesheet" href="site-medios.css">
-   Destino: https://medios-ridermex.netlify.app/ (ver site-config.js).
+   Destino: /medios (medios.html, el press room del propio sitio; antes era
+   el dominio aparte medios-ridermex.netlify.app). Ver site-config.js.
 
    Los colores se toman de variables propias con respaldo, porque cada
    página define su paleta con nombres distintos (--red / --rojo).

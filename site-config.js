@@ -59,7 +59,11 @@
   };
 
   // ── Otros destinos ───────────────────────────────────────────────────
-  var MEDIOS_URL = "https://medios-ridermex.netlify.app/";
+  // EN LOS MEDIOS — el press room dejó de estar en un dominio aparte
+  // (medios-ridermex.netlify.app) y ahora es una página del propio sitio:
+  // medios.html, publicada en la ruta limpia /medios (rewrite en
+  // vercel.json). Por eso los enlaces ya no abren en pestaña nueva.
+  var MEDIOS_URL = "/medios";
   var TELEFONO = "5510000645";   // el 0680 no existe (ver arriba)
   var EMAIL = "info@ridermex.com";
   // AVISO DE PRIVACIDAD — publicado. La ruta limpia /aviso-de-privacidad
