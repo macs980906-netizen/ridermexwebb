@@ -29,4 +29,9 @@ Disallow: /calculadora-inversion/
 # Parámetros de campaña: evitan que se indexen variantes duplicadas del Home.
 Disallow: /*?ref=
 
+# El visor embebido (site-embed.js) carga el simulador y /medios con
+# ?embed=1 dentro de un iframe. Es la misma página con los enlaces de
+# "volver al sitio" escondidos: no debe indexarse como URL aparte.
+Disallow: /*?embed=
+
 Sitemap: https://www.ridermex.com/sitemap.xml

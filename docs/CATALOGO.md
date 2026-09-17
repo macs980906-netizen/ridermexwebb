@@ -123,13 +123,50 @@ LinkedIn de ambas marcas, y TikTok de Inversiones. Están como cadena vacía
 en `site-config.js` y **no se renderizan** en el footer: no se inventan
 cuentas ni se enlaza a la home genérica de ninguna red.
 
+## Visor embebido (el simulador y los medios, sin salir de la página)
+
+| | |
+|---|---|
+| Componente | `site-embed.css` + `site-embed.js` (lado del sitio) |
+| Dentro de la herramienta | `site-embed-child.js` |
+| Cómo se activa | `data-embed="Título"` en un enlace: `<a href="/medios" data-embed="RiderMex en los medios">` |
+| Herramientas que lo usan | `/simulador-inversion` y `/medios` |
+
+Las dos herramientas son documentos HTML completos con su propio CSS
+—definen `.section`, `.btn`, `.kicker`, igual que `inversiones.html`—, así
+que **no se pueden pegar dentro de una página del sitio sin romperla**. El
+visor las abre a pantalla completa por encima de la página, en un `<iframe>`
+que las aísla. El usuario no navega ni abre pestaña nueva; cierra con la ✕,
+con Escape o con el botón "atrás".
+
+**El `href` sigue siendo real.** El visor es una mejora encima: sin
+JavaScript el enlace navega a la página como siempre, con ctrl+clic abre
+otra pestaña y un buscador lo lee como enlace interno. Por eso
+`/simulador-inversion` y `/medios` siguen existiendo como páginas.
+
+Dos cosas que costaron encontrar y conviene no deshacer:
+
+- **La herramienta se carga con `location.replace`, nunca asignando
+  `.src`.** Asignar `.src` cuando el iframe ya tiene un documento empuja
+  una entrada en el historial de la pestaña: el botón "atrás" retrocedía
+  *dentro* del marco en vez de cerrar el visor.
+- **El foco no entra al iframe.** Si vive ahí, la tecla Escape ya no llega
+  al documento que abrió el visor. Se queda en el botón de cerrar, y además
+  la herramienta reenvía su propio Escape (`site-embed-child.js`) por si el
+  usuario ya hizo clic dentro.
+
+El visor carga la herramienta con `?embed=1`. `site-embed-child.js` lo
+detecta y esconde los enlaces de "volver al sitio" de la propia herramienta
+—navegarían a la portada *dentro* del recuadro— convirtiéndolos en "cerrar
+el visor". Esa variante de URL está en `Disallow` del `robots.txt`.
+
 ## En los medios (press room)
 
 | | |
 |---|---|
 | Archivo | `medios.html` (raíz) |
 | Ruta pública | `/medios` (reescritura en `vercel.json`) |
-| Desde dónde se llega | Cintillo del Home y de `inversiones.html`, sección `#medios` de Inversiones y el pie de las 7 páginas |
+| Desde dónde se llega | Cintillo del Home y de `inversiones.html`, sección `#medios` de Inversiones y el pie de las 7 páginas — todos con `data-embed`, así que abren el visor |
 | Destino declarado en | `site-config.js` → `MEDIOS_URL` |
 
 Antes este contenido vivía en un dominio aparte
@@ -154,7 +191,7 @@ servicio falla, cada tarjeta cae a las iniciales del medio (`onerror` en el
 |---|---|
 | Archivo oficial | `RiderMex_Simulador_Flujo_Plusvalia_Crecimiento_Anual_V3.html` (raíz) |
 | Ruta pública | `/simulador-inversion` (reescritura en `vercel.json`) |
-| Cómo se abre | CTA compacto en `inversiones.html#simulador`, en pestaña nueva |
+| Cómo se abre | CTA compacto en `inversiones.html#simulador` y enlace del pie, los dos con `data-embed`: se abre en el visor, sin salir de la página |
 | Evento | `simulator_click` (ver `site-ui.js`; solo se envía si hay GA4) |
 
 **Nunca se muestra embebido.** Las versiones anteriores

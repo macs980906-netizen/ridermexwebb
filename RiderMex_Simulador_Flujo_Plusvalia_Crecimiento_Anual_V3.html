@@ -2311,5 +2311,10 @@ Este escenario es ilustrativo. Rendimientos, liquidez y precio efectivo de venta
   init();
 })();
 </script>
+<!-- Comportamiento cuando el simulador se abre dentro del visor embebido
+     (?embed=1): reenvía la tecla Escape a la página que lo abrió, para que
+     cierre aunque el foco esté dentro de la herramienta. Fuera del visor no
+     hace nada. Ver site-embed-child.js. -->
+<script src="site-embed-child.js" defer></script>
 </body>
 </html>

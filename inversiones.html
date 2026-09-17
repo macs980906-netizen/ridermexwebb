@@ -620,7 +620,9 @@ details[open] summary::after{content:"–"}
 <link rel="stylesheet" href="site-header.css">
 <link rel="stylesheet" href="site-footer.css">
 <script src="site-header.js" defer></script>
+<link rel="stylesheet" href="site-embed.css">
 <script src="site-ui.js" defer></script>
+<script src="site-embed.js" defer></script>
 </head>
 <body>
 <div class="progress" id="progress"></div>
@@ -695,13 +697,14 @@ details[open] summary::after{content:"–"}
 </section>
 
 <!-- ═══ CINTILLO · RIDERMEX EN LOS MEDIOS ═══
-     Va justo debajo del hero. Antes mandaba a un dominio aparte
-     (medios-ridermex.netlify.app) en pestaña nueva. Ahora el press room es
-     una página del propio sitio —medios.html, en la ruta limpia /medios—
-     así que el enlace es interno y se abre en la misma pestaña.
+     Va justo debajo del hero. El press room es una página del propio sitio
+     (medios.html, en la ruta limpia /medios) y data-embed hace que se abra
+     a pantalla completa encima de ésta, sin navegar: lo maneja el visor
+     compartido site-embed.js. El href sigue siendo real, así que sin JS o
+     con ctrl+clic el enlace funciona como cualquier otro.
      El destino está declarado en site-config.js (MEDIOS_URL). -->
 <a class="medios-cintillo reveal"
-   href="/medios"
+   href="/medios" data-embed="RiderMex en los medios"
    aria-label="RiderMex en los medios — ver las apariciones y menciones públicas de la marca">
   <span class="mc-label">RiderMex en los medios</span>
   <span class="mc-sep" aria-hidden="true"></span>
@@ -1035,8 +1038,10 @@ details[open] summary::after{content:"–"}
 <!-- ═══ SIMULADOR ═══
      El simulador oficial es RiderMex_Simulador_Flujo_Plusvalia_Crecimiento_Anual_V3.html
      (en la raíz del proyecto), servido con la ruta limpia /simulador-inversion
-     (reescritura en vercel.json). Nunca se muestra embebido: este módulo
-     compacto lo abre en una pestaña nueva.
+     (reescritura en vercel.json). El botón lo abre a pantalla completa
+     ENCIMA de esta página, sin navegar ni abrir pestaña nueva: lo hace el
+     visor compartido (site-embed.js), que lo carga en un iframe porque el
+     simulador trae su propio CSS y chocaría con el de esta página.
      Las versiones anteriores (RiderMex_Simulador_Inversion_V4_HISTORICO_70_ACTUAL_75.html,
      assets/RiderMex_Simulador_Inversion_V3_META_300.html y
      calculadora-inversion/) se conservan en disco pero YA NO están enlazadas
@@ -1050,7 +1055,8 @@ details[open] summary::after{content:"–"}
       <p class="sim-nota">Es una herramienta ilustrativa. Los resultados son estimados y deben revisarse contra el contrato y el escenario real.</p>
     </div>
     <div class="sim-actions">
-      <a class="btn btn-primary" href="/simulador-inversion" data-sim-cta target="_blank" rel="noopener noreferrer">Abrir simulador
+      <a class="btn btn-primary" href="/simulador-inversion" data-sim-cta
+       data-embed="Simulador de inversión">Abrir simulador
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="mini-cta" href="https://wa.me/5215599900619?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20RiderMex%20Inversiones.%20Me%20interesa%20revisar%20qu%C3%A9%20modelo%20me%20conviene%20y%20agendar%20un%20Zoom." target="_blank" rel="noopener noreferrer">¿Prefieres que lo revisemos juntos? Habla con un asesor →</a>
@@ -1139,7 +1145,7 @@ details[open] summary::after{content:"–"}
       <h3>RiderMex ya ha sido mencionado en medios</h3>
       <p>Además de la información del modelo, puedes revisar una recopilación de apariciones y menciones públicas de RiderMex. Esto ayuda a validar que la marca ya tiene presencia y conversación alrededor.</p>
     </div>
-    <a class="btn btn-primary" href="/medios">Ver apariciones →</a>
+    <a class="btn btn-primary" href="/medios" data-embed="RiderMex en los medios">Ver apariciones →</a>
   </div>
 </section>
 <section class="section" id="zoom">
@@ -1244,8 +1250,8 @@ details[open] summary::after{content:"–"}
         <li><a href="inversiones.html">Cómo funciona</a></li>
         <li><a href="inversiones.html#modelos">Modelos de inversión</a></li>
         <li><a href="inversiones.html#plusvalia">Plusvalía</a></li>
-        <li><a href="/simulador-inversion" target="_blank" rel="noopener noreferrer">Simulador</a></li>
-        <li><a href="/medios">En los medios</a></li>
+        <li><a href="/simulador-inversion" data-embed="Simulador de inversión">Simulador</a></li>
+        <li><a href="/medios" data-embed="RiderMex en los medios">En los medios</a></li>
       </ul>
     </div>
 

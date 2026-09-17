@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   RIDERMEX · VISOR EMBEBIDO (componente compartido)
+   ───────────────────────────────────────────────────────────────────────
+   Abre una herramienta del sitio —el simulador de inversión y el press
+   room "En los medios"— ENCIMA de la página actual, a pantalla completa,
+   sin navegar ni abrir pestaña nueva.
+
+   Las dos herramientas son documentos HTML completos con su propio CSS
+   (definen .section, .btn, .kicker… igual que inversiones.html). Por eso
+   NO se pueden pegar dentro del documento: se cargan en un <iframe>, que
+   las aísla por completo.
+
+   Se activa solo con marcar el enlace:
+       <a href="/medios" data-embed="RiderMex en los medios">…</a>
+   El href sigue siendo real: sin JS, con ctrl+clic o desde un buscador la
+   página se abre normal. Ver site-embed.js.
+
+   Se carga con:
+       <link rel="stylesheet" href="site-embed.css">
+       <script src="site-embed.js" defer></script>
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.rm-embed {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;            /* por encima del header (200) y del grano (9998
+                               no aplica: ese es decorativo y no interactivo) */
+  display: flex;
+  flex-direction: column;
+  background: #0A0A0A;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s cubic-bezier(.22,1,.36,1), visibility .28s;
+}
+
+.rm-embed.is-open { opacity: 1; visibility: visible; }
+
+/* ── Barra superior: título + cerrar ──
+   Respeta la muesca del teléfono (notch) con el safe-area inset. */
+.rm-embed-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  background: #0A0A0A;
+  border-bottom: 1px solid #2C2C2C;
+}
+
+.rm-embed-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-size: .92rem;
+  color: #F5F5F5;
+  /* Un título largo no empuja al botón de cerrar fuera de la pantalla. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rm-embed-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;          /* objetivo táctil cómodo */
+  padding: 0 16px;
+  border: 1px solid #2C2C2C;
+  border-radius: 999px;
+  background: #141414;
+  color: #F5F5F5;
+  font-family: 'Barlow Condensed', 'Barlow', sans-serif;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+
+.rm-embed-close:hover { background: #CC0000; border-color: #CC0000; color: #fff; }
+.rm-embed-close:focus-visible { outline: 2px solid #ff5a3c; outline-offset: 2px; }
+.rm-embed-close svg { width: 15px; height: 15px; }
+
+/* ── Lienzo de la herramienta ── */
+.rm-embed-stage {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;             /* imprescindible para que el iframe encoja
+                                dentro del flex en vez de desbordarse */
+  background: #0A0A0A;
+}
+
+.rm-embed-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.rm-embed-frame.is-ready { opacity: 1; }
+
+/* ── Estado de carga ──
+   Las dos herramientas pesan bastante (imágenes incrustadas): sin esto el
+   visor se ve en blanco unos instantes y parece que no pasó nada. */
+.rm-embed-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  color: #AAAAAA;
+  font-size: .9rem;
+  letter-spacing: .04em;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.rm-embed-loading.is-hidden { opacity: 0; }
+
+.rm-embed-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #2C2C2C;
+  border-top-color: #CC0000;
+  border-radius: 50%;
+  animation: rmEmbedSpin .8s linear infinite;
+}
+
+@keyframes rmEmbedSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rm-embed { transition: none; }
+  .rm-embed-frame { transition: none; }
+  .rm-embed-spinner { animation-duration: 2.4s; }
+}
+
+/* Mientras el visor está abierto la página de atrás no se desplaza. */
+.rm-embed-lock { overflow: hidden !important; }
+
+@media (max-width: 560px) {
+  .rm-embed-bar { padding-left: 14px; padding-right: 12px; gap: 9px; }
+  .rm-embed-title { font-size: .82rem; letter-spacing: .06em; }
+  .rm-embed-close { padding: 0 13px; font-size: .74rem; }
+  /* En pantallas estrechas el texto del botón sobra: basta la ✕. */
+  .rm-embed-close span { display: none; }
+}
